@@ -1,0 +1,6 @@
+framework module Pods_TrashOutUITests {
+  umbrella header "Pods-TrashOutUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

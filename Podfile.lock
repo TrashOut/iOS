@@ -82,6 +82,30 @@ DEPENDENCIES:
   - Firebase/Storage
   - SwiftDate (~> 4.0.11)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AlamofireImage
+    - Bolts
+    - Cache
+    - Charts
+    - CryptoSwift
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAppIndexing
+    - FirebaseAuth
+    - FirebaseCrash
+    - FirebaseInstanceID
+    - FirebaseStorage
+    - GoogleInterchangeUtilities
+    - GoogleNetworkingUtilities
+    - GoogleSymbolUtilities
+    - GoogleUtilities
+    - SwiftDate
+
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
   AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
@@ -96,7 +120,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 3f5358d9104adf159cc8d99b7b501e50099a39ad
   FirebaseAppIndexing: abbb3797e7f5002d9f786c64e2f18b6b8196baee
   FirebaseAuth: 75a062bbf2d3c97d1e6e55bbc110e13a6853e25d
-  FirebaseCrash: 2efeb3715b76ac843b841529ce413efb67e5fd4d
+  FirebaseCrash: 6da801151873302587122163393c99e57d1fd2fc
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseStorage: 3992817bf405f5c1a4f8349678d22724cd0ef509
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
@@ -105,6 +129,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   SwiftDate: a36d5ce7c86bed3ed92b583ccbf15045f374ac65
 
-PODFILE CHECKSUM: 6777260ca283c256bd5a58c00d666177bdc957b4
+PODFILE CHECKSUM: 78cff4ee90ed1c35698a014405d4df32dde10e38
 
-COCOAPODS: 1.3.0
+COCOAPODS: 1.5.0

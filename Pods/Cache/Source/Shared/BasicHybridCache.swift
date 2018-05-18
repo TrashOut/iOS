@@ -111,15 +111,15 @@ public class BasicHybridCache: NSObject {
 
    - Parameter completion: Completion closure to be called when the task is done
    */
-  //public func clear(_ completion: (() -> ())? = nil) {
-  public func clear(_ completion: @escaping () -> ()) {
+  public func clear(_ completion: (() -> Void)? = nil) {
     frontStorage.clear() { [weak self] in
       guard let weakSelf = self else {
-        completion()
+        completion?()
         return
       }
+
       weakSelf.backStorage.clear() {
-        completion()
+        completion?()
       }
     }
   }
@@ -129,17 +129,15 @@ public class BasicHybridCache: NSObject {
      
    - Parameter completion: Completion closure to be called when the task is done
    */
-    
-    //public func clearExpired(_ completion: (() -> Void)? = nil) {
-  public func clearExpired(_ completion: @escaping () -> Void) {
+  public func clearExpired(_ completion: (() -> Void)? = nil) {
     frontStorage.clearExpired { [weak self] in
       guard let weakSelf = self else {
-        completion()
+        completion?()
         return
       }
             
       weakSelf.backStorage.clearExpired() {
-        completion()
+        completion?()
       }
     }
   }

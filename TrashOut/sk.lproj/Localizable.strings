@@ -1205,3 +1205,9 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "collectionPoint.validation.dayIsUsed" = "Deň bol vybraný.";
 "statistics.countryPicker.header" = "Vyberte krajinu";
 
+// Sign up
+"sign.up.accept.terms.policy"="S registráciou alebo používaním mobilnej aplikácie súhlasíte so znením Ochrany osobných údajov a Podmienkami používania.";
+"sign.up.accept.terms.policy.privacy"="Ochrany osobných údajov";
+"sign.up.accept.terms.policy.termsconditions"="Podmienkami používania";
+"sign.up.privacy.link"="https://www.trashout.ngo/policy/";
+"sign.up.termsconditions.link"="https://www.trashout.ngo/terms";

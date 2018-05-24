@@ -1206,3 +1206,10 @@ NSCalendarsUsageDescription = "La aplicación desea insertar eventos en su calen
 "collectionPoint.validation.chooseDay" = "Por favor seleccione un día";
 "collectionPoint.validation.dayIsUsed" = "día fue seleccionado";
 "statistics.countryPicker.header" = "seleccione un país";
+
+// Sign up
+"sign.up.accept.terms.policy"="Al registrarte, aceptas las Condiciones de Servicio y la Política de Privacidad.";
+"sign.up.accept.terms.policy.privacy"="Condiciones de Servicio";
+"sign.up.accept.terms.policy.termsconditions"="Política de Privacidad";
+"sign.up.privacy.link"="https://www.trashout.ngo/policy/";
+"sign.up.termsconditions.link"="https://www.trashout.ngo/terms";

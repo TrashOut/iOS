@@ -1345,3 +1345,9 @@ NSCalendarsUsageDescription = "Application would like to insert events into your
 "collectionPoint.validation.dayIsUsed" = "Day is used";
 "statistics.countryPicker.header" = "Select country";
 
+// Sign up
+"sign.up.accept.terms.policy"="When you register or use this app, you agree with our Privacy Policy and Terms and Conditions.";
+"sign.up.accept.terms.policy.privacy"="Privacy Policy";
+"sign.up.accept.terms.policy.termsconditions"="Terms and Conditions";
+"sign.up.privacy.link"="https://www.trashout.ngo/policy/";
+"sign.up.termsconditions.link"="https://www.trashout.ngo/terms";

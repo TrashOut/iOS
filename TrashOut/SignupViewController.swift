@@ -49,6 +49,9 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 
 	@IBOutlet var lblOr: UILabel!
 
+    @IBOutlet weak var sTermsAndConditions: UISwitch?
+    @IBOutlet weak var tvTermsAndConditions: UITextView?
+    
 	var selectedRow: FormRow?
     var dict : [String : AnyObject]!
 
@@ -75,6 +78,13 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 		btnLogin.theme()
 		btnFacebook.theme()
 		btnFacebook.backgroundColor = UIColor.theme.facebook
+        tvTermsAndConditions?.attributedText = self.createTermsAndCoditionsAttributedString()
+        tvTermsAndConditions?.delegate = self
+        sTermsAndConditions?.addTarget(self, action: #selector(switchValueDidChanged(_:)), for: .valueChanged)
+        sTermsAndConditions?.isOn = false
+        
+        setEnabled(false, view: self.btnLogin, animated: false)
+        setEnabled(false, view: self.btnFacebook, animated: false)
 	}
 
 	/**
@@ -226,4 +236,72 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 			}, completion: nil)
 	}
 
+}
+
+
+// MARK: - Setup UI
+
+extension SignupViewController {
+    
+    /// Create attributed string for terms and conditions.
+    
+    fileprivate func createTermsAndCoditionsAttributedString() -> NSAttributedString? {
+        let privacyTermsCondString    = "sign.up.accept.terms.policy".localized
+        let privacyString             = "sign.up.accept.terms.policy.privacy".localized
+        let termsConditionsString     = "sign.up.accept.terms.policy.termsconditions".localized
+        let privacyLinkString         = "sign.up.privacy.link".localized
+        let termsConditionsLinkString = "sign.up.termsconditions.link".localized
+
+        let privacyTermsCondAttrString = NSMutableAttributedString(string: privacyTermsCondString)
+        privacyTermsCondAttrString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14.0), range: NSRange(location: 0, length: privacyTermsCondString.count))
+        
+        let privacyRange   = (privacyTermsCondString as NSString).range(of: privacyString)
+        privacyTermsCondAttrString.addAttribute(NSLinkAttributeName, value: URL(string: privacyLinkString)!, range: privacyRange)
+        privacyTermsCondAttrString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: privacyRange)
+        
+        let termsCondRange = (privacyTermsCondString as NSString).range(of: termsConditionsString)
+        privacyTermsCondAttrString.addAttribute(NSLinkAttributeName, value: URL(string: termsConditionsLinkString)!, range: termsCondRange)
+        privacyTermsCondAttrString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: termsCondRange)
+        
+        return privacyTermsCondAttrString
+    }
+    
+    
+    /// Set enabled for UIControl.
+    ///
+    /// - Parameters:
+    ///   - enabled: Is enabled.
+    ///   - view: View.
+    ///   - animated: Animated.
+    
+    fileprivate func setEnabled(_ enabled: Bool, view: UIControl, animated: Bool) {
+        UIView.transition(with: view, duration: animated ? 0.25 : 0.0, options: .transitionCrossDissolve, animations: {
+            view.alpha = enabled ? 1.0 : 0.5
+        }, completion: { completed in
+            view.isEnabled = enabled
+        })
+    }
+}
+
+
+// MARK: - Actions
+extension SignupViewController {
+    
+    /// Switch did changed handler.
+    ///
+    /// - Parameter sender: Sender.
+    
+    @objc func switchValueDidChanged(_ sender: UISwitch) {
+        self.setEnabled(sender.isOn, view: btnFacebook, animated: true)
+        self.setEnabled(sender.isOn, view: btnLogin, animated: true)
+    }
+}
+
+
+// MARK: - Text view delegate
+
+extension SignupViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        return true
+    }
 }

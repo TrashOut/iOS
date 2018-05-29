@@ -42,8 +42,6 @@ Handle some clustering
 */
 class DumpsMapManager: ClusteringManagerDelegate {
 
-	static let cacheExpirationInSeconds: TimeInterval = 5*60
-
 	static let debug: Bool = true
 	static func log(_ m: String) {
 		print(m)
@@ -51,27 +49,6 @@ class DumpsMapManager: ClusteringManagerDelegate {
 
 	/// Clustering handler
 	let clusteringManager: ClusteringManager = ClusteringManager()
-
-	/**
-	Cache for cells with trashes
-	
-	There are separate caches for overlay of resolution = 5 as zoompoint and as trash
-	*/
-	var trashesCache: HybridCache = { () -> HybridCache in
-		let config = Config.init(frontKind: .memory, backKind: .disk, expiry: Expiry.seconds(cacheExpirationInSeconds), maxSize: 10000, maxObjects: 100)
-		let cache = HybridCache(name: "trashmap-trashes", config: config)
-		return cache
-	}()
-	/**
-	Cache for cells of zoompoints
-	
-	There are separate caches for overlay of resolution = 5 as zoompoint and as trash
-	*/
-	var zoomCache: HybridCache = { () -> HybridCache in
-		let config = Config.init(frontKind: .memory, backKind: .disk, expiry: Expiry.seconds(cacheExpirationInSeconds), maxSize: 10000, maxObjects: 500)
-		let cache = HybridCache(name: "trashmap-zoompoints", config: config)
-		return cache
-	}()
 
 	init() {
 		clusteringManager.delegate = self
@@ -93,66 +70,6 @@ class DumpsMapManager: ClusteringManagerDelegate {
 
 	// MARK: - Data remote loading
 
-	// MARK: Caching
-
-	func purgeCache(_ callback: @escaping ()->()) {
-		Async.waterfall([
-            { [weak self] (completion, _) in
-                self?.trashesCache.clear(completion)
-			},
-			{ [weak self] (completion, _) in
-				self?.zoomCache.clear(completion)
-			},
-			{ (completion, _) in
-                callback()
-            }
-        ]) { (error) in
-           
-        }
-	}
-
-	/**
-	Store cells into cache
-	*/
-	func store(cells: [GeoCell], into cache: HybridCache) {
-		for cell in cells {
-			guard let key = cell.geocell else {continue}
-			cache.add(key, object: cell)
-		}
-	}
-
-	/**
-	Try to load cells from cache
-	*/
-	func load(cells: [String], from cache: HybridCache, success: @escaping ([GeoCell])->(), failure: @escaping (Error?)->()) {
-		var loaded: [GeoCell] = []
-		var notloaded: [String] = []
-		var loading: [Async.Block] = []
-		for cell in cells {
-			let exec: Async.Block = { (_ completion: @escaping ()->(), _ failure: @escaping (Error)->()) -> () in
-				cache.object(cell, completion: { (geocell: GeoCell?) in
-
-					if let geocell = geocell {
-						loaded.append(geocell)
-					} else {
-						notloaded.append(cell)
-					}
-					completion()
-				})
-			}
-			loading.append(exec)
-		}
-		let finalize: Async.Block = { (_ completion: @escaping ()->(), _ failure: @escaping (Error)->()) -> () in
-			DispatchQueue.main.async {
-				success(loaded)
-			}
-		}
-		loading.append(finalize)
-		Async.waterfall(loading) { (error) in
-			failure(error)
-		}
-	}
-
 
 	/**
 	Get geocells for give region
@@ -167,64 +84,21 @@ class DumpsMapManager: ClusteringManagerDelegate {
 			region.center.latitude - region.span.latitudeDelta/2,
 			region.center.longitude - region.span.longitudeDelta/2
 		)
+        
 		let se = CLLocationCoordinate2DMake(
 			region.center.latitude + region.span.latitudeDelta/2,
 			region.center.longitude + region.span.longitudeDelta/2
 		)
+        
 		let resolution = GeocellResolution.resolution(for: zoom)
-
-		// let cellNW = self.cell(for: nw, resolution: resolution.rawValue)
-		// let cellSE = self.cell(for: se, resolution: resolution.rawValue)
-		// print("Cell for zoom: \(zoom), res: \(resolution.rawValue) = \(cellNW)")
-		// print("Cell for zoom: \(zoom), res: \(resolution.rawValue) = \(cellSE)")
-		// self.geocells(between: cellNW, southeast: cellSE)
 		let geocells = self.geocells(between: nw, southeast: se, with: resolution.rawValue)
-		DumpsMapManager.log("Cells needed: \(geocells)")
-
-		let cache = zoom <= 9 ? zoomCache : trashesCache
-
-		var geocellsObjects: [GeoCell] = [] // result array
-		// load from cache
-		self.load(cells: geocells, from: cache, success: { [weak self] (cells) in
-			geocellsObjects.append(contentsOf: cells) // append cells from cache
-			let loaded = cells.map({ (c) -> String in
-				return c.geocell ?? "Cell name error"
-			})
-			DumpsMapManager.log("Cells loaded from cache: \(loaded)")
-			// get list of not loaded cells
-			let needsload = geocells.filter({ (name) -> Bool in
-				return cells.contains(where: { (c) -> Bool in
-					return c.geocell == name
-				}) == false
-			})
-			DumpsMapManager.log("Cells needs load from api: \(needsload)")
-			if zoom <= 9 {
-				DumpsMapManager.log("Loading zoom points")
-				// load cells as zoompoint
-				self?.loadZoompoints(for: needsload, zoom: zoom, filter: filter, success: { [weak self] (cells) in
-					let loaded = cells.map({ (c) -> String in
-						return c.geocell ?? "Cell name error"
-					})
-					DumpsMapManager.log("Fetched cells: \(loaded)")
-					self?.store(cells: cells, into: cache) // store into cache
-					geocellsObjects.append(contentsOf: cells) // add to result
-					success(geocellsObjects) // finalize
-					}, failure: failure)
-			} else {
-				DumpsMapManager.log("Loading trashes")
-				// load cells with trashes
-				self?.loadTrashes(for: needsload, zoomLevel: zoom, filter: filter, success: { [weak self] (cells) in
-					let loaded = cells.map({ (c) -> String in
-						return c.geocell ?? "Cell name error"
-					})
-					DumpsMapManager.log("Fetched cells: \(loaded)")
-					self?.store(cells: cells, into: cache) // store into cache
-					geocellsObjects.append(contentsOf: cells) // add to result
-					success(geocellsObjects) // finalize
-					}, failure: failure)
-			}
-
-		}, failure: failure)
+        let loadingClosure = { (f: ((_ geocells: [String], _ zoom: Int, _ filter: TrashFilter, _ success: @escaping ([GeoCell]) -> Void, _ failure: @escaping (Error?) -> Void) -> Void)) -> Void in
+            f(geocells, zoom, filter, success, failure)
+        }
+        
+        zoom <= 9
+            ? loadingClosure(loadZoompoints)
+            : loadingClosure(loadTrashes)
 	}
 
 	// MARK: Load from network
@@ -294,6 +168,7 @@ class DumpsMapManager: ClusteringManagerDelegate {
 
 	/// Markers for given cells
 	func markers(for cells: [GeoCell], mapRect rect: MKMapRect, zoomScale: Double, callback: @escaping ([MKAnnotation]) -> ()) {
+        
 		DispatchQueue.global(qos: .background).async {
 			var markers: [MKAnnotation] = []
 			for c in cells {

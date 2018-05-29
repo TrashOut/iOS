@@ -383,6 +383,7 @@ class GeoCell: JsonDecodable, Cachable {
     init() {}
 
     static func create(from json: [String: AnyObject], usingId _: Int?) -> AnyObject {
+        
         let c = GeoCell()
         c.geocell = json["geocell"] as? String
         if let lat = json.double("lat"),
@@ -402,11 +403,11 @@ class GeoCell: JsonDecodable, Cachable {
             let more = counts["more"] as? Int ?? 0
             let stillHere = counts["stillHere"] as? Int ?? 0
             let updateNeeded = counts["updateNeeded"] as? Int ?? 0
-
+            
             c.remains = stillHere + less + more
             c.cleaned = cleaned
             c.updateNeeded = updateNeeded
-            c.count = stillHere + less + more + cleaned + updateNeeded
+            c.count = stillHere + less + more + cleaned
         }
         if let trashes = json["trashes"] as? [[String: AnyObject]] {
             var trashesArray: [TrashPoint] = []

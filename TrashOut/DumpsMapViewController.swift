@@ -102,10 +102,8 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 	var filter: TrashFilter = TrashFilter.cachedFilter {
 		didSet {
             // [weak self]
-			self.manager.purgeCache { [weak self] _ in
-				self?.manager = DumpsMapManager()
-				self?.reload()
-			}
+            self.manager = DumpsMapManager()
+            self.reload()
 		}
 	}
 //    fileprivate var trashStatus: [String]!
@@ -263,12 +261,11 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 
 	/// Extended rect for map for quite stable scrolling map
 	func extendedRect(for rect: MKMapRect) -> MKMapRect {
-//		return rect
-		let enchangeRect: Double = 2 // calc for rect + enchangeRect*rect surrounding
-		return MKMapRect.init(
-			origin: MKMapPointMake(rect.origin.x - (rect.size.width*enchangeRect/2), rect.origin.y - (rect.size.height*enchangeRect/2)),
-			size: MKMapSizeMake(rect.size.width*(enchangeRect + 1), rect.size.height*(enchangeRect + 1))
-		)
+        let enchangeRect: Double = 2 // calc for rect + enchangeRect*rect surrounding
+        return MKMapRect.init(
+            origin: MKMapPointMake(rect.origin.x - (rect.size.width*enchangeRect/2), rect.origin.y - (rect.size.height*enchangeRect/2)),
+            size: MKMapSizeMake(rect.size.width*(enchangeRect + 1), rect.size.height*(enchangeRect + 1))
+        )
 	}
 
 	/**
@@ -343,11 +340,11 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 		let newrect = self.extendedRect(for: mapView.visibleMapRect)
 
 		manager.cells(withZoomLevel: zoom, region: MKCoordinateRegionForMapRect(newrect), filter: self.filter, success: { [weak self] (cells) in
-				self?.cells = cells
-				self?.currentLoadedRect = newrect
-				}, failure: { [weak self] error in
-				self?.showDataLoadError(error)
-			})
+            self?.cells = cells
+            self?.currentLoadedRect = newrect
+            }, failure: { [weak self] error in
+            self?.showDataLoadError(error)
+        })
 	}
 
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -374,5 +371,4 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
             }
         }
     }
-
 }

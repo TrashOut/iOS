@@ -1198,8 +1198,7 @@ NSCalendarsUsageDescription = "Приложение хочет вставлят�
 "statistics.countryPicker.header" = "Выберите страну";
 
 // Sign up
-"sign.up.accept.terms.policy"="Регистрируясь, вы соглашаетесь с Условиями предоставления услуг и Политикой конфиденциальности.";
-"sign.up.accept.terms.policy.privacy"="Условиями предоставления услуг";
-"sign.up.accept.terms.policy.termsconditions"="Политикой конфиденциальности";
-"sign.up.privacy.link"="https://www.trashout.ngo/policy/";
-"sign.up.termsconditions.link"="https://www.trashout.ngo/terms";
+"global.signUp.acceptRegister.startSentense"="Регистрируясь, вы соглашаетесь с";
+"global.signUp.acceptRegister.privatePolicy"="Условиями предоставления услуг";
+"global.signUp.acceptRegister.and"="и";
+"global.signUp.acceptRegister.terms"="Политикой конфиденциальности";

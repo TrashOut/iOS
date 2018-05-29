@@ -1208,8 +1208,7 @@ NSCalendarsUsageDescription = "La aplicación desea insertar eventos en su calen
 "statistics.countryPicker.header" = "seleccione un país";
 
 // Sign up
-"sign.up.accept.terms.policy"="Al registrarte, aceptas las Condiciones de Servicio y la Política de Privacidad.";
-"sign.up.accept.terms.policy.privacy"="Condiciones de Servicio";
-"sign.up.accept.terms.policy.termsconditions"="Política de Privacidad";
-"sign.up.privacy.link"="https://www.trashout.ngo/policy/";
-"sign.up.termsconditions.link"="https://www.trashout.ngo/terms";
+"global.signUp.acceptRegister.startSentense"="Al registrarte, aceptas las";
+"global.signUp.acceptRegister.privatePolicy"="Condiciones de Servicio";
+"global.signUp.acceptRegister.and"="y la";
+"global.signUp.acceptRegister.terms"="Política de Privacidad";

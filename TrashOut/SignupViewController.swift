@@ -246,24 +246,42 @@ extension SignupViewController {
     /// Create attributed string for terms and conditions.
     
     fileprivate func createTermsAndCoditionsAttributedString() -> NSAttributedString? {
-        let privacyTermsCondString    = "sign.up.accept.terms.policy".localized
-        let privacyString             = "sign.up.accept.terms.policy.privacy".localized
-        let termsConditionsString     = "sign.up.accept.terms.policy.termsconditions".localized
-        let privacyLinkString         = "sign.up.privacy.link".localized
-        let termsConditionsLinkString = "sign.up.termsconditions.link".localized
-
-        let privacyTermsCondAttrString = NSMutableAttributedString(string: privacyTermsCondString)
-        privacyTermsCondAttrString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14.0), range: NSRange(location: 0, length: privacyTermsCondString.count))
+        guard
+            let privacyPolicyUrl = URL(string: "https://www.trashout.ngo/policy/"),
+            let termsAndCondUrl = URL(string: "https://www.trashout.ngo/terms")
+        else { return nil }
         
-        let privacyRange   = (privacyTermsCondString as NSString).range(of: privacyString)
-        privacyTermsCondAttrString.addAttribute(NSLinkAttributeName, value: URL(string: privacyLinkString)!, range: privacyRange)
-        privacyTermsCondAttrString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: privacyRange)
+        // Create attributed link string
+        let createAttributedStringWithLink = { (string: String, url: URL) -> NSAttributedString in
+            let attributedString = NSMutableAttributedString(string: string)
+            let range = NSRange(location: 0, length: string.count)
+            attributedString.addAttribute(NSLinkAttributeName, value: url, range: range)
+            attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
+            
+            return attributedString
+        }
         
-        let termsCondRange = (privacyTermsCondString as NSString).range(of: termsConditionsString)
-        privacyTermsCondAttrString.addAttribute(NSLinkAttributeName, value: URL(string: termsConditionsLinkString)!, range: termsCondRange)
-        privacyTermsCondAttrString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: termsCondRange)
+        // Localized strings
+        let startSentenceAttributedString = NSAttributedString(string: "global.signUp.acceptRegister.startSentense".localized)
+        let privacyPolicyAttributedString = createAttributedStringWithLink("global.signUp.acceptRegister.privatePolicy".localized, privacyPolicyUrl)
+        let andAttributedString           = NSAttributedString(string: "global.signUp.acceptRegister.and".localized)
+        let termsAndCondAttributedString  = createAttributedStringWithLink("global.signUp.acceptRegister.terms".localized, termsAndCondUrl)
+        let spaceAttributedString         = NSAttributedString(string: " ")
+        let endSentencesAttributedString  = NSAttributedString(string: ".")
         
-        return privacyTermsCondAttrString
+        // Merged string
+        let mergedAttributedString = NSMutableAttributedString()
+        mergedAttributedString.append(startSentenceAttributedString)
+        mergedAttributedString.append(spaceAttributedString)
+        mergedAttributedString.append(privacyPolicyAttributedString)
+        mergedAttributedString.append(spaceAttributedString)
+        mergedAttributedString.append(andAttributedString)
+        mergedAttributedString.append(spaceAttributedString)
+        mergedAttributedString.append(termsAndCondAttributedString)
+        mergedAttributedString.append(endSentencesAttributedString)
+        mergedAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 15.0), range: NSRange(location: 0, length: mergedAttributedString.string.count))
+        
+        return mergedAttributedString
     }
     
     

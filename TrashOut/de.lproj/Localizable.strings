@@ -1224,8 +1224,7 @@ NSCalendarsUsageDescription = "Anwendung möchte Ereignisse in Ihren Kalender ei
 "statistics.countryPicker.header" = "Wählen Sie das Land aus";
 
 // Sign up
-"sign.up.accept.terms.policy"="Indem du dich registrierst, stimmst du den Allgemeinen Geschäftsbedingungen und Datenschutzrichtlinien.";
-"sign.up.accept.terms.policy.privacy"="Allgemeinen Geschäftsbedingungen";
-"sign.up.accept.terms.policy.termsconditions"="Datenschutzrichtlinien";
-"sign.up.privacy.link"="https://www.trashout.ngo/policy/";
-"sign.up.termsconditions.link"="https://www.trashout.ngo/terms";
+"global.signUp.acceptRegister.startSentense"="Indem du dich registrierst, stimmst du den";
+"global.signUp.acceptRegister.privatePolicy"="Allgemeinen Geschäftsbedingungen";
+"global.signUp.acceptRegister.and"="und";
+"global.signUp.acceptRegister.terms"="Datenschutzrichtlinien";

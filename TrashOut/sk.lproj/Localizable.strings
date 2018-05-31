@@ -1,8 +1,3 @@
-NSCameraUsageDescription = "Aplikácia potrebuje prístup k Vaším fotkám z dôvodu aktualizácie skládok.";
-NSPhotoLibraryUsageDescription = "Aplikácia potrebuje prístup k Vaším fotkám z dôvodu aktualizácie skládok.";
-NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho kalendára.";
-
-
 "tab.profile" = "Profil";
 "global.nearby" = "V okolí";
 "tab.home" = "Domov";
@@ -143,7 +138,7 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "profile.signOutNoInternet" = "Prepáčte, nedokážeme Vás odhlásiť bez internetového pripojenia.\nProsím, skúste znova, keď budete online";
 "profile.organization.remove" = "Zrušiť členstvo";
 "trash.accuracy" = "Presnosť";
-"trash.metersAway" = "metrov odtiaľto";
+"trash.metersAway" = "metrov ďaleko";
 "trash.trashType" = "Typ odpadu";
 "trash.trashSize" = "Veľkosť skládky";
 "trash.cameraError" = "Huups, fotoaparát neodpovedá :(";
@@ -202,7 +197,7 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "statistics.show" = "zobraziť štatistiky";
 "global.selectArea" = "Vyberte oblasť";
 "notifications.reported" = "nahlásených";
-"global.cleaned" = "Vyčistených";
+"global.cleaned" = "Vyčistené";
 "notification.noEmailAddress" = "Ospravedlňujeme sa, nemáme žiadnu e-mailovú adresu pre túto oblasť. Zadajte túto adresu, prosím.";
 "event.header" = "Čistiace podujatie";
 "event.create.header" = "Vytvoriť podujatie";
@@ -442,7 +437,7 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "trash.create.thirdStep" = "Vybrať obrázky";
 "trash.header" = "Trash manažment";
 "trash.history" = "História";
-"trash.created" = "Hlásené";
+"trash.created" = "Nahlásené";
 "global.facebookLogin" = "Prihlásiť sa pomocou Facebook-u";
 "global.login" = "Prihlásiť sa";
 "global.backToLogin" = "Späť k prihláseniu";
@@ -591,7 +586,7 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "global.time.month" = "mesiac";
 "global.time.week" = "týždeň";
 "global.time.day" = "deň";
-"global.time.hour" = "hodina";
+"global.time.hour" = "hod.";
 "global.time.minute" = "minúta";
 "global.time.second" = "druhý";
 "global.time.0secAgo" = "0 minútami";
@@ -601,13 +596,13 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "global.validation.warning" = "Upozornenie";
 "global.validation.noEmailClientInstalled" = "Nie je nainštalovaný e-mailový klient";
 "trash.edit.greaterDistanceText" = "Vzdialenosť je väčšia ako 100 m od skládky. Musíte ísť bližšie ku skládke.";
-"trash.edit.minPhotosText" = "Urobte najmenej %d fotografií na vytvorenie nebo aktualizáciu skládky";
+"trash.edit.minPhotosText" = "Urobte najmenej %d fotografiu na vytvorenie alebo aktualizáciu skládky";
 "trash.validation.mustSelectMeetingPoint" = "Najprv musíte vybrať miesto stretnutia";
 "event.detail.bring" = "Priniesť";
 "event.detail.pleaseBring" = "Prineste, prosím";
 "global.cropImage" = "Orezať obrázok";
 "collectionPoint.disposeTypes" = "Typy zberných miest";
-"global.readMore" = "Prečítajte viac";
+"global.readMore" = "Zistite viac";
 "user.validation.nonEmptyOrganization" = "Nevybrali ste organizáciu. Vyberte spoločnosť alebo organizáciu úpravou profilu.";
 "global.gpsFormat" = "Formát GPS súradníc";
 "global.locationFormatDegreesExample" = "48.654684, 19.1676514";
@@ -671,7 +666,7 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "widget.statistics.chartAccessibility" = "Podľa dostupnosti";
 "widget.statistics.chartSize" = "Podľa veľkosti";
 "widget.statistics.chartType" = "Podľa typu";
-"widget.statistics.breakdownOfDumps" = "Rozpis počtu nelegálnych skládok v";
+"widget.statistics.breakdownOfDumps" = "Nelegálne skládky v";
 "widget.statistics.lastUpdatedDumps" = "Posledné aktualizované skládky v";
 "profile.validation.emptyOrganization" = "Nevybrali ste žiadnu organizáciu";
 "news.noArticles" = "Zatiaľ tu nie sú žiadne články, vráťte sa neskôr";
@@ -976,18 +971,18 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "mail.eventConfirm.eventInfo4" = "Stretneme sa tu:";
 
 /* please?*/
-"mail.eventConfirm.eventInfo5" = "Prosím potvrďte vašu účasť.";
+"mail.eventConfirm.eventInfo5" = "Prosím, potvrďte vašu účasť.";
 
 /* I will come*/
 "mail.eventConfirm.confirmButton" = "Áno";
 
 /* please see*/
-"mail.eventConfirm.eventDetail1" = "Pre viac informácií a kontakty si prosím pozrite ";
+"mail.eventConfirm.eventDetail1" = "Pre viac informácií a kontakty si pozrite";
 "mail.eventConfirm.eventDetail2" = "detail udalosti";
 "mail.eventConfirm.eventDetail3" = "v aplikácii TrashOut.";
 "mail.eventConfirm.thanks" = "Ďakujeme za to, že robíte náš svet čistejší pre každého.";
 "mail.eventConfirm.organizer" = "Organizátor podujatia je";
-"mail.eventConfirm.footer" = "Dostali ste tento e-mail pretože ste sa pridali k udalosti v aplikácii TrashOut a súhlasili ste s podmienkami používania.";
+"mail.eventConfirm.footer" = "Dostali ste tento e-mail, pretože ste sa pridali k udalosti v aplikácii TrashOut a súhlasili ste s podmienkami používania.";
 "mail.eventCreate.greeting" = "Vážená/ý";
 "mail.eventCreate.eventInfo1" = "všimli sme si, že ste vytvorili udalosť s názvom";
 
@@ -995,25 +990,25 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "mail.eventCreate.eventInfo2" = "v aplikácii TrashOut. Ďakujeme Vám za starostlivosť o životné prostredie.";
 
 /* or see joined attendees*/
-"mail.eventCreate.eventEdit" = "V prípade, že by ste chceli upraviť alebo zrušiť Vaše podujatie použite tento odkaz";
+"mail.eventCreate.eventEdit" = "V prípade, že by ste chceli upraviť alebo zrušiť Vaše podujatie, použite tento odkaz";
 "mail.eventCreate.detailButton" = "Pozrite si detail podujatia";
 
 /* how many bags of trash were collected and if they want to share some pictures from event. You can check it on event detail in section “reports”.*/
-"mail.eventCreate.eventConfirmation" = "Jeden deň pred udalosťou vyzveme užívateľov, ktorí sa pridali na vaše podujatie, aby potvrdili svoju účasť. Jeden deň po podujatí zúčastnených užívateľov požiadame o odhad množstva vyzbieraného odpadu, počtu účastníkov a zdieľanie fotiek. Obe tieto informácie môžete nájsť na detaile podujatia cez vyššie uvedený link. ";
+"mail.eventCreate.eventConfirmation" = "Jeden deň pred udalosťou vyzveme používateľov, ktorí sa pridali na Vaše podujatie, aby potvrdili svoju účasť. Jeden deň po podujatí zúčastnených používateľov požiadame o odhad množstva vyzbieraného odpadu, počtu účastníkov a zdieľanie fotiek. Obe tieto informácie môžete nájsť na detaile podujatia cez vyššie uvedený link.";
 "mail.eventCreate.wishing" = "Prajeme vám úspešnú akciu!";
-"mail.eventCreate.thanks" = "Ďakujeme, že prispievate k tomu, aby bol náš svet čistejší pre každého. Použite mobilnú aplikáciu TrashOut na nahlásenie a aktualizovanie nelegálnych skládok v okolí, nájdenie najbližšieho zberného miesta alebo pridanie sa na čistiace podujatie. ";
+"mail.eventCreate.thanks" = "Ďakujeme, že prispievate k tomu, aby bol náš svet čistejší pre každého. Použite mobilnú aplikáciu TrashOut na nahlásenie a aktualizovanie nelegálnych skládok v okolí, nájdenie najbližšieho zberného miesta alebo pridanie sa na čistiace podujatie.";
 "mail.eventCreate.footer" = "Tento e-mail ste dostali preto, že ste vytvorili podujatie v aplikácii TrashOut a súhlasili ste s dohodnutými podmienkami používania.";
 "mail.eventFeedback.greeting" = "Vážená/ý";
 "mail.eventFeedback.eventFeedback1" = "chceme Vám POĎAKOVAŤ za účasť na čistiacom podujatí";
 "mail.eventFeedback.eventFeedback2" = "ktoré sa konalo včera. Ste skvelá/ý! Vďaka Vášmu úsiliu je toto miesto teraz čistejšie.";
 
 /* bags of trash collected or share your photos. Inspire others to make the World cleaner.*/
-"mail.eventFeedback.eventFeedback3" = "Dajte ostatným vedieť, ako úspešne ste to zvládli. Vyplňte odhad počtu vyzbieraných vriec, počtu účastníkov a zdieľajte vaše fotografie z podujatia. Inšpirujte ostatných k podobnému úsiliu. ";
+"mail.eventFeedback.eventFeedback3" = "Dajte ostatným vedieť, ako úspešne ste to zvládli. Vyplňte odhad počtu vyzbieraných vriec, počtu účastníkov a zdieľajte vaše fotografie z podujatia. Inšpirujte ostatných k podobnému úsiliu.";
 
 /* I want to inspire others*/
-"mail.eventFeedback.feedbackButton" = "áno";
+"mail.eventFeedback.feedbackButton" = "Áno";
 "mail.eventFeedback.team" = "& TrashOut tím.";
-"mail.eventFeedback.thanks" = "Ďakujeme, že prispievaš k tomu, aby bol svet čistejší! Nezabudnite používať mobilnú aplikáciu TrashOut a aktualizujte nelegálne skládky a starajte sa o životné prostredie okolo seba.";
+"mail.eventFeedback.thanks" = "Ďakujeme, že prispievate k tomu, aby bol svet čistejší! Nezabudnite používať mobilnú aplikáciu TrashOut a aktualizujte nelegálne skládky a starajte sa o životné prostredie okolo seba.";
 "mail.eventFeedback.footer" = "Dostali ste tento e-mail, pretože ste sa zapojili do TrashOut udalosti a súhlasili ste s podmienkami používania tejto aplikácie.";
 "mail.organizationInvitation.greeting" = "Vážená/ý";
 "mail.organizationInvitation.join1" = "Boli ste pozvaný na";
@@ -1025,9 +1020,9 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "mail.organizationInvitation.mobileApp4" = "tu";
 
 /* TrashOut does not have your email address and thus cannot and will not contact you in any way.*/
-"mail.organizationInvitation.footer" = "Dostali ste tento e-mail, pretože používateľ TrashOut aplikácie vás pozval vložením Vášho e-mailu. Daný používateľ musel byť členom alebo manažérom organizácie, do ktorej ste pozvaný. Používatelia rozhodujú koho pozvať a komu napísať až do momentu, než sa stanete aj vu TrashOut používateľom.";
+"mail.organizationInvitation.footer" = "Dostali ste tento e-mail, pretože používateľ TrashOut aplikácie vás pozval vložením Vášho e-mailu. Daný používateľ musel byť členom alebo manažérom organizácie, do ktorej ste pozvaný. Používatelia rozhodujú, koho pozvať a čo mu napísať v pozvánke. Než sa pridáte k TrashOut ako používateľ";
 "mail.newsletter.greeting" = "Vážená/ý";
-"mail.newsletter.p1" = "ďakujeme Vám za starostlivosť o životné prostredie. Ste skvelá/ý! Prosím, pozrite si nižšie nedávne aktivity vo sledovanej oblasti.";
+"mail.newsletter.p1" = "ďakujeme Vám za starostlivosť o životné prostredie. Ste skvelá/ý! Prosím, pozrite si nižšie nedávne aktivity v sledovanej oblasti.";
 "mail.newsletter.area" = "Oblasť";
 "mail.newsletter.heading1" = "Nahlásené skládky";
 "mail.newsletter.heading2" = "Aktualizované skládky, ktoré stále neboli vyčistené";
@@ -1036,9 +1031,9 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 /* you can do it from your*/
 "mail.newsletter.p2" = "Ak chcete zmeniť frekvenciu tejto e-mailovej notifikácie, navštívte svoj";
 "mail.newsletter.p3" = "profil";
-"mail.newsletter.p4" = "aplikácii TrashOut.";
-"mail.newsletter.p5" = "Ďakujeme, že prispievate k tomu, aby bol svet čistejší! Nezabudnite používať mobilnú aplikáciu TrashOut na nahlasovanie a aktualizovanie nelegálnych skládok vo svojom okolí, nájdenie njabližšieho zberného miesta, či zúčastnenie sa čistiacej akcie. ";
-"mail.newsletter.footer" = "Tento e-mail ste dostali, pretože zo svojho profilu na admin.trashout.ngo ste si nastavili pravidelné notifikácie na sledovanie vybranej oblasti a súhlasili ste tak s podmienkami používania aplikácie TrashOut. Svoje preferencie môžete kedykoľvek zmeniť ";
+"mail.newsletter.p4" = "v aplikácii TrashOut.";
+"mail.newsletter.p5" = "Ďakujeme, že prispievate k tomu, aby bol svet čistejší! Nezabudnite používať mobilnú aplikáciu TrashOut na nahlasovanie a aktualizovanie nelegálnych skládok vo svojom okolí, nájdenie njabližšieho zberného miesta, či zúčastnenie sa čistiacej akcie.";
+"mail.newsletter.footer" = "Tento e-mail ste dostali, pretože vo svojom profile na admin.trashout.ngo ste si nastavili pravidelné notifikácie na sledovanie vybranej oblasti a súhlasili ste s podmienkami používania aplikácie TrashOut. Svoje preferencie môžete zmeniť kedykoľvek";
 "mail.newsletter.footerLink" = "tu";
 "global.language.russia" = "Ruština";
 "user.stats.userReported" = "Používateľ nahlásený";
@@ -1049,10 +1044,10 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "global.validation.invalidtwitterUrl" = "Neplatná URL pre Twiiter";
 "global.validation.invalidgooglePlusUrl" = "Neplatná URL pre Goolge Plus";
 "global.validation.invalidfacebookUrl" = "Neplatná URL pre Facebook";
-"user.facebook.hint" = "Facebook Tip";
+"user.facebook.hint" = "Link vášho profilu";
 "user.twitter.hint" = "https://twitter.com/user";
-"user.google.hint" = "Google + Tip";
-"global.phone.hint" = "Telefón Tip";
+"user.google.hint" = "Link vášho profilu";
+"global.phone.hint" = "Číslo s predvoľnou začínajúce +/ 00";
 "profile.currentPassword" = "Aktuálne heslo";
 "user.addToArea.success" = "Oblasť bola úspešne pridaná";
 "collectionPoint.created.success" = "Recyklačný bod bol úspešne vytvorený";
@@ -1139,7 +1134,7 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "event.create.loginMessage" = "Musíte byť prihlásený ak chcete vytvoriť udalosť.";
 "trash.create.thankYou.title" = "Ďakujeme!";
 "trash.create.thankYou.sentence1" = "Ďakujeme Vám za Vaše hlásenie!";
-"trash.create.thankYou.sentence2" = "Ste skvelý/á";
+"trash.create.thankYou.sentence2" = "Ste skvelý/á!";
 "trash.create.thankYou.sentence3" = "Nezabudnite aktualizovať skládky okolo Vás a zapojiť sa do čistiacich akcií";
 "trash.create.homeReportButton" = "Nahlásiť nelegálnu skládku";
 "trash.create.thankYou.shareTitle" = "Podeľte sa s ostatnými";
@@ -1162,7 +1157,7 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "info.aboutApp" = "TrashOut je environmentálny projekt, ktorého cieľom je mapovať a monitorovať všetky nelegálne skládky po celom svete.\n\nNašou snahou je zapojiť občanov, vlády, obce a organizácie, aby sme mohli spoločne prispieť k čistejšiemu svetu pre všetkých.";
 "info.appVerison_X" = "Verzia z";
 "tutorial.register" = "Registrovať/Prihlásiť sa";
-"global.distanceAttribute.away" = "odtiaľto";
+"global.distanceAttribute.away" = "ďaleko";
 "event.create.successMobile" = "Ďakujeme, udalosť bola úspešne vytvorená. Vašu udalosť môžete upraviť a navštíviť účastníkov www.admin.trashout.ngo.";
 "home.recentActivity.you" = "vy";
 "global.continue" = "Pokračovať";
@@ -1197,16 +1192,22 @@ NSCalendarsUsageDescription = "Aplikácia by chcela vkladať udalosti do vášho
 "user.validation.facebookNotGrantedPermissionForEmail" = "Chýbajúce povolenie pre e-mail adresu.";
 "user.validation.firebaseUidNotReceived" = "Firebase identifikátor nebol prijatý";
 "user.validation.noFirebaseUser" = "Neplatný Firebase používateľ.";
-"mail.newsletter.emptyBlock" = "Vo sledovanej oblasti nedošlo za vybraný čas k žiadnej novej aktivite. Všetky skládky si môžete pozrieť ";
+"mail.newsletter.emptyBlock" = "V sledovanej oblasti nedošlo za vybraný čas k žiadnej novej aktivite. Všetky skládky si môžete pozrieť";
 "mail.newsletter.trashLink" = "Odkaz";
 
 /*Choose day*/
 "collectionPoint.validation.chooseDay" = "Prosím vyberte deň.";
 "collectionPoint.validation.dayIsUsed" = "Deň bol vybraný.";
 "statistics.countryPicker.header" = "Vyberte krajinu";
+"notification.recentActivity.header" = "Vaše hlásenie skládky bolo aktualizované";
+"notification.recentActivity.text" = "Pozrite si jej nový stav v aplikácii TrashOut a buďte vždy v obraze";
+"mail.eventCreate.subject" = "TrashOut - informácie o vašom podujatí";
 
-// Sign up
-"global.signUp.acceptRegister.startSentense"="S registráciou alebo používaním mobilnej aplikácie súhlasíte so znením";
-"global.signUp.acceptRegister.privatePolicy"="Ochrany osobných údajov";
-"global.signUp.acceptRegister.and"="a";
-"global.signUp.acceptRegister.terms"="Podmienkami používania";
+/*note*/
+/*Fuzzy*/
+"global.signUp.acceptRegister.startSentense" = "S registráciou alebo používaním mobilnej aplikácie súhlasíte so znením";
+"global.signUp.acceptRegister.privatePolicy" = "Ochrany osobných údajov";
+
+/*Fuzzy*/
+"global.signUp.acceptRegister.and" = "a";
+"global.signUp.acceptRegister.terms" = "Podmienkami používania";

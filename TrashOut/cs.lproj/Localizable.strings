@@ -1,7 +1,3 @@
-NSCameraUsageDescription = "Aplikace potřebuje přistup k Vaším fotkám z důvodu aktualizace skládek.";
-NSPhotoLibraryUsageDescription = "Aplikace potřebuje přistup k Vaším fotkám z důvodu aktualizace skládek.";
-NSCalendarsUsageDescription = "Aplikace by chtěla vkládat události do Vašeho kalendáře.";
-
 "tab.profile" = "Profil";
 "global.nearby" = "V okolí";
 "tab.home" = "Domů";
@@ -203,7 +199,7 @@ NSCalendarsUsageDescription = "Aplikace by chtěla vkládat události do Vašeho
 "statistics.show" = "Zobrazit statistiku";
 "global.selectArea" = "Vybrat území";
 "notifications.reported" = "nahlášeno";
-"global.cleaned" = "vyčištěno";
+"global.cleaned" = "Vyčištěno";
 "notification.noEmailAddress" = "Promiňte, nemáme žádnou e-mailovou adresu pro tuto oblast. Prosím vložte manuálně.";
 "event.header" = "Čistící události";
 "event.create.header" = "Vytvoření události";
@@ -1233,9 +1229,15 @@ NSCalendarsUsageDescription = "Aplikace by chtěla vkládat události do Vašeho
 "collectionPoint.validation.chooseDay" = "Vyberte den";
 "collectionPoint.validation.dayIsUsed" = "Den je už použit";
 "statistics.countryPicker.header" = "Vyberte krajinu";
+"notification.recentActivity.header" = "Vaše hlášení skládky bylo aktualizováno";
+"notification.recentActivity.text" = "Skontrolujte nový stav v aplikaci TrashOut a mějte vždy přehled";
+"mail.eventCreate.subject" = "TrashOut - informace o vašem podujetí";
 
-// Sign up
-"global.signUp.acceptRegister.startSentense"="S registrací nebo používáním mobilní aplikace souhlasíte se zněním";
-"global.signUp.acceptRegister.privatePolicy"="Ochrany osobních údajů";
-"global.signUp.acceptRegister.and"="a";
-"global.signUp.acceptRegister.terms"="Podmínkami používání";
+/*note*/
+/*Fuzzy*/
+"global.signUp.acceptRegister.startSentense" = "S registrací nebo používáním mobilní aplikace souhlasíte se zněním";
+"global.signUp.acceptRegister.privatePolicy" = "Ochrany osobních údajů";
+
+/*Fuzzy*/
+"global.signUp.acceptRegister.and" = "a";
+"global.signUp.acceptRegister.terms" = "Podmínkami používání";

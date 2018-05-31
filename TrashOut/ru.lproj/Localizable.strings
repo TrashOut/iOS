@@ -1,8 +1,3 @@
-NSCameraUsageDescription = "Приложение нуждается в доступе к вашим фотографиям для обновления дампов.";
-NSPhotoLibraryUsageDescription =  "Приложение нуждается в доступе к вашим фотографиям для обновления дампов.";
-NSCalendarsUsageDescription = "Приложение хочет вставлять события в ваш календарь.";
-
-
 "tab.profile" = "Профиль";
 "global.nearby" = "Рядом";
 "tab.home" = "Главная";
@@ -1196,9 +1191,15 @@ NSCalendarsUsageDescription = "Приложение хочет вставлят�
 "collectionPoint.validation.chooseDay" = "Выберите день";
 "collectionPoint.validation.dayIsUsed" = "день был выбран";
 "statistics.countryPicker.header" = "Выберите страну";
+"notification.recentActivity.header" = "Обновлен отчет о незаконном дампе";
+"notification.recentActivity.text" = "Проверьте свой новый статус в приложении TrashOut и всегда будьте информированы";
+"mail.eventCreate.subject" = "TrashOut - важная информация о событии, которое вы создали";
 
-// Sign up
-"global.signUp.acceptRegister.startSentense"="Регистрируясь, вы соглашаетесь с";
-"global.signUp.acceptRegister.privatePolicy"="Условиями предоставления услуг";
-"global.signUp.acceptRegister.and"="и";
-"global.signUp.acceptRegister.terms"="Политикой конфиденциальности";
+/*note*/
+/*Fuzzy*/
+"global.signUp.acceptRegister.startSentense" = "Регистрируясь, вы соглашаетесь с";
+"global.signUp.acceptRegister.privatePolicy" = "Условиями предоставления услуг";
+
+/*Fuzzy*/
+"global.signUp.acceptRegister.and" = "и";
+"global.signUp.acceptRegister.terms" = "Политикой конфиденциальности";

@@ -65,7 +65,7 @@ class Article: JsonDecodable, Cachable {
 		self.id = json["id"] as? Int
 		self.title = json["title"] as? String
 		self.content = json["body"] as? String
-        let htmlContent = "<style type=\"text/css\">body{font-family: '-apple-system','HelveticaNeue'; font-size:12;}</style>" + (self.content ?? "")
+        let htmlContent = "<style type=\"text/css\">body{font-family: '-apple-system','HelveticaNeue'; font-size:15;}</style>" + (self.content ?? "")
         if let htmlData = htmlContent.data(using: String.Encoding.unicode) {
             do {
                 let attributedText = try NSAttributedString(data: htmlData, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)

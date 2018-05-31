@@ -240,6 +240,11 @@ class UserManager {
         isLoggedIn = false
         createAnonymousUser { _,_ in }
 	}
+    
+    func logoutOldUser() {
+        firAuth.logout()
+        isLoggedIn = false
+    }
 
 	/**
 	Request password reset

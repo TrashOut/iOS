@@ -59,7 +59,13 @@ class DumpsImageViewController: ViewController, UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
-		lblUser.text = trash?.user?.displayName ?? "trash.anonymous".localized
+        
+        if trash?.updates.first?.anonymous == false {
+            lblUser.text = trash?.user?.displayName ?? "trash.anonymous".localized
+        } else {
+            lblUser.text = "trash.anonymous".localized
+        }
+        
 		guard let status = currentStatus, let interval = intervalOfUpdated else { return }
 		lblInfo.text = status.lowercased() + " " + interval.lowercased()
     }

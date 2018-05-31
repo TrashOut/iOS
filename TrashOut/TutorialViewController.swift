@@ -16,6 +16,8 @@ class TutorialViewController: ViewController, UIPageViewControllerDelegate, UIPa
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        // when tutorial is shown - logout old user
+        UserManager.instance.logoutOldUser()
 	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

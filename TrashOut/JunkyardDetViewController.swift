@@ -78,7 +78,7 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "tab.recycling".localized
 
         lblDistance.textColor = Theme.current.color.lightGray
@@ -184,7 +184,7 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
         lblDaysOpeningHours.text = ""
         for item in junkyard.openingHours {
             
-            lblDays.text = lblDays.text! + (item.name ?? "")
+            lblDays.text = lblDays.text! + (item.localizedName ?? "")
             for period in item.periods {
                 lblDays.text = lblDays.text! + "\n"
                 var start = period.start ?? ""

@@ -33,7 +33,6 @@
 import Foundation
 import UIKit
 
-
 class ProfileViewController: ViewController,
 	UICollectionViewDelegate, UICollectionViewDataSource,
 	OrganizationPickerDelegate {

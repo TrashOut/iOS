@@ -221,6 +221,29 @@ class DayOpeningHours: JsonDecodable, Cachable {
     var name: String?
     var periods: [OpeningPeriod] = []
     
+    public var localizedName: String? {
+        guard let name = self.name else { return nil }
+        
+        switch name {
+        case "Monday":
+            return "global.days.Monday".localized
+        case "Tuesday":
+            return "global.days.Tuesday".localized
+        case "Wednesday":
+            return "global.days.Wednesday".localized
+        case "Thursday":
+            return "global.days.Thursday".localized
+        case "Friday":
+            return "global.days.Friday".localized
+        case "Saturday":
+            return "global.days.Saturday".localized
+        case "Sunday":
+            return "global.days.Sunday".localized
+        default:
+            return nil
+        }
+    }
+    
     /**
      Parse json data into object vars
      */
@@ -246,7 +269,6 @@ class DayOpeningHours: JsonDecodable, Cachable {
         openingHours.parse(json: json)
         return openingHours
     }
-    
 }
 
 class OpeningPeriod: JsonDecodable, Cachable {

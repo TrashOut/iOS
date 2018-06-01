@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
-import FBSDKLoginKit
 import Firebase
+import FacebookCore
+import FacebookLogin
 
 fileprivate func fbLog(_ message: String) {
 	NSLog("FB INFO: \(message)")
@@ -32,36 +33,28 @@ extension UserManager {
 
 	*/
 	func loginWithFacebook(_ controller: UIViewController, callback: @escaping (Error?) -> ()) {
-        let fbLoginManager: FBSDKLoginManager = FBSDKLoginManager()
-        fbLoginManager.logOut()
-        fbLoginManager.logIn(withReadPermissions: ["email", "public_profile"], from: controller) { (result, error) in
-            if let error = error {
+        
+        let loginManager = LoginManager()
+        loginManager.logIn(readPermissions: [ .publicProfile, .email ], viewController: controller) { loginResult in
+            switch loginResult {
+            case .failed(let error):
+                print("fb login \(error)")
                 callback(error)
-                return
-            }
-            guard let fbloginresult = result else {
-                callback(NSError.fbLoginResult)
-                return
-            }
-            if let fbloginreslut = result {
-                if fbloginreslut.isCancelled == true {
-                    callback(nil)
+            case .cancelled:
+                print("User cancelled facebook login.")
+            case .success( _, let declinedPermissions, let accessToken):
+                print("Logged in!")
+                
+                if declinedPermissions.contains("email")  {
+                    callback(NSError.fbGrantedPermissions)
+                    return
                 }
-            }
-            guard let grantedPermissions = fbloginresult.grantedPermissions,
-                grantedPermissions.contains("email") else {
-                callback(NSError.fbGrantedPermissions)
-                return
-            }
-            guard let accessToken = FBSDKAccessToken.current().tokenString else {
-                callback(NSError.fbAccessToken)
-                return
-            }
-
-            if (self.isAnonymous && self.user != nil) {
-                self.linkUserWithFacebook(facebookAccessToken: accessToken, callback: callback)
-            } else {
-                self.loginIntoFirebaseWithFacebook(action:.direct, facebookAccessToken: accessToken, callback: callback)
+       
+                if (self.isAnonymous && self.user != nil) {
+                    self.linkUserWithFacebook(facebookAccessToken: accessToken.authenticationToken, callback: callback)
+                } else {
+                    self.loginIntoFirebaseWithFacebook(action:.direct, facebookAccessToken: accessToken.authenticationToken, callback: callback)
+                }
             }
         }
     }
@@ -187,20 +180,40 @@ extension UserManager {
 	Read user data from Facebook
 	*/
 	internal func readUserDataFromFacebook(callback: @escaping (User?, Error?) -> ()) {
-		FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "first_name, last_name, email"]).start(completionHandler: { (connection, result, error) -> Void in
-			guard error == nil else {
-				callback(nil, error)
-				return
-			}
-			guard let result = result as? [String: Any] else {
-				callback(nil, NSError.fbProfileData)
-				return
-			}
-            let user = User()
-            user.firstName = result["first_name"] as? String
-            user.lastName = result["last_name"] as? String
-            user.email = result["email"] as? String
-            callback(user, nil)
-		})
+		
+        let params = ["fields" : "email, first_name, last_name"]
+        let graphRequest = GraphRequest(graphPath: "me", parameters: params)
+        graphRequest.start {
+            (urlResponse, requestResult) in
+            
+            switch requestResult {
+            case .failed(let error):
+                print("error in graph request:", error)
+                callback(nil, error)
+                break
+            case .success(let graphResponse):
+                if let responseDictionary = graphResponse.dictionaryValue {
+                    print(responseDictionary)
+                    
+                    let user = User()
+                    user.firstName = responseDictionary["first_name"] as? String
+                    user.lastName = responseDictionary["last_name"] as? String
+                    user.email = responseDictionary["email"] as? String
+                    callback(user, nil)
+                    
+                }
+            }
+        }
 	}
+    
+    /**
+     Logout from Facebook
+     */
+    open func logoutFromFacebook() {
+        let loginManager = LoginManager()
+        loginManager.logOut()
+    }
+    
 }
+
+

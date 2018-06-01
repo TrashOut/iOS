@@ -66,7 +66,8 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
         // Setup the dynamic cell height.
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableViewAutomaticDimension
-
+        tableView.tableFooterView = UIView()
+        
         LocationManager.manager.refreshCurrentLocationIfNeeded { [weak self] (location) in
             self?.loadData(page: 1)
         }
@@ -82,8 +83,13 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
      */
     func addPullToRefresh(into scrollView: UIScrollView) {
         scrollView.addPullToRefreshHandler { [weak self] in
+            self?.page = 1
+            self?.isLastPage = false
             self?.junkyards.removeAll()
-            self?.loadData(page: 1, reload: true)
+            
+            LocationManager.manager.refreshCurrentLocation { [weak self] _ in
+                self?.loadData(page: 1)
+            }
         }
     }
     
@@ -100,11 +106,15 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
 
     // MARK: - Networking
 
-    fileprivate func loadData(page: Int, reload:Bool = false) {
+    var isLastPage: Bool = false
+    
+    fileprivate func loadData(page: Int) {
+        guard isLastPage == false else { return }
+        
         let locationPoint = LocationManager.manager.currentLocation.coordinate
-        if reload == false { LoadingView.show(on: self.view, style: .white) }
+        // if reload == false { LoadingView.show(on: self.view, style: .white) }
         Networking.instance.junkyards(position: locationPoint, size: filterSize, type: filterTypes, page: page) { [weak self] (junkyards, error) in
-            if reload == false { LoadingView.hide() }
+            // if reload == false { LoadingView.hide() }
             guard error == nil else {
                 print(error?.localizedDescription as Any)
                 DispatchQueue.main.async {
@@ -113,7 +123,17 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
                 }
                 return
             }
+            
             guard let newJunkyards = junkyards else { return }
+            if newJunkyards.isEmpty {
+                self?.isLastPage = true
+                if self?.junkyards.count == 0 {
+                    DispatchQueue.main.async {
+                        self?.show(message: "global.filter.noResult".localized)
+                    }
+                }
+            }
+            
             DispatchQueue.main.async {
                 self?.tableView.pullToRefreshView?.stopAnimating()
                 self?.junkyards += newJunkyards
@@ -152,11 +172,12 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
 		cell.name = junkyard.name
 		cell.gps = junkyard.gps
 		cell.types = junkyard.types
-
+        
 		// When there is no row, load another trashes
-		if indexPath.row == junkyards.count - 1 {
-			page += 1
-			loadData(page: page)
+        // When there is no row, load another trashes
+        if indexPath.row + 1 == junkyards.count - 1 && junkyards.count >= 20 {
+            page += 1
+            loadData(page: page)
 		}
 
         return cell

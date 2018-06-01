@@ -9,24 +9,21 @@ def common_pods_for_target
     
     # Firebase SDK
     pod 'Firebase', '~> 3.6.0'
-    # pod 'Firebase/AdMob'
     pod 'Firebase/Analytics'#, '~> 3.4.2'
     pod 'Firebase/AppIndexing'#, '~> 1.1.0'
     pod 'Firebase/Auth'#, '~> 3.0.5'
     pod 'Firebase/Crash'#, '~> 1.0.7'
-    # pod 'Firebase/Database', ''
-    # pod 'Firebase/DynamicLinks'
-    # pod 'Firebase/Invites'
     # pod 'Firebase/Messaging'
-    # pod 'Firebase/RemoteConfig'
     pod 'Firebase/Storage'
     
     # Facebook SDK
-    pod 'FBSDKLoginKit', '~> 4.18'
-    pod 'FBSDKShareKit', '~> 4.18'
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'FacebookShare'
+    #pod 'FBSDKLoginKit', '4.33.0'
+    #pod 'FBSDKShareKit', '4.33.0'
     
     pod 'Cache', '~> 2.2.1'
-    # pod 'SSZipArchive', '~> 1.6.1'
     pod 'SwiftDate', '~> 4.0.11'
     
     pod 'Charts', '~> 3.0.1'

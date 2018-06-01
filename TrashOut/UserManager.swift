@@ -236,12 +236,17 @@ class UserManager {
      Logout
      */
 	func logout() {
+        // clear neccessary data from facebook
+        logoutFromFacebook()
         firAuth.logout()
         isLoggedIn = false
         createAnonymousUser { _,_ in }
 	}
     
+    // this method is called from tutorial. In this point we dont want to create anonymous user.
     func logoutOldUser() {
+        // clear neccessary data from facebook
+        logoutFromFacebook()
         firAuth.logout()
         isLoggedIn = false
     }

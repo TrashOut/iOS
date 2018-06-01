@@ -32,7 +32,7 @@
 
 import UIKit
 import Firebase
-import FBSDKLoginKit
+//import FBSDKLoginKit
 import Alamofire
 
 @UIApplicationMain
@@ -47,14 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FIRApp.configure(with: opt!)
 		Theme.current.setupAppearance()
 		FirebaseLocalization().update()
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 		acceptInvalidSSLCerts()
 		return true
 	}
-
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
-    }
 
     func applicationWillResignActive(_ application: UIApplication) {
 		TrashHunter.hunter?.appWillResignActive(application)
@@ -70,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func applicationDidBecomeActive(_ application: UIApplication) {
-		FBSDKAppEvents.activateApp()
 	}
 
 	func application(_ application: UIApplication, didReceive notification: UILocalNotification) {

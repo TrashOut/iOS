@@ -87,22 +87,53 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 		let email = frEmail.textField.text ?? ""
 		let password = frPassword.textField.text ?? ""
 		var hasError = false
+        
+        // Validate e-mail
 		if email.count <= 0 {
 			frEmail.showError("profile.validation.emailRequired".localized)
 			hasError = true
-		}
+        } else {
+            do {
+                let pattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+                let regex = try NSRegularExpression(pattern: pattern, options: [])
+                let matches = regex.matches(in: email, options: [], range: NSRange(location: 0, length: email.count))
+                
+                if matches.isEmpty {
+                    hasError = true
+                    frEmail.showError("profile.validation.invalidEmail".localized)
+                }
+                
+            } catch {
+                print(error.localizedDescription)
+                hasError = true
+            }
+        }
+        
+        // Validate password
 		if password.count <= 0 {
 			frPassword.showError("profile.validation.passwordRequired".localized)
 			hasError = true
 		}
+        
 		return hasError == false
 	}
 
 	@IBAction func login() {
+        
+        // Hide error message for text fields
+        frEmail.hideError()
+        frPassword.hideError()
+        
+        // Validate form
 		guard validateForm() else {return}
+        
+        // Login user
 		let email = frEmail.textField.text!
 		let password = frPassword.textField.text!
 		UserManager.instance.login(email: email, password: password) { [weak self] (user, error) in
+            
+
+            
 			guard error == nil else {
 				print(error?.localizedDescription as Any)
                 self?.show(error: error!)

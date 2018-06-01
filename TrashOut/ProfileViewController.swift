@@ -91,7 +91,7 @@ class ProfileViewController: ViewController,
 		lblLevel.textColor = UIColor.theme.lightGray
 		lblLevel.font = UIFont.boldSystemFont(ofSize: 32)
 
-		setupPoints(0)
+		setupPoints(self.user?.points ?? 0)
 
 		btnSelectOrganization.theme()
 

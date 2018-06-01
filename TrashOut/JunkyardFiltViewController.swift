@@ -255,10 +255,8 @@ class JunkyardFiltViewController: ViewController, UIPickerViewDelegate, UIPicker
 
 		if row > 0 {
 			self.size = Junkyard.Category.allValues[row - 1]
-            sizeSelected(size: self.size)
 		} else {
 			self.size = nil
-            sizeSelected(size: Junkyard.Category.scrapyard)
 		}
         defaults.set(self.size?.rawValue, forKey: "FilterSize")
 		tfDisplay.text = self.size?.localizedName ?? "collectionPoint.size.all".localized

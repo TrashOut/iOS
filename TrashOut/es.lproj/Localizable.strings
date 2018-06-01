@@ -1,8 +1,3 @@
-NSCameraUsageDescription = "La aplicación necesita acceso a tus fotos para actualizar los volcados.";
-NSPhotoLibraryUsageDescription = "La aplicación necesita acceso a tus fotos para actualizar los volcados.";
-NSCalendarsUsageDescription = "La aplicación desea insertar eventos en su calendario.";
-
-
 "tab.profile" = "Perfil";
 "global.nearby" = "Cerca";
 "tab.home" = "Casa";
@@ -204,7 +199,7 @@ NSCalendarsUsageDescription = "La aplicación desea insertar eventos en su calen
 "statistics.show" = "mostrar estadísticas";
 "global.selectArea" = "Seleccionar área";
 "notifications.reported" = "denunciado";
-"global.cleaned" = "limpio";
+"global.cleaned" = "Limpio";
 "notification.noEmailAddress" = "No tenemos ninguna dirección de correo electrónico definida para esta área. Insértela manualmente.";
 "event.header" = "Eventos de limpieza";
 "event.create.header" = "Crear un evento";
@@ -1206,9 +1201,15 @@ NSCalendarsUsageDescription = "La aplicación desea insertar eventos en su calen
 "collectionPoint.validation.chooseDay" = "Por favor seleccione un día";
 "collectionPoint.validation.dayIsUsed" = "día fue seleccionado";
 "statistics.countryPicker.header" = "seleccione un país";
+"notification.recentActivity.header" = "Su informe de un vertedero ilegal fue actualizado";
+"notification.recentActivity.text" = "Echa un vistazo a su nuevo estado en la aplicación TrashOut y mantente siempre informado";
+"mail.eventCreate.subject" = "TrashOut: información importante sobre el evento que ha creado";
 
-// Sign up
-"global.signUp.acceptRegister.startSentense"="Al registrarte, aceptas las";
-"global.signUp.acceptRegister.privatePolicy"="Condiciones de Servicio";
-"global.signUp.acceptRegister.and"="y la";
-"global.signUp.acceptRegister.terms"="Política de Privacidad";
+/*note*/
+/*Fuzzy*/
+"global.signUp.acceptRegister.startSentense" = "Al registrarte, aceptas las";
+"global.signUp.acceptRegister.privatePolicy" = "Condiciones de Servicio";
+
+/*Fuzzy*/
+"global.signUp.acceptRegister.and" = "y la";
+"global.signUp.acceptRegister.terms" = "Política de Privacidad";

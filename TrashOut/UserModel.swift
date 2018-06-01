@@ -90,7 +90,10 @@ class User: JsonDecodable, Cachable {
         if let rd = json["created"] as? String {
             registered = DateFormatter.utc.date(from: rd)
         }
-        points = json["points"] as? Int
+        
+        let rawPoints = json["points"] as? String
+        points = rawPoints != nil ? Int(rawPoints!) : nil
+        
         if let img = json["image"] as? [String: AnyObject] {
             image = Image.create(from: img, usingId: nil) as? Image
         }

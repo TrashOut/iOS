@@ -1,7 +1,3 @@
-NSCameraUsageDescription = "The application needs access to your photos for updating dumps.";
-NSPhotoLibraryUsageDescription = "The application needs access to your photos for updating dumps.";
-NSCalendarsUsageDescription = "Application would like to insert events into your calendar.";
-
 "tab.profile" = "Profile";
 "global.nearby" = "Nearby";
 "tab.home" = "Home";
@@ -161,7 +157,7 @@ NSCalendarsUsageDescription = "Application would like to insert events into your
 "trash.create.noInternetText" = "This illegal dump will be submitted later, because your phone is offline.\n\nWhen you get online please turn on TrashOut app and your report will be submitted automatically.";
 "trash.create.sendWasInterruptedHeader" = "Sending has been interrupted.";
 "trash.create.sendWasInterruptedText" = "Don't worry. We saved your progress and we will try to send your report right after you start TrashOut again.";
-"trash.status.cleaned" = "It`s cleaned";
+"trash.status.cleaned" = "Cleaned";
 "trash.status.less" = "Less";
 "trash.status.more" = "More";
 "trash.status.stillHere" = "It`s still here";
@@ -207,9 +203,9 @@ NSCalendarsUsageDescription = "Application would like to insert events into your
 "statistics.show" = "show statistics";
 "global.selectArea" = "Select area";
 "notifications.reported" = "Reported";
-"global.cleaned" = "cleaned";
+"global.cleaned" = "Cleaned";
 "notification.noEmailAddress" = "Sorry, we don't have any email address set for this area. Please insert it manually.";
-"event.header" = "Cleaning Event";
+"event.header" = "Cleaning Events";
 "event.create.header" = "Create an event";
 "event.name" = "Event name";
 "event.duration" = "Choose duration of an event";
@@ -267,7 +263,7 @@ NSCalendarsUsageDescription = "Application would like to insert events into your
 "home.recentActivity.header" = "Recent Activity on Dumps You Follow";
 "home.recentActivity.noActivity" = "No recent activity.";
 "events.header" = "Events";
-"home.events.text" = "Upcoming events in your neighbourhood";
+"home.events.text" = "Upcoming events in your neighborhood";
 "home.numberDumpsWorldwide" = "Number of dumps worldwide";
 "home.more" = "More statistics";
 "global.noCameraSupport" = "Your device does not support camera.";
@@ -851,8 +847,8 @@ NSCalendarsUsageDescription = "Application would like to insert events into your
 /*Fuzzy*/
 "user.roles.organization.member" = "Member";
 "organization.create.fourthStep" = "Invitation mail template";
-"organization.mailSubject" = "Mail Subject";
-"organization.mailBody" = "Mail Body";
+"organization.mailSubject" = "TrashOut - organization";
+"organization.mailBody" = "TrashOut - organization";
 "organization.parentOrganization.select" = "Select parent organization";
 "organization.validation.nameRequired" = "Organization Name required";
 "organization.location" = "Organization location";
@@ -1187,10 +1183,10 @@ NSCalendarsUsageDescription = "Application would like to insert events into your
 "global.validation.invalidtwitterUrl" = "Invalid Twiiter URL";
 "global.validation.invalidgooglePlusUrl" = "Invalid Goolge Plus URL";
 "global.validation.invalidfacebookUrl" = "Invalid Facebook URL";
-"user.facebook.hint" = "Facebook hint";
+"user.facebook.hint" = "Link of your profile";
 "user.twitter.hint" = "https://twitter.com/user";
-"user.google.hint" = "Google+ hint";
-"global.phone.hint" = "Phone hint";
+"user.google.hint" = "Link of your profile";
+"global.phone.hint" = "Phone number starts with +/ 00";
 "profile.currentPassword" = "Current Password";
 "user.addToArea.success" = "Area was successfully added";
 "collectionPoint.created.success" = "Recycling point was successfully created";
@@ -1344,9 +1340,15 @@ NSCalendarsUsageDescription = "Application would like to insert events into your
 "collectionPoint.validation.chooseDay" = "Please select day";
 "collectionPoint.validation.dayIsUsed" = "Day is used";
 "statistics.countryPicker.header" = "Select country";
+"notification.recentActivity.header" = "Your report of an illegal dump was updated";
+"notification.recentActivity.text" = "Check out its new status in TrashOut app and stay always informed";
+"mail.eventCreate.subject" = "TrashOut - important information about the event you created";
 
-// Sign up
-"global.signUp.acceptRegister.startSentense"="When you register or use this app, you agree with our";
-"global.signUp.acceptRegister.privatePolicy"="Privacy Policy";
-"global.signUp.acceptRegister.and"="and";
-"global.signUp.acceptRegister.terms"="Terms and Conditions";
+/*note*/
+/*Fuzzy*/
+"global.signUp.acceptRegister.startSentense" = "When you register or use this app, you agree with our";
+"global.signUp.acceptRegister.privatePolicy" = "Privacy Policy";
+
+/*Fuzzy*/
+"global.signUp.acceptRegister.and" = "and";
+"global.signUp.acceptRegister.terms" = "Terms and Conditions";

@@ -1,19 +1,14 @@
-NSCameraUsageDescription = "Die Anwendung benötigt Zugriff auf Ihre Fotos zum Aktualisieren von Dumps.";
-NSPhotoLibraryUsageDescription = "Die Anwendung benötigt Zugriff auf Ihre Fotos zum Aktualisieren von Dumps.";
-NSCalendarsUsageDescription = "Anwendung möchte Ereignisse in Ihren Kalender einfügen.";
-
-
 "tab.profile" = "Profil";
 "global.nearby" = "In der Nähe";
 "tab.home" = "Start";
-"tab.dumps" = "Deponien";
+"tab.dumps" = "Müllkippe";
 "tab.news" = "Nachrichten";
 "tab.recycling" = "Recycling";
 "global.menu.events" = "Veranstaltungen\n";
 "global.menu.geoAreas" = "Geographische Gebiete";
 "global.menu.notifications" = "Benachrichtigungen";
 "global.menu.organizations" = "Organisationen";
-"global.menu.dumps" = "Deponien";
+"global.menu.dumps" = "Müllkippe";
 "global.menu.collectionPoints" = "Recyclingstellen";
 "global.showAll" = "Alles zeigen";
 "global.save" = "Speichern";
@@ -200,7 +195,7 @@ NSCalendarsUsageDescription = "Anwendung möchte Ereignisse in Ihren Kalender ei
 "statistics.show" = "Statistik anzeigen";
 "global.selectArea" = "Gebiet auswählen";
 "notifications.reported" = "gemeldet";
-"global.cleaned" = "gereinigt";
+"global.cleaned" = "Gereinigt";
 "notification.noEmailAddress" = "Es tut uns leid, wir haben keine E-Mail-Adresse für diesen Bereich eingestellt. Bitte gib sie manuell ein.";
 "event.header" = "Aufräumveranstaltungen";
 "event.create.header" = "Eine Veranstaltung erstellen";
@@ -243,7 +238,7 @@ NSCalendarsUsageDescription = "Anwendung möchte Ereignisse in Ihren Kalender ei
 "home.didYouKnow" = "Neuigkeiten und Updates";
 "home.nearestRecyclingPoints" = "Nächste Recyclingstelle";
 "collectionPoint.size.recyclingBin" = "Lagerort";
-"collectionPoint.size.recyclingCenter" = "Mitte";
+"collectionPoint.size.recyclingCenter" = "Recyclinghof (groß)";
 "collectionPoint.size.all" = "Alle";
 "collectionPoint.header" = "Recyclingstandort";
 "collectionPoint.list.header" = "Recycling-Punktliste";
@@ -1180,7 +1175,7 @@ NSCalendarsUsageDescription = "Anwendung möchte Ereignisse in Ihren Kalender ei
 "info.aboutApp" = "TrashOut ist ein Umweltprojekt, das darauf abzielt, alle illegalen Mülldeponien auf der ganzen Welt zu kartieren und zu überwachen.\nWir wollen Bürger, Regierungen, Gemeinden und Organisationen einbeziehen, damit wir gemeinsam zu einer saubereren Welt für alle beitragen können.";
 "info.appVerison_X" = "Version von% @";
 "tutorial.register" = "Registrieren";
-"global.distanceAttribute.away" = "Weg";
+"global.distanceAttribute.away" = "entfernt";
 "event.create.successMobile" = "Vielen Dank, die Veranstaltung wurde erfolgreich erstellt. Du kannst deine Veranstaltung bearbeiten und die Teilnehmer unter www.admin.trashout.ngo sehen.";
 "home.recentActivity.you" = "du";
 "global.continue" = "Fortfahren";
@@ -1222,9 +1217,15 @@ NSCalendarsUsageDescription = "Anwendung möchte Ereignisse in Ihren Kalender ei
 "collectionPoint.validation.chooseDay" = "Bitte wähle einen Tag aus";
 "collectionPoint.validation.dayIsUsed" = "Der Tag wurde ausgewählt";
 "statistics.countryPicker.header" = "Wählen Sie das Land aus";
+"notification.recentActivity.header" = "Ihr Bericht eines illegalen Speicherauszugs wurde aktualisiert";
+"notification.recentActivity.text" = "Überprüfen Sie seinen neuen Status in der TrashOut App und bleiben Sie immer informiert";
+"mail.eventCreate.subject" = "TrashOut - wichtige Informationen über das von Ihnen erstellte Ereignis";
 
-// Sign up
-"global.signUp.acceptRegister.startSentense"="Indem du dich registrierst, stimmst du den";
-"global.signUp.acceptRegister.privatePolicy"="Allgemeinen Geschäftsbedingungen";
-"global.signUp.acceptRegister.and"="und";
-"global.signUp.acceptRegister.terms"="Datenschutzrichtlinien";
+/*note*/
+/*Fuzzy*/
+"global.signUp.acceptRegister.startSentense" = "Indem du dich registrierst, stimmst du den";
+"global.signUp.acceptRegister.privatePolicy" = "Allgemeinen Geschäftsbedingungen";
+
+/*Fuzzy*/
+"global.signUp.acceptRegister.and" = "und";
+"global.signUp.acceptRegister.terms" = "Datenschutzrichtlinien";

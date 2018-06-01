@@ -53,7 +53,8 @@ class Event: JsonDecodable, Cachable {
 	var users: [User] = []
     var images: [Image] = []
     var showJoinButton: Bool = false
-
+    var contact: EventContact?
+    
     // MARK: - Lifecycle
 
     init() {}
@@ -68,7 +69,9 @@ class Event: JsonDecodable, Cachable {
             gps <== json
         }
         description <== json["description"]
-        duration <== json["duration"]
+        
+        let rawDuration = json["duration"] as? String
+        duration <== (rawDuration != nil ? Int(rawDuration!) : nil)
 		start <== json["start"]
         bring <== json["bring"]
         have <== json["have"]
@@ -79,11 +82,15 @@ class Event: JsonDecodable, Cachable {
                 images.append(Image.create(from: update, usingId: nil) as! Image)
             }
         }
-//        if let trashPoints = json["trashPoints"] as? [[String: AnyObject]] {
-//            for update in trashPoints {
-//                trash.append(Trash.create(from: update, usingId: nil) as! Trash)
-//            }
-//        }
+        if let trashPoints = json["trashPoints"] as? [[String: AnyObject]] {
+            for update in trashPoints {
+                trash.append(Trash.create(from: update, usingId: nil) as! Trash)
+            }
+        }
+        
+        if let contactJson = json["contact"] as? [String: AnyObject] {
+            contact = EventContact.create(from: contactJson, usingId: nil) as? EventContact
+        }
     }
 
     static func create(from json: [String: AnyObject], usingId id: Int?) -> AnyObject {
@@ -113,7 +120,7 @@ class Event: JsonDecodable, Cachable {
             trashList.append(update.dictionary())
         }
         dict["trashPoints"] = trashList as AnyObject
-
+        dict["contact"] = contact?.dictionary() as AnyObject
         return dict
     }
 

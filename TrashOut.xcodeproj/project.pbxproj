@@ -274,6 +274,8 @@
 		C3FF4FA81E533B0B005D5530 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FF4FA71E533B0B005D5530 /* LoadingView.swift */; };
 		C3FF4FAA1E533F35005D5530 /* HorizontalSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FF4FA91E533F35005D5530 /* HorizontalSeparator.swift */; };
 		C3FF4FAC1E5353CB005D5530 /* AutoSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FF4FAB1E5353CB005D5530 /* AutoSizingTableView.swift */; };
+		CF3B780320C0584A00E4D0CE /* EventContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B780220C0584A00E4D0CE /* EventContactModel.swift */; };
+		CF3B780420C05A8F00E4D0CE /* EventContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B780220C0584A00E4D0CE /* EventContactModel.swift */; };
 		DFB018F7695F7A8019DACE7B /* Pods_TrashOut_Stage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5871DB5FEA445A64B282A36F /* Pods_TrashOut_Stage.framework */; };
 		F3825ABFCCBDCCBD4F7C0C21 /* Pods_TrashOut_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FEE6C29346A99F6810A6D83 /* Pods_TrashOut_Prod.framework */; };
 		FC384A741DDCD0EF0073E955 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC384A731DDCD0EF0073E955 /* Date.swift */; };
@@ -473,6 +475,7 @@
 		C3FF4FAB1E5353CB005D5530 /* AutoSizingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSizingTableView.swift; sourceTree = "<group>"; };
 		C7B038DEF962ED4660800CC2 /* Pods-TrashOutUITests.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutUITests.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutUITests/Pods-TrashOutUITests.hockeyapp.xcconfig"; sourceTree = "<group>"; };
 		CC107AFDF7ABB9B1F437DD4A /* Pods-TrashOut-Prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.debug.xcconfig"; sourceTree = "<group>"; };
+		CF3B780220C0584A00E4D0CE /* EventContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContactModel.swift; sourceTree = "<group>"; };
 		D6CD5D81CB4085FA3D386CB0 /* Pods-TrashOut-Stage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Stage.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage.release.xcconfig"; sourceTree = "<group>"; };
 		DE4F4BF834B23C03A3E937E0 /* Pods-TrashOutUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutUITests/Pods-TrashOutUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E472EEF5213689835CA620BB /* Pods_TrashOutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashOutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -829,6 +832,7 @@
 				8E8E91BA1FD6F1820034AC69 /* TrashUpdateModel+UI.swift */,
 				FC5FA3051DE849A90000C711 /* ImageModel.swift */,
 				FC5FA3071DE9D1610000C711 /* AccessibilityModel.swift */,
+				CF3B780220C0584A00E4D0CE /* EventContactModel.swift */,
 				FCED66B21DF17F050009D4ED /* EventModel.swift */,
 				C32F8D501DEC42DD0009A5C4 /* NewsModel.swift */,
 				FC48ED451DCB7C98008E7EB1 /* JunkyardModel.swift */,
@@ -1589,6 +1593,7 @@
 				8E2A1B1E202236E800C1AC70 /* TutorialViewController.swift in Sources */,
 				8E2A1B1F202236E800C1AC70 /* DumpsMapManager.swift in Sources */,
 				8E2A1B20202236E800C1AC70 /* View.swift in Sources */,
+				CF3B780420C05A8F00E4D0CE /* EventContactModel.swift in Sources */,
 				8E2A1B21202236E800C1AC70 /* LoginViewController.swift in Sources */,
 				8E2A1B22202236E800C1AC70 /* DashboardViewController.swift in Sources */,
 				8E2A1B23202236E800C1AC70 /* TrashModel+UI.swift in Sources */,
@@ -1719,6 +1724,7 @@
 				C3711D9A1E8C07A900A84B3A /* TutorialViewController.swift in Sources */,
 				C3A6176E1DB8E53E0092BF32 /* DumpsMapManager.swift in Sources */,
 				8CD79D811F96274700C937AB /* View.swift in Sources */,
+				CF3B780320C0584A00E4D0CE /* EventContactModel.swift in Sources */,
 				C32F8D631DED94150009A5C4 /* LoginViewController.swift in Sources */,
 				C3A3B2711DA7AC290099D1C2 /* DashboardViewController.swift in Sources */,
 				C37519FF1E38D38C001F61AB /* TrashModel+UI.swift in Sources */,

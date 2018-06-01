@@ -64,6 +64,19 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
     @IBOutlet var tvCoordinates: UITextView!
 
     @IBOutlet var cnListOfDumpsTableView: NSLayoutConstraint!
+    
+    @IBOutlet weak var svContact: UIStackView?
+    
+    @IBOutlet weak var emailView: UIView?
+    @IBOutlet weak var ivEmail: UIImageView?
+    @IBOutlet weak var lEmailTitle: UILabel?
+    @IBOutlet weak var lEmailValue: UILabel?
+    
+    @IBOutlet weak var phoneView: UIView?
+    @IBOutlet weak var ivPhone: UIImageView?
+    @IBOutlet weak var lPhoneTitle: UILabel?
+    @IBOutlet weak var lPhoneValue: UILabel?
+    
     var showJoinButton: Bool = false
     var id: Int!
     //var reportTime: String!
@@ -75,6 +88,9 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
             setLocationView()
             setWeHaveView()
             setPleaseBringView()
+            setupPhoneView(phoneNumber: event?.contact?.phone)
+            setupEmailView(email: event?.contact?.email)
+            
             if event?.trash != nil {
                 dumpsToBeCleanedView.isHidden = false
                 tvDumpsToClean.reloadData()
@@ -117,7 +133,7 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
         tvCoordinates.textContainerInset = .zero
 
 		tvDumpsToClean.tableFooterView = UIView()
-
+        
         loadData()
         registerForNotifcations()
     }
@@ -235,9 +251,71 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
                 }
             }
 		}
-
     }
 
+    
+    /// Setup e-mail view.
+    ///
+    /// - Parameter email: E-mail string.
+    
+    fileprivate func setupEmailView(email: String?) {
+        if let view = self.emailView {
+            self.svContact?.removeArrangedSubview(view)
+            view.removeFromSuperview()
+        }
+        
+        if let email = email {
+            if let emailView = self.emailView {
+                svContact?.addArrangedSubview(emailView)
+                setupContactView(image: #imageLiteral(resourceName: "EventEmail"), title: "global.email".localized, value: email, imageView: ivEmail, titleLabel: lEmailTitle, valueLabel: lEmailValue)
+            }
+        }
+    }
+    
+    
+    /// Setup number view.
+    ///
+    /// - Parameter phoneNumber: Phone number.
+    
+    fileprivate func setupPhoneView(phoneNumber: String?) {
+        if let view = self.phoneView {
+            self.svContact?.removeArrangedSubview(view)
+            view.removeFromSuperview()
+        }
+        
+        if let phoneNumber = phoneNumber {
+            if let phoneView = self.phoneView {
+                svContact?.addArrangedSubview(phoneView)
+                setupContactView(image: #imageLiteral(resourceName: "EventPhone"), title: "global.phone".localized, value: phoneNumber, imageView: ivPhone, titleLabel: lPhoneTitle, valueLabel: lPhoneValue)
+            }
+        }
+    }
+    
+    
+    /// Common setup for contact view.
+    ///
+    /// - Parameters:
+    ///   - image: Image.
+    ///   - title: Title text.
+    ///   - value: Value text.
+    ///   - imageView: Image view.
+    ///   - titleLabel: Title label.
+    ///   - valueLabel: Value labe.
+    
+    fileprivate func setupContactView(image: UIImage?, title: String?, value: String?, imageView: UIImageView?, titleLabel: UILabel?, valueLabel: UILabel?) {
+        
+        // Setup image view
+        imageView?.image = imageView?.image?.withRenderingMode(.alwaysTemplate)
+        imageView?.tintColor = Theme.Color().green
+        imageView?.image = image
+        
+        // Setup title label
+        titleLabel?.text = title
+        
+        // Setup value label
+        valueLabel?.text = value
+    }
+    
     /**
     Add cleaning event to calendar
     */

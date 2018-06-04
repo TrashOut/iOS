@@ -59,7 +59,7 @@ class ViewController: UIViewController {
 		if screenName.hasSuffix("ViewController") {
 			screenName = screenName.replacingOccurrences(of: "ViewController", with: "")
 		}
-		FIRAnalytics.logEvent(withName: "open_\(screenName)", parameters: analyticsData)
+        Analytics.logEvent("open_\(screenName)", parameters: analyticsData)
 		navigationItem.title = title        
 	}
 

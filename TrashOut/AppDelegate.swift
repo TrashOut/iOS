@@ -43,8 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let file = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
-		let opt = FIROptions.init(contentsOfFile: file)
-		FIRApp.configure(with: opt!)
+        let opt = FirebaseOptions.init(contentsOfFile: file!)
+        FirebaseApp.configure(options: opt!)
 		Theme.current.setupAppearance()
 		FirebaseLocalization().update()
 		acceptInvalidSSLCerts()

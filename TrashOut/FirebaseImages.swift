@@ -175,7 +175,6 @@ class FirebaseImages {
     Trigger upload
     */
     func uploadImage(_ name: String, data: Data, thumbnailData:Data,  callback: @escaping (String?, String?, String?, String?, Error?) -> ()) {
-        
         var uploads: [Async.Block] = []
         var thumbnailDownloadURL: String?
         var thumbnailStorageLocation: String?
@@ -183,33 +182,47 @@ class FirebaseImages {
         var imageStorageLocation: String?
         
         uploads.append({ (completion, failure) in
-            let thumbnailImageStore = FIRStorage.storage().reference().child("images/thumbnail_\(name).jpg")
-            let thumbnailMetadata = FIRStorageMetadata()
+            let thumbnailImageStore = Storage.storage().reference().child("images/thumbnail_\(name).jpg")
+            let thumbnailMetadata = StorageMetadata()
             thumbnailMetadata.contentType = "image/jpg"
-            let _ = thumbnailImageStore.put(thumbnailData, metadata: thumbnailMetadata) { (metadata, error) in
+            thumbnailImageStore.putData(thumbnailData, metadata: thumbnailMetadata) { (metadata, error) in
                 guard error == nil else {
                     failure(error!)
                     return
                 }
                 // Metadata contains file metadata such as size, content-type, and download URL.
-                thumbnailDownloadURL = metadata?.downloadURL()?.absoluteString
-                thumbnailStorageLocation = "gs://trashoutngo-dev.appspot.com/images/thumbnail_\(name).jpg"
-                completion()
+                thumbnailImageStore.downloadURL { (url, error) in
+                    guard error == nil else {
+                        failure(error!)
+                        return
+                    }
+                    
+                    thumbnailDownloadURL = url?.absoluteString
+                    thumbnailStorageLocation = "gs://trashoutngo-dev.appspot.com/images/thumbnail_\(name).jpg"
+                    completion()
+                }
             }
         })
         uploads.append({ (completion, failure) in
-            let imageStore = FIRStorage.storage().reference().child("images/\(name).jpg")
-            let metadata = FIRStorageMetadata()
+            let imageStore = Storage.storage().reference().child("images/\(name).jpg")
+            let metadata = StorageMetadata()
             metadata.contentType = "image/jpg"
-            let _ = imageStore.put(data, metadata: metadata) { (metadata, error) in
+            let _ = imageStore.putData(data, metadata: metadata) { (metadata, error) in
                 guard error == nil else {
                     failure(error!)
                     return
                 }
                 // Metadata contains file metadata such as size, content-type, and download URL.
-                imageDownloadURL = metadata?.downloadURL()?.absoluteString
-                imageStorageLocation = "gs://trashoutngo-dev.appspot.com/images/\(name).jpg"
-                completion()
+                imageStore.downloadURL { (url, error) in
+                    guard error == nil else {
+                        failure(error!)
+                        return
+                    }
+                    
+                    imageDownloadURL = url?.absoluteString
+                    imageStorageLocation = "gs://trashoutngo-dev.appspot.com/images/\(name).jpg"
+                    completion()
+                }
             }
         })
         uploads.append({ (completion, failure) in

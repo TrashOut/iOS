@@ -74,8 +74,8 @@ class FirebaseLocalization {
 	let timestampDefaultsKey = "FirebaseLocalizationTimestamp"
 
 	func update() {
-		let ref = FIRStorage.storage().reference(withPath: remoteZipFilePath)
-		ref.metadata { (metadata, error) in // retain self
+        let ref = Storage.storage().reference(withPath: remoteZipFilePath)
+		ref.getMetadata { (metadata, error) in // retain self
 			guard error == nil else {
 				print(error!.localizedDescription)
 				return
@@ -88,7 +88,7 @@ class FirebaseLocalization {
 		}
 	}
 
-	func update(_ ref: FIRStorageReference, with metadata: FIRStorageMetadata) {
+    func update(_ ref: StorageReference, with metadata: StorageMetadata) {
 		// timestamp for remote file
 		guard let timestamp = metadata.updated ?? metadata.timeCreated else { return }
 		// timestamp of current downloaded file
@@ -104,7 +104,7 @@ class FirebaseLocalization {
 		}
 	}
 
-	func downloadBundle(at ref: FIRStorageReference, callback: @escaping (Bool) -> ()) {
+    func downloadBundle(at ref: StorageReference, callback: @escaping (Bool) -> ()) {
 //		let localURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("translations.bundle.zip")
 		let tempURL = URL.init(fileURLWithPath: NSTemporaryDirectory())
 		let localURL = tempURL.appendingPathComponent("translations.bundle.zip")

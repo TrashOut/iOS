@@ -9,9 +9,8 @@ def common_pods_for_target
     
     # Firebase SDK
     pod 'Firebase/Core'
-    pod 'Firebase/AppIndexing'#, '~> 1.1.0'
-    pod 'Firebase/Auth'#, '~> 3.0.5'
-    pod 'Firebase/Crash'#, '~> 1.0.7'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Crash'#
     # pod 'Firebase/Messaging'
     pod 'Firebase/Storage'
     

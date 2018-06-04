@@ -45,12 +45,12 @@ class FirebaseAuthentificator {
 
 	var isAnonymous: Bool {
 		get {
-			return FIRAuth.auth()?.currentUser?.isAnonymous ?? false
+            return Auth.auth().currentUser?.isAnonymous ?? false
 		}
 	}
 
 	func createAnonymousUser(_ completion: @escaping () -> ()) {
-		FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
+        Auth.auth().signInAnonymously(completion: { (user, error) in
 			guard error == nil else {
 				completion()
 				return
@@ -64,43 +64,43 @@ class FirebaseAuthentificator {
 	}
 
 	func token(callback: @escaping (String?, Error?) -> ()) {
-		if let user = FIRAuth.auth()?.currentUser {
-			user.getTokenWithCompletion(callback)
+        if let user = Auth.auth().currentUser {
+            user.getIDToken(completion: callback)
 		} else {
 			callback(nil, NSError.firUser)
 		}
 	}
 
 	func uid() -> String? {
-		return FIRAuth.auth()?.currentUser?.uid
+        return Auth.auth().currentUser?.uid
 	}
 
 	func resetPassword(email: String, callback: @escaping (Error?) -> ()) {
-		FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: callback)
+        Auth.auth().sendPasswordReset(withEmail: email, completion: callback)
 	}
 
     func createUser(email: String, password: String, callback: @escaping (String?, Error?) -> ()) {
-        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (firUser, error) in
-            callback(firUser?.uid, error)
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (firUser, error) in
+            callback(firUser?.user.uid, error)
         })
     }
     
 	func login(email: String, password: String, callback: @escaping (String?, Error?) -> ()) {
-		FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (firUser, error) in
-			callback(firUser?.uid, error)
+        Auth.auth().signIn(withEmail: email, password: password, completion: { (firUser, error) in
+			callback(firUser?.user.uid, error)
 		})
 	}
 
-    func loginWithFacebook(credentials: FIRAuthCredential, callback: @escaping (String?, Error?) -> ()) {
-        FIRAuth.auth()?.signIn(with: credentials, completion: { (firUser, error) in
-            callback(firUser?.uid, error)
-        })
+    func loginWithFacebook(credentials: AuthCredential, callback: @escaping (String?, Error?) -> ()) {
+        Auth.auth().signInAndRetrieveData(with: credentials) { (firUser, error) in
+            callback(firUser?.user.uid, error)
+        }
     }
 
     func logout() {
-        let firebaseAuth = FIRAuth.auth()
+        let firebaseAuth = Auth.auth()
         do {
-            try firebaseAuth!.signOut()
+            try firebaseAuth.signOut()
             FBSDKLoginManager().logOut()
         } catch let signOutError as NSError {
             firAuthLog(signOutError.description)
@@ -108,29 +108,29 @@ class FirebaseAuthentificator {
     }
 
     func linkUser(email: String, password: String, callback: @escaping (String?, Error?) -> ()) {
-        if let user = FIRAuth.auth()?.currentUser {
+        if let user = Auth.auth().currentUser {
             token { (token, error) in
-                let credential = FIREmailPasswordAuthProvider.credential(withEmail: email, password: password)
-                user.link(with: credential, completion: { (user, error) in
-                    callback(user?.uid, error)
-                })
+                let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+                user.linkAndRetrieveData(with: credential) { (user, error) in
+                    callback(user?.user.uid, error)
+                }
             }
         }
     }
 
 	func linkUser(facebookAccessToken: String, callback: @escaping (String?, Error?) -> ()) {
-		if let user = FIRAuth.auth()?.currentUser {
+        if let user = Auth.auth().currentUser {
 			self.token { (token, error) in
-				let credential = FIRFacebookAuthProvider.credential(withAccessToken: facebookAccessToken)
-				user.link(with: credential, completion: { (user, error) in
-					callback(user?.uid, error)
-				})
+                let credential = FacebookAuthProvider.credential(withAccessToken: facebookAccessToken)
+                user.linkAndRetrieveData(with: credential) { (user, error) in
+					callback(user?.user.uid, error)
+				}
 			}
 		}
 	}
     
     func sendVerificationEmail(callback: @escaping (Error?) -> ()) {
-        if let user = FIRAuth.auth()?.currentUser {
+        if let user = Auth.auth().currentUser {
             self.token { (token, error) in
                 user.sendEmailVerification() { (error) in
                     callback( error)
@@ -140,7 +140,7 @@ class FirebaseAuthentificator {
     }
     
     func isUserLogedViaFacebook() -> Bool {
-        if let userInfoArray = FIRAuth.auth()?.currentUser?.providerData {
+        if let userInfoArray = Auth.auth().currentUser?.providerData {
             for userInfo in userInfoArray {
                 if userInfo.providerID == "facebook.com" {
                     return true
@@ -151,7 +151,7 @@ class FirebaseAuthentificator {
     }
     
     func updateUserEmail(email: String, callback: @escaping (Error?) -> ()) {
-        if let user = FIRAuth.auth()?.currentUser {
+        if let user = Auth.auth().currentUser {
             token { (token, error) in
                 var steps: [Async.Block] = []
                 /*steps.append({ (completion, failure) in
@@ -166,7 +166,7 @@ class FirebaseAuthentificator {
                 })
                 */
                 steps.append({ (completion, failure) in
-                    user.updateEmail(email, completion: { (error) in
+                    user.updateEmail(to: email, completion: { (error) in
                         guard error == nil else {
                             failure(error!)
                             return

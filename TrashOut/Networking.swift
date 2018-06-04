@@ -356,7 +356,7 @@ class Networking {
 		let loc = "\(coords.longitude),\(coords.latitude)"
 		let request = response.request.debugDescription
 
-		FIRAnalytics.logEvent(withName: "Long_request_duration", parameters: [
+        Analytics.logEvent("Long_request_duration", parameters: [
 			"location": loc as NSString,
 			"request": request as NSString,
 			"duration": "\(duration)" as NSString,

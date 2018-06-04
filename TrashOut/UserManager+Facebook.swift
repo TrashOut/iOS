@@ -62,7 +62,7 @@ extension UserManager {
 	/**
 	*/
     internal func loginIntoFirebaseWithFacebook(action:FBLoginAction, facebookAccessToken: String, callback: @escaping (Error?) -> ()) {
-		let credentials = FIRFacebookAuthProvider.credential(withAccessToken: facebookAccessToken)
+        let credentials = FacebookAuthProvider.credential(withAccessToken: facebookAccessToken)
 		firAuth.loginWithFacebook(credentials: credentials) { [unowned self] (uid, error) in
 			if error != nil {
                 callback(error)

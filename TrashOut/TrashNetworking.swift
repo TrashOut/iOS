@@ -131,7 +131,7 @@ extension Networking {
         //let testId = 31516
 		params["attributesNeeded"] = ["id", "accessibility", "anonymous", "cleanedByMe", "created", "activityCreated" , "events", "gps", "images", "note", "size", "status", "types", "updateHistory", "updateNeeded", "url", "userInfo"].joined(separator: ",")
 		UserManager.instance.tokenHeader { tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/trash/\(id)", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
+			Networking.manager.request("\(self.apiBaseUrl)/trash/\(id)", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(withId: id, response: response, callback: callback)
 			}
 		}
@@ -161,7 +161,7 @@ extension Networking {
         params["limit"] = limit
         params["page"] = page
 		UserManager.instance.tokenHeader { tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/trash/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
+			Networking.manager.request("\(self.apiBaseUrl)/trash/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, cacheKey: cacheKey, callback: callback)
 			}
 		}
@@ -180,7 +180,7 @@ extension Networking {
 		params["limit"] = limit
 		params["page"] = page
 		UserManager.instance.tokenHeader { tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/trash/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
+			Networking.manager.request("\(self.apiBaseUrl)/trash/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, cacheKey: cacheKey, callback: callback)
 			}
 		}
@@ -203,7 +203,7 @@ extension Networking {
 		params["limit"] = limit
 		params["page"] = page
 		UserManager.instance.tokenHeader { tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/trash/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
+			Networking.manager.request("\(self.apiBaseUrl)/trash/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, cacheKey: cacheKey, callback: callback)
 			}
 		}
@@ -225,7 +225,7 @@ extension Networking {
         params["userPosition"] = positionString
 		params["area"] = "\(area.topLeft.latitude),\(area.topLeft.longitude),\(area.bottomRight.latitude),\(area.bottomRight.longitude)"
 		UserManager.instance.tokenHeader { tokenHeader in
-            Alamofire.request("\(self.apiBaseUrl)/trash/count/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { (response) in
+            Networking.manager.request("\(self.apiBaseUrl)/trash/count/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { (response) in
                 print(response.debugDescription)
                 if response.result.isFailure {
                     callback(nil, response.result.error)
@@ -253,7 +253,7 @@ extension Networking {
 		}
 		params["trashStatus"] = status.joined(separator: ",")
         UserManager.instance.tokenHeader { [unowned self] tokenHeader in
-            Alamofire.request("\(self.apiBaseUrl)/trash/count/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { (response) in
+            Networking.manager.request("\(self.apiBaseUrl)/trash/count/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { (response) in
                 print(response.debugDescription)
                 if response.result.isFailure {
                     callback(nil, response.result.error)
@@ -288,7 +288,7 @@ extension Networking {
         params["accessibility"] = ["byCar": accessibility.byCar, "inCave": accessibility.inCave, "underWater": accessibility.underWater, "notForGeneralCleanup": accessibility.notForGeneralCleanup]
 
 		UserManager.instance.tokenHeader { [unowned self] tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/trash/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
+			Networking.manager.request("\(self.apiBaseUrl)/trash/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, callback: callback)
 			}
 		}
@@ -314,7 +314,7 @@ extension Networking {
         params["status"] = status
         params["cleanedByMe"] = cleanedByMe
 		UserManager.instance.tokenHeader { [unowned self] tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/trash/\(trashId)", method: .put, parameters: params, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
+			Networking.manager.request("\(self.apiBaseUrl)/trash/\(trashId)", method: .put, parameters: params, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, callback: callback)
 			}
 		}
@@ -328,7 +328,7 @@ extension Networking {
         params["trashPointActivityId"] = trashId
         //params["userId"] = userId
 		UserManager.instance.tokenHeader { [unowned self] tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/spam/trash", method: .post, parameters: params, headers: tokenHeader).responseJSON { [weak self] (response) in
+			Networking.manager.request("\(self.apiBaseUrl)/spam/trash", method: .post, parameters: params, headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, callback: callback)
 			}
 		}
@@ -345,7 +345,7 @@ extension Networking {
         params["geocells"] = geocells.joined(separator: ",")
 		filter.filter(to: &params)
         UserManager.instance.tokenHeader { [unowned self] tokenHeader in
-            Alamofire.request("\(self.apiBaseUrl)/trash/zoom-point/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { (response) in
+            Networking.manager.request("\(self.apiBaseUrl)/trash/zoom-point/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { (response) in
                 self.logLongResponseTime(response)
                 self.callbackHandler(response: response, cachingEnabled: false, callback: callback)
             }
@@ -364,7 +364,7 @@ extension Networking {
         params["attributesNeeded"] = ["id", "gpsShort", "updateNeeded", "status"].joined(separator: ",")
 		filter.filter(to: &params)
         UserManager.instance.tokenHeader { [unowned self] tokenHeader in
-            Alamofire.request("\(self.apiBaseUrl)/trash/", parameters: params, encoding: URLEncoding.default,  headers: tokenHeader).responseJSON { (response) in
+            Networking.manager.request("\(self.apiBaseUrl)/trash/", parameters: params, encoding: URLEncoding.default,  headers: tokenHeader).responseJSON { (response) in
                 self.logLongResponseTime(response)
                 self.callbackHandler(response: response, cachingEnabled: false, callback: callback)
             }

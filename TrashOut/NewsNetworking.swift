@@ -49,7 +49,7 @@ extension Networking {
         params["page"] = page
         params["orderBy"] = "-created"
 		UserManager.instance.tokenHeader { tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/prContent", method: .get, parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { (response) in
+			Networking.manager.request("\(self.apiBaseUrl)/prContent", method: .get, parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { (response) in
 				self.callbackHandler(response: response, callback: callback)
 			}
 		}
@@ -57,7 +57,7 @@ extension Networking {
 
 	func article(id: Int, callback: @escaping (Article?, Error?) -> ()){
 		UserManager.instance.tokenHeader { tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/prContent/\(id)", headers: tokenHeader).responseJSON { (response) in
+			Networking.manager.request("\(self.apiBaseUrl)/prContent/\(id)", headers: tokenHeader).responseJSON { (response) in
 				self.callbackHandler(response: response, callback: callback)
 			}
 		}

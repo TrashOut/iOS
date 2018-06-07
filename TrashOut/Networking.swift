@@ -55,8 +55,8 @@ API documentation is at http://docs.trashout.apiary.io
 */
 class Networking {
 
-	#if DEBUG
-		var apiBaseUrl = "https://api.trashout.ngo/v1" //"https://dev-api.trashout.ngo/v1
+	#if STAGE
+		var apiBaseUrl = "https://api.trashout.ngo/v1"// "https://dev-api.trashout.ngo/v1"
 	#else
 		var apiBaseUrl = "https://api.trashout.ngo/v1"
 	#endif
@@ -65,9 +65,29 @@ class Networking {
 		return Networking()
 	} ()
 
+    internal static var manager: Alamofire.SessionManager = {
+        
+        // Create the server trust policies
+        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+            "dev-api.trashout.ngo": .disableEvaluation
+        ]
+        
+        // Create custom manager
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
+        configuration.timeoutIntervalForRequest = 10
+        
+        let manager = Alamofire.SessionManager(
+                        configuration: configuration,
+                        serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+        
+        return manager
+    }()
+    
 	init() {
 		setupCache()
-		Alamofire.SessionManager.default.session.configuration.timeoutIntervalForRequest = 10
+		// Alamofire.SessionManager.default.session.configuration.timeoutIntervalForRequest = 10
 
 	}
 
@@ -360,7 +380,7 @@ class Networking {
 			"location": loc as NSString,
 			"request": request as NSString,
 			"duration": "\(duration)" as NSString,
-			"response": "\(response.response?.statusCode ?? 0)"  as NSString
+			"response": "\(response.response?.statusCode ?? 0)" as NSString
 		])
 	}
 	

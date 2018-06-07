@@ -56,7 +56,7 @@ extension Networking {
 		params["timeBoundaryFrom"] = DateFormatter.zulu.string(from: date)
 		params["timeBoundaryTo"] = DateFormatter.zulu.string(from: end)
 		UserManager.instance.tokenHeader { tokenHeader in
-			let req = Alamofire.request("\(self.apiBaseUrl)/event", parameters: params, encoding: URLEncoding.default, headers: tokenHeader)
+			let req = Networking.manager.request("\(self.apiBaseUrl)/event", parameters: params, encoding: URLEncoding.default, headers: tokenHeader)
 			print(req.debugDescription)
 			req.responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, callback: callback)
@@ -73,7 +73,7 @@ extension Networking {
      */
     func event(_ id: Int, callback: @escaping (Event?, Error?) -> ()) {
         UserManager.instance.tokenHeader { tokenHeader in
-            Alamofire.request("\(self.apiBaseUrl)/event/\(id)", headers: tokenHeader).responseJSON { [weak self] (response) in
+            Networking.manager.request("\(self.apiBaseUrl)/event/\(id)", headers: tokenHeader).responseJSON { [weak self] (response) in
                 self?.callbackHandler(withId: id, response: response, callback: callback)
             }
 		}
@@ -86,7 +86,7 @@ extension Networking {
         var params: Parameters = [:]
         params["userIds"] = userId
 		UserManager.instance.tokenHeader { tokenHeader in
-            Alamofire.request("\(self.apiBaseUrl)/event/\(eventId)/users", method: .post, parameters: params, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
+            Networking.manager.request("\(self.apiBaseUrl)/event/\(eventId)/users", method: .post, parameters: params, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
                 self?.callbackHandler(response: response, callback: callback)
             }
 		}
@@ -110,7 +110,7 @@ extension Networking {
         params["trashPointIds"] = trashPointsId
         params["collectionPointIds"] = collectionPointIds
 		UserManager.instance.tokenHeader { tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/event/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
+			Networking.manager.request("\(self.apiBaseUrl)/event/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, callback: callback)
 			}
 		}

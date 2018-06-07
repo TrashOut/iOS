@@ -17,7 +17,7 @@ extension DashboardViewController {
 	*/
 	func loadEvents(completion: @escaping () -> (), failure: @escaping (Error) -> ()) {
 		let locationPoint = LocationManager.manager.currentLocation.coordinate
-		Networking.instance.events(position: locationPoint, limit: 3, page: 1) { [weak self] (events, error) in
+		Networking.instance.events(position: locationPoint, limit: 3) { [weak self] (events, error) in
 			guard error == nil else {
 				print(error?.localizedDescription as Any)
 				NoDataView.show(over: self?.vEvents, text: "global.fetchError".localized)
@@ -43,7 +43,7 @@ extension DashboardViewController {
 				guard let start1 = e1.start else { return false }
 				return start1 < start2
 			}
-
+            
 			completion()
 		}
 	}
@@ -62,7 +62,7 @@ extension DashboardViewController {
 
 		let event = events[indexPath.row]
 		cell.lblHelpUsToCleanIt.text = event.name
-
+        
 		let df = DateFormatter()
 		df.timeStyle = .none
 		df.dateStyle = .long
@@ -73,6 +73,10 @@ extension DashboardViewController {
 		}
         
         // Join button
+        
+        // Set default value for "Join" button
+        cell.btnJoinEvent.setTitle("event.join".localized.uppercased(with: .current), for: .normal)
+        
         eventManager.joinButtonTest(event) { (show) in
             DispatchQueue.main.async {
                 if show {

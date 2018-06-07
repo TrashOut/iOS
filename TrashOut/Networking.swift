@@ -56,7 +56,7 @@ API documentation is at http://docs.trashout.apiary.io
 class Networking {
 
 	#if STAGE
-		var apiBaseUrl = "https://api.trashout.ngo/v1"// "https://dev-api.trashout.ngo/v1"
+		var apiBaseUrl = "https://dev-api.trashout.ngo/v1"
 	#else
 		var apiBaseUrl = "https://api.trashout.ngo/v1"
 	#endif

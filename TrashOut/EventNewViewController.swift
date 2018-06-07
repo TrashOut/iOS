@@ -330,7 +330,7 @@ class EventNewViewController: ViewController, UITextViewDelegate {
             if sender.state == .ended {
                 guard let vc = storyboard?.instantiateViewController(withIdentifier: "EventDateViewController") as? EventDateViewController else { return }
                 vc.writeEndDateBackDelegate = self
-                vc.date = startDate
+                vc.date = startDate ?? Date()
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else {

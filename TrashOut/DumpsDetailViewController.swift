@@ -664,9 +664,14 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
             }
             
             // Join btn
+            
+            // Set default value for "Join" button
+            cell.btnJoin.setTitle("event.join".localized.uppercased(with: .current), for: .normal)
+            
             eventManager.joinButtonTest(event) { [weak self] (show) in
                 DispatchQueue.main.async {
                     if show {
+                        
                         // Save the date
                         cell.btnJoin.isHidden = false
                         cell.leadingSpaceToJoinBtn.isActive = true

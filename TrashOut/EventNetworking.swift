@@ -44,17 +44,16 @@ extension Networking {
 	GET /event ?  page=:page & limit=:limit
 	```
 	*/
-	func events(position: CLLocationCoordinate2D, limit: Int, page: Int, callback: @escaping ([Event]?, Error?) -> ()) {
+	func events(position: CLLocationCoordinate2D, limit: Int, callback: @escaping ([Event]?, Error?) -> ()) {
 		var params: Parameters = [:]
 		let date = try! Date().atTime(hour: 0, minute: 0, second: 0)
 		let end = date.addDays(daysToAdd: 8)
-		params["page"] = page
 		params["limit"] = limit
 		params["orderBy"] = "gps"
-		params["attributesNeeded"] = ["id", "name", "gpsShort", "start", "description"].joined(separator: ",")
+		params["attributesNeeded"] = ["id", "name", "start", "gpsShort", "description"].joined(separator: ",")
 		params["userPosition"] = "\(position.latitude),\(position.longitude)"
-		params["timeBoundaryFrom"] = DateFormatter.zulu.string(from: date)
-		params["timeBoundaryTo"] = DateFormatter.zulu.string(from: end)
+		params["startFrom"] = DateFormatter.zulu.string(from: date)
+		params["startTo"] = DateFormatter.zulu.string(from: end)
 		UserManager.instance.tokenHeader { tokenHeader in
 			let req = Networking.manager.request("\(self.apiBaseUrl)/event", parameters: params, encoding: URLEncoding.default, headers: tokenHeader)
 			print(req.debugDescription)

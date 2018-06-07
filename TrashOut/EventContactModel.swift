@@ -24,9 +24,6 @@ class EventContact: JsonDecodable, Cachable {
 
 extension EventContact {
     func parse(json: [String: AnyObject]) {
-        let breakpoint = { print("") }
-        breakpoint()
-        
         email <== json["email"]
         name <== json["name"]
         occupation <== json["occupation"]

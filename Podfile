@@ -10,8 +10,8 @@ def common_pods_for_target
     # Firebase SDK
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
-    pod 'Firebase/Crash'#
-    # pod 'Firebase/Messaging'
+    pod 'Firebase/Crash'
+    pod 'Firebase/Messaging'
     pod 'Firebase/Storage'
     
     # Facebook SDK
@@ -23,6 +23,7 @@ def common_pods_for_target
     pod 'SwiftDate', '~> 4.0.11'
     
     pod 'Charts', '3.0.1'
+    pod 'Keychain'
 end
 
 target 'TrashOut-Prod' do

@@ -262,6 +262,7 @@ class UserManager {
 	Change user to registered using password and user data, update user on api
 	*/
 	func signup(user: User, password: String, callback: @escaping (Error?)->()) {
+
 		guard let email = user.email else { return }
         if (self.isAnonymous && self.user != nil) {
             firAuth.linkUser(email: email, password: password) { [unowned self] (uid, error) in
@@ -316,6 +317,8 @@ class UserManager {
                     }
                     return
                 }
+                
+                callback(error!)
             }
         }
 	}

@@ -83,6 +83,8 @@
 	<string>The application needs access to your location for updating dumps.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>The application needs access to your location for updating dumps.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>The application needs access to your location for updating dumps.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The application needs access to your location for updating dumps.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

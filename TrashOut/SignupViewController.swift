@@ -145,7 +145,7 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 		return hasErrors == false
 	}
 
-	@IBAction func signup() {
+    @IBAction func signup() {
 		guard self.validateForm() else { return }
 		let name = frName.textField.text
 		let surname = frSurname.textField.text
@@ -158,6 +158,7 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 		user.email = email
 
 		UserManager.instance.signup(user: user, password: password!) { [weak self] (error) in
+
 			if let error = error {
 				print(error.localizedDescription)
 				self?.show(error: error)

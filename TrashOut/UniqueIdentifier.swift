@@ -7,3 +7,24 @@
 //
 
 import Foundation
+import Keychain
+
+class UniqueIdentifier {
+    
+    private static let kKeychainUniqueIdentifier = "kKeychainUniqueIdentifier"
+    
+    static var identifier: String? {
+        get {
+            return Keychain.load(kKeychainUniqueIdentifier)
+        }
+        
+        set {
+            guard let identifier = newValue else {
+                _ = Keychain.delete(kKeychainUniqueIdentifier)
+                return
+            }
+            
+            _ = Keychain.save(identifier, forKey: kKeychainUniqueIdentifier)
+        }
+    }
+}

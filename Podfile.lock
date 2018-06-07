@@ -44,6 +44,9 @@ PODS:
   - Firebase/Crash (5.1.0):
     - Firebase/Core
     - FirebaseCrash (= 3.0.0)
+  - Firebase/Messaging (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.0.1)
   - Firebase/Storage (5.1.0):
     - Firebase/CoreOnly
     - FirebaseStorage (= 3.0.0)
@@ -65,6 +68,11 @@ PODS:
     - Protobuf (~> 3.5)
   - FirebaseInstanceID (3.0.0):
     - FirebaseCore (~> 5.0)
+  - FirebaseMessaging (3.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
   - FirebaseStorage (3.0.0):
     - FirebaseCore (~> 5.0)
     - GTMSessionFetcher/Core (~> 1.1)
@@ -74,6 +82,7 @@ PODS:
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GTMSessionFetcher/Core (1.1.15)
+  - Keychain (0.3.1)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -93,7 +102,9 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Crash
+  - Firebase/Messaging
   - Firebase/Storage
+  - Keychain
   - SwiftDate (~> 4.0.11)
 
 SPEC REPOS:
@@ -116,9 +127,11 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCrash
     - FirebaseInstanceID
+    - FirebaseMessaging
     - FirebaseStorage
     - GoogleToolboxForMac
     - GTMSessionFetcher
+    - Keychain
     - nanopb
     - Protobuf
     - SwiftDate
@@ -142,13 +155,15 @@ SPEC CHECKSUMS:
   FirebaseCore: b81044df1044c0857a0737c6324678b72d4f7f00
   FirebaseCrash: 8900571fd763fd5bdda04522ec53da979456e3ce
   FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
+  FirebaseMessaging: ec6fde5a77824c6da0218f9ca220feb251aa17d5
   FirebaseStorage: 7ca4bb7b58a25fa647b04f524033fc7cb7eb272b
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  Keychain: ef812eafcf6593fe4409b07cfecc00b95fb373ed
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   SwiftDate: 4ef029fd3117cc287fe642658b9aca2217628976
 
-PODFILE CHECKSUM: 041cee5d37a0c20e8c03445137ba1a9e520d3da3
+PODFILE CHECKSUM: 6896b8c0706d67b58f70a4e01c33ee17955a4c67
 
 COCOAPODS: 1.5.3

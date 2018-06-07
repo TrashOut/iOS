@@ -279,6 +279,13 @@
 		CF3B780420C05A8F00E4D0CE /* EventContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B780220C0584A00E4D0CE /* EventContactModel.swift */; };
 		CF7D8C8D20C56AC800F66F4C /* Pods_TrashOut_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7D8C8C20C56AC800F66F4C /* Pods_TrashOut_Prod.framework */; };
 		CF7D8C8F20C56ACF00F66F4C /* Pods_TrashOut_Stage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7D8C8E20C56ACF00F66F4C /* Pods_TrashOut_Stage.framework */; };
+		CF7D8C9120C683F600F66F4C /* NotificationsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7D8C9020C683F600F66F4C /* NotificationsNetworking.swift */; };
+		CFBC999120C6A5CF009E5D7F /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC999020C6A5CF009E5D7F /* NotificationsManager.swift */; };
+		CFBC999320C6D2B5009E5D7F /* UniqueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC999220C6D2B5009E5D7F /* UniqueIdentifier.swift */; };
+		CFBC999420C6D38C009E5D7F /* UniqueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC999220C6D2B5009E5D7F /* UniqueIdentifier.swift */; };
+		CFBC999520C6D391009E5D7F /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC999020C6A5CF009E5D7F /* NotificationsManager.swift */; };
+		CFBC999620C6D399009E5D7F /* NotificationsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7D8C9020C683F600F66F4C /* NotificationsNetworking.swift */; };
+		CFBC999920C95CA1009E5D7F /* LITHIO.crt in Resources */ = {isa = PBXBuildFile; fileRef = CFBC999820C95CA1009E5D7F /* LITHIO.crt */; };
 		FC384A741DDCD0EF0073E955 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC384A731DDCD0EF0073E955 /* Date.swift */; };
 		FC3E0E6D1DDE01BE006F1D31 /* JunkyardDetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3E0E6C1DDE01BE006F1D31 /* JunkyardDetViewController.swift */; };
 		FC3E0E6F1DDE7307006F1D31 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC3E0E6E1DDE7307006F1D31 /* Event.storyboard */; };
@@ -481,6 +488,10 @@
 		CF3B780220C0584A00E4D0CE /* EventContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContactModel.swift; sourceTree = "<group>"; };
 		CF7D8C8C20C56AC800F66F4C /* Pods_TrashOut_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_TrashOut_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7D8C8E20C56ACF00F66F4C /* Pods_TrashOut_Stage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_TrashOut_Stage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF7D8C9020C683F600F66F4C /* NotificationsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsNetworking.swift; sourceTree = "<group>"; };
+		CFBC999020C6A5CF009E5D7F /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		CFBC999220C6D2B5009E5D7F /* UniqueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueIdentifier.swift; sourceTree = "<group>"; };
+		CFBC999820C95CA1009E5D7F /* LITHIO.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LITHIO.crt; sourceTree = "<group>"; };
 		EE400CD089F704AF7920E66F /* Pods-TrashOut-Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.release.xcconfig"; sourceTree = "<group>"; };
 		EF32383FA9DCC24A0FB7DE0C /* Pods-TrashOutTests.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutTests.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests.hockeyapp.xcconfig"; sourceTree = "<group>"; };
 		FC250F731DE5C1E3001C00B8 /* ReportCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCameraViewController.swift; sourceTree = "<group>"; };
@@ -638,6 +649,7 @@
 				C3874BE11E55BD1700C94719 /* Statistics.swift */,
 				C3F0F90E1E5B3C5E0024DCDD /* EventManager.swift */,
 				C38960CC1E5C8FD600EA6D87 /* PhotoManager.swift */,
+				CFBC999020C6A5CF009E5D7F /* NotificationsManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -731,6 +743,7 @@
 		C3A3B23E1DA7A6E00099D1C2 /* TrashOut */ = {
 			isa = PBXGroup;
 			children = (
+				CFBC999720C95C8D009E5D7F /* Certificates */,
 				FCAB5E021E2FE82C004C7249 /* TrashOut.entitlements */,
 				C351E5AB1DBF53D8004BF32F /* test-data */,
 				C30044361DAFC94C00709DDC /* Manager */,
@@ -820,6 +833,7 @@
 				FCED66B41DF182E40009D4ED /* EventNetworking.swift */,
 				C348802E1DF59C5E00C2E83E /* NewsNetworking.swift */,
 				C373F4391E57313100050F7B /* AreaNetworking.swift */,
+				CF7D8C9020C683F600F66F4C /* NotificationsNetworking.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -878,6 +892,7 @@
 				8EC88ABD1FD6BB4400498FCA /* ICSPullToRefresh.swift */,
 				8E2747B620036FA900934D62 /* NotificationName.swift */,
 				8E2747B82003B58200934D62 /* Device.swift */,
+				CFBC999220C6D2B5009E5D7F /* UniqueIdentifier.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -961,6 +976,14 @@
 				C3E226711E54741E00780D63 /* DashboardActivityViewController.swift */,
 			);
 			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		CFBC999720C95C8D009E5D7F /* Certificates */ = {
+			isa = PBXGroup;
+			children = (
+				CFBC999820C95CA1009E5D7F /* LITHIO.crt */,
+			);
+			name = Certificates;
 			sourceTree = "<group>";
 		};
 		DC4DFFD14211A5E6538D324E /* Frameworks */ = {
@@ -1087,7 +1110,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1172,6 +1195,7 @@
 				C3014DCA1DAE5E3F00FD7CFE /* Localizable.strings in Resources */,
 				FC5FA30A1DEC7BF90000C711 /* Assets.xcassets in Resources */,
 				C37880E51DB0F93100BFDD2A /* Report.storyboard in Resources */,
+				CFBC999920C95CA1009E5D7F /* LITHIO.crt in Resources */,
 				FC3E0E6F1DDE7307006F1D31 /* Event.storyboard in Resources */,
 				C351E5AF1DBF53EF004BF32F /* zoompoints.json in Resources */,
 				C32F8D671DED97EC0009A5C4 /* FormRow.xib in Resources */,
@@ -1224,6 +1248,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -1244,6 +1269,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -1274,6 +1300,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -1294,6 +1321,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -1324,6 +1352,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -1344,6 +1373,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -1504,6 +1534,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -1524,6 +1555,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -1541,6 +1573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E2A1AF0202236E800C1AC70 /* ClockCountdownView.swift in Sources */,
+				CFBC999420C6D38C009E5D7F /* UniqueIdentifier.swift in Sources */,
 				8E2A1AF1202236E800C1AC70 /* TrashTypeButton.swift in Sources */,
 				8E2A1AF2202236E800C1AC70 /* AccessibilityModel.swift in Sources */,
 				8E2A1AF3202236E800C1AC70 /* EventLocationViewController.swift in Sources */,
@@ -1553,6 +1586,7 @@
 				8E2A1AFA202236E800C1AC70 /* DateFormatter.swift in Sources */,
 				8E2A1AFB202236E800C1AC70 /* NoDataView.swift in Sources */,
 				8E2A1AFC202236E800C1AC70 /* StatisticViewController.swift in Sources */,
+				CFBC999620C6D399009E5D7F /* NotificationsNetworking.swift in Sources */,
 				8E2A1AFD202236E800C1AC70 /* GpsModel+UI.swift in Sources */,
 				8E2A1AFE202236E800C1AC70 /* Image.swift in Sources */,
 				8E2A1AFF202236E800C1AC70 /* UserNetworking.swift in Sources */,
@@ -1589,6 +1623,7 @@
 				8E2A1B1E202236E800C1AC70 /* TutorialViewController.swift in Sources */,
 				8E2A1B1F202236E800C1AC70 /* DumpsMapManager.swift in Sources */,
 				8E2A1B20202236E800C1AC70 /* View.swift in Sources */,
+				CFBC999520C6D391009E5D7F /* NotificationsManager.swift in Sources */,
 				CF3B780420C05A8F00E4D0CE /* EventContactModel.swift in Sources */,
 				8E2A1B21202236E800C1AC70 /* LoginViewController.swift in Sources */,
 				8E2A1B22202236E800C1AC70 /* DashboardViewController.swift in Sources */,
@@ -1702,6 +1737,7 @@
 				8E2747B720036FA900934D62 /* NotificationName.swift in Sources */,
 				C37579291E423F66002EA629 /* GpsFormatter.swift in Sources */,
 				C37994A51DACFFD600CE5E3F /* CachableModel.swift in Sources */,
+				CFBC999320C6D2B5009E5D7F /* UniqueIdentifier.swift in Sources */,
 				C3014DD21DAE721600FD7CFE /* Layout.swift in Sources */,
 				FCE79BE21DE44E6700D3E9B6 /* EventDumpsViewController.swift in Sources */,
 				C34AD2F41E40A7FD006B19CC /* DateRounding.swift in Sources */,
@@ -1721,6 +1757,7 @@
 				C3A6176E1DB8E53E0092BF32 /* DumpsMapManager.swift in Sources */,
 				8CD79D811F96274700C937AB /* View.swift in Sources */,
 				CF3B780320C0584A00E4D0CE /* EventContactModel.swift in Sources */,
+				CFBC999120C6A5CF009E5D7F /* NotificationsManager.swift in Sources */,
 				C32F8D631DED94150009A5C4 /* LoginViewController.swift in Sources */,
 				C3A3B2711DA7AC290099D1C2 /* DashboardViewController.swift in Sources */,
 				C37519FF1E38D38C001F61AB /* TrashModel+UI.swift in Sources */,
@@ -1773,6 +1810,7 @@
 				C300443A1DB0CC3300709DDC /* FirebaseLocalization.swift in Sources */,
 				C32F8D551DEC67F90009A5C4 /* Button.swift in Sources */,
 				FCE79BE41DE4505600D3E9B6 /* EventDateViewController.swift in Sources */,
+				CF7D8C9120C683F600F66F4C /* NotificationsNetworking.swift in Sources */,
 				8E37D2AD1FC6F6E2001E61D5 /* TextView.swift in Sources */,
 				C32F8D5D1DED8F3A0009A5C4 /* TabbarViewController.swift in Sources */,
 				C3014DBB1DAE326500FD7CFE /* NewsViewController.swift in Sources */,
@@ -1894,6 +1932,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6f746f43-4433-4a0b-aa63-d139f7260cda";
 				PROVISIONING_PROFILE_SPECIFIER = "TrashOut-Stage Development";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = STAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1937,6 +1976,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "20656a90-12b4-49d9-8069-e6e7c45c0eda";
 				PROVISIONING_PROFILE_SPECIFIER = "TrashOut-Stage Distribution";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = STAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1980,6 +2020,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5d74961f-7eda-407b-97c5-41fa4d996f50";
 				PROVISIONING_PROFILE_SPECIFIER = "TrashOut-Stage Distribution";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = STAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
@@ -2076,6 +2117,7 @@
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "6d5ebdf9-3b71-4be4-bd92-60682d8a906d";
 				PROVISIONING_PROFILE_SPECIFIER = "TrashOut-Prod Distribution";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
@@ -2255,6 +2297,7 @@
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "4362d2f7-2426-4bbb-b4cf-708667c3f9a0";
 				PROVISIONING_PROFILE_SPECIFIER = "TrashOut-Prod Development";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
@@ -2298,6 +2341,7 @@
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "6d5ebdf9-3b71-4be4-bd92-60682d8a906d";
 				PROVISIONING_PROFILE_SPECIFIER = "TrashOut-Prod Distribution";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};

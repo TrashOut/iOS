@@ -34,6 +34,7 @@ import UIKit
 import Firebase
 //import FBSDKLoginKit
 import Alamofire
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -48,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		Theme.current.setupAppearance()
 		FirebaseLocalization().update()
 		acceptInvalidSSLCerts()
+        generateUniqueId()
+        registerNotifications(application: application)
 		return true
 	}
 
@@ -121,4 +124,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			return (disposition, credential)
 		}
 	}
+}
+
+// MARK: - Unique ID
+extension AppDelegate {
+    func generateUniqueId() {
+        guard let uuid = UIDevice.current.identifierForVendor?.uuidString else { fatalError("Unabled to load UUID.") }
+        print(uuid)
+        
+        if UniqueIdentifier.identifier == nil {
+           UniqueIdentifier.identifier = uuid
+        }
+    }
+}
+
+// MARK: - Notifications and messaging
+extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
+    fileprivate func registerNotifications(application: UIApplication) {
+        
+        // Register messaging
+        Messaging.messaging().delegate = self
+        
+        // Register for User Notifications
+        if #available(iOS 10.0, *) {
+            
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("FCM token: \(fcmToken)")
+        NotificationsManager.registerDevice(tokenFCM: fcmToken) { (error) in
+            if let error = error { print(error.localizedDescription) }
+        }
+    }
 }

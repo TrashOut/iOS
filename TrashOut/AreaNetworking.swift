@@ -43,6 +43,11 @@ extension Networking {
      ```
      */
     func areas(type: Area.AreaType, parent: Area? = nil, callback: @escaping ([Area]?, Error?) -> Void) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
         if let parent = parent {
             params[parent.type.rawValue] = parent.typeValue

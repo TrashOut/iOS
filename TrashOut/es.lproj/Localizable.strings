@@ -21,6 +21,8 @@
 "global.email" = "Correo electrónico";
 "global.password" = "Contraseña";
 "global.showDetail" = "Mostrar detalle";
+"global.internet.offline"="El teléfono no está conectado a Internet, verifique la configuración.";
+"global.error.api.text"="Esta información no se puede mostrar ahora, por favor intente de nuevo más tarde, gracias.";
 
 /*Could you porvide more context, please? "Firma de proceso" sounds weird.*/
 "global.processSigning" = "Firma de proceso";

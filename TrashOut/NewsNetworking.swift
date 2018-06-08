@@ -43,6 +43,11 @@ extension Networking {
 	```
 	*/
     func news(page: Int, limit: Int, language: String, callback: @escaping ([Article]?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
         params["language"] = language
         params["limit"] = limit
@@ -56,6 +61,11 @@ extension Networking {
 	}
 
 	func article(id: Int, callback: @escaping (Article?, Error?) -> ()){
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
 		UserManager.instance.tokenHeader { tokenHeader in
 			Networking.manager.request("\(self.apiBaseUrl)/prContent/\(id)", headers: tokenHeader).responseJSON { (response) in
 				self.callbackHandler(response: response, callback: callback)

@@ -68,6 +68,8 @@
 "global.userNotLogged" = "Sorry for inconvenience, you are now logged out.\nPlease sign in again.";
 "global.now" = "now";
 "profile.header" = "Profile";
+"global.internet.offline"="The device is not connected to the Internet, please check the settings.";
+"global.error.api.text"="This information can not be displayed right now, please try again later, thank you.";
 
 /*Fuzzy*/
 "global.welcomeText" = "Report Trash allows you report illegal dump anywhere in the world. Reporting is the first step which leads to cleaning.\n\nGO, locate illegal dump by pressing the button “Report Trash”!";

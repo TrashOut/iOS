@@ -43,6 +43,11 @@ extension Networking {
 	```
 	*/
 	func user(_ id: Int, callback: @escaping (User?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
 		UserManager.instance.tokenHeader { tokenHeader in
 			Networking.manager.request("\(self.apiBaseUrl)/user/\(id)", headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, callback: callback)
@@ -51,6 +56,11 @@ extension Networking {
 	}
 
 	func userMe(callback: @escaping (User?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
 		UserManager.instance.tokenHeader { tokenHeader in
 			Networking.manager.request("\(self.apiBaseUrl)/user/me", headers: tokenHeader).responseJSON { [weak self] (response) in
 				if let code = response.response?.statusCode, (400..<405).contains(code) {
@@ -91,6 +101,11 @@ extension Networking {
 	```
 	*/
 	func createUser(user: User, uid: String, callback: @escaping (User?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
 		if let fn = user.firstName {
 			params["firstName"] = fn
@@ -113,6 +128,11 @@ extension Networking {
 	}
 
 	func updateUser(user: User, id: Int, uid: String, organizations: [Organization] = [], areas: [Area] = [], image: ProfileImage?, callback: @escaping (User?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
         if let fn = user.firstName {
             params["firstName"] = fn
@@ -185,6 +205,11 @@ extension Networking {
     }
 
 	func organizations(page: Int, limit: Int, callback: @escaping ([Organization]?, Error?)->()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
 		UserManager.instance.tokenHeader { tokenHeader in
 			Networking.manager.request("\(self.apiBaseUrl)/organization/", headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, callback: callback)
@@ -198,48 +223,53 @@ extension Networking {
 	cycle remove/join organization
 	*/
 	func setUserOrganizations(user: User, organizations: [(id: Int, role: Int)], callback: @escaping (Error?) -> ()) {
-			let remove = user.organizations.filter({ (org) -> Bool in
-				return organizations.contains(where: { (o: (id: Int, role: Int)) -> Bool in
-					o.id == org.id
-				}) == false
-			})
-			let add = organizations.filter({ (org: (id: Int, role: Int)) -> Bool in
-				return user.organizations.contains(where: { (o) -> Bool in
-					o.id == org.id
-				}) == false
-			})
-			var blocks: [Async.Block] = []
+        guard Networking.isConnectedToInternet else {
+            callback(NetworkingError.noInternetConnection)
+            return
+        }
+        
+        let remove = user.organizations.filter({ (org) -> Bool in
+            return organizations.contains(where: { (o: (id: Int, role: Int)) -> Bool in
+                o.id == org.id
+            }) == false
+        })
+        let add = organizations.filter({ (org: (id: Int, role: Int)) -> Bool in
+            return user.organizations.contains(where: { (o) -> Bool in
+                o.id == org.id
+            }) == false
+        })
+        var blocks: [Async.Block] = []
 
-			for org in remove {
-				blocks.append({ [weak self] (completion: @escaping ()->(), failure: @escaping (Error)->()) in
-					self?.removeOrganization(userId: user.id, organizationId: org.id, callback: { (error) in
-						if let error = error {
-							failure(error)
-						} else {
-							completion()
-						}
-					})
-				})
-			}
-			for org in add {
-				blocks.append({ [weak self] (completion: @escaping ()->(), failure: @escaping (Error)->()) in
-					self?.joinOrganization(userId: user.id, organizationId: org.id, callback: { (error) in
-						if let error = error {
-							failure(error)
-						} else {
-							completion()
-						}
-					})
-				})
-			}
-			blocks.append({ [weak self] (completion: ()->(), failure: (Error)->()) in
-				callback(nil)
-				completion()
-			})
+        for org in remove {
+            blocks.append({ [weak self] (completion: @escaping ()->(), failure: @escaping (Error)->()) in
+                self?.removeOrganization(userId: user.id, organizationId: org.id, callback: { (error) in
+                    if let error = error {
+                        failure(error)
+                    } else {
+                        completion()
+                    }
+                })
+            })
+        }
+        for org in add {
+            blocks.append({ [weak self] (completion: @escaping ()->(), failure: @escaping (Error)->()) in
+                self?.joinOrganization(userId: user.id, organizationId: org.id, callback: { (error) in
+                    if let error = error {
+                        failure(error)
+                    } else {
+                        completion()
+                    }
+                })
+            })
+        }
+        blocks.append({ [weak self] (completion: ()->(), failure: (Error)->()) in
+            callback(nil)
+            completion()
+        })
 
-			Async.waterfall(blocks, failure: { (error) in
-				callback(error)
-			})
+        Async.waterfall(blocks, failure: { (error) in
+            callback(error)
+        })
 	}
 
 	/**
@@ -248,6 +278,11 @@ extension Networking {
 	```
 	*/
 	func joinOrganization(userId: Int, organizationId: Int, callback: @escaping (Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(NetworkingError.noInternetConnection)
+            return
+        }
+        
 		UserManager.instance.tokenHeader { tokenHeader in
 			/*var params: Parameters = [:]
 			params["organizationRoleId"] = 1
@@ -267,6 +302,11 @@ extension Networking {
 	```
 	*/
 	func removeOrganization(userId: Int, organizationId: Int, callback: @escaping (Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(NetworkingError.noInternetConnection)
+            return
+        }
+        
 		UserManager.instance.tokenHeader { tokenHeader in
             /*
 			Alamofire.request("\(self.apiBaseUrl)/organization/\(organizationId)/user/\(userId)", method: .delete, headers: tokenHeader).responseJSON { (response) in
@@ -287,6 +327,11 @@ extension Networking {
 	```
 	*/
 	func recentActivity(user: Int, page: Int, limit: Int, callback: @escaping ([Activity]?, Error?)->()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
 		var params: Parameters = [:]
 		// FIXME: not working
 		params["type"] = "trashPoint"
@@ -300,6 +345,11 @@ extension Networking {
 	}
     
     func userActivity(user: Int, page: Int, limit: Int, callback: @escaping ([Activity]?, Error?)->()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
         // FIXME: not working
         params["type"] = "trashPoint"
@@ -313,6 +363,11 @@ extension Networking {
     }
 
 	func addArea(user: Int, area: Area, callback: @escaping (Error?)->()) {
+        guard Networking.isConnectedToInternet else {
+            callback(NetworkingError.noInternetConnection)
+            return
+        }
+        
 		var params: Parameters = [:]
 		params["areaId"] = area.id
 		UserManager.instance.tokenHeader { tokenHeader in

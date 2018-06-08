@@ -743,7 +743,6 @@
 		C3A3B23E1DA7A6E00099D1C2 /* TrashOut */ = {
 			isa = PBXGroup;
 			children = (
-				CFBC999720C95C8D009E5D7F /* Certificates */,
 				FCAB5E021E2FE82C004C7249 /* TrashOut.entitlements */,
 				C351E5AB1DBF53D8004BF32F /* test-data */,
 				C30044361DAFC94C00709DDC /* Manager */,
@@ -826,6 +825,7 @@
 		C3A3B2721DA7AC7D0099D1C2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				CFBC999A20CA7B76009E5D7F /* Certificates */,
 				C3A3B2731DA7AC8F0099D1C2 /* Networking.swift */,
 				C3A3B27B1DA7B7440099D1C2 /* UserNetworking.swift */,
 				C3DDE0201DAB925C00CB088E /* TrashNetworking.swift */,
@@ -978,7 +978,7 @@
 			name = Dashboard;
 			sourceTree = "<group>";
 		};
-		CFBC999720C95C8D009E5D7F /* Certificates */ = {
+		CFBC999A20CA7B76009E5D7F /* Certificates */ = {
 			isa = PBXGroup;
 			children = (
 				CFBC999820C95CA1009E5D7F /* LITHIO.crt */,

@@ -94,12 +94,16 @@ class EventLocationViewController: ViewController, MKMapViewDelegate {
     }
 
     @IBAction func activateSearch(_ sender: Any) {
+        let breakpoint = { print("") }
+        breakpoint()
+        
 		guard Reachability.isConnectedToNetwork() else {
 			let ac = UIAlertController(title: "Error".localized, message: "global.noInternetConnection".localized, preferredStyle: .alert)
 			ac.addAction(UIAlertAction(title: "global.ok".localized, style: .cancel, handler: nil))
 			present(ac, animated: true, completion: nil)
 			return
 		}
+        
 		guard let eventSearchTable = storyboard?.instantiateViewController(withIdentifier: "EventSearchTableController") as? EventSearchTableController else { fatalError("Could not dequeue storyboard with identifier: EventSearchTableController") }
 
 		resultSearchController = UISearchController(searchResultsController: eventSearchTable)

@@ -387,6 +387,8 @@
 "collectionPoint.types.cardboard" = "картон";
 "collectionPoint.types.clothes" = "одежда";
 "collectionPoint.types.biodegradable" = "биоразлагаемые отходы";
+"global.internet.offline"="Телефон не подключен к Интернету, проверьте настройки.";
+"global.error.api.text"="Эта информация не может быть отображена прямо сейчас, повторите попытку позже, спасибо.";
 
 /*Fuzzy*/
 "collectionPoint.types.electronic" = "электроника";

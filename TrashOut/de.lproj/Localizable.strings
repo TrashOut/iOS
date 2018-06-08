@@ -345,6 +345,8 @@
 "profile.earnedPoints_X" = "Du hast bisher% d Punkte verdient! Suche nach weiteren Deponien, es bringt dir neue Abzeichen!";
 "profile.points_X" = "% Punkte";
 "global.numberOfTimes_X" = "%dx";
+"global.internet.offline"="Das Mobiltelefon ist nicht mit dem Internet verbunden. Bitte überprüfen Sie die Einstellungen.";
+"global.error.api.text"="Diese Information kann momentan nicht angezeigt werden, bitte versuchen Sie es später noch einmal.";
 
 /*Bei Spielen oder Apps wird geduzt*/
 "profile.youReported" = "Deine Berichte";

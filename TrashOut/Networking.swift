@@ -69,7 +69,12 @@ class Networking {
         
         // Create the server trust policies
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
-            "dev-api.trashout.ngo": .disableEvaluation
+//            "dev-api.trashout.ngo": .pinCertificates(
+//                certificates: ServerTrustPolicy.certificates(in: Bundle.main),
+//                validateCertificateChain: true,
+//                validateHost: true),
+            "dev-api.trashout.ngo": .disableEvaluation,
+            "api.trashout.ngo": .disableEvaluation
         ]
         
         // Create custom manager
@@ -84,6 +89,11 @@ class Networking {
         
         return manager
     }()
+    
+    /// Is device connected to Internet
+    internal static var isConnectedToInternet: Bool {
+        return Reachability.isConnectedToNetwork() || Reachability.isConnectedToCellularNetwork()
+    }
     
 	init() {
 		setupCache()
@@ -267,7 +277,7 @@ class Networking {
 					print(errorJson)
 				#endif
 				let error = NSError.init(domain: "cz.trashout", code: 500, userInfo: [
-					NSLocalizedDescriptionKey: "Unknown api error".localized
+					NSLocalizedDescriptionKey: "global.error.api.text".localized
 					])
 				callback(nil, error as Error)
 				return
@@ -308,7 +318,7 @@ class Networking {
 					print(errorJson)
 					#endif
 					let error = NSError.init(domain: "cz.trashout", code: 500, userInfo: [
-						NSLocalizedDescriptionKey: "Unknown api error".localized
+						NSLocalizedDescriptionKey: "global.error.api.text".localized
 						])
 					callback(nil, error as Error)
 					return

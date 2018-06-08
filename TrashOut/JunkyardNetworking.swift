@@ -44,6 +44,11 @@ extension Networking {
      ```
      */
     func junkyard(_ id: Int, callback: @escaping (Junkyard?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
 		UserManager.instance.tokenHeader { tokenHeader in
 			Networking.manager.request("\(self.apiBaseUrl)/collection-point/\(id)", headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(withId: id, response: response, callback: callback)
@@ -60,6 +65,11 @@ extension Networking {
      ```
      */
     func junkyards(position: CLLocationCoordinate2D, size: String?, type: [String]?, page: Int, callback: @escaping ([Junkyard]?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         let cacheKey = "junkyard/"
         // TODO: add parameters also to cache KEY, ignore location
 
@@ -82,6 +92,11 @@ extension Networking {
     }
 
 	func junkyardReportSpam(_ junkyard: Junkyard, callback: @escaping (Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
 		params["collectionPointActivityId"] = junkyard.activityId
 		UserManager.instance.tokenHeader { (tokenHeader) in

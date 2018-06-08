@@ -79,3 +79,21 @@ extension NSError {
         return NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [NSLocalizedDescriptionKey: "user.validation.noFirebaseUser".localized])
     }
 }
+
+
+// MARK: - Networking error
+
+enum NetworkingError: Error {
+    case noInternetConnection
+    case apiError
+}
+
+// MARK: - Localized extension of networking error
+extension NetworkingError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .noInternetConnection: return "global.internet.offline".localized
+        case .apiError: return "global.error.api.text".localized
+        }
+    }
+}

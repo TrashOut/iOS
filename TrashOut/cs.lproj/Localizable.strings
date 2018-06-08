@@ -90,6 +90,8 @@
 "global.allow" = "Povolit";
 "trash.loadingTrashMap" = "Načítavam TrashMap...";
 "user.username" = "Uživatelské jméno";
+"global.internet.offline"="Zařízení není připojeno do internetu, prosím zkontrolujte nastavení.";
+"global.error.api.text"="Aktuálně požadovanou informaci nelze zobrazit, prosím zkuste aktivitu opakovat později, děkujeme.";
 
 /*Fuzzy*/
 "profile.wrongPassword" = "Jejda zadali jste nesprávné heslo.";

@@ -45,6 +45,11 @@ extension Networking {
 	```
 	*/
 	func events(position: CLLocationCoordinate2D, limit: Int, callback: @escaping ([Event]?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
 		var params: Parameters = [:]
 		let date = try! Date().atTime(hour: 0, minute: 0, second: 0)
 		let end = date.addDays(daysToAdd: 8)
@@ -71,6 +76,11 @@ extension Networking {
      ```
      */
     func event(_ id: Int, callback: @escaping (Event?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         UserManager.instance.tokenHeader { tokenHeader in
             Networking.manager.request("\(self.apiBaseUrl)/event/\(id)", headers: tokenHeader).responseJSON { [weak self] (response) in
                 self?.callbackHandler(withId: id, response: response, callback: callback)
@@ -82,6 +92,11 @@ extension Networking {
     User joined cleaning event
     */
     func userJoinedEvent(_ eventId: Int, userId: Int, callback: @escaping (Trash?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
         params["userIds"] = userId
 		UserManager.instance.tokenHeader { tokenHeader in
@@ -97,6 +112,11 @@ extension Networking {
 	- Note: doesnt returns event nor trash
     */
     func createEvent(_ name: String, gps: Coordinates, description: String, start: String, duration: Int, bring: String, have: String, contact: Contact, trashPointsId: [Int]?, collectionPointIds: [Int], callback: @escaping (Trash?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
         params["name"] = name
         params["gps"] = ["lat": gps.lat, "long": gps.long, "accuracy": gps.accuracy, "source": gps.source]

@@ -215,6 +215,7 @@ class UserManager {
 				callback(nil, error)
 				return
 			}
+            
             Networking.instance.userMe { (user, error) in
                 guard error == nil else {
                     callback(nil, error)
@@ -226,7 +227,7 @@ class UserManager {
                 }
                 self?.user = user
                 callback(user, error)
-                }
+            }
 
             self?.isLoggedIn = self?.isAnonymous == false
 		}

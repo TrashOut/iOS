@@ -34,7 +34,12 @@ import Foundation
 import Alamofire
 
 extension Networking {
-    public func registerDevice(tokenFCM: String, language: String, deviceId: String, completion: @escaping (User?, Error?) -> Void) {
+    public func registerDevice(tokenFCM: String, language: String, deviceId: String, callback: @escaping (User?, Error?) -> Void) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         let parameters: Parameters = [
             "tokenFCM": tokenFCM,
             "language": language,
@@ -47,12 +52,17 @@ extension Networking {
             guard let apiBaseUrl = self?.apiBaseUrl else { return }
             
             Networking.manager.request("\(apiBaseUrl)/user/devices", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
-                self?.callbackHandler(response: response, callback: completion)
+                self?.callbackHandler(response: response, callback: callback)
             }
         }
     }
     
-    public func unregisterDevice(tokenFCM: String, completion: @escaping (Bool?, Error?) -> Void) {
+    public func unregisterDevice(tokenFCM: String, callback: @escaping (Bool?, Error?) -> Void) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         let parameters: Parameters = [
             "tokenFCM": tokenFCM
         ]

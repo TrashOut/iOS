@@ -127,6 +127,11 @@ extension Networking {
 	```
 	*/
 	func trash(_ id: Int, callback: @escaping (Trash?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
 		var params: Parameters = [:]
         //let testId = 31516
 		params["attributesNeeded"] = ["id", "accessibility", "anonymous", "cleanedByMe", "created", "activityCreated" , "events", "gps", "images", "note", "size", "status", "types", "updateHistory", "updateNeeded", "url", "userInfo"].joined(separator: ",")
@@ -146,6 +151,11 @@ extension Networking {
 	```
 	*/
     func trashes(position: CLLocationCoordinate2D, status: [String]?, size: String?, type: [String]?, timeTo: String?, timeFrom: String?, limit: Int, page: Int, callback: @escaping ([Trash]?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
 		let cacheKey = "trash/"
 		// TODO: add parameters also to cache KEY, ignore location
 		let positionString = "\(position.latitude),\(position.longitude)"
@@ -168,6 +178,11 @@ extension Networking {
     }
 
 	func trashes(position: CLLocationCoordinate2D, filter: TrashFilter, limit: Int, page: Int, callback: @escaping ([Trash]?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
 		let cacheKey = "trash/"
 		// TODO: add parameters also to cache KEY, ignore location
 		let positionString = "\(position.latitude),\(position.longitude)"
@@ -190,6 +205,11 @@ extension Networking {
 	Get trash list in position with given distance
 	*/
 	func trashes(position: CLLocationCoordinate2D, area: CLLocationDistance, filter: TrashFilter?, limit: Int, page: Int, callback: @escaping ([Trash]?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
 		let cacheKey = "trash/"
 		// TODO: add parameters also to cache KEY, ignore location
 		let positionString = "\(position.latitude),\(position.longitude)"
@@ -219,6 +239,11 @@ extension Networking {
 	```
 	*/
 	func trashesCount(position: CLLocationCoordinate2D, distance: CLLocationDistance, callback: @escaping (Int?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         let positionString = "\(position.latitude),\(position.longitude)"
         var params: Parameters = [:]
 		let area = LocationManager.manager.area(around: position, withDistance: distance/1000)
@@ -247,6 +272,11 @@ extension Networking {
 	```
 	*/
 	func trashesCount(area: Area?, status: [String], callback: @escaping (Int?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
 		var params: Parameters = [:]
 		if let area = area {
 			params["geoArea" + area.type.rawValue.uppercaseFirst] = area.typeValue
@@ -272,6 +302,11 @@ extension Networking {
     User creates trash
     */
     func createTrash(_ images: [DumpsImages], gps: Coordinates, size: String, type: [String], note: String?, anonymous: Bool, userId: Int, accessibility: DumpsAccessibility, callback: @escaping (Trash?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
 
         var image = [Parameters]()
@@ -298,6 +333,11 @@ extension Networking {
     User updates trash
     */
     func updateTrash(_ trashId: Int, images: [DumpsImages], gps: Coordinates, size: String, type: [String], note: String?, anonymous: Bool, userId: Int, accessibility: DumpsAccessibility, status: String, cleanedByMe: Bool, callback: @escaping (Trash?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
         var image = [Parameters]()
         for i in 0...images.count - 1 {
@@ -324,6 +364,11 @@ extension Networking {
     Send report about dumps spam
     */
     func reportSpam(_ trashId: Int, userId: Int, callback: @escaping (Trash?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
         params["trashPointActivityId"] = trashId
         //params["userId"] = userId
@@ -340,6 +385,11 @@ extension Networking {
 	Doesn't cache content, should implement cache in higher level
 	*/
 	func zoompoints(geocells: [String], zoom: Int, filter: TrashFilter, callback: @escaping ([GeoCell]?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
         params["zoomLevel"] = zoom
         params["geocells"] = geocells.joined(separator: ",")
@@ -358,6 +408,11 @@ extension Networking {
 	Doesn't cache content, should implement cache in higher level
 	*/
 	func trashes(for geocells: [String], zoomLevel: Int, filter: TrashFilter, callback: @escaping ([TrashPoint]?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
         var params: Parameters = [:]
 		params["zoomLevel"] = zoomLevel
         params["geocells"] = geocells.joined(separator: ",")

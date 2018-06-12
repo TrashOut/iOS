@@ -7,34 +7,34 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>584020156812-cv7sou0skitojsipd53oh262ha9rvert.apps.googleusercontent.com</string>
+	<string>334582908295-obpfhla9089r2dt1g6tm6bkc6mel7o1j.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.584020156812-cv7sou0skitojsipd53oh262ha9rvert</string>
+	<string>com.googleusercontent.apps.334582908295-obpfhla9089r2dt1g6tm6bkc6mel7o1j</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAct5I4M2tQAyRmcPhu-ksHNRw4hrcHCK0</string>
+	<string>AIzaSyAiz66CvnZ39UhLaJL8TL82C5i_WjDPX4A</string>
 	<key>GCM_SENDER_ID</key>
-	<string>584020156812</string>
+	<string>334582908295</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>cz.trashout.Trashout-Stage</string>
 	<key>PROJECT_ID</key>
-	<string>trashoutngo-dev</string>
+	<string>trashoutngo-stage</string>
 	<key>STORAGE_BUCKET</key>
-	<string>trashoutngo-dev.appspot.com</string>
+	<string>trashoutngo-stage.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:584020156812:ios:65f8be481401fa34</string>
+	<string>1:334582908295:ios:65f8be481401fa34</string>
 	<key>DATABASE_URL</key>
-	<string>https://trashoutngo-dev.firebaseio.com</string>
+	<string>https://trashoutngo-stage.firebaseio.com</string>
 </dict>
 </plist>

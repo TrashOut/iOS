@@ -93,10 +93,7 @@ class EventLocationViewController: ViewController, MKMapViewDelegate {
         map.setRegion(region, animated: true)
     }
 
-    @IBAction func activateSearch(_ sender: Any) {
-        let breakpoint = { print("") }
-        breakpoint()
-        
+    @IBAction func activateSearch(_ sender: Any) {        
 		guard Reachability.isConnectedToNetwork() else {
 			let ac = UIAlertController(title: "Error".localized, message: "global.noInternetConnection".localized, preferredStyle: .alert)
 			ac.addAction(UIAlertAction(title: "global.ok".localized, style: .cancel, handler: nil))

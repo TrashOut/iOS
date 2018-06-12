@@ -97,6 +97,7 @@ class UserManager {
 			}
 		} else {
             self.loadDBMe() { [unowned self] (user, error) in
+                
                 guard user != nil else {
                     self.createDBUser(user: User()) { [unowned self] (user, error) in
                         guard let user = user, error == nil else {
@@ -121,10 +122,15 @@ class UserManager {
     */
 	func tokenHeader(_ callback: @escaping (HTTPHeaders)->()) {
 		firAuth.token { (token, error) in
-			guard let token = token, error == nil else {
+            guard let token = token, error == nil else {
 				callback([:])
 				return
 			}
+            
+            #if DEBUG
+                print("HEADERS: \(token)")
+            #endif
+            
 			let headers: HTTPHeaders = ["X-Token": token]
 			callback(headers)
 		}
@@ -168,11 +174,13 @@ class UserManager {
 	Create user in db (api)
 	*/
 	func createDBUser (user: User, callback: @escaping (User?, Error?) -> ()) {
+        
 		guard let uid = firAuth.uid() else {
 			callback(nil, NSError.firUid)
 			return
 		}
 		Networking.instance.createUser(user: user, uid: uid) { (user, error) in
+            
 			guard let user = user, error == nil else {
 				callback(nil, error)
 				return

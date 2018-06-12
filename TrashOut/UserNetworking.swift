@@ -49,7 +49,7 @@ extension Networking {
         }
         
 		UserManager.instance.tokenHeader { tokenHeader in
-			Networking.manager.request("\(self.apiBaseUrl)/user/\(id)", headers: tokenHeader).responseJSON { [weak self] (response) in
+			Alamofire.request("\(self.apiBaseUrl)/user/\(id)", headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, callback: callback)
 			}
 		}
@@ -61,8 +61,8 @@ extension Networking {
             return
         }
         
-		UserManager.instance.tokenHeader { tokenHeader in
-			Networking.manager.request("\(self.apiBaseUrl)/user/me", headers: tokenHeader).responseJSON { [weak self] (response) in
+		UserManager.instance.tokenHeader { tokenHeader in            
+			Alamofire.request("\(self.apiBaseUrl)/user/me", headers: tokenHeader).responseJSON { [weak self] (response) in
 				if let code = response.response?.statusCode, (400..<405).contains(code) {
 					let error = NSError.init(domain: "cz.trashout.auth", code: 404, userInfo: [
 						NSLocalizedDescriptionKey: "User not found"
@@ -120,7 +120,7 @@ extension Networking {
 		params["userRoleId"] = 1
 
 		UserManager.instance.tokenHeader { tokenHeader in
-			Networking.manager.request("\(self.apiBaseUrl)/user", method: .post, parameters: params, headers: tokenHeader).responseJSON { [weak self] (response) in
+			Alamofire.request("\(self.apiBaseUrl)/user", method: .post, parameters: params, headers: tokenHeader).responseJSON { [weak self] (response) in
 
                 self?.callbackHandler(response: response, callback: callback)
 			}
@@ -191,7 +191,7 @@ extension Networking {
 
 				UserManager.instance.tokenHeader { tokenHeader in
 					guard let base = self?.apiBaseUrl else { return }
-					let req = Networking.manager.request("\(base)/user/\(id)", method: .put, parameters: params, headers: tokenHeader)
+					let req = Alamofire.request("\(base)/user/\(id)", method: .put, parameters: params, headers: tokenHeader)
 					print(req.debugDescription)
 					req.responseJSON { [weak self] (response) in
 						self?.callbackHandler(response: response, callback: callback)
@@ -211,7 +211,7 @@ extension Networking {
         }
         
 		UserManager.instance.tokenHeader { tokenHeader in
-			Networking.manager.request("\(self.apiBaseUrl)/organization/", headers: tokenHeader).responseJSON { [weak self] (response) in
+			Alamofire.request("\(self.apiBaseUrl)/organization/", headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, callback: callback)
 			}
 		}
@@ -290,7 +290,7 @@ extension Networking {
 				callback(response.result.error)
 			}
             */
-            Networking.manager.request("\(self.apiBaseUrl)/user/joinOrganization/\(organizationId)", method: .post, parameters: nil, headers: tokenHeader).responseJSON { (response) in
+            Alamofire.request("\(self.apiBaseUrl)/user/joinOrganization/\(organizationId)", method: .post, parameters: nil, headers: tokenHeader).responseJSON { (response) in
                 callback(response.result.error)
             }
 		}
@@ -313,7 +313,7 @@ extension Networking {
 				callback(response.result.error)
 			}
             */
-            Networking.manager.request("\(self.apiBaseUrl)/user/leaveOrganization/\(organizationId)", method: .delete, parameters: nil, headers: tokenHeader).responseJSON { (response) in
+            Alamofire.request("\(self.apiBaseUrl)/user/leaveOrganization/\(organizationId)", method: .delete, parameters: nil, headers: tokenHeader).responseJSON { (response) in
                 callback(response.result.error)
             }
 		}
@@ -338,7 +338,7 @@ extension Networking {
 		params["page"] = page
 		params["limit"] = limit
 		UserManager.instance.tokenHeader { tokenHeader in
-			Networking.manager.request("\(self.apiBaseUrl)/user/\(user)/activity", parameters: params, headers: tokenHeader).responseJSON { [weak self] (response) in
+			Alamofire.request("\(self.apiBaseUrl)/user/\(user)/activity", parameters: params, headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, callback: callback)
 			}
 		}
@@ -356,7 +356,7 @@ extension Networking {
         params["page"] = page
         params["limit"] = limit
         UserManager.instance.tokenHeader { tokenHeader in
-            Networking.manager.request("\(self.apiBaseUrl)/user/\(user)/userActivity", parameters: params, headers: tokenHeader).responseJSON { [weak self] (response) in
+            Alamofire.request("\(self.apiBaseUrl)/user/\(user)/userActivity", parameters: params, headers: tokenHeader).responseJSON { [weak self] (response) in
                 self?.callbackHandler(response: response, callback: callback)
             }
         }
@@ -371,7 +371,7 @@ extension Networking {
 		var params: Parameters = [:]
 		params["areaId"] = area.id
 		UserManager.instance.tokenHeader { tokenHeader in
-			Networking.manager.request("\(self.apiBaseUrl)/user/\(user)/userHasArea", method: .post, parameters: params, headers: tokenHeader).responseJSON {  (response) in
+			Alamofire.request("\(self.apiBaseUrl)/user/\(user)/userHasArea", method: .post, parameters: params, headers: tokenHeader).responseJSON {  (response) in
 				callback(response.result.error)
 			}
 		}

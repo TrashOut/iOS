@@ -64,31 +64,6 @@ class Networking {
 	static var instance: Networking = {
 		return Networking()
 	} ()
-
-    internal static var manager: Alamofire.SessionManager = {
-        
-        // Create the server trust policies
-        let serverTrustPolicies: [String: ServerTrustPolicy] = [
-//            "dev-api.trashout.ngo": .pinCertificates(
-//                certificates: ServerTrustPolicy.certificates(in: Bundle.main),
-//                validateCertificateChain: true,
-//                validateHost: true),
-            "dev-api.trashout.ngo": .disableEvaluation,
-            "api.trashout.ngo": .disableEvaluation
-        ]
-        
-        // Create custom manager
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
-        configuration.timeoutIntervalForRequest = 10
-        
-        let manager = Alamofire.SessionManager(
-                        configuration: configuration,
-                        serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-        )
-        
-        return manager
-    }()
     
     /// Is device connected to Internet
     internal static var isConnectedToInternet: Bool {
@@ -97,8 +72,7 @@ class Networking {
     
 	init() {
 		setupCache()
-		// Alamofire.SessionManager.default.session.configuration.timeoutIntervalForRequest = 10
-
+		Alamofire.SessionManager.default.session.configuration.timeoutIntervalForRequest = 10
 	}
 
 	// MARK: - Helpers

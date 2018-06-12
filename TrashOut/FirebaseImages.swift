@@ -157,7 +157,7 @@ class FirebaseImages {
             return
         }
 		UserManager.instance.tokenHeader { tokenHeader in
-			Networking.manager.request(url, headers: tokenHeader).responseData(queue: .main) { [weak self] (response) in
+			Alamofire.request(url, headers: tokenHeader).responseData(queue: .main) { [weak self] (response) in
 				guard response.result.isSuccess else {
 					guard let error = response.result.error else { return }
 					callback(nil, error)

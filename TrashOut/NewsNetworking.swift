@@ -54,7 +54,7 @@ extension Networking {
         params["page"] = page
         params["orderBy"] = "-created"
 		UserManager.instance.tokenHeader { tokenHeader in
-			Networking.manager.request("\(self.apiBaseUrl)/prContent", method: .get, parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { (response) in
+			Alamofire.request("\(self.apiBaseUrl)/prContent", method: .get, parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { (response) in
 				self.callbackHandler(response: response, callback: callback)
 			}
 		}
@@ -67,7 +67,7 @@ extension Networking {
         }
         
 		UserManager.instance.tokenHeader { tokenHeader in
-			Networking.manager.request("\(self.apiBaseUrl)/prContent/\(id)", headers: tokenHeader).responseJSON { (response) in
+			Alamofire.request("\(self.apiBaseUrl)/prContent/\(id)", headers: tokenHeader).responseJSON { (response) in
 				self.callbackHandler(response: response, callback: callback)
 			}
 		}

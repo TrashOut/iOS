@@ -54,7 +54,7 @@ extension Networking {
         }
         params["type"] = type.rawValue
             UserManager.instance.tokenHeader { tokenHeader in
-                Networking.manager.request("\(self.apiBaseUrl)/area",  parameters: params, headers: tokenHeader).responseJSON { response in
+                Alamofire.request("\(self.apiBaseUrl)/area",  parameters: params, headers: tokenHeader).responseJSON { response in
                 self.callbackHandler(response: response, callback: callback)
             }
         }

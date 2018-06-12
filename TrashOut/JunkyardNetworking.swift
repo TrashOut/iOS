@@ -50,7 +50,7 @@ extension Networking {
         }
         
 		UserManager.instance.tokenHeader { tokenHeader in
-			Networking.manager.request("\(self.apiBaseUrl)/collection-point/\(id)", headers: tokenHeader).responseJSON { [weak self] (response) in
+			Alamofire.request("\(self.apiBaseUrl)/collection-point/\(id)", headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(withId: id, response: response, callback: callback)
 			}
 		}
@@ -85,7 +85,7 @@ extension Networking {
         params["limit"] = 20
         params["page"] = page
 		UserManager.instance.tokenHeader { tokenHeader in
-			Networking.manager.request("\(self.apiBaseUrl)/collection-point/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
+			Alamofire.request("\(self.apiBaseUrl)/collection-point/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, cacheKey: cacheKey, callback: callback)
 			}
 		}
@@ -100,7 +100,7 @@ extension Networking {
         var params: Parameters = [:]
 		params["collectionPointActivityId"] = junkyard.activityId
 		UserManager.instance.tokenHeader { (tokenHeader) in
-			Networking.manager.request("\(self.apiBaseUrl)/spam/collection-point/", method: .post, parameters: params, headers: tokenHeader).responseJSON(completionHandler: { (response) in
+			Alamofire.request("\(self.apiBaseUrl)/spam/collection-point/", method: .post, parameters: params, headers: tokenHeader).responseJSON(completionHandler: { (response) in
 				callback(response.result.error)
 			})
 		}

@@ -285,7 +285,6 @@
 		CFBC999420C6D38C009E5D7F /* UniqueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC999220C6D2B5009E5D7F /* UniqueIdentifier.swift */; };
 		CFBC999520C6D391009E5D7F /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC999020C6A5CF009E5D7F /* NotificationsManager.swift */; };
 		CFBC999620C6D399009E5D7F /* NotificationsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7D8C9020C683F600F66F4C /* NotificationsNetworking.swift */; };
-		CFBC999920C95CA1009E5D7F /* LITHIO.crt in Resources */ = {isa = PBXBuildFile; fileRef = CFBC999820C95CA1009E5D7F /* LITHIO.crt */; };
 		FC384A741DDCD0EF0073E955 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC384A731DDCD0EF0073E955 /* Date.swift */; };
 		FC3E0E6D1DDE01BE006F1D31 /* JunkyardDetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3E0E6C1DDE01BE006F1D31 /* JunkyardDetViewController.swift */; };
 		FC3E0E6F1DDE7307006F1D31 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC3E0E6E1DDE7307006F1D31 /* Event.storyboard */; };
@@ -491,7 +490,6 @@
 		CF7D8C9020C683F600F66F4C /* NotificationsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsNetworking.swift; sourceTree = "<group>"; };
 		CFBC999020C6A5CF009E5D7F /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		CFBC999220C6D2B5009E5D7F /* UniqueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueIdentifier.swift; sourceTree = "<group>"; };
-		CFBC999820C95CA1009E5D7F /* LITHIO.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LITHIO.crt; sourceTree = "<group>"; };
 		EE400CD089F704AF7920E66F /* Pods-TrashOut-Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.release.xcconfig"; sourceTree = "<group>"; };
 		EF32383FA9DCC24A0FB7DE0C /* Pods-TrashOutTests.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutTests.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests.hockeyapp.xcconfig"; sourceTree = "<group>"; };
 		FC250F731DE5C1E3001C00B8 /* ReportCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCameraViewController.swift; sourceTree = "<group>"; };
@@ -825,7 +823,6 @@
 		C3A3B2721DA7AC7D0099D1C2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				CFBC999A20CA7B76009E5D7F /* Certificates */,
 				C3A3B2731DA7AC8F0099D1C2 /* Networking.swift */,
 				C3A3B27B1DA7B7440099D1C2 /* UserNetworking.swift */,
 				C3DDE0201DAB925C00CB088E /* TrashNetworking.swift */,
@@ -976,14 +973,6 @@
 				C3E226711E54741E00780D63 /* DashboardActivityViewController.swift */,
 			);
 			name = Dashboard;
-			sourceTree = "<group>";
-		};
-		CFBC999A20CA7B76009E5D7F /* Certificates */ = {
-			isa = PBXGroup;
-			children = (
-				CFBC999820C95CA1009E5D7F /* LITHIO.crt */,
-			);
-			name = Certificates;
 			sourceTree = "<group>";
 		};
 		DC4DFFD14211A5E6538D324E /* Frameworks */ = {
@@ -1195,7 +1184,6 @@
 				C3014DCA1DAE5E3F00FD7CFE /* Localizable.strings in Resources */,
 				FC5FA30A1DEC7BF90000C711 /* Assets.xcassets in Resources */,
 				C37880E51DB0F93100BFDD2A /* Report.storyboard in Resources */,
-				CFBC999920C95CA1009E5D7F /* LITHIO.crt in Resources */,
 				FC3E0E6F1DDE7307006F1D31 /* Event.storyboard in Resources */,
 				C351E5AF1DBF53EF004BF32F /* zoompoints.json in Resources */,
 				C32F8D671DED97EC0009A5C4 /* FormRow.xib in Resources */,

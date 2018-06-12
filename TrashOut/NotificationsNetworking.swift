@@ -47,11 +47,9 @@ extension Networking {
         ]
         
         UserManager.instance.tokenHeader { [weak self] (tokenHeader) in
-            print("HEADERS: \(tokenHeader)")
-            
             guard let apiBaseUrl = self?.apiBaseUrl else { return }
             
-            Networking.manager.request("\(apiBaseUrl)/user/devices", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
+            Alamofire.request("\(apiBaseUrl)/user/devices", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
                 self?.callbackHandler(response: response, callback: callback)
             }
         }
@@ -70,7 +68,7 @@ extension Networking {
         UserManager.instance.tokenHeader { [weak self] (tokenHeader) in
             guard let apiBaseUrl = self?.apiBaseUrl else { return }
             
-            Networking.manager.request("\(apiBaseUrl)/user/devices", method: .delete, parameters: parameters, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
+            Alamofire.request("\(apiBaseUrl)/user/devices", method: .delete, parameters: parameters, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
                 // self?.callbackHandler(response: response, callback: completion)
             }
         }

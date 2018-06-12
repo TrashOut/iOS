@@ -59,7 +59,8 @@ class FirebaseAuthentificator {
 				completion()
 				return
 			}
-			completion()
+            
+            completion()
 		})
 	}
 

@@ -1,7 +1,7 @@
 PODS:
-  - Alamofire (4.7.2)
-  - AlamofireImage (3.3.1):
-    - Alamofire (~> 4.5)
+  - Alamofire (4.0.1)
+  - AlamofireImage (3.1.0):
+    - Alamofire (~> 4.0)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -92,7 +92,7 @@ PODS:
   - SwiftDate (4.0.14)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (= 4.0.1)
   - AlamofireImage
   - Cache (= 2.2.2)
   - Charts (= 3.0.1)
@@ -137,8 +137,8 @@ SPEC REPOS:
     - SwiftDate
 
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Cache: b00196618af3facf17986fadda228cc77b5a5a10
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
@@ -164,6 +164,6 @@ SPEC CHECKSUMS:
   Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
   SwiftDate: 4ef029fd3117cc287fe642658b9aca2217628976
 
-PODFILE CHECKSUM: 6896b8c0706d67b58f70a4e01c33ee17955a4c67
+PODFILE CHECKSUM: c799805f7831bf5b855b60e243c28c4d6906fd5f
 
 COCOAPODS: 1.5.3

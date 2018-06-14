@@ -277,6 +277,8 @@
 		C3FF4FAC1E5353CB005D5530 /* AutoSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FF4FAB1E5353CB005D5530 /* AutoSizingTableView.swift */; };
 		CF3B780320C0584A00E4D0CE /* EventContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B780220C0584A00E4D0CE /* EventContactModel.swift */; };
 		CF3B780420C05A8F00E4D0CE /* EventContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B780220C0584A00E4D0CE /* EventContactModel.swift */; };
+		CF3DDE2A20D1079F00A93A87 /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DDE2920D1079F00A93A87 /* NotificationData.swift */; };
+		CF3DDE2B20D1288B00A93A87 /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DDE2920D1079F00A93A87 /* NotificationData.swift */; };
 		CF7D8C8D20C56AC800F66F4C /* Pods_TrashOut_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7D8C8C20C56AC800F66F4C /* Pods_TrashOut_Prod.framework */; };
 		CF7D8C8F20C56ACF00F66F4C /* Pods_TrashOut_Stage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7D8C8E20C56ACF00F66F4C /* Pods_TrashOut_Stage.framework */; };
 		CF7D8C9120C683F600F66F4C /* NotificationsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7D8C9020C683F600F66F4C /* NotificationsNetworking.swift */; };
@@ -485,6 +487,7 @@
 		C3FF4FAB1E5353CB005D5530 /* AutoSizingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSizingTableView.swift; sourceTree = "<group>"; };
 		CD8A07923A4098B43E68457E /* Pods-TrashOut-Stage.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Stage.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage.hockeyapp.xcconfig"; sourceTree = "<group>"; };
 		CF3B780220C0584A00E4D0CE /* EventContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContactModel.swift; sourceTree = "<group>"; };
+		CF3DDE2920D1079F00A93A87 /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
 		CF7D8C8C20C56AC800F66F4C /* Pods_TrashOut_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_TrashOut_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7D8C8E20C56ACF00F66F4C /* Pods_TrashOut_Stage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_TrashOut_Stage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7D8C9020C683F600F66F4C /* NotificationsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsNetworking.swift; sourceTree = "<group>"; };
@@ -639,6 +642,7 @@
 		C30044361DAFC94C00709DDC /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				CF3DDE2820D1070400A93A87 /* Notifications */,
 				C30044371DAFC96200709DDC /* Location.swift */,
 				C32F8D5A1DED8E9B0009A5C4 /* UserManager.swift */,
 				C37519FA1E38C482001F61AB /* UserManager+Facebook.swift */,
@@ -647,7 +651,6 @@
 				C3874BE11E55BD1700C94719 /* Statistics.swift */,
 				C3F0F90E1E5B3C5E0024DCDD /* EventManager.swift */,
 				C38960CC1E5C8FD600EA6D87 /* PhotoManager.swift */,
-				CFBC999020C6A5CF009E5D7F /* NotificationsManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -973,6 +976,15 @@
 				C3E226711E54741E00780D63 /* DashboardActivityViewController.swift */,
 			);
 			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		CF3DDE2820D1070400A93A87 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				CFBC999020C6A5CF009E5D7F /* NotificationsManager.swift */,
+				CF3DDE2920D1079F00A93A87 /* NotificationData.swift */,
+			);
+			name = Notifications;
 			sourceTree = "<group>";
 		};
 		DC4DFFD14211A5E6538D324E /* Frameworks */ = {
@@ -1642,6 +1654,7 @@
 				8E2A1B3B202236E800C1AC70 /* ActivityListViewController.swift in Sources */,
 				8E2A1B3C202236E800C1AC70 /* MapAnnotation.swift in Sources */,
 				8E2A1B3D202236E800C1AC70 /* DumpsViewController.swift in Sources */,
+				CF3DDE2B20D1288B00A93A87 /* NotificationData.swift in Sources */,
 				8E2A1B3E202236E800C1AC70 /* TutorialModel.swift in Sources */,
 				8E2A1B3F202236E800C1AC70 /* EventSearchTableController.swift in Sources */,
 				8E2A1B40202236E800C1AC70 /* InfoViewController.swift in Sources */,
@@ -1776,6 +1789,7 @@
 				C3A617741DB900710092BF32 /* MapAnnotation.swift in Sources */,
 				C3DDE0161DAB82A200CB088E /* DumpsViewController.swift in Sources */,
 				C3711D9C1E8C0E7100A84B3A /* TutorialModel.swift in Sources */,
+				CF3DDE2A20D1079F00A93A87 /* NotificationData.swift in Sources */,
 				FC3E0E751DDEF288006F1D31 /* EventSearchTableController.swift in Sources */,
 				FCD73A011DF6E93C00E7EF7D /* InfoViewController.swift in Sources */,
 				C3A617721DB8F1CC0092BF32 /* TrashMapAnnotation.swift in Sources */,

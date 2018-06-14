@@ -66,6 +66,8 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
 		if signIn {
 			self.selectedIndex = 4
 		}
+        
+        openDashboard()
 	}
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
@@ -89,14 +91,21 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
 		self.viewControllers?[4].title = "global.login".localized
 	}
 
-    func openDashboard(refresh:Bool = false) {
+    func openDashboard(refresh:Bool = false, completion: ((UINavigationController) -> Void)? = nil) {
         guard let nc = self.viewControllers?[0] as? UINavigationController else { return }
         nc.popToRootViewController(animated: false)
         self.selectedIndex = 0
+        
+        guard let db = nc.viewControllers[0] as? DashboardViewController else { return }
+        db.dataDidLoadHandler = { [weak self] in
+            self?.coordinateAfterReceiveNotification()
+        }
+        
         if refresh == true {
-            guard let db = nc.viewControllers[0] as? DashboardViewController else { return }
             db.loadData(reload: true)
         }
+        
+        completion?(nc)
     }
     
 
@@ -128,7 +137,32 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
 			guard let root = vc.viewControllers.first else { return }
 			completion(root)
 		}
-
 	}
+}
 
+extension TabbarViewController {
+    func coordinateAfterReceiveNotification() {
+        
+        // Show detail if needed
+        if case let .pushNotification(data)? = NotificationsManager.AppOpen.shared.mode {
+            NotificationsManager.handleNotificationData(data) { [weak self] notificationData in
+                if case .report = notificationData.type {
+                    switch notificationData.reportType! {
+                    case .event:
+                        NotificationsManager.showEventAfterReceiveNotification(tabBarController: self, id: notificationData.id)
+                        break
+                    case .news:
+                        NotificationsManager.showNewsAfterReceiveNotification(tabBarController: self, id: notificationData.id)
+                        break
+                    case .trash:
+                        NotificationsManager.showDumpsAfterReceiveNotification(tabBarController: self, id: notificationData.id)
+                        break
+                    }
+                }
+            }
+        }
+        
+        // Remove state for app open mode
+        NotificationsManager.AppOpen.shared.mode = nil
+    }
 }

@@ -34,7 +34,10 @@ import Foundation
 import Alamofire
 
 extension Networking {
-    public func registerDevice(tokenFCM: String, language: String, deviceId: String, callback: @escaping (User?, Error?) -> Void) {
+    public func registerUser(tokenFCM: String, language: String, deviceId: String, callback: @escaping (User?, Error?) -> Void) {
+        let breakpoint = { print("") }
+        breakpoint()
+        
         guard Networking.isConnectedToInternet else {
             callback(nil, NetworkingError.noInternetConnection)
             return
@@ -47,15 +50,22 @@ extension Networking {
         ]
         
         UserManager.instance.tokenHeader { [weak self] (tokenHeader) in
-            guard let apiBaseUrl = self?.apiBaseUrl else { return }
+            let breakpoint = { print("") }
+            breakpoint()
             
+            guard !tokenHeader.isEmpty else {
+                callback(nil, nil)
+                return
+            }
+            
+            guard let apiBaseUrl = self?.apiBaseUrl else { return }
             Alamofire.request("\(apiBaseUrl)/user/devices", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
                 self?.callbackHandler(response: response, callback: callback)
             }
         }
     }
     
-    public func unregisterDevice(tokenFCM: String, callback: @escaping (Bool?, Error?) -> Void) {
+    public func unregisterUser(tokenFCM: String, callback: @escaping (Bool?, Error?) -> Void) {
         guard Networking.isConnectedToInternet else {
             callback(nil, NetworkingError.noInternetConnection)
             return
@@ -68,8 +78,8 @@ extension Networking {
         UserManager.instance.tokenHeader { [weak self] (tokenHeader) in
             guard let apiBaseUrl = self?.apiBaseUrl else { return }
             
-            Alamofire.request("\(apiBaseUrl)/user/devices", method: .delete, parameters: parameters, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
-                // self?.callbackHandler(response: response, callback: completion)
+            Alamofire.request("\(apiBaseUrl)/user/devices", method: .delete, parameters: parameters, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { (response) in
+                callback(nil, nil)
             }
         }
     }

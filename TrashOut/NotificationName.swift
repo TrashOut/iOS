@@ -14,4 +14,5 @@ extension Notification.Name {
     static let userJoindedEvent = Notification.Name("userJoindedEvent")
     static let userLoggedIn = Notification.Name("userLoggedIn")
     static let userLoggedOut = Notification.Name("userLoggedOut")
+    static let receiveUserNotification = Notification.Name("kReceiveUserNotification")
 }

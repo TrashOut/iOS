@@ -50,7 +50,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FirebaseLocalization().update()
 		acceptInvalidSSLCerts()
         generateUniqueId()
-        registerNotifications(application: application)
+        
+        // Register messaging
+        Messaging.messaging().delegate = self
+        
+        // Check, which mode was used for lunching app
+        if let remoteNotification = launchOptions?[.remoteNotification] as? [AnyHashable : Any] {
+            NotificationsManager.AppOpen.shared.mode = .pushNotification(remoteNotification)
+        } else {
+            NotificationsManager.AppOpen.shared.mode = .normal
+        }
+        
 		return true
 	}
 
@@ -81,6 +91,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
 		TrashHunter.hunter?.application(application, didRegister: notificationSettings)
 	}
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        print("USER INFO: \(userInfo)")
+        
+        NotificationsManager.handleNotificationData(userInfo) { [weak self] notificationData in
+            let breakpoint = { print("") }
+            breakpoint()
+            
+            if case .report = notificationData.type {
+                if let reportType = notificationData.reportType {
+                    switch reportType {
+                    case .event:
+                        notificationData.actionHandler = { [weak self] in
+                            self?.showEventAfterReceiveNotification(id: notificationData.id)
+                        }
+                        
+                        break
+                        
+                    case .news:
+                        notificationData.actionHandler = { [weak self] in
+                            self?.showNewsAfterReceiveNotification(id: notificationData.id)
+                        }
+                        
+                        break
+                        
+                    case .trash:
+                        notificationData.actionHandler = { [weak self] in
+                            self?.showDumpsAfterReceiveNotification(id: notificationData.id)
+                        }
+                        
+                        break
+                    }
+                }
+                
+                if let rootViewController = (self?.window?.rootViewController as? UINavigationController)?.visibleViewController {
+                    NotificationsManager.showNotificationAlertController(overVC: rootViewController, notificationData: notificationData)
+                }
+            }
+        }
+    }
 
     /*
 	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -120,7 +170,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 					}
 				}
 			}
-			
+			 
 			return (disposition, credential)
 		}
 	}
@@ -140,11 +190,7 @@ extension AppDelegate {
 
 // MARK: - Notifications and messaging
 extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
-    fileprivate func registerNotifications(application: UIApplication) {
-        
-        // Register messaging
-        Messaging.messaging().delegate = self
-        
+    func registerNotifications(application: UIApplication) {
         // Register for User Notifications
         if #available(iOS 10.0, *) {
             
@@ -166,8 +212,33 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("FCM token: \(fcmToken)")
-        NotificationsManager.registerDevice(tokenFCM: fcmToken) { (error) in
+        
+        NotificationsManager.registerUser(tokenFCM: fcmToken) { (error) in
+            let breakpoint = { print("") }
+            breakpoint()
+            
             if let error = error { print(error.localizedDescription) }
         }
+    }
+}
+
+// MARK: - Navigation
+extension AppDelegate {
+    fileprivate var tabBarController: TabbarViewController? {
+        let rootViewController = self.window?.rootViewController as? UINavigationController
+        let tabBarController = rootViewController?.viewControllers.filter { $0 is TabbarViewController }.first as? TabbarViewController
+        return tabBarController
+    }
+    
+    fileprivate func showDumpsAfterReceiveNotification(id: Int?) {
+        NotificationsManager.showDumpsAfterReceiveNotification(tabBarController: tabBarController, id: id)
+    }
+    
+    fileprivate func showEventAfterReceiveNotification(id: Int?) {
+        NotificationsManager.showEventAfterReceiveNotification(tabBarController: tabBarController, id: id)
+    }
+    
+    fileprivate func showNewsAfterReceiveNotification(id: Int?) {
+        NotificationsManager.showNewsAfterReceiveNotification(tabBarController: tabBarController, id: id)
     }
 }

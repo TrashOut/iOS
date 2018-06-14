@@ -147,6 +147,8 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
         }
     }
 
+    var dataDidLoadHandler: (() -> Void)?
+    
     var junkyards: [Junkyard] = [] {
         didSet {
             updateNearestRecyclingPointsView()
@@ -265,7 +267,9 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
         
         self.registerForNotifcations()
         self.addPullToRefresh(into: scrollView)
-        self.loadData()
+        self.loadData { [weak self] in
+            self?.dataDidLoadHandler?()
+        }
 	}
     
 	override func viewDidLayoutSubviews() {
@@ -427,7 +431,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 	3. load junkyards
 	4. load events
 	*/
-    func loadData(reload: Bool = false) {
+    func loadData(reload: Bool = false, completion: (() -> Void)? = nil) {
 		if reload {
 			//self.refreshControl.beginRefreshing()
 		} else {
@@ -445,7 +449,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 			loadActivity,
 			loadNews,
 			loadStatistics,
-			{ [weak self] (completion, failure) in
+			{ [weak self] (_, failure) in
                 if reload {
                     DispatchQueue.main.async {
                         self?.scrollView.pullToRefreshView?.stopAnimating()
@@ -453,7 +457,9 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
                 } else {
                     LoadingView.hide()
                 }
-			}
+                
+                DispatchQueue.main.async { completion?() }
+            }
 			]) { [weak self] (error) in
                 self?.show(error: error)
                 if reload {
@@ -464,6 +470,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
                     LoadingView.hide()
                 }
                 self?.view.setNeedsLayout()
+                
         }
     }
 
@@ -799,7 +806,10 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
         NotificationCenter.default.removeObserver(self, name: .userLoggedIn, object: nil)
         NotificationCenter.default.removeObserver(self, name: .userLoggedOut, object: nil)
     }
-    
 }
 
-
+extension DashboardViewController {
+    @objc func showDetailViewControllerAfterReceiveUserNotificationHandler(sender: Notification) {
+        
+    }
+}

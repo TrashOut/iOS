@@ -165,6 +165,11 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 				return
 			}
 			self?.postSignUp()
+            
+            // Register notifications.
+            NotificationsManager.unregisterUser { error in
+                NotificationsManager.registerNotifications()
+            }
 		}
 	}
 
@@ -178,6 +183,11 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 			guard let user = UserManager.instance.user else { return }
 			print("Successful logged as \(user.email ?? "no email")")
 			self?.postSignUp()
+            
+            // Register notifications.
+            NotificationsManager.unregisterUser { error in
+                NotificationsManager.registerNotifications()
+            }
 		}
     }
 

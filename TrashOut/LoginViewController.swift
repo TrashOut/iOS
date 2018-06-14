@@ -131,9 +131,6 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 		let email = frEmail.textField.text!
 		let password = frPassword.textField.text!
 		UserManager.instance.login(email: email, password: password) { [weak self] (user, error) in
-            
-
-            
 			guard error == nil else {
 				print(error?.localizedDescription as Any)
                 self?.show(error: error!)
@@ -144,6 +141,12 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 				return
 			}
 			print("Successful logged as \(user.email ?? "no email")")
+            
+            // Register notifications.
+            NotificationsManager.unregisterUser { error in
+                NotificationsManager.registerNotifications()
+            }
+            
 			self?.postLogin()
 		}
 	}
@@ -158,6 +161,11 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 			guard let user = UserManager.instance.user else { return }
 			print("Successful logged as \(user.email ?? "no email")")
 			self?.postLogin()
+            
+            // Register notifications.
+            NotificationsManager.unregisterUser { error in
+                NotificationsManager.registerNotifications()
+            }
 		}
     }
 

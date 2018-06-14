@@ -291,8 +291,7 @@ class ProfileViewController: ViewController,
 			vLevel.backgroundColor = UIColor.init(rgba: colorRGB)
 		} else {
 			vLevel.constraint(for: .height)?.constant = 0
-		}
-
+        }
 	}
 
 	fileprivate func setupPoints(_ points: Int) {
@@ -327,7 +326,16 @@ class ProfileViewController: ViewController,
 	}
 
     func logout() {
-        UserManager.instance.logout()
+        UserManager.instance.logout {
+            
+            // Register notifications.
+            NotificationsManager.unregisterUser { error in
+                NotificationsManager.registerNotifications()
+            }
+        }
+        
+
+        
         guard let tabbarController = self.navigationController?.parent as? TabbarViewController else {return}
 
         UIView.transition(with: tabbarController.view, duration: 0.35, options: [.transitionCrossDissolve], animations: {

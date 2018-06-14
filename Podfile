@@ -4,7 +4,7 @@ use_frameworks!
 
 def common_pods_for_target
     # Networking
-    pod 'Alamofire', '4.0.1'
+    pod 'Alamofire'
     pod 'AlamofireImage'
     
     # Firebase SDK

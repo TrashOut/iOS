@@ -58,6 +58,9 @@ class TutorialLastPageViewController: ViewController {
             UserManager.instance.createAnonymousUser { [weak self] (user, error) in
                 guard let main = self?.main() else { return }
                 self?.changeRoot(viewController: main)
+                
+                // Register notifications.
+                NotificationsManager.registerNotifications()
             }
 		}
 	}
@@ -76,6 +79,9 @@ class TutorialLastPageViewController: ViewController {
 				guard let main = self?.main() else { return }
 				self?.changeRoot(viewController: main)
 			}
+            
+            // Register notifications.
+            NotificationsManager.registerNotifications()
 		}
 	}
 

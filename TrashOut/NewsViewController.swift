@@ -156,7 +156,7 @@ class NewsViewController: ViewController, UICollectionViewDelegate, UICollection
             }
         }
 
-		cell.lblTitle.text = article.title?.capitalized
+		cell.lblTitle.text = article.title
         if let plainAttributedText = article.plainAttributedContent {
             cell.lblInfo.attributedText = plainAttributedText
         }

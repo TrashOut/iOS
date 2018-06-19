@@ -105,16 +105,16 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
 		// Junkyard name
 		if let name = junkyard.name, let size = junkyard.size {
             if size == "dustbin" {
-                lblJunkyardName.text = "collectionPoint.size.recyclingBin".localized.capitalized
+                lblJunkyardName.text = "collectionPoint.size.recyclingBin".localized
             } else {
-                lblJunkyardName.text = name.capitalized
+                lblJunkyardName.text = name
             }
 		} else {
 			if let size = junkyard.size {
 				if size == "dustbin" {
-					lblJunkyardName.text = "collectionPoint.size.recyclingBin".localized.capitalized
+					lblJunkyardName.text = "collectionPoint.size.recyclingBin".localized
 				} else {
-					lblJunkyardName.text = "collectionPoint.size.recyclingCenter".localized.capitalized
+					lblJunkyardName.text = "collectionPoint.size.recyclingCenter".localized
 				}
 			}
 		}

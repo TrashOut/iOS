@@ -140,7 +140,7 @@ class NewsDetailViewController: ViewController, UICollectionViewDelegate, UIText
 	func fillData(_ article: Article) {
 
 		ivImage.image = UIImage(named: "No image wide")
-		lblTitle.text = article.title?.capitalized
+		lblTitle.text = article.title
 		if let date = article.published {
 			let df = DateFormatter()
 			df.timeStyle = .none

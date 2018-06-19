@@ -227,16 +227,16 @@ class JunkyardTableViewCell: UITableViewCell {
 		didSet {
 			guard let name = name else {
 				if size == "dustbin" {
-					lblJunkyardName.text = "collectionPoint.size.recyclingBin".localized.capitalized
+					lblJunkyardName.text = "collectionPoint.size.recyclingBin".localized
 				} else {
-					lblJunkyardName.text = "collectionPoint.size.recyclingCenter".localized.capitalized
+					lblJunkyardName.text = "collectionPoint.size.recyclingCenter".localized
 				}
 				return
 			}
             if size == "dustbin" {
-                lblJunkyardName.text = "collectionPoint.size.recyclingBin".localized.capitalized
+                lblJunkyardName.text = "collectionPoint.size.recyclingBin".localized
             } else {
-                lblJunkyardName.text = name.capitalized
+                lblJunkyardName.text = name
             }
 		}
 	}

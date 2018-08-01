@@ -105,7 +105,7 @@ class NotificationsManager {
         guard
             let token = tokenFCM ?? Messaging.messaging().fcmToken,
             let deviceId = UniqueIdentifier.identifier
-        else { fatalError() }
+        else { return }
         
         Networking.instance.registerUser(tokenFCM: token, language: currentLanguage, deviceId: deviceId) { (user, error) in
             let breakpoint = { print("") }
@@ -126,7 +126,7 @@ class NotificationsManager {
     ///   - tokenFCM: FCM token.
     ///   - completion: Completion handler.
     static func unregisterUser(tokenFCM: String? = nil, completion: @escaping (Error?) -> Void) {
-        guard let token = tokenFCM ?? Messaging.messaging().fcmToken else { fatalError() }
+        guard let token = tokenFCM ?? Messaging.messaging().fcmToken else { return }
         
         Networking.instance.unregisterUser(tokenFCM: token) { (_, error) in
             if error != nil {

@@ -341,6 +341,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
 
 				for photo in photos {
 					uploads.append({ [weak self] (completion, failure) in
+                        
 						guard let photoName = photo.uid, let data = photo.jpegData, let thumbnailData = photo.thumbnailJpegData else {
 							let error = NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [NSLocalizedDescriptionKey: "global.validation.unknownError".localized])
 							failure(error)
@@ -350,6 +351,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
 					})
 				}
 				uploads.append({ [weak self] (completion, failure) in
+                    
 					if self?.cleaned != nil {
 						if self?.cleaned == true {
 							self?.updateTrash(completion: completion, failure: failure)
@@ -361,6 +363,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
 					}
 				})
 				uploads.append({ [weak self] (completion, failure) in
+                    
                     if self?.cleaned != nil {
                         NotificationCenter.default.post(name: .userUpdatedTrash, object: nil)
                     } else {
@@ -378,7 +381,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     }
 
     func uploadImage(photoName: String, data: Data, thumbnailData:Data,  completion: @escaping ()->(), failure: @escaping (Error)->()) {
-        FirebaseImages.instance.uploadImage(photoName, data: data, thumbnailData: thumbnailData) { [weak self] (thumbnailUrl, thumbnailStorage , imageUrl, imageStorage, error) in
+        FirebaseImages.instance.uploadImage(photoName, data: data, thumbnailData: thumbnailData) { [weak self] (thumbnailUrl, thumbnailStorage , imageUrl, imageStorage, error) in            
 			guard error == nil else {
 				print(error?.localizedDescription as Any)
 				failure(error!)
@@ -416,6 +419,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     User creates a dump report
     */
     fileprivate func createTrash(completion: @escaping ()->(), failure: @escaping (Error)->()) {
+        
         accessibility = DumpsAccessibility.init(byCar: byCar, inCave: inCave, underWater: underWater, notForGeneralCleanup: notForGeneralCleanup)
 		for i in 0..<photosURL.count {
             let image = DumpsImages.init(thumbDownloadUrl: thumbsURL[i], thumbStorageLocation: thumbsStorage[i] ,fullDownloadUrl: photosURL[i], storageLocation: photosStorage[i])
@@ -445,6 +449,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     User updates a dump
     */
     fileprivate func updateTrash(completion: @escaping ()->(), failure: @escaping (Error)->()) {
+        
         accessibility = DumpsAccessibility.init(byCar: byCar, inCave: inCave, underWater: underWater, notForGeneralCleanup: notForGeneralCleanup)
         if !photosURL.isEmpty {
             for i in 0..<photosURL.count {

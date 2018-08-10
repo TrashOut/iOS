@@ -175,6 +175,7 @@ class FirebaseImages {
     Trigger upload
     */
     func uploadImage(_ name: String, data: Data, thumbnailData:Data,  callback: @escaping (String?, String?, String?, String?, Error?) -> ()) {
+        
         var uploads: [Async.Block] = []
         var thumbnailDownloadURL: String?
         var thumbnailStorageLocation: String?

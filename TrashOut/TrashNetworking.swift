@@ -302,6 +302,7 @@ extension Networking {
     User creates trash
     */
     func createTrash(_ images: [DumpsImages], gps: Coordinates, size: String, type: [String], note: String?, anonymous: Bool, userId: Int, accessibility: DumpsAccessibility, callback: @escaping (Trash?, Error?) -> ()) {
+        
         guard Networking.isConnectedToInternet else {
             callback(nil, NetworkingError.noInternetConnection)
             return

@@ -35,8 +35,7 @@ import Alamofire
 
 extension Networking {
     public func registerUser(tokenFCM: String, language: String, deviceId: String, callback: @escaping (User?, Error?) -> Void) {
-        let breakpoint = { print("") }
-        breakpoint()
+
         
         guard Networking.isConnectedToInternet else {
             callback(nil, NetworkingError.noInternetConnection)
@@ -50,8 +49,7 @@ extension Networking {
         ]
         
         UserManager.instance.tokenHeader { [weak self] (tokenHeader) in
-            let breakpoint = { print("") }
-            breakpoint()
+
             
             guard !tokenHeader.isEmpty else {
                 callback(nil, nil)

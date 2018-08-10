@@ -226,6 +226,9 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
     Show photos on whole screen
     */
     func showBigPhoto(_ sender: UITapGestureRecognizer) {
+        let breakpoint = { print("BREAKPOINT") }
+        breakpoint()
+        
         guard let trash = trash else { return }
         if trash.images.last?.fullDownloadUrl != nil {
             if sender.state == .ended {

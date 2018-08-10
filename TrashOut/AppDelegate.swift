@@ -96,8 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("USER INFO: \(userInfo)")
         
         NotificationsManager.handleNotificationData(userInfo) { [weak self] notificationData in
-            let breakpoint = { print("") }
-            breakpoint()
             
             if case .report = notificationData.type {
                 if let reportType = notificationData.reportType {
@@ -214,8 +212,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
         print("FCM token: \(fcmToken)")
         
         NotificationsManager.registerUser(tokenFCM: fcmToken) { (error) in
-            let breakpoint = { print("") }
-            breakpoint()
             
             if let error = error { print(error.localizedDescription) }
         }

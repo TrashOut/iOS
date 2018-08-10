@@ -32,6 +32,24 @@
 
 import UIKit
 
+extension Trash {
+    var allImages: [Image] {
+        return self.updates.map { $0.images }.reduce([], +) + images
+    }
+    
+    var allUser: [User?] {
+        return self.updates.map { $0.user } + [user]
+    }
+    
+    var allStatuses: [Trash.Status?] {
+        return (updates.map { $0.status } + [status])
+    }
+    
+    var allUpdateTimes: [Date?] {
+        return (updates.map { $0.updateTime }) + [updateTime]
+    }
+}
+
 class DumpsImageViewController: ViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
 
     var trash: Trash?
@@ -45,45 +63,49 @@ class DumpsImageViewController: ViewController, UICollectionViewDelegate, UIColl
         }
     }
     fileprivate var photosCount: Int? {
-        didSet {
-            guard let count = photosCount else { return }
-            newTitle = "1 of \(count)".localized
-        }
+        return trash?.allImages.count
     }
 
     @IBOutlet var cvAllScreenPhoto: UICollectionView!
 
     @IBOutlet var lblUser: UILabel!
     @IBOutlet var lblInfo: UILabel!
-
+    
+    // TODO: - Zle zobrazuje popisku pre lblInfo - dokoncit
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
         
-        if trash?.updates.first?.anonymous == false {
-            lblUser.text = trash?.user?.displayName ?? "trash.anonymous".localized
-        } else {
-            lblUser.text = "trash.anonymous".localized
+        if let trash = self.trash {
+            self.lblUser.text = trash.allUser.last??.displayName ?? "trash.anonymous".localized
+            self.lblInfo.text = trash.allUpdateTimes.last == nil
+                ? "trash.anonymous".localized
+                : DateRounding.shared.localizedString(for: trash.allUpdateTimes.last!!).uppercaseFirst
         }
         
 		guard let status = currentStatus, let interval = intervalOfUpdated else { return }
 		lblInfo.text = status.lowercased() + " " + interval.lowercased()
+        
+        title = getTitle(forIndex: 1)
+    }
+    
+    func getTitle(forIndex index: Int) -> String {
+        return "\(index) of \(trash?.allImages.count ?? 1)"
     }
 
     // MARK: - Collection view
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let photos = trash?.images else { return 0 }
-        photosCount = photos.count
-        return photosCount!
+        return photosCount ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AllScreenPhotoCell", for: indexPath) as? AllScreenPhotoCollectionViewCell else { fatalError("Could not dequeue cell with identifier: AllScreenPhotoCell") }
 
-        guard let photos = trash?.images else { return cell }
+        guard let photos = trash?.allImages else { return cell }
         cell.ivPhoto.remoteImage(id: photos[indexPath.item].fullDownloadUrl!)
-
+        
         return cell
     }
 
@@ -92,13 +114,17 @@ class DumpsImageViewController: ViewController, UICollectionViewDelegate, UIColl
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-		// FIXME: calc index by scrollview content offset
-        for cell in cvAllScreenPhoto.visibleCells {
-            guard let path = cvAllScreenPhoto.indexPath(for: cell as UICollectionViewCell), let count = photosCount else { return }
-			newTitle = "\(path[1] + 1) of \(count)".localized
-        }
+        guard let trash = self.trash else { return }
+        guard let indexPathOfVisibleCell = self.cvAllScreenPhoto.indexPathsForVisibleItems.first else { return }
+        self.title = self.getTitle(forIndex: indexPathOfVisibleCell.item + 1)
+        
+        UIView.transition(with: lblUser, duration: 0.15, options: .transitionCrossDissolve, animations: {
+            self.lblUser.text = trash.allUser[indexPathOfVisibleCell.item]?.displayName ?? "trash.anonymous".localized
+            self.lblInfo.text = trash.allUpdateTimes[indexPathOfVisibleCell.item] == nil
+                ? "trash.anonymous".localized
+                : DateRounding.shared.localizedString(for: trash.allUpdateTimes.first!!).uppercaseFirst
+        }, completion: nil)
     }
-
 }
 
 class AllScreenPhotoCollectionViewCell: UICollectionViewCell {

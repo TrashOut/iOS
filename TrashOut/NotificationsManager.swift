@@ -107,10 +107,7 @@ class NotificationsManager {
             let deviceId = UniqueIdentifier.identifier
         else { return }
         
-        Networking.instance.registerUser(tokenFCM: token, language: currentLanguage, deviceId: deviceId) { (user, error) in
-            let breakpoint = { print("") }
-            breakpoint()
-            
+        Networking.instance.registerUser(tokenFCM: token, language: currentLanguage, deviceId: deviceId) { (user, error) in            
             if error == nil && user != nil {
                 Messaging.messaging().subscribe(toTopic: Topic.marketing(currentLanguage).topicString)
                 Messaging.messaging().subscribe(toTopic: Topic.news(currentLanguage).topicString)

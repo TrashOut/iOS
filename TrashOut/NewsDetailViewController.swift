@@ -96,10 +96,14 @@ class NewsDetailViewController: ViewController, UICollectionViewDelegate, UIText
 
 //		self.addShareButton()
 
+        let breakpoint = { print("") }
+        breakpoint()
+        
 		// fill data
 		if let article = article {
  			self.fillData(article)
 		}
+        
 		if let articleId = articleId {
 			self.loadData(articleId: articleId)
 		}
@@ -127,18 +131,25 @@ class NewsDetailViewController: ViewController, UICollectionViewDelegate, UIText
 				print(error.localizedDescription)
 				self?.show(error: error)
 				LoadingView.hide()
+                self?.fillData(nil)
 				return
 			}
+            
 			self?.article = article
 			if let a = article {
 				self?.fillData(a)
 			}
+            
 			LoadingView.hide()
 		}
 	}
 
-	func fillData(_ article: Article) {
-
+	func fillData(_ article: Article?) {
+        guard let article = article else {
+            self.scrollView.isHidden = true
+            return
+        }
+        
 		ivImage.image = UIImage(named: "No image wide")
 		lblTitle.text = article.title
 		if let date = article.published {

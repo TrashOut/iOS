@@ -68,9 +68,20 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView()
         
+        // Set filter size
+        if let filterSize = UserDefaults.standard.object(forKey: "FilterSize") as? String {
+            self.filterSize = filterSize
+        }
+        
+        // Set filter types
+        if let filterTypes = UserDefaults.standard.object(forKey: "FilterTypes") as? [String] {
+            self.filterTypes = filterTypes
+        }
+        
         LocationManager.manager.refreshCurrentLocationIfNeeded { [weak self] (location) in
             self?.loadData(page: 1)
         }
+        
 
         let filter = UIBarButtonItem(image: UIImage(named: "Filter"), style: .plain, target: self, action: #selector(goToFilter))
         navigationItem.rightBarButtonItem = filter

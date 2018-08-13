@@ -156,13 +156,12 @@ class ViewController: UIViewController {
      */
     func setAddress(gps: GPS, label: UILabel) {
         label.text = "global.noAddress".localized
-        if let zip = gps.zip, let street = gps.street {
-            label.text = "\(zip) " + street
-        } else if gps.zip == nil, let street = gps.street {
-            label.text = street
-        }
-        if let country = gps.country {
-            label.text = label.text! + ", " + country
+        if let zip = gps.zip, let street = gps.street, let country = gps.country {
+            label.text = "\(zip) " + street + ", " + country
+        } else if gps.zip == nil, let street = gps.street, let country = gps.country {
+            label.text = street + ", " + country
+        } else {
+            label.text = gps.locality
         }
         
         /*

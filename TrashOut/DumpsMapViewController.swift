@@ -149,6 +149,12 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 		super.viewWillAppear(animated)
 		restoreMap()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        showLocation(map)
+    }
 
 	/**
 	Drop map to free some memory

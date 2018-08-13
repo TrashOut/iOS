@@ -32,24 +32,6 @@
 
 import UIKit
 
-extension Trash {
-    var allImages: [Image] {
-        return self.updates.map { $0.images }.reduce([], +) + images
-    }
-    
-    var allUser: [User?] {
-        return self.updates.map { $0.user } + [user]
-    }
-    
-    var allStatuses: [Trash.Status?] {
-        return (updates.map { $0.status } + [status])
-    }
-    
-    var allUpdateTimes: [Date?] {
-        return (updates.map { $0.updateTime }) + [updateTime]
-    }
-}
-
 class DumpsImageViewController: ViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
 
     var trash: Trash?
@@ -78,20 +60,42 @@ class DumpsImageViewController: ViewController, UICollectionViewDelegate, UIColl
         tabBarController?.tabBar.isHidden = true
         
         if let trash = self.trash {
-            self.lblUser.text = trash.allUser.last??.displayName ?? "trash.anonymous".localized
-            self.lblInfo.text = trash.allUpdateTimes.last == nil
-                ? "trash.anonymous".localized
-                : DateRounding.shared.localizedString(for: trash.allUpdateTimes.last!!).uppercaseFirst
+            self.setTitles(for: trash, index: 0)
         }
-        
-		guard let status = currentStatus, let interval = intervalOfUpdated else { return }
-		lblInfo.text = status.lowercased() + " " + interval.lowercased()
         
         title = getTitle(forIndex: 1)
     }
     
+    /// Get screen title for index.
     func getTitle(forIndex index: Int) -> String {
         return "\(index) of \(trash?.allImages.count ?? 1)"
+    }
+    
+    /// Get index for current scroll view offset based on cell size.
+    func getIndexForCurrentScrollViewOffset() -> Int? {
+        guard let numberOfPhotos = self.photosCount else { return nil }
+        let pageWidth = self.cvAllScreenPhoto.contentSize.width / CGFloat(numberOfPhotos)
+        return Int(self.cvAllScreenPhoto.contentOffset.x / CGFloat(pageWidth))
+    }
+    
+    /// Set formatted titles for labels.
+    func setTitles(for trash: Trash, index: Int) {
+        
+        // Set default values
+        self.lblUser.text = "trash.anonymous".localized
+        self.lblInfo.text = "global.unknow".localized
+        
+        // Set user
+        if let displayName = trash.allUsers[index]?.displayName {
+            self.lblUser.text = displayName
+        }
+        
+        // Set update time and status
+        if let updateTime = trash.allUpdateTimes[index] {
+            let formattedUpdateTime = DateRounding.shared.localizedString(for: updateTime)
+            let historyStatus = Trash.HistoryStatus.getStatus(update: trash.updates[index], in: trash)
+            self.lblInfo.text = historyStatus.localizedName + " " + formattedUpdateTime
+        }
     }
 
     // MARK: - Collection view
@@ -115,14 +119,11 @@ class DumpsImageViewController: ViewController, UICollectionViewDelegate, UIColl
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard let trash = self.trash else { return }
-        guard let indexPathOfVisibleCell = self.cvAllScreenPhoto.indexPathsForVisibleItems.first else { return }
-        self.title = self.getTitle(forIndex: indexPathOfVisibleCell.item + 1)
+        guard let index = getIndexForCurrentScrollViewOffset() else { return }
+        self.title = self.getTitle(forIndex: index + 1)
         
         UIView.transition(with: lblUser, duration: 0.15, options: .transitionCrossDissolve, animations: {
-            self.lblUser.text = trash.allUser[indexPathOfVisibleCell.item]?.displayName ?? "trash.anonymous".localized
-            self.lblInfo.text = trash.allUpdateTimes[indexPathOfVisibleCell.item] == nil
-                ? "trash.anonymous".localized
-                : DateRounding.shared.localizedString(for: trash.allUpdateTimes.first!!).uppercaseFirst
+            self.setTitles(for: trash, index: index)
         }, completion: nil)
     }
 }

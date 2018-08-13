@@ -226,9 +226,6 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
     Show photos on whole screen
     */
     func showBigPhoto(_ sender: UITapGestureRecognizer) {
-        let breakpoint = { print("BREAKPOINT") }
-        breakpoint()
-        
         guard let trash = trash else { return }
         if trash.images.last?.fullDownloadUrl != nil {
             if sender.state == .ended {
@@ -285,7 +282,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
         // Main photo and number of photos
         if let images = trash.images.first?.fullDownloadUrl {
             ivMainPhoto.remoteImage(id: images, placeholder: #imageLiteral(resourceName: "No image wide"), animate: true)
-            let count = trash.images.count
+            let count = trash.allImages.count
 			lblNumberOfPhotos.text = String(count)
         } else {
             if trash.updates.last?.user?.id != nil {

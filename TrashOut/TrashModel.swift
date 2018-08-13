@@ -316,6 +316,20 @@ class Trash: JsonDecodable, Cachable {
     }
 }
 
+extension Trash {
+    var allImages: [Image] {
+        return self.updates.map { $0.images }.reduce([], +)
+    }
+    
+    var allUsers: [User?] {
+        return self.updates.map { $0.user }
+    }
+    
+    var allUpdateTimes: [Date?] {
+        return updates.map { $0.updateTime }
+    }
+}
+
 /**
  TrashPoint for simplified Trash without data, just to show location on map
 

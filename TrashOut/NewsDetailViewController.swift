@@ -95,9 +95,6 @@ class NewsDetailViewController: ViewController, UICollectionViewDelegate, UIText
 		cvPhotos.delegate = self
 
 //		self.addShareButton()
-
-        let breakpoint = { print("") }
-        breakpoint()
         
 		// fill data
 		if let article = article {

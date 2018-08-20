@@ -292,6 +292,8 @@ class ProfileViewController: ViewController,
 		} else {
 			vLevel.constraint(for: .height)?.constant = 0
         }
+        
+        NoDataView.hide(from: self.scrollView)
 	}
 
 	fileprivate func setupPoints(_ points: Int) {

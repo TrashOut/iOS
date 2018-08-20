@@ -230,9 +230,8 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
         if trash.images.last?.fullDownloadUrl != nil {
             if sender.state == .ended {
                 guard let vc = storyboard?.instantiateViewController(withIdentifier: "DumpsImageViewController") as? DumpsImageViewController else { return }
+                vc.data = TrashUpdateGalleryData(updates: trash.updates)
                 vc.trash = trash
-                vc.intervalOfUpdated = lblCurrentStatusDate.text
-                vc.currentStatus = lblCurrentStatus.text
 
                 navigationController?.pushViewController(vc, animated: true)
             }
@@ -282,7 +281,11 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
         // Main photo and number of photos
         if let images = trash.images.first?.fullDownloadUrl {
             ivMainPhoto.remoteImage(id: images, placeholder: #imageLiteral(resourceName: "No image wide"), animate: true)
-            let count = trash.allImages.count
+            let count = trash.updates
+                .map{ $0.images }
+                .reduce([],+)
+                .count
+            
 			lblNumberOfPhotos.text = String(count)
         } else {
             if trash.updates.last?.user?.id != nil {
@@ -558,8 +561,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
 	@IBAction func openPhotos() {
 		guard let vc = storyboard?.instantiateViewController(withIdentifier: "DumpsImageViewController") as? DumpsImageViewController else { return }
 		vc.trash = trash
-		vc.intervalOfUpdated = lblCurrentStatusDate.text
-		vc.currentStatus = lblCurrentStatus.text
+        vc.data = TrashUpdateGalleryData(updates: trash?.updates ?? [])
 		navigationController?.pushViewController(vc, animated: true)
 	}
 
@@ -713,7 +715,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
 			print("no update time")
 		}
 		#endif
-
+        
 		cell.lblHistoryStatus.text = status.localizedName.uppercased(with: Locale.current)
 		cell.lblHistoryStatus.textColor = status.color
 		cell.ivHistoryStatusImage.image = status.image
@@ -867,6 +869,15 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
 			return CGSize(width: 80, height: 80)
 		}
 	}
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let trash = self.trash else { return }
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "DumpsImageViewController") as? DumpsImageViewController else { return }
+        vc.trash = trash
+        vc.currentIndex = indexPath.item
+        vc.data = TrashUpdateGalleryData(updates: [trash.updates[collectionView.tag]])
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
     /**
     Set types of trash for specific cell
@@ -937,7 +948,7 @@ class HistoryTableViewCell: UITableViewCell {
     @IBOutlet var lblHistoryUser: UILabel!
     @IBOutlet var lblHistoryStatus: UILabel!
     @IBOutlet var lblHistoryStatusDate: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 

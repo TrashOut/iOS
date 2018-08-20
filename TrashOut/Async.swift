@@ -72,8 +72,4 @@ open class Async {
 			Async.executeWaterfall(blocks, index: index + 1, failure:  failure)
 		}, failure)
 	}
-	
-	
-	
-	
 }

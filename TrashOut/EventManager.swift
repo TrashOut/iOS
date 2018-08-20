@@ -19,11 +19,13 @@ class EventManager {
             callback(event.showJoinButton)
             return
         }
+        
         guard let userId = UserManager.instance.user?.id else {
             event.showJoinButton = false
             callback(event.showJoinButton)
             return
         }
+        
         Networking.instance.event(event.id, callback: { (loadedEvent, error) in
             guard error == nil else {
                 event.showJoinButton = false

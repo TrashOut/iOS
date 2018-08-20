@@ -316,17 +316,45 @@ class Trash: JsonDecodable, Cachable {
     }
 }
 
-extension Trash {
-    var allImages: [Image] {
-        return self.updates.map { $0.images }.reduce([], +)
+class TrashUpdateGalleryData {
+    
+    private var updates: [TrashUpdate]
+    
+    public lazy var images: [Image] = {
+        return self.updates
+            .map { $0.images }
+            .reduce([], +)
+    } ()
+    
+    public lazy var users: [User?] = {
+        var users: [User?] = []
+        self.updates.forEach { update in
+            update.images.forEach { _ in
+                users.append(update.user)
+            }
+        }
+        return users
+    } ()
+    
+    public lazy var updateTimes: [Date?] = {
+        var updateTimes: [Date?] = []
+        self.updates.forEach { update in
+            update.images.forEach { _ in
+                updateTimes.append(update.updateTime)
+            }
+        }
+        
+        return updateTimes
+    } ()
+    
+    init(updates: [TrashUpdate]) {
+        self.updates = updates
     }
     
-    var allUsers: [User?] {
-        return self.updates.map { $0.user }
-    }
-    
-    var allUpdateTimes: [Date?] {
-        return updates.map { $0.updateTime }
+    func getUpdate(forSelectedImageIndex index: Int) -> TrashUpdate {
+        let image = self.images[index]
+        let update = self.updates.filter { $0.images.contains(where: { $0 === image }) }.first!
+        return update
     }
 }
 

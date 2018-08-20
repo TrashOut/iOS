@@ -36,17 +36,19 @@ class DumpsImageViewController: ViewController, UICollectionViewDelegate, UIColl
 
     var trash: Trash?
 
-    var currentStatus: String?
-    var intervalOfUpdated: String?
-
     fileprivate var newTitle: String? {
         didSet {
             title = newTitle
         }
     }
+    
+    var currentIndex: Int?
+    
     fileprivate var photosCount: Int? {
-        return trash?.allImages.count
+        return data?.images.count
     }
+    
+    var data: TrashUpdateGalleryData?
 
     @IBOutlet var cvAllScreenPhoto: UICollectionView!
 
@@ -57,18 +59,27 @@ class DumpsImageViewController: ViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarController?.tabBar.isHidden = true
+         tabBarController?.tabBar.isHidden = true
         
-        if let trash = self.trash {
-            self.setTitles(for: trash, index: 0)
+        let index = (currentIndex ?? 0)
+        
+        if let trash = self.trash, let data = self.data {
+            self.setTitles(in: trash, for: data, index: index)
         }
         
-        title = getTitle(forIndex: 1)
+        title = getTitle(forIndex: index + 1)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let index = (currentIndex ?? 0)
+        self.cvAllScreenPhoto.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: false)
     }
     
     /// Get screen title for index.
     func getTitle(forIndex index: Int) -> String {
-        return "\(index) of \(trash?.allImages.count ?? 1)"
+        return "\(index) / \(data?.images.count ?? 1)"
     }
     
     /// Get index for current scroll view offset based on cell size.
@@ -79,21 +90,21 @@ class DumpsImageViewController: ViewController, UICollectionViewDelegate, UIColl
     }
     
     /// Set formatted titles for labels.
-    func setTitles(for trash: Trash, index: Int) {
+    func setTitles(in trash: Trash, for data: TrashUpdateGalleryData, index: Int) {
         
         // Set default values
         self.lblUser.text = "trash.anonymous".localized
         self.lblInfo.text = "global.unknow".localized
         
         // Set user
-        if let displayName = trash.allUsers[index]?.displayName {
+        if let displayName = data.users[index]?.displayName {
             self.lblUser.text = displayName
         }
         
         // Set update time and status
-        if let updateTime = trash.allUpdateTimes[index] {
+        if let updateTime = data.updateTimes[index] {
             let formattedUpdateTime = DateRounding.shared.localizedString(for: updateTime)
-            let historyStatus = Trash.HistoryStatus.getStatus(update: trash.updates[index], in: trash)
+            let historyStatus = Trash.HistoryStatus.getStatus(update: data.getUpdate(forSelectedImageIndex: index), in: trash)
             self.lblInfo.text = historyStatus.localizedName + " " + formattedUpdateTime
         }
     }
@@ -107,7 +118,7 @@ class DumpsImageViewController: ViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AllScreenPhotoCell", for: indexPath) as? AllScreenPhotoCollectionViewCell else { fatalError("Could not dequeue cell with identifier: AllScreenPhotoCell") }
 
-        guard let photos = trash?.allImages else { return cell }
+        guard let photos = data?.images else { return cell }
         cell.ivPhoto.remoteImage(id: photos[indexPath.item].fullDownloadUrl!)
         
         return cell
@@ -118,12 +129,16 @@ class DumpsImageViewController: ViewController, UICollectionViewDelegate, UIColl
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        guard let trash = self.trash else { return }
-        guard let index = getIndexForCurrentScrollViewOffset() else { return }
+        guard
+            let data = self.data,
+            let trash = self.trash,
+            let index = getIndexForCurrentScrollViewOffset()
+        else { return }
+        
         self.title = self.getTitle(forIndex: index + 1)
         
         UIView.transition(with: lblUser, duration: 0.15, options: .transitionCrossDissolve, animations: {
-            self.setTitles(for: trash, index: index)
+            self.setTitles(in: trash, for: data, index: index)
         }, completion: nil)
     }
 }

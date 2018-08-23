@@ -10,9 +10,12 @@ def common_pods_for_target
     # Firebase SDK
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
-    pod 'Firebase/Crash'
     pod 'Firebase/Messaging'
     pod 'Firebase/Storage'
+    
+    # Crashlytics
+    pod 'Fabric'
+    pod 'Crashlytics'
     
     # Facebook SDK
     pod 'FacebookCore'

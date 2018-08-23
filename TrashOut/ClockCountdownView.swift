@@ -38,8 +38,14 @@ open class ClockCountdownView: UIView {
 
     private var shapeLayer = CAShapeLayer()
     private var lineCircleLayer = CAShapeLayer()
-    private var countDownTimer = Timer()
-
+    // private var countDownTimer = Timer()
+    
+    private lazy var timer: BackgroundTimer = {
+        let t = BackgroundTimer.default
+        t.eventHandler = self.timerValueUpdated
+        return t
+    } ()
+    
     private let interval: TimeInterval = 0.1
 
     open var circledView: Bool = true
@@ -59,10 +65,6 @@ open class ClockCountdownView: UIView {
             self.label.textColor = startColor
             self.shapeLayer.strokeColor = startColor.cgColor
         }
-    }
-
-    var isRunning: Bool {
-        return countDownTimer.isValid
     }
 
     /// Inner label with remaining time
@@ -101,10 +103,6 @@ open class ClockCountdownView: UIView {
         self.createLabel()
     }
 
-    public func destroy() {
-        self.countDownTimer.invalidate()
-    }
-
     private func addCircle() {
         let center = CGPoint(x: self.center.x - self.frame.origin.x, y: self.center.y - self.frame.origin.y)
 		self.addShapeLayer(center: center)
@@ -114,8 +112,8 @@ open class ClockCountdownView: UIView {
 	private func addLineCircle(center: CGPoint) {
 		let centerCirclePath = UIBezierPath(arcCenter: center,
 		                                    radius: radius - lineWidth / 4,
-		                                    startAngle: CGFloat(-Double.pi/2),
-		                                    endAngle: CGFloat(2 * Double.pi - Double.pi/2),
+		                                    startAngle: CGFloat(3*Double.pi/2),
+		                                    endAngle: CGFloat(2*Double.pi) + CGFloat(3*Double.pi/2),
 		                                    clockwise: true)
 
 		lineCircleLayer.path = centerCirclePath.cgPath
@@ -129,8 +127,8 @@ open class ClockCountdownView: UIView {
 	private func addShapeLayer(center: CGPoint) {
 		let circlePath = UIBezierPath(arcCenter: center,
 		                              radius: radius,
-		                              startAngle: CGFloat(-Double.pi),
-		                              endAngle: CGFloat(2 * Double.pi - Double.pi/2),
+                                      startAngle: CGFloat(3*Double.pi/2),
+		                              endAngle: CGFloat(2*Double.pi) + CGFloat(3*Double.pi/2),
 		                              clockwise: true)
 		self.shapeLayer.path = circlePath.cgPath
 		self.shapeLayer.fillColor = UIColor.clear.cgColor
@@ -156,26 +154,9 @@ open class ClockCountdownView: UIView {
         self.label.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         self.label.textAlignment = .center
     }
-
-    private func startAnimation() {
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.toValue = 0
-        animation.fromValue = 1
-        animation.duration = Double(self.timerValue)
-        animation.fillMode = kCAFillModeForwards
-        animation.isRemovedOnCompletion = false
-        self.shapeLayer.add(animation, forKey: "ani")
-    }
-
-    func pause() {
-        self.countDownTimer.invalidate()
-    }
-
-    func seek(percent: Double) {
-        let current = Double(self.startTimerValue) * percent
-        self.timerValue = startTimerValue - current
-        self.countDownTimer = Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(countdown(dt:)), userInfo: nil, repeats: true)
-        RunLoop.current.add(self.countDownTimer, forMode: .commonModes)
+    
+    private func setStrokeEnd(timerDuration: TimeInterval, currentTime: TimeInterval) {
+        self.shapeLayer.strokeEnd = CGFloat(currentTime / timerDuration)
     }
 
     private func updateLabel(value: TimeInterval) {
@@ -195,24 +176,17 @@ open class ClockCountdownView: UIView {
 
 
     private var completionCallbackCalled = false
-
-	// Needs @objc to be able to call private function in NSTimer.
-
-    @objc private func countdown(dt _: Timer) {
-
-        self.timerValue -= self.interval
-        guard self.timerValue >= 0 else {
-            if completionCallbackCalled == false {
-                completionCallbackCalled = true
-                self.onFinish?()
-            }
-            self.countDownTimer.invalidate()
+    
+    private func timerValueUpdated(_ nextValue: TimeInterval) -> Void {
+        timerValue = startTimerValue - nextValue
+        guard timerValue >= 0 else {
+            self.stopTimer()
             return
         }
-
-        self.setLabelText(value: self.timeFormatted(totalSeconds: self.timerValue))
-
-        self.updateColor(remainingTime: self.timerValue)
+        
+        self.setLabelText(value: self.timeFormatted(totalSeconds: timerValue))
+        self.updateColor(remainingTime: timerValue)
+        self.setStrokeEnd(timerDuration: startTimerValue, currentTime: timerValue)
     }
 
     func updateColor(remainingTime: TimeInterval) {
@@ -247,22 +221,22 @@ open class ClockCountdownView: UIView {
 
     func setTimer(value: TimeInterval) {
         self.startTimerValue = value
-        self.timerValue = value
         self.updateLabel(value: value)
     }
 
-    func startClockTimer() {
+    func startTimer() {
         completionCallbackCalled = false
-        self.countDownTimer = Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(countdown(dt:)), userInfo: nil, repeats: true)
-        RunLoop.current.add(self.countDownTimer, forMode: .commonModes)
-        self.startAnimation()
+        timer.start()
     }
-
-    func restart() {
-        self.setTimer(value: self.startTimerValue)
-        self.startClockTimer()
+    
+    func stopTimer() {
+        if completionCallbackCalled == false {
+            completionCallbackCalled = true
+            self.onFinish?()
+        }
+        
+        timer.stop()
     }
-
 }
 
 fileprivate extension UIColor {

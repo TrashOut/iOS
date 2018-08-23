@@ -39,9 +39,6 @@ class TrashHunterContainerViewController: UIViewController {
 	@IBOutlet var container: UIView!
 	weak var controller: UIViewController?
 
-	
-
-
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

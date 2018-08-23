@@ -76,7 +76,7 @@ class LocalImage {
     
     var thumbnailJpegData: Data? {
         guard let image = image else { return nil }
-        let cropedImage = image.crop(to:CGSize(width: 150, height: 150))
+        let cropedImage = image.resizeImage(targetSize: CGSize(width: 150, height: 150))
         return UIImageJPEGRepresentation(cropedImage, 80)
     }
 }

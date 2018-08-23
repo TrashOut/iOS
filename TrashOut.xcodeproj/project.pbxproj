@@ -275,6 +275,7 @@
 		C3FF4FA81E533B0B005D5530 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FF4FA71E533B0B005D5530 /* LoadingView.swift */; };
 		C3FF4FAA1E533F35005D5530 /* HorizontalSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FF4FA91E533F35005D5530 /* HorizontalSeparator.swift */; };
 		C3FF4FAC1E5353CB005D5530 /* AutoSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FF4FAB1E5353CB005D5530 /* AutoSizingTableView.swift */; };
+		CF110A3E212C2933008D2643 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF110A3D212C2933008D2643 /* BackgroundTimer.swift */; };
 		CF3B780320C0584A00E4D0CE /* EventContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B780220C0584A00E4D0CE /* EventContactModel.swift */; };
 		CF3B780420C05A8F00E4D0CE /* EventContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B780220C0584A00E4D0CE /* EventContactModel.swift */; };
 		CF3DDE2A20D1079F00A93A87 /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DDE2920D1079F00A93A87 /* NotificationData.swift */; };
@@ -486,6 +487,7 @@
 		C3FF4FA91E533F35005D5530 /* HorizontalSeparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalSeparator.swift; sourceTree = "<group>"; };
 		C3FF4FAB1E5353CB005D5530 /* AutoSizingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSizingTableView.swift; sourceTree = "<group>"; };
 		CD8A07923A4098B43E68457E /* Pods-TrashOut-Stage.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Stage.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage.hockeyapp.xcconfig"; sourceTree = "<group>"; };
+		CF110A3D212C2933008D2643 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
 		CF3B780220C0584A00E4D0CE /* EventContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContactModel.swift; sourceTree = "<group>"; };
 		CF3DDE2920D1079F00A93A87 /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
 		CF7D8C8C20C56AC800F66F4C /* Pods_TrashOut_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_TrashOut_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -893,6 +895,7 @@
 				8E2747B620036FA900934D62 /* NotificationName.swift */,
 				8E2747B82003B58200934D62 /* Device.swift */,
 				CFBC999220C6D2B5009E5D7F /* UniqueIdentifier.swift */,
+				CF110A3D212C2933008D2643 /* BackgroundTimer.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1708,6 +1711,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C07E401E4C939900B102D1 /* ClockCountdownView.swift in Sources */,
+				CF110A3E212C2933008D2643 /* BackgroundTimer.swift in Sources */,
 				C3751A011E38E13C001F61AB /* TrashTypeButton.swift in Sources */,
 				FC5FA3081DE9D1610000C711 /* AccessibilityModel.swift in Sources */,
 				FC5FA30C1DEC7C060000C711 /* EventLocationViewController.swift in Sources */,

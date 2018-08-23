@@ -127,7 +127,7 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
 		localImage.image = resizedImage
 		localImage.uid = UUID().uuidString
 		localImage.write()
-		picker.dismiss(animated: self.animated) {
+		picker.dismiss(animated: self.animated) { 
 			self.success?(localImage)
 		}
 	}

@@ -46,7 +46,7 @@ class TrashHuntingViewController: UIViewController {
 
 	@IBOutlet var lblDumpsFound: UILabel!
 
-	override func viewDidLoad(){
+	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.view.translatesAutoresizingMaskIntoConstraints = false
 
@@ -64,30 +64,12 @@ class TrashHuntingViewController: UIViewController {
 		lblDumpsFound.text = "trashHunter.lookingForDumps".localized
 
 		countdown.bounds = CGRect.init(x: 0, y: 0, width: 100, height: 100)
-		if let hunter = TrashHunter.hunter {
-			let interval = hunter.config.duration.duration
-			countdown.setTimer(value: interval)
-			countdown.startClockTimer()
-			countdown.onFinish = { [weak self] _ in
-				self?.stop()
-			}
-			countdown.pause()
-		}
-	}
-
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		guard let hunter = TrashHunter.hunter else { return }
-		let now = Date()
-		let start = hunter.startTime ?? now
-		let interval = hunter.config.duration.duration
-		let percent = (now.timeIntervalSince1970 - start.timeIntervalSince1970) / interval
-		countdown.seek(percent: percent)
-
-	}
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-		countdown.pause()
+        if let hunter = TrashHunter.hunter {
+            let interval = hunter.config.duration.duration
+            countdown.setTimer(value: interval)
+            countdown.startTimer()
+            countdown.onFinish = stop
+        }
 	}
 
 	func refresh() {
@@ -105,6 +87,8 @@ class TrashHuntingViewController: UIViewController {
 	}
 
 	@IBAction func stop() {
+        countdown.stopTimer()
+        
 		guard let parent = self.view.superview else {
 			TrashHunter.hunter?.end()
 			return

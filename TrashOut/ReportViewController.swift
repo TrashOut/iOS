@@ -329,7 +329,8 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
         } else if trash == nil && trashTypes.count == 0 {
             show(message: "trash.validation.typeRequired".localized)
         } else {
-            LoadingView.show(on: self.view, style: .transparent)
+            let window = self.view.window
+            LoadingView.show(on: window!, style: .transparent)
 
 			let failed: () -> () = { [weak self] _ in
 				//self?.show(message: "trash.create.uploadPhotoError".localized)

@@ -464,7 +464,9 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
                     LoadingView.hide()
                 }
                 
-                DispatchQueue.main.async { completion?() }
+                DispatchQueue.main.async {
+                    completion?()
+                }
             }
 			]) { [weak self] (error) in
                 self?.show(error: error)
@@ -475,7 +477,6 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
                 } else {
                     LoadingView.hide()
                 }
-                self?.view.setNeedsLayout()
                 
         }
     }
@@ -497,6 +498,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 				completion()
 				return
 			}
+            
 			guard let newTrashes = trashes else { completion(); return }
 			self?.trashes = newTrashes
 			completion()
@@ -522,11 +524,15 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 				return
 			}
 			NoDataView.hide(from: self?.vRecyclingCard)
+            
 			guard let newJunkyards = junkyards else {
 				completion()
 				return
 			}
-			self?.junkyards += newJunkyards
+            let breakpoint = { print("") }
+            breakpoint()
+            
+			self?.junkyards = newJunkyards
 			completion()
 		}
 	}
@@ -549,13 +555,16 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 //				failure(e)
 				NoDataView.show(over: self?.vActivity, text: "global.loadingError".localized)
 				completion()
+                
 				return
 			}
 			NoDataView.hide(from: self?.vActivity)
 			if let activities = activities {
 				self?.activity = Array(activities.prefix(3))
 			}
+            
 			//self?.activity = activities ?? []
+            
 			completion()
 		}
 	}
@@ -564,7 +573,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 	/**
 	Load article
 	*/
-	func loadNews(completion: @escaping ()->(), failure: @escaping (Error)->()) {
+	func loadNews(completion: @escaping () -> (), failure: @escaping (Error) -> ()) {
 		articlesManager.limit = 1
 		articlesManager.loadData(callback: {  [weak self] _ in
 			NoDataView.hide(from: self?.vNews)
@@ -640,7 +649,6 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 		} else {
 			ivNews.image = #imageLiteral(resourceName: "No image wide")
 		}
-        
 	}
 
     /**
@@ -666,12 +674,16 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
     Update Nearest junkyards part of UI
     */
     fileprivate func updateNearestRecyclingPointsView() {
-        guard junkyards.count > 0 else {
-			vRecycling.isHidden = true
-			return
-		}
-		vRecycling.isHidden = false
+//        guard junkyards.count > 0 else {
+//            vRecycling.isHidden = true
+//            return
+//        }
+//
+//        vRecycling.isHidden = false
 
+        let breakpoint = { print("") }
+        breakpoint()
+        
 		let dustbin = junkyards.first { (junkyard) -> Bool in
 			return junkyard.size == "dustbin"
 		}
@@ -689,6 +701,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
                 junkyardsStackViewHeight.constant = 101
             }
 		} else {
+            trashCanView.isHidden = false
             trashBinViewHeight.constant = 84
 			setDistance(gps: dustbin!.gps!, label: lblTrashDistance)
 			dustbinData = dustbin
@@ -709,6 +722,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
                 junkyardsStackViewHeight.constant = 101
             }
 		} else {
+            junkyardView.isHidden = false
             junkyardViewHeight.constant = 84
 			setDistance(gps: scarpyard!.gps!, label: lblJunkyardDistance)
 			junkyardData = scarpyard
@@ -718,7 +732,6 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
                 junkyardsStackViewHeight.constant = 202
             }
 		}
-        
 	}
 
 	func updateEvents() {

@@ -21,8 +21,9 @@
 "global.email" = "Correo electrónico";
 "global.password" = "Contraseña";
 "global.showDetail" = "Mostrar detalle";
-"global.internet.offline"="El teléfono no está conectado a Internet, verifique la configuración.";
-"global.error.api.text"="Esta información no se puede mostrar ahora, por favor intente de nuevo más tarde, gracias.";
+"global.internet.offline"="Por favor, conéctese a Internet para ver esta sección.";
+"global.error.api.text"="Estamos experimentando un problema temporal con nuestro servidor. Estamos haciendo nuestro mejor esfuerzo para solucionarlo pronto. Por favor regresa más tarde.";
+"global.internet.error.offline"="Su dispositivo no está conectado a internet. Tome una fotografía e infórmela más tarde a través de www.admin.trashout.ngo.";
 
 /*Could you porvide more context, please? "Firma de proceso" sounds weird.*/
 "global.processSigning" = "Firma de proceso";
@@ -168,7 +169,7 @@
 "trash.create.success" = "La basura se ha denunciado correctamente. Gracias.";
 "trash.photosOfTrash" = "Fotos de esta basura";
 "trash.comments" = "Comentarios";
-"global.fetchError" = "Algo salió mal :(\nEl servidor no responde ahora mismo; vuelva a intentarlo más tarde.";
+"global.fetchError" = "Estamos experimentando un problema temporal con nuestro servidor. Estamos haciendo nuestro mejor esfuerzo para solucionarlo pronto. Por favor regresa más tarde.";
 "trash.discardChanges" = "¿Descartar todos cambios?";
 "trash.spam.comfirmation" = "¿Realmente desea denunciar esta basura como spam?";
 "global.detail" = "Detalle";
@@ -185,7 +186,7 @@
 "home.noDumpsNear" = "No hay vertederos ilegales cercanos";
 "global.enableGps" = "Permitir los servicios de ubicación";
 "trash.loadingDumps" = "Cargando vertederos en su área...";
-"global.loadingError" = "Error al cargar :(";
+"global.loadingError" = "Por favor, conéctese a Internet para ver esta sección.";
 "trash.edit.betterLocation" = "Intentando obtener una mejor ubicación";
 "trash.create.error" = "Se ha interrumpido el envío.";
 "global.dbError" = "No hemos podido guardar los datos.";

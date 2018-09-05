@@ -90,8 +90,9 @@
 "global.allow" = "Povolit";
 "trash.loadingTrashMap" = "Načítavam TrashMap...";
 "user.username" = "Uživatelské jméno";
-"global.internet.offline"="Zařízení není připojeno do internetu, prosím zkontrolujte nastavení.";
-"global.error.api.text"="Aktuálně požadovanou informaci nelze zobrazit, prosím zkuste aktivitu opakovat později, děkujeme.";
+"global.internet.offline"="Pro zobrazení této části se prosím připojte k internetu.";
+"global.error.api.text"="Aktuálne máme dočasný problém s naším serverem. Děláme vše pro to, abychom to brzy opravili. Vraťte se prosím později.";
+"global.internet.error.offline"="Vaše mobilní zařízení není připojeno k internetu. Udělejte fotografii a nahlaste skládku později prostřednictvím stránky www.admin.trashout.ngo.";
 
 /*Fuzzy*/
 "profile.wrongPassword" = "Jejda zadali jste nesprávné heslo.";
@@ -168,7 +169,7 @@
 "trash.create.success" = "Nelegální skládka byla úspěšně nahlášená. Děkujeme.";
 "trash.photosOfTrash" = "Fotky skládky";
 "trash.comments" = "Komentáře";
-"global.fetchError" = "Huups, server aktuálně neodpovídá, prosím zkuste to za chvíli.";
+"global.fetchError" = "Aktuálne máme dočasný problém s naším serverem. Děláme vše pro to, abychom to brzy opravili. Vraťte se prosím později.";
 "trash.discardChanges" = "Zrušit všechny změny?";
 "trash.spam.comfirmation" = "Opravdu chcete nahlásit tuto skládku jako spam?";
 "global.detail" = "Detail";
@@ -185,7 +186,7 @@
 "home.noDumpsNear" = "V blízkosti nejsou žádné nelegální skládky";
 "global.enableGps" = "Povolit lokalizační služby";
 "trash.loadingDumps" = "Načítaní skládek v okolí...";
-"global.loadingError" = "Nezdařilo se načítat :(";
+"global.loadingError" = "Pro zobrazení této části se prosím připojte k internetu.";
 "trash.edit.betterLocation" = "Pokouším se získat lepší zaměření";
 "trash.create.error" = "Odesílání bylo přerušeno.";
 "global.dbError" = "Huups, údaje se nepodařilo uložit.";

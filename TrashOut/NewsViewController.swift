@@ -86,7 +86,7 @@ class NewsViewController: ViewController, UICollectionViewDelegate, UICollection
                         self?.show(error: error)
                     }
                     if self?.manager.news.count == 0 {
-                        self?.showFailedToFetchArticles()
+                        self?.showFailedToFetchArticles(error: error)
                     } else {
                         self?.hideFailedToFetchArticles()
                     }
@@ -97,6 +97,14 @@ class NewsViewController: ViewController, UICollectionViewDelegate, UICollection
                     }
                 }
             })
+    }
+    
+    override func show(error: Error, completion: (() -> ())? = nil) {
+        if case NetworkingError.noInternetConnection = error {
+            super.show(error: NetworkingError.noInternetConnection)
+        } else {
+            super.show(error: NetworkingError.custom("global.fetchError".localized))
+        }
     }
 
 	func loadNextPage() {
@@ -117,8 +125,13 @@ class NewsViewController: ViewController, UICollectionViewDelegate, UICollection
 		NoDataView.hide(from: self.view)
 	}
 
-	func showFailedToFetchArticles() {
-		NoDataView.show(over: self.collectionView, text: "global.fetchError".localized)
+    func showFailedToFetchArticles(error: Error) {
+        if case NetworkingError.noInternetConnection = error {
+            NoDataView.show(over: self.collectionView, text: "global.internet.error.offline".localized)
+        } else {
+            NoDataView.show(over: self.collectionView, text: "global.fetchError".localized)
+        }
+		
 		self.collectionView.collectionViewLayout.invalidateLayout()
 		self.collectionView.setNeedsLayout()
 		self.collectionView.layoutIfNeeded()

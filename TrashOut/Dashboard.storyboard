@@ -588,7 +588,6 @@
                                                     <constraint firstItem="hxa-NK-X2s" firstAttribute="bottom" secondItem="DS3-gT-LZ0" secondAttribute="bottom" constant="5" id="R34-gN-OuD"/>
                                                     <constraint firstItem="DS3-gT-LZ0" firstAttribute="leading" secondItem="ENf-lk-oqE" secondAttribute="leading" id="VPW-tl-4UI"/>
                                                     <constraint firstItem="hxa-NK-X2s" firstAttribute="leading" secondItem="DS3-gT-LZ0" secondAttribute="leading" id="iF5-J6-QMn"/>
-                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="999" constant="270" id="jbm-kZ-Kb3"/>
                                                     <constraint firstItem="ENf-lk-oqE" firstAttribute="top" secondItem="DS3-gT-LZ0" secondAttribute="bottom" constant="8" id="oDm-D2-nHg"/>
                                                     <constraint firstItem="hxa-NK-X2s" firstAttribute="top" secondItem="DS3-gT-LZ0" secondAttribute="top" constant="-5" id="yAX-Pk-nh3"/>
                                                 </constraints>

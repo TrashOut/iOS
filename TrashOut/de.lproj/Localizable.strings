@@ -162,7 +162,7 @@
 "trash.create.success" = "Abfall wurde erfolgreich gemeldet. Vielen Dank.";
 "trash.photosOfTrash" = "Fotos von diesem Müll";
 "trash.comments" = "Kommentare";
-"global.fetchError" = "Hoppla, irgendwas ist schief gelaufen.\nDer Server antwortet gerade nicht, bitte versuche es später noch einmal.";
+"global.fetchError" = "Wir haben ein vorübergehendes Problem mit unserem Server. Wir tun unser Bestes, um es bald zu beheben, bitte versuche es später noch einmal.";
 "trash.discardChanges" = "Alle Änderungen verwerfen?";
 "trash.spam.comfirmation" = "Willst du diesen Müll wirklich als Spam melden?";
 "global.detail" = "Detail";
@@ -173,13 +173,15 @@
 "global.pickAll" = "Alle auswählen";
 "global.share" = "Teilen";
 "global.facebookShare" = "Auf Facebook teilen";
+
+
 "trash.isCleaned" = "Sie wurde bereits aufgeräumt";
 "trash.cleanedByMe" = "Ich habe sie aufgeräumt";
 "home.loadingNearDumps" = "Laden von nahegelegenen illegalen Deponien";
 "home.noDumpsNear" = "Keine illegalen Deponien in der Nähe";
 "global.enableGps" = "Standortdienste zulassen";
 "trash.loadingDumps" = "Deponien in deiner Nähe werden geladen....";
-"global.loadingError" = "Laden fehlgeschlagen";
+"global.loadingError" = "Bitte verbinden Sie sich mit dem Internet, um diesen Abschnitt zu sehen.";
 "trash.edit.betterLocation" = "Versuche, einen besseren Standort zu finden.";
 "trash.create.error" = "Das Senden wurde unterbrochen.";
 "global.dbError" = "Hoppla, wir konnten die Daten NICHT speichern.";
@@ -345,8 +347,9 @@
 "profile.earnedPoints_X" = "Du hast bisher% d Punkte verdient! Suche nach weiteren Deponien, es bringt dir neue Abzeichen!";
 "profile.points_X" = "% Punkte";
 "global.numberOfTimes_X" = "%dx";
-"global.internet.offline"="Das Mobiltelefon ist nicht mit dem Internet verbunden. Bitte überprüfen Sie die Einstellungen.";
-"global.error.api.text"="Diese Information kann momentan nicht angezeigt werden, bitte versuchen Sie es später noch einmal.";
+"global.internet.offline"="Bitte verbinden Sie sich mit dem Internet, um diesen Abschnitt zu sehen.";
+"global.error.api.text"="Wir haben ein vorübergehendes Problem mit unserem Server. Wir tun unser Bestes, um es bald zu beheben, bitte versuche es später noch einmal.";
+"global.internet.error.offline"="Ihr Mobilgerät ist nicht mit dem Internet verbunden. Machen Sie ein Foto und melden Sie es später über www.admin.trashout.ngo.";
 
 /*Bei Spielen oder Apps wird geduzt*/
 "profile.youReported" = "Deine Berichte";

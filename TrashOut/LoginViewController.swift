@@ -125,7 +125,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
         frPassword.hideError()
         
         // Validate form
-		guard validateForm() else {return}
+		guard validateForm() else { return }
         
         // Login user
 		let email = frEmail.textField.text!

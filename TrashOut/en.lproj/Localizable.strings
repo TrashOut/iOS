@@ -68,8 +68,9 @@
 "global.userNotLogged" = "Sorry for inconvenience, you are now logged out.\nPlease sign in again.";
 "global.now" = "now";
 "profile.header" = "Profile";
-"global.internet.offline"="The device is not connected to the Internet, please check the settings.";
-"global.error.api.text"="This information can not be displayed right now, please try again later, thank you.";
+"global.internet.offline"="Please connect to the internet in order to see this section.";
+"global.error.api.text"="We are experiencing temporary issue with our server. We are doing our best to fix it soon. Please come back later.";
+"global.internet.error.offline"="Your device is not connected to the internet. Take a picture and report it later via www.admin.trashout.ngo.";
 
 /*Fuzzy*/
 "global.welcomeText" = "Report Trash allows you report illegal dump anywhere in the world. Reporting is the first step which leads to cleaning.\n\nGO, locate illegal dump by pressing the button “Report Trash”!";
@@ -172,7 +173,7 @@
 "trash.create.success" = "Trash was successfully reported. Thank you.";
 "trash.photosOfTrash" = "Photos of this Trash";
 "trash.comments" = "Comments";
-"global.fetchError" = "Something went wrong.\nThe server is not responding right now or you do not have internet connection.";
+"global.fetchError" = "We are experiencing temporary issue with our server. We are doing our best to fix it soon. Please come back later.";
 "trash.discardChanges" = "Discard all changes?";
 "trash.spam.comfirmation" = "Do you really want to report this trash as spam?";
 "global.detail" = "Detail";
@@ -189,7 +190,7 @@
 "home.noDumpsNear" = "No illegal dumps nearby";
 "global.enableGps" = "Allow location services";
 "trash.loadingDumps" = "Loading dumps in your area...";
-"global.loadingError" = "Loading failed";
+"global.loadingError" = "Please connect to the internet in order to see this section.";
 "trash.edit.betterLocation" = "Trying to get better location";
 "trash.create.error" = "Sending has been interrupted.";
 "global.dbError" = "Oops, we could NOT save the data.";

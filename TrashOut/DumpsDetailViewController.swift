@@ -244,33 +244,50 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
 
     fileprivate func loadData() {
 		LoadingView.show(on: self.view, style: .white)
+        
         Networking.instance.trash(id!) { [weak self] (trash, error) in
-			guard error == nil else {
-				print(error?.localizedDescription as Any)
-				self?.show(message: "global.fetchError".localized) {
-					_ = self?.navigationController?.popViewController(animated: true)
-				}
-				return
+            if let error = error {
+                print(error.localizedDescription as Any)
+                
+                if case NetworkingError.noInternetConnection = error {
+                    self?.show(message: "global.internet.error.offline".localized) {
+                        _ = self?.navigationController?.popViewController(animated: true)
+                    }
+                } else {
+                    self?.show(message: "global.fetchError".localized) {
+                        _ = self?.navigationController?.popViewController(animated: true)
+                    }
+                }
+            } else {
+                LoadingView.hide()
+                guard let newTrash = trash else { return }
+                self?.trash = newTrash
             }
-			LoadingView.hide()
-            guard let newTrash = trash else { return }
-            self?.trash = newTrash
         }
     }
 
 	func reloadData() {
 		LoadingView.show(on: self.view, style: .white)
-		Networking.instance.trash(id!) { [weak self] (trash, error) in
-			guard error == nil else {
-				print(error?.localizedDescription as Any)
-				self?.show(message: "global.fetchError".localized) {
-				}
-				return
-			}
-			LoadingView.hide()
-			guard let newTrash = trash else { return }
-			self?.trash = newTrash
-		}
+        
+        Networking.instance.trash(id!) { [weak self] (trash, error) in
+            if let error = error {
+                print(error.localizedDescription as Any)
+                
+                if case NetworkingError.noInternetConnection = error {
+                    self?.show(message: "global.internet.error.offline".localized) {
+                        _ = self?.navigationController?.popViewController(animated: true)
+                    }
+                } else {
+                    self?.show(message: "global.fetchError".localized) {
+                        _ = self?.navigationController?.popViewController(animated: true)
+                    }
+                }
+            } else {
+                LoadingView.hide()
+                guard let newTrash = trash else { return }
+                self?.trash = newTrash
+            }
+        }
 	}
 
     /**

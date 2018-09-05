@@ -214,6 +214,10 @@ class UserManager {
 	Login using email and password
 	*/
 	func login(email: String, password: String, callback: @escaping (User?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            return callback(nil, NetworkingError.noInternetConnection)
+        }
+        
 		firAuth.login(email: email, password: password) { [weak self] (uid, error) in
 			guard error == nil else {
                 if let error = error as NSError?, error.code == 17011 {

@@ -86,14 +86,16 @@ extension NSError {
 enum NetworkingError: Error {
     case noInternetConnection
     case apiError
+    case custom(String)
 }
 
 // MARK: - Localized extension of networking error
 extension NetworkingError: LocalizedError {
     var errorDescription: String? {
         switch self {
-        case .noInternetConnection: return "global.internet.offline".localized
+        case .noInternetConnection: return "global.internet.error.offline".localized
         case .apiError: return "global.error.api.text".localized
+        case .custom(let message): return message
         }
     }
 }

@@ -20,7 +20,7 @@ extension DashboardViewController {
 		Networking.instance.events(position: locationPoint, limit: 3) { [weak self] (events, error) in
 			guard error == nil else {
 				print(error?.localizedDescription as Any)
-				NoDataView.show(over: self?.vEvents, text: "global.fetchError".localized)
+				NoDataView.show(over: self?.vEvents, text: "global.loadingError".localized)
 				completion()
 				return
 			}
@@ -43,6 +43,8 @@ extension DashboardViewController {
 				guard let start1 = e1.start else { return false }
 				return start1 < start2
 			}
+            
+            self?.view.layoutSubviews()
             
 			completion()
 		}

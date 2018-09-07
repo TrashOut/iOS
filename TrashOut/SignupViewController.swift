@@ -160,8 +160,14 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 		UserManager.instance.signup(user: user, password: password!) { [weak self] (error) in
 
 			if let error = error {
-				print(error.localizedDescription)
-				self?.show(error: error)
+                print(error.localizedDescription)
+                
+                if case NetworkingError.noInternetConnection = error {
+                    self?.show(error: NetworkingError.custom("global.internet.offline".localized))
+                } else {
+                    self?.show(error: error)
+                }
+                
 				return
 			}
 			self?.postSignUp()
@@ -177,7 +183,13 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 		UserManager.instance.loginWithFacebook(self) { [weak self] (error) in
 			guard error == nil else {
 				print(error?.localizedDescription as Any)
-				self?.show(error: error!)
+                
+                if case NetworkingError.noInternetConnection = error! {
+                    self?.show(error: NetworkingError.custom("global.internet.offline".localized))
+                } else {
+                    self?.show(error: error!)
+                }
+                
 				return
 			}
 			guard let user = UserManager.instance.user else { return }

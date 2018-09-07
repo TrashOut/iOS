@@ -133,7 +133,12 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 		UserManager.instance.login(email: email, password: password) { [weak self] (user, error) in
 			guard error == nil else {
 				print(error?.localizedDescription as Any)
-                self?.show(error: error!)
+                
+                if case NetworkingError.noInternetConnection = error! {
+                    self?.show(error: NetworkingError.custom("global.internet.offline".localized))
+                } else {
+                    self?.show(error: error!)
+                }
 				return
 			}
 			guard let user = user, user.id != 0 else {
@@ -155,7 +160,11 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 		UserManager.instance.loginWithFacebook(self) { [weak self] (error) in
 			guard error == nil else {
 				print(error?.localizedDescription as Any)
-				self?.show(error: error!)
+                if case NetworkingError.noInternetConnection = error! {
+                    self?.show(error: NetworkingError.custom("global.internet.offline".localized))
+                } else {
+                    self?.show(error: error!)
+                }
 				return
 			}
 			guard let user = UserManager.instance.user else { return }
@@ -177,7 +186,11 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 		}
 		UserManager.instance.resetPassword(email: email) { [weak self] (error) in
 			guard error == nil else {
-                self?.show(error: error!)
+                if case NetworkingError.noInternetConnection = error! {
+                    self?.show(error: NetworkingError.custom("global.internet.offline".localized))
+                } else {
+                    self?.show(error: error!)
+                }
 				return
 			}
 			let m = String(format: "profile.resetPasswordInfoToMail".localized, email)

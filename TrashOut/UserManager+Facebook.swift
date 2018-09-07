@@ -33,6 +33,9 @@ extension UserManager {
 
 	*/
 	func loginWithFacebook(_ controller: UIViewController, callback: @escaping (Error?) -> ()) {
+        guard Reachability.isConnectedToNetwork() else {
+            return callback(NetworkingError.noInternetConnection)
+        }
         
         let loginManager = LoginManager()
         loginManager.logIn(readPermissions: [ .publicProfile, .email ], viewController: controller) { loginResult in

@@ -101,7 +101,7 @@ class NewsViewController: ViewController, UICollectionViewDelegate, UICollection
     
     override func show(error: Error, completion: (() -> ())? = nil) {
         if case NetworkingError.noInternetConnection = error {
-            super.show(error: NetworkingError.noInternetConnection)
+            super.show(error: NetworkingError.custom("global.internet.offline".localized))
         } else {
             super.show(error: NetworkingError.custom("global.fetchError".localized))
         }
@@ -127,7 +127,7 @@ class NewsViewController: ViewController, UICollectionViewDelegate, UICollection
 
     func showFailedToFetchArticles(error: Error) {
         if case NetworkingError.noInternetConnection = error {
-            NoDataView.show(over: self.collectionView, text: "global.internet.error.offline".localized)
+            NoDataView.show(over: self.collectionView, text: "global.internet.offline".localized)
         } else {
             NoDataView.show(over: self.collectionView, text: "global.fetchError".localized)
         }

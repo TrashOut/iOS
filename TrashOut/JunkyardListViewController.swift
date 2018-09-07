@@ -130,7 +130,13 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
                 print(error?.localizedDescription as Any)
                 DispatchQueue.main.async {
                     self?.tableView.pullToRefreshView?.stopAnimating()
-                    self?.show(message: "global.fetchError".localized)
+                    
+                    if case NetworkingError.noInternetConnection = error! {
+                        self?.show(error: NetworkingError.custom("global.internet.offline".localized))
+                    } else {
+                        self?.show(message: "global.fetchError".localized)
+                    }
+                    
                 }
                 return
             }
@@ -140,7 +146,11 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
                 self?.isLastPage = true
                 if self?.junkyards.count == 0 {
                     DispatchQueue.main.async {
-                        self?.show(message: "global.filter.noResult".localized)
+                        if case NetworkingError.noInternetConnection = error! {
+                            self?.show(error: NetworkingError.custom("global.internet.offline".localized))
+                        } else {
+                            self?.show(message: "global.filter.noResult".localized)
+                        }
                     }
                 }
             }

@@ -180,10 +180,17 @@ class ProfileViewController: ViewController,
 			}
 		]) { [weak self] (error) in
 				print(error.localizedDescription)
-				self?.show(error: error) {
-					finalize()
-					NoDataView.show(over: self?.scrollView, text: "global.noData".localized)
-				}
+            
+            let completion = {
+                finalize()
+                NoDataView.show(over: self?.scrollView, text: "global.noData".localized)
+            }
+            
+            if case NetworkingError.noInternetConnection = error {
+                self?.show(error: NetworkingError.custom("global.internet.offline".localized), completion: completion)
+            } else {
+                self?.show(error: error, completion: completion)
+            }
 		}
 
     }

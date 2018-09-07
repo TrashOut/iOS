@@ -629,6 +629,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 			return
 		}
 		self.vArticleContainer.isHidden = false
+        
 		let df = DateFormatter()
 		df.timeStyle = .none
 		df.dateStyle = .long
@@ -674,15 +675,12 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
     Update Nearest junkyards part of UI
     */
     fileprivate func updateNearestRecyclingPointsView() {
-//        guard junkyards.count > 0 else {
-//            vRecycling.isHidden = true
-//            return
-//        }
-//
-//        vRecycling.isHidden = false
+        guard junkyards.count > 0 else {
+            vRecycling.isHidden = true
+            return
+        }
 
-        let breakpoint = { print("") }
-        breakpoint()
+        vRecycling.isHidden = false
         
 		let dustbin = junkyards.first { (junkyard) -> Bool in
 			return junkyard.size == "dustbin"
@@ -703,6 +701,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 		} else {
             trashCanView.isHidden = false
             trashBinViewHeight.constant = 84
+            cnNearestRecyclingPointsSeparatorHeight.constant = 0.5
 			setDistance(gps: dustbin!.gps!, label: lblTrashDistance)
 			dustbinData = dustbin
             if scarpyard == nil {
@@ -724,6 +723,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 		} else {
             junkyardView.isHidden = false
             junkyardViewHeight.constant = 84
+            cnNearestRecyclingPointsSeparatorHeight.constant = 0.5
 			setDistance(gps: scarpyard!.gps!, label: lblJunkyardDistance)
 			junkyardData = scarpyard
             if dustbin == nil {

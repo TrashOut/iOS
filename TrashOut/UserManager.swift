@@ -270,6 +270,10 @@ class UserManager {
 	Request password reset
 	*/
 	func resetPassword(email: String, callback: @escaping (Error?)->()) {
+        guard Reachability.isConnectedToNetwork() else {
+            return callback(NetworkingError.noInternetConnection)
+        }
+        
         firAuth.resetPassword(email: email, callback: callback)
 	}
 
@@ -277,6 +281,10 @@ class UserManager {
 	Change user to registered using password and user data, update user on api
 	*/
 	func signup(user: User, password: String, callback: @escaping (Error?)->()) {
+        guard Reachability.isConnectedToNetwork() else {
+            return callback(NetworkingError.noInternetConnection)
+        }
+        
 		guard let email = user.email else { return }
         if (self.isAnonymous && self.user != nil) {
             firAuth.linkUser(email: email, password: password) { [unowned self] (uid, error) in

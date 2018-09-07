@@ -159,7 +159,12 @@ class DumpsListViewController: ViewController, UITableViewDataSource, UITableVie
 		Networking.instance.trashes(position: locationPoint, filter: filter, limit: 20, page: page) { [weak self] (trashes, error) in
 			guard error == nil else {
                 DispatchQueue.main.async {
-                    self?.show(message: "global.fetchError".localized)
+                    if case NetworkingError.noInternetConnection = error! {
+                        self?.show(error: NetworkingError.custom("global.internet.offline".localized))
+                    } else {
+                        self?.show(error: error!)
+                    }
+                    
                     self?.loadingView.isHidden = true
                     self?.tableView.pullToRefreshView?.stopAnimating()
                 }

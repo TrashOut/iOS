@@ -71,9 +71,10 @@ class InfoViewController: ViewController {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        let date = formatter.date(from: "2018/02/12 00:00")
         
-		lblVersionDate.text = String.init(format: "info.appVerison_X".localized, df.string(from: date!))
+        if let date = formatter.date(from: "2018/02/12 00:00") {
+            lblVersionDate.text = String.init(format: "info.appVerison_X".localized, df.string(from: date))
+        }
 
 		let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
 		let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""

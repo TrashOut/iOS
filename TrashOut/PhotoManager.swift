@@ -71,21 +71,23 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
 	}
 
 	func openImagePicker(vc: UIViewController, source: UIImagePickerControllerSourceType, animated: Bool) {
-		UIApplication.shared.isStatusBarHidden = true
-		let picker = UIImagePickerController()
-		if UIImagePickerController.isSourceTypeAvailable(source) {
-			picker.sourceType = source
-            picker.mediaTypes = [kUTTypeImage as String]
-			picker.allowsEditing = true
-			picker.delegate = self
-			vc.present(picker, animated: animated)
-		} else {
-			let ac = UIAlertController(title: "global.noCameraSupport".localized, message: nil, preferredStyle: .alert)
-			ac.addAction(UIAlertAction(title: "global.ok".localized, style: .cancel) { (_) in
-
-			})
-			vc.present(ac, animated: true, completion: nil)
-		}
+        DispatchQueue.main.async {
+            UIApplication.shared.isStatusBarHidden = true
+            let picker = UIImagePickerController()
+            if UIImagePickerController.isSourceTypeAvailable(source) {
+                picker.sourceType = source
+                picker.mediaTypes = [kUTTypeImage as String]
+                picker.allowsEditing = true
+                picker.delegate = self
+                vc.present(picker, animated: animated)
+            } else {
+                let ac = UIAlertController(title: "global.noCameraSupport".localized, message: nil, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "global.ok".localized, style: .cancel) { (_) in
+                    
+                })
+                vc.present(ac, animated: true, completion: nil)
+            }
+        }
 	}
 
 

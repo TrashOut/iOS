@@ -86,6 +86,7 @@ class StatisticViewController: ViewController,
 			self?.show(error: error)
         }
     }
+    
 
     // MARK: - Chart
 

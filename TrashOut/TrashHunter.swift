@@ -158,6 +158,7 @@ class TrashHunter: NSObject, CLLocationManagerDelegate {
 			locationManager.pausesLocationUpdatesAutomatically = true
 			locationManager.startUpdatingLocation()
 		}
+        
 		container?.switchControllers()
 	}
 
@@ -186,7 +187,6 @@ class TrashHunter: NSObject, CLLocationManagerDelegate {
 	}
 
 	func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-
 		if application.currentUserNotificationSettings?.types.contains(.alert) == true {
 			if let registered = self.notificationRegistered {
 				self.notificationRegistered = nil
@@ -288,7 +288,7 @@ class TrashHunter: NSObject, CLLocationManagerDelegate {
 		let filter = TrashFilter()
 		filter.status[.reported] = true
 		filter.status[.cleaned] = nil
-		filter.status[.updateNeeded] = nil
+		filter.status[.updateNeeded] = true
 		Networking.instance.trashes(position: location.coordinate, area: CLLocationDistance(config.distance.meters), filter: filter, limit: 1000, page: 1) { [weak self] (trashes, error) in
 			if let error = error {
 				print(error.localizedDescription)

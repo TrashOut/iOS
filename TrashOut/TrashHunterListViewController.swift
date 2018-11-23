@@ -82,12 +82,12 @@ class TrashHunterListViewController: ViewController, UITableViewDataSource, UITa
 		self.dismiss(animated: true, completion: nil)
 	}
 
-	func refresh() {
+    func refresh() {
 		self.isWaitingForData = true
 		let filter = TrashFilter()
 		filter.status[.reported] = true
 		filter.status[.cleaned] = nil
-		filter.status[.updateNeeded] = nil
+		filter.status[.updateNeeded] = true
 		guard let distance = TrashHunter.hunter?.config.distance.meters else { return }
 		LocationManager.manager.refreshCurrentLocationIfNeeded { (loc) in
 			Networking.instance.trashes(position: loc.coordinate, area: CLLocationDistance(distance), filter: filter, limit: 100, page: 1, callback: { [weak self] (trashes, error) in

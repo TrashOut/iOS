@@ -529,8 +529,6 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 				completion()
 				return
 			}
-            let breakpoint = { print("") }
-            breakpoint()
             
 			self?.junkyards = newJunkyards
 			completion()

@@ -37,7 +37,7 @@ import CoreLocation
 extension TrashFilter {
 
 	@discardableResult
-	func filter(to params: inout Parameters) -> Parameters {
+    func filter(to params: inout Parameters) -> Parameters {
 		if self.sizes.count > 0 {
 			let sizes: [String] = self.sizes.map { (s) -> String in
 				return s.rawValue
@@ -72,6 +72,7 @@ extension TrashFilter {
 			states.append("stillHere")
 			params["updateNeeded"] = false
 		}
+        
 		// UpdateNeeded (updateNeeded=true)
 		if status[.updateNeeded] == true {
 			params["updateNeeded"] = true
@@ -222,6 +223,9 @@ extension Networking {
 		filter?.filter(to: &params)
 		params["limit"] = limit
 		params["page"] = page
+        
+        print(params)
+        
 		UserManager.instance.tokenHeader { tokenHeader in
 			Alamofire.request("\(self.apiBaseUrl)/trash/", parameters: params, encoding: URLEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, cacheKey: cacheKey, callback: callback)
@@ -428,3 +432,23 @@ extension Networking {
 	}
     
 }
+
+/*
+ "orderBy": "gps",
+ "trashStatus": "more,less,stillHere",
+ "timeBoundaryTo": "2018-10-26T12:10:15.150Z",
+ "limit": 1000,
+ "userPosition": "48.146874911654486,17.14084304311171",
+ "attributesNeeded": "id,gpsShort,types,created,status,images",
+ "area": "48.1423530529897,17.14946705135004,48.15139677031927,17.132219034873376",
+ "timeBoundaryFrom": "1970-01-01T00:00:00.000Z",
+ "page": 1,
+ "updateNeeded": true,
+ "trashAccessibility": ""
+ */
+
+// 48.151295004677884, 17.134217525809927; 48.142301801366706, 17.14769605506841
+
+/*
+id, gpsShort, types, status, images, updateTime, created, updateNeeded, updateHistory
+ */

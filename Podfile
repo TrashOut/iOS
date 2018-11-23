@@ -25,7 +25,7 @@ def common_pods_for_target
     pod 'Cache', '2.2.2'
     pod 'SwiftDate', '~> 4.0.11'
     
-    pod 'Charts', '3.0.1'
+    pod 'Charts'
     pod 'Keychain'
 end
 

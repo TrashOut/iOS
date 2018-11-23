@@ -62,7 +62,7 @@ Distance to hunt
 
 (500m - default, 1 km, 5 km, 20km)
 */
-enum TrashHunterDistance: String, EnumCollection {
+enum TrashHunterDistance: String, CaseIterable, EnumCollection {
 	case m500
 	case km1
 	case km5
@@ -95,7 +95,7 @@ Duration of hunt
 
 (10min, 30 min, 60 min)
 */
-enum TrashHunterDuration: String, EnumCollection {
+enum TrashHunterDuration: String, CaseIterable, EnumCollection {
 	case m10
 	case m30
 	case m60

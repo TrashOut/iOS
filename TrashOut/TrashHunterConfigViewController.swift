@@ -83,7 +83,7 @@ class TrashHunterConfigViewController: ViewController,
 	}
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if tableView == tblDistance {
+        if tableView == tblDistance {
 			return TrashHunterDistance.allValues.count
 		}
 		if tableView == tblDuration {

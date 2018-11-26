@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1735B2AEC9C18CE7810C934C /* Pods_TrashOutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29CC00FCD61184D214E3AA81 /* Pods_TrashOutTests.framework */; };
-		680FF86BCFE405D3EB2EF87A /* Pods_TrashOut_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4167FB2AA08648A82AE4D6B /* Pods_TrashOut_Prod.framework */; };
+		26DD2283289AD192C637DFE3 /* Pods_TrashOut_Stage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603D728692F7399F8EA27946 /* Pods_TrashOut_Stage.framework */; };
+		80CE60E2DD3B6B962F250D48 /* Pods_TrashOut_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6779AC8BBE1F41F9B756E529 /* Pods_TrashOut_Prod.framework */; };
+		8BC763F31BF88834C3C432C1 /* Pods_TrashOutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED7BBFF36135F0E9AE84018 /* Pods_TrashOutTests.framework */; };
 		8CD79D811F96274700C937AB /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD79D801F96274700C937AB /* View.swift */; };
 		8CD79D831F962A1600C937AB /* RoundedShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD79D821F962A1600C937AB /* RoundedShadowButton.swift */; };
 		8E1D037E1FC5CBFC007BD218 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1D037D1FC5CBFC007BD218 /* Label.swift */; };
@@ -275,7 +276,6 @@
 		C3FF4FA81E533B0B005D5530 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FF4FA71E533B0B005D5530 /* LoadingView.swift */; };
 		C3FF4FAA1E533F35005D5530 /* HorizontalSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FF4FA91E533F35005D5530 /* HorizontalSeparator.swift */; };
 		C3FF4FAC1E5353CB005D5530 /* AutoSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FF4FAB1E5353CB005D5530 /* AutoSizingTableView.swift */; };
-		CEA43D7F6D826C7846745436 /* Pods_TrashOut_Stage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846D079C2861F85AFCDE32C5 /* Pods_TrashOut_Stage.framework */; };
 		CF110A3E212C2933008D2643 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF110A3D212C2933008D2643 /* BackgroundTimer.swift */; };
 		CF3B780320C0584A00E4D0CE /* EventContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B780220C0584A00E4D0CE /* EventContactModel.swift */; };
 		CF3B780420C05A8F00E4D0CE /* EventContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B780220C0584A00E4D0CE /* EventContactModel.swift */; };
@@ -288,7 +288,7 @@
 		CFBC999420C6D38C009E5D7F /* UniqueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC999220C6D2B5009E5D7F /* UniqueIdentifier.swift */; };
 		CFBC999520C6D391009E5D7F /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC999020C6A5CF009E5D7F /* NotificationsManager.swift */; };
 		CFBC999620C6D399009E5D7F /* NotificationsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7D8C9020C683F600F66F4C /* NotificationsNetworking.swift */; };
-		E90E3E4DB0395184AB6A3AB7 /* Pods_TrashOutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 565764F3CD4DF9FDF343D4C9 /* Pods_TrashOutUITests.framework */; };
+		D8BE7CD47888BFA85D4A757E /* Pods_TrashOutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C44A17159D48D2877CF103 /* Pods_TrashOutUITests.framework */; };
 		FC384A741DDCD0EF0073E955 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC384A731DDCD0EF0073E955 /* Date.swift */; };
 		FC3E0E6D1DDE01BE006F1D31 /* JunkyardDetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3E0E6C1DDE01BE006F1D31 /* JunkyardDetViewController.swift */; };
 		FC3E0E6F1DDE7307006F1D31 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC3E0E6E1DDE7307006F1D31 /* Event.storyboard */; };
@@ -335,18 +335,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A0B140DFA0BA5114A731DB8 /* Pods-TrashOut-Prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.debug.xcconfig"; sourceTree = "<group>"; };
-		15D533465EC6BDF1E602AEF8 /* Pods-TrashOutUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutUITests/Pods-TrashOutUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		29CC00FCD61184D214E3AA81 /* Pods_TrashOutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashOutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		42B55EE1264E54440BCA7369 /* Pods-TrashOutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4BB89728DF9442928B361248 /* Pods-TrashOut-Stage.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Stage.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage.hockeyapp.xcconfig"; sourceTree = "<group>"; };
-		4D3C0944F752FB7FDD1DA657 /* Pods-TrashOutUITests.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutUITests.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutUITests/Pods-TrashOutUITests.hockeyapp.xcconfig"; sourceTree = "<group>"; };
-		565764F3CD4DF9FDF343D4C9 /* Pods_TrashOutUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashOutUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E26164F664A7F79FF3670A3 /* Pods-TrashOut-Stage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Stage.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage.release.xcconfig"; sourceTree = "<group>"; };
-		64D44162D0EEC4349ACB42C6 /* Pods-TrashOutUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutUITests/Pods-TrashOutUITests.release.xcconfig"; sourceTree = "<group>"; };
-		660A5E53DF556A9F67FE127C /* Pods-TrashOut-Prod.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.hockeyapp.xcconfig"; sourceTree = "<group>"; };
-		846D079C2861F85AFCDE32C5 /* Pods_TrashOut_Stage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashOut_Stage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		85BDDDC8612B042FA2019942 /* Pods-TrashOutTests.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutTests.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests.hockeyapp.xcconfig"; sourceTree = "<group>"; };
+		03C44A17159D48D2877CF103 /* Pods_TrashOutUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashOutUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0836026F9DAF613AFFE92356 /* Pods-TrashOut-Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.release.xcconfig"; sourceTree = "<group>"; };
+		1321DAC22005D4AC85201971 /* Pods-TrashOutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests.release.xcconfig"; sourceTree = "<group>"; };
+		361428F09D6D020677C9E212 /* Pods-TrashOut-Stage.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Stage.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage.hockeyapp.xcconfig"; sourceTree = "<group>"; };
+		603D728692F7399F8EA27946 /* Pods_TrashOut_Stage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashOut_Stage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		648079F0F2ED347BB06EAA87 /* Pods-TrashOut-Stage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Stage.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage.release.xcconfig"; sourceTree = "<group>"; };
+		6779AC8BBE1F41F9B756E529 /* Pods_TrashOut_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashOut_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DDE5C096EBA626189EFCEB2 /* Pods-TrashOutTests.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutTests.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests.hockeyapp.xcconfig"; sourceTree = "<group>"; };
+		7ED7BBFF36135F0E9AE84018 /* Pods_TrashOutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashOutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88D59ED8B1CE452F05D1C3E9 /* Pods-TrashOutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CD79D801F96274700C937AB /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		8CD79D821F962A1600C937AB /* RoundedShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowButton.swift; sourceTree = "<group>"; };
 		8E1D037D1FC5CBFC007BD218 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -368,10 +366,9 @@
 		8EC88AC21FD6CF2300498FCA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8EC88AC51FD6CF9D00498FCA /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8EC88AC71FD6CFAE00498FCA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		94C109F6C93F1FB7F8F07063 /* Pods-TrashOut-Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.release.xcconfig"; sourceTree = "<group>"; };
-		A55944C415C24D144F2F2922 /* Pods-TrashOutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests.release.xcconfig"; sourceTree = "<group>"; };
-		B4167FB2AA08648A82AE4D6B /* Pods_TrashOut_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashOut_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B437443D3AB3BAD05C3DCF78 /* Pods-TrashOut-Stage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Stage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage.debug.xcconfig"; sourceTree = "<group>"; };
+		B1686E9BE6FECDA7C4F00D53 /* Pods-TrashOutUITests.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutUITests.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutUITests/Pods-TrashOutUITests.hockeyapp.xcconfig"; sourceTree = "<group>"; };
+		B2851C7BA32E2EEF80DA9F4C /* Pods-TrashOut-Prod.hockeyapp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.hockeyapp.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.hockeyapp.xcconfig"; sourceTree = "<group>"; };
+		B499D76E38753F1E23DB2408 /* Pods-TrashOutUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutUITests/Pods-TrashOutUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C30044321DAF84E400709DDC /* TrashUpdateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashUpdateModel.swift; sourceTree = "<group>"; };
 		C30044341DAF872400709DDC /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		C30044371DAFC96200709DDC /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -496,6 +493,9 @@
 		CF7D8C9020C683F600F66F4C /* NotificationsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsNetworking.swift; sourceTree = "<group>"; };
 		CFBC999020C6A5CF009E5D7F /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		CFBC999220C6D2B5009E5D7F /* UniqueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueIdentifier.swift; sourceTree = "<group>"; };
+		DD4DF2D56FDB4D70B1E392FF /* Pods-TrashOutUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOutUITests/Pods-TrashOutUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E3FBE388A5AACE7C71744E6A /* Pods-TrashOut-Prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.debug.xcconfig"; sourceTree = "<group>"; };
+		EE281CD398709CD40C6CE405 /* Pods-TrashOut-Stage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Stage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage.debug.xcconfig"; sourceTree = "<group>"; };
 		FC250F731DE5C1E3001C00B8 /* ReportCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCameraViewController.swift; sourceTree = "<group>"; };
 		FC384A731DDCD0EF0073E955 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		FC3E0E6C1DDE01BE006F1D31 /* JunkyardDetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JunkyardDetViewController.swift; sourceTree = "<group>"; };
@@ -531,7 +531,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEA43D7F6D826C7846745436 /* Pods_TrashOut_Stage.framework in Frameworks */,
+				26DD2283289AD192C637DFE3 /* Pods_TrashOut_Stage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,7 +539,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				680FF86BCFE405D3EB2EF87A /* Pods_TrashOut_Prod.framework in Frameworks */,
+				80CE60E2DD3B6B962F250D48 /* Pods_TrashOut_Prod.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,7 +547,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1735B2AEC9C18CE7810C934C /* Pods_TrashOutTests.framework in Frameworks */,
+				8BC763F31BF88834C3C432C1 /* Pods_TrashOutTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,13 +555,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E90E3E4DB0395184AB6A3AB7 /* Pods_TrashOutUITests.framework in Frameworks */,
+				D8BE7CD47888BFA85D4A757E /* Pods_TrashOutUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E321D5E83A8F6CB40449219 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E3FBE388A5AACE7C71744E6A /* Pods-TrashOut-Prod.debug.xcconfig */,
+				B2851C7BA32E2EEF80DA9F4C /* Pods-TrashOut-Prod.hockeyapp.xcconfig */,
+				0836026F9DAF613AFFE92356 /* Pods-TrashOut-Prod.release.xcconfig */,
+				EE281CD398709CD40C6CE405 /* Pods-TrashOut-Stage.debug.xcconfig */,
+				361428F09D6D020677C9E212 /* Pods-TrashOut-Stage.hockeyapp.xcconfig */,
+				648079F0F2ED347BB06EAA87 /* Pods-TrashOut-Stage.release.xcconfig */,
+				88D59ED8B1CE452F05D1C3E9 /* Pods-TrashOutTests.debug.xcconfig */,
+				6DDE5C096EBA626189EFCEB2 /* Pods-TrashOutTests.hockeyapp.xcconfig */,
+				1321DAC22005D4AC85201971 /* Pods-TrashOutTests.release.xcconfig */,
+				B499D76E38753F1E23DB2408 /* Pods-TrashOutUITests.debug.xcconfig */,
+				B1686E9BE6FECDA7C4F00D53 /* Pods-TrashOutUITests.hockeyapp.xcconfig */,
+				DD4DF2D56FDB4D70B1E392FF /* Pods-TrashOutUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8E2A1B9320223A3500C1AC70 /* Stage */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,25 +638,6 @@
 				8E3F25D11FA0BED100F42E5C /* ApiKey.swift */,
 			);
 			name = Config;
-			sourceTree = "<group>";
-		};
-		BFA598CB4534343CEC278D9C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0A0B140DFA0BA5114A731DB8 /* Pods-TrashOut-Prod.debug.xcconfig */,
-				660A5E53DF556A9F67FE127C /* Pods-TrashOut-Prod.hockeyapp.xcconfig */,
-				94C109F6C93F1FB7F8F07063 /* Pods-TrashOut-Prod.release.xcconfig */,
-				B437443D3AB3BAD05C3DCF78 /* Pods-TrashOut-Stage.debug.xcconfig */,
-				4BB89728DF9442928B361248 /* Pods-TrashOut-Stage.hockeyapp.xcconfig */,
-				5E26164F664A7F79FF3670A3 /* Pods-TrashOut-Stage.release.xcconfig */,
-				42B55EE1264E54440BCA7369 /* Pods-TrashOutTests.debug.xcconfig */,
-				85BDDDC8612B042FA2019942 /* Pods-TrashOutTests.hockeyapp.xcconfig */,
-				A55944C415C24D144F2F2922 /* Pods-TrashOutTests.release.xcconfig */,
-				15D533465EC6BDF1E602AEF8 /* Pods-TrashOutUITests.debug.xcconfig */,
-				4D3C0944F752FB7FDD1DA657 /* Pods-TrashOutUITests.hockeyapp.xcconfig */,
-				64D44162D0EEC4349ACB42C6 /* Pods-TrashOutUITests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		C30044361DAFC94C00709DDC /* Manager */ = {
@@ -726,8 +726,8 @@
 				C3A3B25E1DA7A6E10099D1C2 /* TrashOutUITests */,
 				C3A3B23D1DA7A6E00099D1C2 /* Products */,
 				8E2A1B8C202236E800C1AC70 /* TrashOut copy-Info.plist */,
-				BFA598CB4534343CEC278D9C /* Pods */,
-				D669C7A9835594948F0A6E35 /* Frameworks */,
+				6E321D5E83A8F6CB40449219 /* Pods */,
+				CC78CD3972FAE8CA6E6AB1DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -980,6 +980,17 @@
 			name = Dashboard;
 			sourceTree = "<group>";
 		};
+		CC78CD3972FAE8CA6E6AB1DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6779AC8BBE1F41F9B756E529 /* Pods_TrashOut_Prod.framework */,
+				603D728692F7399F8EA27946 /* Pods_TrashOut_Stage.framework */,
+				7ED7BBFF36135F0E9AE84018 /* Pods_TrashOutTests.framework */,
+				03C44A17159D48D2877CF103 /* Pods_TrashOutUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CF3DDE2820D1070400A93A87 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -989,17 +1000,6 @@
 			name = Notifications;
 			sourceTree = "<group>";
 		};
-		D669C7A9835594948F0A6E35 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B4167FB2AA08648A82AE4D6B /* Pods_TrashOut_Prod.framework */,
-				846D079C2861F85AFCDE32C5 /* Pods_TrashOut_Stage.framework */,
-				29CC00FCD61184D214E3AA81 /* Pods_TrashOutTests.framework */,
-				565764F3CD4DF9FDF343D4C9 /* Pods_TrashOutUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1007,14 +1007,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E2A1B87202236E800C1AC70 /* Build configuration list for PBXNativeTarget "TrashOut-Stage" */;
 			buildPhases = (
-				108C74F5C5FBC43943524E77 /* [CP] Check Pods Manifest.lock */,
+				C53512DC97B2EEB442E0E641 /* [CP] Check Pods Manifest.lock */,
 				8E2A1AEE202236E800C1AC70 /* Update Build Number */,
 				8E2A1AEF202236E800C1AC70 /* Sources */,
 				8E2A1B6B202236E800C1AC70 /* Frameworks */,
 				8E2A1B6D202236E800C1AC70 /* Resources */,
 				8E2A1B86202236E800C1AC70 /* Tailor */,
 				CF6DE9BF212EC42F00610F41 /* Run Script */,
-				FDE04017A994B857E05F8867 /* [CP] Embed Pods Frameworks */,
+				9DBA6A8F7005F3C4FB9115E4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1029,14 +1029,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3A3B2641DA7A6E10099D1C2 /* Build configuration list for PBXNativeTarget "TrashOut-Prod" */;
 			buildPhases = (
-				C7DC585D3D53C5896666AAE0 /* [CP] Check Pods Manifest.lock */,
+				FEC789166DE98A2697898597 /* [CP] Check Pods Manifest.lock */,
 				C385B9E91DDF49550034B065 /* Update Build Number */,
 				C3A3B2381DA7A6E00099D1C2 /* Sources */,
 				C3A3B2391DA7A6E00099D1C2 /* Frameworks */,
 				C3A3B23A1DA7A6E00099D1C2 /* Resources */,
 				C32788B31DC0C49600B6F4A9 /* Tailor */,
 				CF6DE9BE212EC41600610F41 /* ShellScript */,
-				ADF195128BB7951BBCDFFE29 /* [CP] Embed Pods Frameworks */,
+				BCB9FD8CC934A8E76DF1DCED /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1051,11 +1051,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3A3B2671DA7A6E10099D1C2 /* Build configuration list for PBXNativeTarget "TrashOutTests" */;
 			buildPhases = (
-				151ABA3B8C5AD680EFE1970D /* [CP] Check Pods Manifest.lock */,
+				04471522BDF7277166F8D348 /* [CP] Check Pods Manifest.lock */,
 				C3A3B24C1DA7A6E10099D1C2 /* Sources */,
 				C3A3B24D1DA7A6E10099D1C2 /* Frameworks */,
 				C3A3B24E1DA7A6E10099D1C2 /* Resources */,
-				21C107475CEDCA9BAF47CCC3 /* [CP] Embed Pods Frameworks */,
+				F210B087B0F6AC3108DF84DB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1071,11 +1071,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3A3B26A1DA7A6E10099D1C2 /* Build configuration list for PBXNativeTarget "TrashOutUITests" */;
 			buildPhases = (
-				0F5089AA750E0A1B48D54071 /* [CP] Check Pods Manifest.lock */,
+				8BAE92CF40C354F55EBDA129 /* [CP] Check Pods Manifest.lock */,
 				C3A3B2571DA7A6E10099D1C2 /* Sources */,
 				C3A3B2581DA7A6E10099D1C2 /* Frameworks */,
 				C3A3B2591DA7A6E10099D1C2 /* Resources */,
-				36ED111D06A9E44AA3BBEF57 /* [CP] Embed Pods Frameworks */,
+				F45DB3E7C836D688F0408E26 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1229,51 +1229,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F5089AA750E0A1B48D54071 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TrashOutUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		108C74F5C5FBC43943524E77 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TrashOut-Stage-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		151ABA3B8C5AD680EFE1970D /* [CP] Check Pods Manifest.lock */ = {
+		04471522BDF7277166F8D348 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1295,7 +1251,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		21C107475CEDCA9BAF47CCC3 /* [CP] Embed Pods Frameworks */ = {
+		8BAE92CF40C354F55EBDA129 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1303,108 +1259,18 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keychain.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"$(DERIVED_FILE_DIR)/Pods-TrashOutUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		36ED111D06A9E44AA3BBEF57 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TrashOutUITests/Pods-TrashOutUITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keychain.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrashOutUITests/Pods-TrashOutUITests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8E2A1AEE202236E800C1AC70 /* Update Build Number */ = {
@@ -1436,7 +1302,63 @@
 			shellPath = /bin/sh;
 			shellScript = "if hash tailor 2>/dev/null; then\n  tailor --max-function-length=15\nelse\n  echo \"warning: Tailor not installed\"\nfi";
 		};
-		ADF195128BB7951BBCDFFE29 /* [CP] Embed Pods Frameworks */ = {
+		9DBA6A8F7005F3C4FB9115E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keychain.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCB9FD8CC934A8E76DF1DCED /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1521,7 +1443,7 @@
 			shellScript = "if [ \"${CONFIGURATION}\" = \"Hockeyapp\" ]; then\n\tBUILD_NUMBER=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" TrashOut/Info-Prod.plist`\n\tBUILD_NUMBER=$((BUILD_NUMBER+1))\n\n\t/usr/libexec/PlistBuddy -c \"Set CFBundleVersion $BUILD_NUMBER\" TrashOut/Info-Prod.plist\n\nfi";
 			showEnvVarsInLog = 0;
 		};
-		C7DC585D3D53C5896666AAE0 /* [CP] Check Pods Manifest.lock */ = {
+		C53512DC97B2EEB442E0E641 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1536,7 +1458,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TrashOut-Prod-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TrashOut-Stage-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1570,7 +1492,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
 		};
-		FDE04017A994B857E05F8867 /* [CP] Embed Pods Frameworks */ = {
+		F210B087B0F6AC3108DF84DB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1578,7 +1500,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
@@ -1623,7 +1545,85 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F45DB3E7C836D688F0408E26 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TrashOutUITests/Pods-TrashOutUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keychain.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrashOutUITests/Pods-TrashOutUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEC789166DE98A2697898597 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrashOut-Prod-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1961,7 +1961,7 @@
 /* Begin XCBuildConfiguration section */
 		8E2A1B88202236E800C1AC70 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B437443D3AB3BAD05C3DCF78 /* Pods-TrashOut-Stage.debug.xcconfig */;
+			baseConfigurationReference = EE281CD398709CD40C6CE405 /* Pods-TrashOut-Stage.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2005,7 +2005,7 @@
 		};
 		8E2A1B89202236E800C1AC70 /* Hockeyapp */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4BB89728DF9442928B361248 /* Pods-TrashOut-Stage.hockeyapp.xcconfig */;
+			baseConfigurationReference = 361428F09D6D020677C9E212 /* Pods-TrashOut-Stage.hockeyapp.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2049,7 +2049,7 @@
 		};
 		8E2A1B8A202236E800C1AC70 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5E26164F664A7F79FF3670A3 /* Pods-TrashOut-Stage.release.xcconfig */;
+			baseConfigurationReference = 648079F0F2ED347BB06EAA87 /* Pods-TrashOut-Stage.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2146,7 +2146,7 @@
 		};
 		C351E5B11DC0A8C1004BF32F /* Hockeyapp */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 660A5E53DF556A9F67FE127C /* Pods-TrashOut-Prod.hockeyapp.xcconfig */;
+			baseConfigurationReference = B2851C7BA32E2EEF80DA9F4C /* Pods-TrashOut-Prod.hockeyapp.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2190,7 +2190,7 @@
 		};
 		C351E5B21DC0A8C1004BF32F /* Hockeyapp */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85BDDDC8612B042FA2019942 /* Pods-TrashOutTests.hockeyapp.xcconfig */;
+			baseConfigurationReference = 6DDE5C096EBA626189EFCEB2 /* Pods-TrashOutTests.hockeyapp.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2209,7 +2209,7 @@
 		};
 		C351E5B31DC0A8C1004BF32F /* Hockeyapp */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D3C0944F752FB7FDD1DA657 /* Pods-TrashOutUITests.hockeyapp.xcconfig */;
+			baseConfigurationReference = B1686E9BE6FECDA7C4F00D53 /* Pods-TrashOutUITests.hockeyapp.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Manual;
@@ -2326,7 +2326,7 @@
 		};
 		C3A3B2651DA7A6E10099D1C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A0B140DFA0BA5114A731DB8 /* Pods-TrashOut-Prod.debug.xcconfig */;
+			baseConfigurationReference = E3FBE388A5AACE7C71744E6A /* Pods-TrashOut-Prod.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2370,7 +2370,7 @@
 		};
 		C3A3B2661DA7A6E10099D1C2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94C109F6C93F1FB7F8F07063 /* Pods-TrashOut-Prod.release.xcconfig */;
+			baseConfigurationReference = 0836026F9DAF613AFFE92356 /* Pods-TrashOut-Prod.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2414,7 +2414,7 @@
 		};
 		C3A3B2681DA7A6E10099D1C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42B55EE1264E54440BCA7369 /* Pods-TrashOutTests.debug.xcconfig */;
+			baseConfigurationReference = 88D59ED8B1CE452F05D1C3E9 /* Pods-TrashOutTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2433,7 +2433,7 @@
 		};
 		C3A3B2691DA7A6E10099D1C2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A55944C415C24D144F2F2922 /* Pods-TrashOutTests.release.xcconfig */;
+			baseConfigurationReference = 1321DAC22005D4AC85201971 /* Pods-TrashOutTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2452,7 +2452,7 @@
 		};
 		C3A3B26B1DA7A6E10099D1C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15D533465EC6BDF1E602AEF8 /* Pods-TrashOutUITests.debug.xcconfig */;
+			baseConfigurationReference = B499D76E38753F1E23DB2408 /* Pods-TrashOutUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Manual;
@@ -2470,7 +2470,7 @@
 		};
 		C3A3B26C1DA7A6E10099D1C2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64D44162D0EEC4349ACB42C6 /* Pods-TrashOutUITests.release.xcconfig */;
+			baseConfigurationReference = DD4DF2D56FDB4D70B1E392FF /* Pods-TrashOutUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Manual;

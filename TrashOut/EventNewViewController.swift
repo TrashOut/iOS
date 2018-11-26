@@ -150,8 +150,8 @@ class EventNewViewController: ViewController, UITextViewDelegate {
         title = "event.create.header".localized
 
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
 
         let backButton = UIBarButtonItem.init(title: "global.cancel".localized, style: .plain, target: self, action: #selector(close))
         navigationItem.leftBarButtonItem = backButton
@@ -252,7 +252,7 @@ class EventNewViewController: ViewController, UITextViewDelegate {
 
     // MARK: - Actions
 
-    func close() {
+    @objc func close() {
         LoadingView.hide()
         navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -260,7 +260,7 @@ class EventNewViewController: ViewController, UITextViewDelegate {
     /**
     Create an event
     */
-    func createEvent() {
+    @objc func createEvent() {
 		guard let name = name,
 			let descript = descript,
 			let start = start,
@@ -314,7 +314,7 @@ class EventNewViewController: ViewController, UITextViewDelegate {
     /**
     Trigger new controller where user choose start of meeting
     */
-    func setStartDate(_ sender: UITapGestureRecognizer) {
+    @objc func setStartDate(_ sender: UITapGestureRecognizer) {
         if sender.state == .ended {
             guard let vc = storyboard?.instantiateViewController(withIdentifier: "EventDateViewController") as? EventDateViewController else { return }
             vc.writeStartDateBackDelegate = self
@@ -325,7 +325,7 @@ class EventNewViewController: ViewController, UITextViewDelegate {
     /**
     Trigger new controller where user choose end of meeting
     */
-    func setEndDate(_ sender: UITapGestureRecognizer) {
+    @objc func setEndDate(_ sender: UITapGestureRecognizer) {
         if lblStartDate.text != "Start" {
             if sender.state == .ended {
                 guard let vc = storyboard?.instantiateViewController(withIdentifier: "EventDateViewController") as? EventDateViewController else { return }
@@ -341,13 +341,13 @@ class EventNewViewController: ViewController, UITextViewDelegate {
     /**
     Move keyboard for text view below the text itself
     */
-    func adjustForKeyboard(notification: Notification) {
+    @objc func adjustForKeyboard(notification: Notification) {
         let userInfo = notification.userInfo!
 
-        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
 
-        if notification.name == Notification.Name.UIKeyboardWillHide {
+        if notification.name == UIResponder.keyboardWillHideNotification {
             scrollView.contentInset = UIEdgeInsets.zero
         } else {
             scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height + 10, right: 0)
@@ -451,7 +451,7 @@ class EventNewViewController: ViewController, UITextViewDelegate {
     /**
     Hides phone pad when user touches Done button
     */
-    func phonePadDoneButton() {
+    @objc func phonePadDoneButton() {
         tvPhone.resignFirstResponder()
     }
 

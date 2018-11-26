@@ -76,7 +76,7 @@ class UserManager {
         //firAuth.logout()
         let uid = firAuth.uid()
 		if uid == nil || firAuth.isAnonymous {
-			firAuth.createAnonymousUser { [unowned self] _ in
+			firAuth.createAnonymousUser { [unowned self] in
                 self.loadDBMe() { (user, error) in
                     guard user != nil else {
                         self.createDBUser(user: User()) { [unowned self] (user, error) in

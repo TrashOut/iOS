@@ -106,8 +106,8 @@ class TrashHunterContainerViewController: UIViewController {
 
 	func present(vc: UIViewController) {
 		guard let oldController = self.controller else { return }
-		oldController.willMove(toParentViewController: nil)
-		self.addChildViewController(vc)
+		oldController.willMove(toParent: nil)
+		self.addChild(vc)
 
 		self.container.addSubview(vc.view)
 		vc.view.leadingAnchor.constraint(equalTo: self.container.leadingAnchor).isActive = true
@@ -115,9 +115,9 @@ class TrashHunterContainerViewController: UIViewController {
 		vc.view.topAnchor.constraint(equalTo: self.container.topAnchor).isActive = true
 		vc.view.bottomAnchor.constraint(equalTo: self.container.bottomAnchor).isActive = true
 
-		vc.didMove(toParentViewController: self)
+		vc.didMove(toParent: self)
 		oldController.view.removeFromSuperview()
-		oldController.removeFromParentViewController()
+		oldController.removeFromParent()
 
 
 		self.view.setNeedsLayout()

@@ -55,7 +55,7 @@ class DumpsViewController: ViewController {
 
 	@IBAction func segmentValueChanged() {
 		currentVC?.view.removeFromSuperview()
-		currentVC?.removeFromParentViewController()
+		currentVC?.removeFromParent()
 		if segmentControl.selectedSegmentIndex == 0 {
 			loadMap()
 		} else {
@@ -76,10 +76,10 @@ class DumpsViewController: ViewController {
 	}
 
 	func addController(_ vc: UIViewController) {
-		addChildViewController(vc)
+		addChild(vc)
 		currentVC = vc
 
-		vc.didMove(toParentViewController: self)
+		vc.didMove(toParent: self)
 		view.addSubview(vc.view)
 		vc.view.translatesAutoresizingMaskIntoConstraints = false
 		vc.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true

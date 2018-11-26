@@ -214,7 +214,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
     /**
     Share dumps link with friends
     */
-    func shareDump() {
+    @objc func shareDump() {
         guard let message = trash?.sharingUrl else { return }
         let vc = UIActivityViewController(activityItems: [message], applicationActivities: [])
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
@@ -225,7 +225,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
     /**
     Show photos on whole screen
     */
-    func showBigPhoto(_ sender: UITapGestureRecognizer) {
+    @objc func showBigPhoto(_ sender: UITapGestureRecognizer) {
         guard let trash = trash else { return }
         if trash.images.last?.fullDownloadUrl != nil {
             if sender.state == .ended {
@@ -375,8 +375,8 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
         annotation.coordinate = coords
 
         map.addAnnotation(annotation)
-        let span = MKCoordinateSpanMake(0.01, 0.01)
-        let region = MKCoordinateRegionMake(coords, span)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion.init(center: coords, span: span)
         map.setRegion(region, animated: true)
     }
 
@@ -524,7 +524,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
             guard let trash = trash else { return }
             let storyboard = UIStoryboard.init(name: "Event", bundle: Bundle.main)
             guard let vc = storyboard.instantiateViewController(withIdentifier: "EventNewViewController") as? EventNewViewController else { return }
-			vc.onEventCreated = { [weak self] _ in
+			vc.onEventCreated = { [weak self] in
 				self?.reloadData()
 			}
             vc.trashId = trash.id
@@ -754,7 +754,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
     /**
     Add cleaning event to calendar
     */
-    func joinEvent(_ sender: UIButton) {
+    @objc func joinEvent(_ sender: UIButton) {
 		guard let event = trash?.events[sender.tag] else { return }
 		eventManager.joinEvent(event, controller: self) { [weak self, weak event] (error) in
             DispatchQueue.main.async {
@@ -828,7 +828,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
     /**
     Go to event detail
     */
-    func goToEventDetail(_ sender: UIButton) {
+    @objc func goToEventDetail(_ sender: UIButton) {
         guard let event = trash?.events[sender.tag] else { return }
         let storyboard = UIStoryboard.init(name: "Event", bundle: Bundle.main)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }

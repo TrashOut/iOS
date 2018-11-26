@@ -91,10 +91,25 @@ private extension UIFontDescriptor {
 
 	var monospacedDigitFontDescriptor: UIFontDescriptor {
 		let fontDescriptorFeatureSettings = [[
-			UIFontFeatureTypeIdentifierKey: kNumberSpacingType,
-			UIFontFeatureSelectorIdentifierKey: kMonospacedNumbersSelector]]
-		let fontDescriptorAttributes = [UIFontDescriptorFeatureSettingsAttribute: fontDescriptorFeatureSettings]
-		let fontDescriptor = self.addingAttributes(fontDescriptorAttributes)
+			convertFromUIFontDescriptorFeatureKey(UIFontDescriptor.FeatureKey.featureIdentifier): kNumberSpacingType,
+			convertFromUIFontDescriptorFeatureKey(UIFontDescriptor.FeatureKey.typeIdentifier): kMonospacedNumbersSelector]]
+		let fontDescriptorAttributes = [convertFromUIFontDescriptorAttributeName(UIFontDescriptor.AttributeName.featureSettings): fontDescriptorFeatureSettings]
+		let fontDescriptor = self.addingAttributes(convertToUIFontDescriptorAttributeNameDictionary(fontDescriptorAttributes))
 		return fontDescriptor
 	}
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIFontDescriptorFeatureKey(_ input: UIFontDescriptor.FeatureKey) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIFontDescriptorAttributeName(_ input: UIFontDescriptor.AttributeName) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIFontDescriptorAttributeNameDictionary(_ input: [String: Any]) -> [UIFontDescriptor.AttributeName: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIFontDescriptor.AttributeName(rawValue: key), value)})
 }

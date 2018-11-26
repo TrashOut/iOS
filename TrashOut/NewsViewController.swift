@@ -65,7 +65,7 @@ class NewsViewController: ViewController, UICollectionViewDelegate, UICollection
 		} else {
 			LoadingView.show(on: self.view)
 		}
-		manager.reload (callback: { [weak self] _ in
+		manager.reload (callback: { [weak self] in
             DispatchQueue.main.async {
                 if reload {
                     self?.collectionView.pullToRefreshView?.stopAnimating()
@@ -108,7 +108,7 @@ class NewsViewController: ViewController, UICollectionViewDelegate, UICollection
     }
 
 	func loadNextPage() {
-		manager.loadData(callback: { [weak self] _ in
+		manager.loadData(callback: { [weak self] in
 			self?.collectionView.reloadData()
 		}) { [weak self] (error) in
 			self?.show(error: error)

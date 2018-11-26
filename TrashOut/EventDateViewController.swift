@@ -58,7 +58,7 @@ class EventDateViewController: ViewController {
     /**
     Go to previous controller
     */
-    func savePlace() {
+    @objc func savePlace() {
         _ = navigationController?.popViewController(animated: true)
     }
 

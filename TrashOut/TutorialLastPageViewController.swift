@@ -31,30 +31,30 @@ class TutorialLastPageViewController: ViewController {
 
 		btnSignin.setTitle("tutorial.register".localized, for: .normal)
 		btnFacebook.setTitle("global.facebookLogin".localized, for: .normal)
-		lblProcess.attributedText = NSAttributedString.init(string: "tutorial.signup.withoutSignIn".localized, attributes: [
-			NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue
-		])
+		lblProcess.attributedText = NSAttributedString.init(string: "tutorial.signup.withoutSignIn".localized, attributes: convertToOptionalNSAttributedStringKeyDictionary([
+			convertFromNSAttributedStringKey(NSAttributedString.Key.underlineStyle): NSUnderlineStyle.single.rawValue
+		]))
 
 		btnSignin.layer.cornerRadius = 35 / 2
 		btnSignin.layer.masksToBounds = true
 		btnSignin.backgroundColor = UIColor.theme.button
-		btnSignin.setTitleColor(UIColor.white, for: UIControlState())
+		btnSignin.setTitleColor(UIColor.white, for: UIControl.State())
 
 		btnFacebook.layer.cornerRadius = 35 / 2
 		btnFacebook.layer.masksToBounds = true
 		btnFacebook.backgroundColor = UIColor.theme.facebook
-		btnFacebook.setTitleColor(UIColor.white, for: UIControlState())
+		btnFacebook.setTitleColor(UIColor.white, for: UIControl.State())
 	}
 
 	@IBAction func signIn() {
-		self.askPermissions { [weak self] _ in
+		self.askPermissions { [weak self] in
 			guard let main = self?.loadSignIn() else { return }
 			self?.changeRoot(viewController: main)
 		}
 	}
 
 	@IBAction func process() {
-		self.askPermissions { _ in
+		self.askPermissions { 
             UserManager.instance.createAnonymousUser { [weak self] (user, error) in
                 guard let main = self?.main() else { return }
                 self?.changeRoot(viewController: main)
@@ -75,7 +75,7 @@ class TutorialLastPageViewController: ViewController {
 			guard let user = UserManager.instance.user else { return }
 			print("Successful logged as \(user.email ?? "no email")")
 
-			self?.askPermissions { [weak self] _ in
+			self?.askPermissions { [weak self] in
 				guard let main = self?.main() else { return }
 				self?.changeRoot(viewController: main)
 			}
@@ -139,4 +139,15 @@ class TutorialLastPageViewController: ViewController {
 		}
 	}
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

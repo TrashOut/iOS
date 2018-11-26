@@ -57,7 +57,7 @@ class TrashHunterStartViewController: UIViewController {
 	@IBAction func startHunting() {
 		guard let container = self.parent as? TrashHunterContainerViewController else {return}
 		let nc = self.storyboard?.instantiateViewController(withIdentifier: "TrashHunterConfigController") as! UINavigationController
-		let vc = nc.childViewControllers.first as! TrashHunterConfigViewController
+		let vc = nc.children.first as! TrashHunterConfigViewController
 		vc.container = container
 		self.present(nc, animated: true, completion: nil)
 	}

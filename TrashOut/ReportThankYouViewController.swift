@@ -35,7 +35,7 @@ class ReportThankYouViewController: ViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if (self.dismissHandler != nil) && self.isMovingFromParentViewController {
+        if (self.dismissHandler != nil) && self.isMovingFromParent {
             dismissHandler()
         }
     }

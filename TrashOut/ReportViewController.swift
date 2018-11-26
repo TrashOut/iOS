@@ -196,8 +196,8 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
 		}
 
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
 
 		let backButton = UIBarButtonItem.init(title: "global.cancel".localized, style: .plain, target: self, action: #selector(close))
 		navigationItem.leftBarButtonItem = backButton
@@ -305,7 +305,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     
 	// MARK: - Actions
 
-	func close() {
+	@objc func close() {
         LoadingView.hide()
 		navigationController?.dismiss(animated: true, completion: nil)
 	}
@@ -313,7 +313,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     /**
     Report a dump or update one
     */
-    func sendReport() {
+    @objc func sendReport() {
         
         //show(message: "trash.create.validation.notFilledRequiredFileds".localized)
         if trash != nil && photos.isEmpty {
@@ -332,7 +332,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
             let window = self.view.window
             LoadingView.show(on: window!, style: .transparent)
 
-			let failed: () -> () = { [weak self] _ in
+			let failed: () -> () = { [weak self] in
 				//self?.show(message: "trash.create.uploadPhotoError".localized)
 				self?.show(message: "global.fetchError".localized)
 				LoadingView.hide()
@@ -496,7 +496,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
 			self?.cvPhoto.reloadData()
 			if let cnt = self?.photos.count {
 				let ip = IndexPath.init(item: cnt - 1, section: 0)
-				self?.cvPhoto.scrollToItem(at: ip, at: UICollectionViewScrollPosition.left, animated: true)
+				self?.cvPhoto.scrollToItem(at: ip, at: UICollectionView.ScrollPosition.left, animated: true)
 			}
 			self?.takeFirstPhotoView.isHidden = true
 			self?.takeAnotherPhotoView.isHidden = false
@@ -767,13 +767,13 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     /**
     Move keyboard for text view below the text itself
     */
-    func adjustForKeyboard(notification: Notification) {
+    @objc func adjustForKeyboard(notification: Notification) {
         let userInfo = notification.userInfo!
 
-        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
 
-        if notification.name == Notification.Name.UIKeyboardWillHide {
+        if notification.name == UIResponder.keyboardWillHideNotification {
             scrollView.contentInset = UIEdgeInsets.zero
         } else {
             scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height + 10, right: 0)
@@ -930,7 +930,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
         if segue.identifier == "openThankYouVC" {
             if let tyvc = segue.destination as? ReportThankYouViewController {
                 tyvc.trash = sender as? Trash
-                tyvc.dismissHandler = { [weak self] (shiftId) in
+                tyvc.dismissHandler = { [weak self] in
                     self?.close()
                 }
             }

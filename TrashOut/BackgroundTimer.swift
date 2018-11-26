@@ -6,7 +6,7 @@
 //  Copyright © 2018 TrashOut NGO. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// Background timer with interval 1 second.
 class BackgroundTimer {
@@ -16,7 +16,7 @@ class BackgroundTimer {
     fileprivate let interval: TimeInterval = 1
     fileprivate lazy var timer: DispatchSourceTimer = {
         let t = DispatchSource.makeTimerSource()
-        t.scheduleRepeating(deadline: .now() + self.interval, interval: self.interval)
+        t.schedule(deadline: .now() + self.interval, repeating: self.interval)
         t.setEventHandler(handler: { [unowned self] in
             DispatchQueue.main.async { [unowned self] in
                 self.currentTime += 1
@@ -51,8 +51,8 @@ class BackgroundTimer {
         guard isRunning else {
             timer.resume()
             notificationCenter.removeObserver(self)
-            notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: .UIApplicationWillResignActive, object: nil)
-            notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: .UIApplicationWillEnterForeground, object: nil)
+            notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+            notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
             isRunning = true
             
             return

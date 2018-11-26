@@ -37,7 +37,7 @@ extension UIButton {
 
     func theme() {
 		self.translatesAutoresizingMaskIntoConstraints = false
-        self.contentEdgeInsets = UIEdgeInsetsMake(8, 15, 8, 15)
+        self.contentEdgeInsets = UIEdgeInsets.init(top: 8, left: 15, bottom: 8, right: 15)
         self.sizeToFit()
 
 		var heightConstraints: [NSLayoutConstraint] = self.constraints.filter({ $0.firstItem === self && $0.firstAttribute == .height && NSStringFromClass(type(of: $0)) != "NSContentSizeLayoutConstraint" })
@@ -56,7 +56,7 @@ extension UIButton {
 			self.layer.masksToBounds = true
         }
         self.backgroundColor = UIColor.theme.button
-        self.setTitleColor(UIColor.white, for: UIControlState())
+        self.setTitleColor(UIColor.white, for: UIControl.State())
     }
 }
 
@@ -64,7 +64,7 @@ extension UIView {
     /**
      Shortcut for constraint getter
      */
-    public func constraint(for attribute: NSLayoutAttribute) -> NSLayoutConstraint? {
+    public func constraint(for attribute: NSLayoutConstraint.Attribute) -> NSLayoutConstraint? {
         var att = self.constraints.first(where: { (c) -> Bool in
             return c.firstItem as! NSObject == self && c.firstAttribute == attribute
         })

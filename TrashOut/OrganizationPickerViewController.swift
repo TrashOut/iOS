@@ -56,7 +56,7 @@ class OrganizationPickerViewController: ViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
 
         Networking.instance.organizations(page: 1, limit: 20) { [weak self] organizations, _ in
@@ -104,7 +104,7 @@ class OrganizationPickerViewController: ViewController,
         }
     }
 
-    func done() {
+    @objc func done() {
         _ = self.navigationController?.popViewController(animated: true)
         self.delegate?.organizationPicker(self, didSelect: selectedOrganizations)
     }

@@ -220,8 +220,8 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
         annotation.coordinate = coords
 
         map.addAnnotation(annotation)
-        let span = MKCoordinateSpanMake(0.01, 0.01)
-        let region = MKCoordinateRegionMake(coords, span)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion.init(center: coords, span: span)
         map.setRegion(region, animated: true)
     }
 

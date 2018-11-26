@@ -136,7 +136,7 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
 
 	func setTrashTypes() {
         let mutableString = NSMutableAttributedString(string: "collectionPoint.detail.mobile.recycable".localized + ": ")
-		mutableString.addAttribute(NSForegroundColorAttributeName, value: Theme.current.color.lightGray, range: NSRange(location: 0, length: mutableString.length))
+		mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: Theme.current.color.lightGray, range: NSRange(location: 0, length: mutableString.length))
 
 		if let updatedTypes = junkyard.updates.last?.types {
 			let mutableString2 = NSMutableAttributedString(string: showAllTypesOfTrash(junkyard: junkyard, type: updatedTypes))

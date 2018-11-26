@@ -46,8 +46,8 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 
 	// MARK: - Public methods
 
-	/// Singleton for resolving user location
-	open static var manager = LocationManager()
+	/// Singleton for resolving user locationb
+    public static var manager = LocationManager()
 
 	/**
 	Default location to use if user's cannot be determined
@@ -200,11 +200,11 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 	Start to listen for location changes
 	*/
 	fileprivate func startManagerForLocationUpdates() {
-		self.processLocationUsageAuthorization( { [weak self] _ in
+		self.processLocationUsageAuthorization( { [weak self] in
             
 			self?.locationManager.startUpdatingLocation()
 
-			}, failure: { [weak self] _ in
+			}, failure: { [weak self] in
 				self?.processCallback()
             })
 	}

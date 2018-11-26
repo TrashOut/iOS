@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 	// MARK: - App Delegate
 
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let file = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
         let opt = FirebaseOptions.init(contentsOfFile: file!)
         FirebaseApp.configure(options: opt!)

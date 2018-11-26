@@ -98,7 +98,7 @@ extension EventSearchTableController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
         guard let map = map, let searchBarText = searchController.searchBar.text else { return }
-        let request = MKLocalSearchRequest()
+        let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchBarText
         request.region = map.region
         let search = MKLocalSearch(request: request)

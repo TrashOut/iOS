@@ -121,7 +121,7 @@ class DumpsFilterViewController: ViewController,
 		return true
 	}
 
-	func didSelectLastUpdate() {
+	@objc func didSelectLastUpdate() {
 		tfLastUpdate.resignFirstResponder()
 	}
 
@@ -159,11 +159,11 @@ class DumpsFilterViewController: ViewController,
 
     // MARK: - Actions
 
-    func close() {
+    @objc func close() {
         navigationController?.dismiss(animated: true, completion: nil)
     }
 
-	func filterTrash() {
+	@objc func filterTrash() {
 		filter.cache()
 		delegate?.filterDidSet(filter: self.filter)
 		navigationController?.dismiss(animated: true, completion: nil)
@@ -348,7 +348,7 @@ class FilterTrashStatusTableViewCell: UITableViewCell {
 		swSelection.addTarget(self, action: #selector(switched), for: .valueChanged)
 	}
 
-	func switched() {
+	@objc func switched() {
 		if let action = switchAction {
 			action(swSelection.isOn)
 		}
@@ -379,7 +379,7 @@ class FilterTrashSizeCollectionViewCell: UICollectionViewCell {
 		btnTrashSize.addTarget(self, action: #selector(switched), for: .touchUpInside)
 	}
 
-	func switched() {
+	@objc func switched() {
 		btnTrashSize.isSelected = !btnTrashSize.isSelected
 		if let action = switchAction {
 			action(btnTrashSize.isSelected)
@@ -413,7 +413,7 @@ class FilterTrashTypeCollectionViewCell: UICollectionViewCell {
 		btnTrashType.addTarget(self, action: #selector(switched), for: .touchUpInside)
 	}
 
-	func switched() {
+	@objc func switched() {
 		btnTrashType.isSelected = !btnTrashType.isSelected
 		if let action = switchAction {
 			action(btnTrashType.isSelected)

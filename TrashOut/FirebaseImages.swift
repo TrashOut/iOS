@@ -68,7 +68,7 @@ extension UIImageView {
 	func remoteImage(id: String,
 					 placeholder: UIImage = UIImage(),
 					 animate: Bool = true,
-					 animationOptions: UIViewAnimationOptions = [.transitionCrossDissolve],
+					 animationOptions: UIView.AnimationOptions = [.transitionCrossDissolve],
 					 success: ((UIImage?) -> ())? = nil
 		) {
 		self.image = placeholder
@@ -87,7 +87,7 @@ extension UIImageView {
 		}
 	}
 
-	func setDownloadedImage(_ image: UIImage, animated: Bool, animationOptions: UIViewAnimationOptions) {
+	func setDownloadedImage(_ image: UIImage, animated: Bool, animationOptions: UIView.AnimationOptions) {
 		if animated {
 			UIView.transition(with: self,
 			                  duration: 0.35,

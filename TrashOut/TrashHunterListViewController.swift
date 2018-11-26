@@ -77,7 +77,7 @@ class TrashHunterListViewController: ViewController, UITableViewDataSource, UITa
 
 
 
-	func close() {
+	@objc func close() {
 		TrashHunter.hunter?.dismissed()
 		self.dismiss(animated: true, completion: nil)
 	}

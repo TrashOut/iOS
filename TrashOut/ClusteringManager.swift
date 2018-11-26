@@ -96,10 +96,10 @@ public class ClusteringManager: NSObject {
 		let zoomLevel = self.zoomLevel(forZoomScale: MKZoomScale(zoomScale))
 		let cellSize = self.cellSize(forLevel: zoomLevel)
 		let scaleFactor: Double = zoomScale / Double(cellSize)
-		let minX: Int = Int(floor(MKMapRectGetMinX(rect) * scaleFactor))
-		let maxX: Int = Int(floor(MKMapRectGetMaxX(rect) * scaleFactor))
-		let minY: Int = Int(floor(MKMapRectGetMinY(rect) * scaleFactor))
-		let maxY: Int = Int(floor(MKMapRectGetMaxY(rect) * scaleFactor))
+		let minX: Int = Int(floor(rect.minX * scaleFactor))
+		let maxX: Int = Int(floor(rect.maxX * scaleFactor))
+		let minY: Int = Int(floor(rect.minY * scaleFactor))
+		let maxY: Int = Int(floor(rect.maxY * scaleFactor))
 
 		var clusteredAnnotations = [MKAnnotation]()
 		lock.lock()
@@ -186,7 +186,7 @@ public class ClusteringManager: NSObject {
 //	}
 
 	public func zoomLevel(forZoomScale scale: MKZoomScale) -> Int {
-		let totalTilesAtMaxZoom: Double = MKMapSizeWorld.width / 256.0
+		let totalTilesAtMaxZoom: Double = MKMapSize.world.width / 256.0
 		let zoomLevelAtMaxZoom: Int = Int(log2(totalTilesAtMaxZoom))
 		let floorLog2ScaleFloat = floor(log2f(Float(scale))) + 0.5
 		guard !floorLog2ScaleFloat.isInfinite else { return floorLog2ScaleFloat.sign == .plus ? 0 : 19 }
@@ -216,7 +216,7 @@ open class QuadTree: NSObject {
 	override init() {
 		super.init()
 
-		rootNode = QuadTreeNode(boundingBox: BoundingBox(mapRect: MKMapRectWorld))
+		rootNode = QuadTreeNode(boundingBox: BoundingBox(mapRect: MKMapRect.world))
 
 	}
 
@@ -251,7 +251,7 @@ open class QuadTree: NSObject {
 	}
 
 	func enumerateAnnotationsUsingBlock(_ callback: (MKAnnotation) -> Void) {
-		enumerateAnnotationsInBox(BoundingBox(mapRect: MKMapRectWorld), withNode: rootNode!, callback: callback)
+		enumerateAnnotationsInBox(BoundingBox(mapRect: MKMapRect.world), withNode: rootNode!, callback: callback)
 	}
 
 	func enumerateAnnotationsInBox(_ box: BoundingBox, withNode node: QuadTreeNode, callback: (MKAnnotation) -> Void) {
@@ -334,8 +334,8 @@ public struct BoundingBox {
 	}
 
 	init(mapRect: MKMapRect) {
-		let topLeft: CLLocationCoordinate2D = MKCoordinateForMapPoint(mapRect.origin)
-		let botRight: CLLocationCoordinate2D = MKCoordinateForMapPoint(MKMapPointMake(MKMapRectGetMaxX(mapRect), MKMapRectGetMaxY(mapRect)))
+		let topLeft: CLLocationCoordinate2D = mapRect.origin.coordinate
+		let botRight: CLLocationCoordinate2D = MKMapPoint.init(x: mapRect.maxX, y: mapRect.maxY).coordinate
 		let minLat: CLLocationDegrees = botRight.latitude
 		let maxLat: CLLocationDegrees = topLeft.latitude
 
@@ -356,17 +356,17 @@ public struct BoundingBox {
 
 	var mapRect: MKMapRect {
 		get {
-			let topLeft: MKMapPoint  = MKMapPointForCoordinate(
+			let topLeft: MKMapPoint  = MKMapPoint.init(
 				CLLocationCoordinate2DMake(
 					CLLocationDegrees(self.x0),
 					CLLocationDegrees(self.y0)))
 
-			let botRight: MKMapPoint  = MKMapPointForCoordinate(
+			let botRight: MKMapPoint  = MKMapPoint.init(
 				CLLocationCoordinate2DMake(
 					CLLocationDegrees(self.xf),
 					CLLocationDegrees(self.yf)))
 
-			return MKMapRectMake(topLeft.x, botRight.y, fabs(botRight.x - topLeft.x), fabs(botRight.y - topLeft.y))
+			return MKMapRect.init(x: topLeft.x, y: botRight.y, width: fabs(botRight.x - topLeft.x), height: fabs(botRight.y - topLeft.y))
 		}
 	}
 

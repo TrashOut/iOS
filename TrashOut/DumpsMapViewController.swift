@@ -175,7 +175,7 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 	*/
 	fileprivate func setMapButton(image: String, button: UIButton) {
 		let origImage = UIImage(named: image)
-		let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+		let tintedImage = origImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
 		button.setImage(tintedImage, for: .normal)
 		button.tintColor = .white
 		button.backgroundColor = Theme.current.color.green
@@ -239,7 +239,7 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
     /**
     Go to filter
     */
-    func goToFilter() {
+    @objc func goToFilter() {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "DumpsFilterViewController") as? DumpsFilterViewController else { fatalError("Could not dequeue storyboard with identifier: DumpsFilterViewController") }
 		vc.delegate = self
 //        vc.ShowFilterDataDelegate = self
@@ -275,8 +275,8 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 	func extendedRect(for rect: MKMapRect) -> MKMapRect {
         let enchangeRect: Double = 2 // calc for rect + enchangeRect*rect surrounding
         return MKMapRect.init(
-            origin: MKMapPointMake(rect.origin.x - (rect.size.width*enchangeRect/2), rect.origin.y - (rect.size.height*enchangeRect/2)),
-            size: MKMapSizeMake(rect.size.width*(enchangeRect + 1), rect.size.height*(enchangeRect + 1))
+            origin: MKMapPoint.init(x: rect.origin.x - (rect.size.width*enchangeRect/2), y: rect.origin.y - (rect.size.height*enchangeRect/2)),
+            size: MKMapSize.init(width: rect.size.width*(enchangeRect + 1), height: rect.size.height*(enchangeRect + 1))
         )
 	}
 
@@ -314,7 +314,7 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 			self.currentCellsZoomLevel = zoom
 		}
 		let newrect = self.extendedRect(for: mapView.visibleMapRect)
-		manager.cells(withZoomLevel: zoom, region: MKCoordinateRegionForMapRect(newrect), filter: self.filter, success: { [weak self] (cells) in
+		manager.cells(withZoomLevel: zoom, region: MKCoordinateRegion.init(newrect), filter: self.filter, success: { [weak self] (cells) in
 			self?.cells = cells
 			self?.currentLoadedRect = newrect
 			}, failure: { [weak self] (error) in
@@ -346,12 +346,12 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 		let zoom = mapView.zoomLevel
 		if zoom != self.currentCellsZoomLevel {
 			self.currentCellsZoomLevel = zoom
-		} else if let cr = currentLoadedRect, MKMapRectContainsRect(cr, mapView.visibleMapRect) {
+		} else if let cr = currentLoadedRect, cr.contains(mapView.visibleMapRect) {
 			return // no need to load anything
 		}
 		let newrect = self.extendedRect(for: mapView.visibleMapRect)
 
-		manager.cells(withZoomLevel: zoom, region: MKCoordinateRegionForMapRect(newrect), filter: self.filter, success: { [weak self] (cells) in
+		manager.cells(withZoomLevel: zoom, region: MKCoordinateRegion.init(newrect), filter: self.filter, success: { [weak self] (cells) in
             self?.cells = cells
             self?.currentLoadedRect = newrect
             }, failure: { [weak self] error in

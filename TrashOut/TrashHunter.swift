@@ -102,13 +102,13 @@ class TrashHunter: NSObject, CLLocationManagerDelegate {
 			let error = TrashHunterError()
 			error.isCritical = true
 			error.message = "Location services are disabled, enable them in settings by choosing Always option.".localized
-			error.repeatBlock = { [weak self] _ in
+			error.repeatBlock = { [weak self] in
 				LocationManager.manager.refreshCurrentLocation { (_) in
 					self?.start()
 				}
 			}
             
-			if let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) {
+			if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
 				let settingsAction = UIAlertAction(title: "Settings".localized, style: .default, handler: { (_) in
 					if UIApplication.shared.canOpenURL(settingsUrl) {
 						UIApplication.shared.openURL(settingsUrl)
@@ -122,17 +122,17 @@ class TrashHunter: NSObject, CLLocationManagerDelegate {
 			return
 		}
         
-		self.prepareNotifications(success: { [weak self] _ in
+		self.prepareNotifications(success: { [weak self] in
 			self?.startMonitoring()
 			}, failure: {
 				let error = TrashHunterError()
 				error.isCritical = true
 				error.message = "Notifications are disabled, enable them in setting".localized
-				error.repeatBlock = { [weak self] _ in
+				error.repeatBlock = { [weak self] in
 					self?.start()
 				}
                 
-				if let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) {
+				if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
 					let settingsAction = UIAlertAction(title: "Settings".localized, style: .default, handler: { (_) in
 						if UIApplication.shared.canOpenURL(settingsUrl) {
 							UIApplication.shared.openURL(settingsUrl)
@@ -205,19 +205,19 @@ class TrashHunter: NSObject, CLLocationManagerDelegate {
 
 	var lastNotificationTime: Date? = nil
 	var lastLocation: CLLocation? = nil
-	var bgTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+	var bgTask: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
 
 
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		guard bgTask == UIBackgroundTaskInvalid else {
+		guard bgTask == UIBackgroundTaskIdentifier.invalid else {
 			print("There is running task in background")
 			return
 		}
 
-		bgTask = UIApplication.shared.beginBackgroundTask(withName: "TrashHunterDownloadData", expirationHandler: {  [weak self] _ in
-			print("TrashHunterDownloadData background time expired")
-			self?.endBgTask()
-		})
+        bgTask = UIApplication.shared.beginBackgroundTask(withName: "TrashHunterDownloadData", expirationHandler: { [weak self] in
+            print("TrashHunterDownloadData background time expired")
+            self?.endBgTask()
+        })
 
 		print("Fetched locations: \(locations.count)")
 		let location = locations
@@ -307,9 +307,9 @@ class TrashHunter: NSObject, CLLocationManagerDelegate {
 	}
 
 	func endBgTask() {
-		if  bgTask != UIBackgroundTaskInvalid {
-			UIApplication.shared.endBackgroundTask(bgTask)
-			self.bgTask = UIBackgroundTaskInvalid
+		if  bgTask != UIBackgroundTaskIdentifier.invalid {
+			UIApplication.shared.endBackgroundTask(convertToUIBackgroundTaskIdentifier(bgTask.rawValue))
+			self.bgTask = UIBackgroundTaskIdentifier.invalid
 			print("background task ended")
 		}
 	}
@@ -388,7 +388,7 @@ class TrashHunter: NSObject, CLLocationManagerDelegate {
 		let nc = vc as? UINavigationController
 		guard let thlvc = nc?.viewControllers.first as? TrashHunterListViewController else { return }
 
-		rvc.present(vc, animated: true, completion: { _ in
+		rvc.present(vc, animated: true, completion: {
 			if let trashes = trashes {
 				thlvc.trashes = trashes
 			} else {
@@ -405,4 +405,9 @@ class TrashHunter: NSObject, CLLocationManagerDelegate {
 		self.controller = nil
 	}
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIBackgroundTaskIdentifier(_ input: Int) -> UIBackgroundTaskIdentifier {
+	return UIBackgroundTaskIdentifier(rawValue: input)
 }

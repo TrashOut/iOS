@@ -278,8 +278,8 @@ extension SignupViewController {
         let createAttributedStringWithLink = { (string: String, url: URL) -> NSAttributedString in
             let attributedString = NSMutableAttributedString(string: string)
             let range = NSRange(location: 0, length: string.count)
-            attributedString.addAttribute(NSLinkAttributeName, value: url, range: range)
-            attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
+            attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: range)
+            attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
             
             return attributedString
         }
@@ -302,7 +302,7 @@ extension SignupViewController {
         mergedAttributedString.append(spaceAttributedString)
         mergedAttributedString.append(termsAndCondAttributedString)
         mergedAttributedString.append(endSentencesAttributedString)
-        mergedAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 15.0), range: NSRange(location: 0, length: mergedAttributedString.string.count))
+        mergedAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 15.0), range: NSRange(location: 0, length: mergedAttributedString.string.count))
         
         return mergedAttributedString
     }

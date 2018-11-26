@@ -118,7 +118,7 @@ class DumpsListViewController: ViewController, UITableViewDataSource, UITableVie
     /**
     Go to filter
     */
-    func goToFilter() {
+    @objc func goToFilter() {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "DumpsFilterViewController") as? DumpsFilterViewController else { fatalError("Could not dequeue storyboard with identifier: DumpsFilterViewController") }
 //        vc.ShowTrashFilterDataDelegate = self
 //        vc.SendDataForTrashFilterDelegate = self
@@ -229,7 +229,7 @@ class DumpsListViewController: ViewController, UITableViewDataSource, UITableVie
     */
     fileprivate func setMapButton(image: String, button: UIButton) {
         let origImage = UIImage(named: image)
-        let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        let tintedImage = origImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         button.setImage(tintedImage, for: .normal)
         button.tintColor = Theme.current.color.green
     }

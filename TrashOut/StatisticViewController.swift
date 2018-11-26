@@ -70,7 +70,7 @@ class StatisticViewController: ViewController,
 
 	func loadData(isFirstLoad: Bool = false) {
 		LoadingView.show(on: self.view, style: isFirstLoad ? .white : .transparent)
-        manager.loadStatistics(for: country, completion: { [weak self] _ in
+        manager.loadStatistics(for: country, completion: { [weak self] in
             LoadingView.hide()
 			NoDataView.hide(from: self?.tblStatistics)
             self?.setupChart()

@@ -111,14 +111,14 @@ class JunkyardFiltViewController: ViewController, UIPickerViewDelegate, UIPicker
     /*
     Go back to junkyards list
     */
-    func cancel() {
+    @objc func cancel() {
         navigationController?.dismiss(animated: true, completion: nil)
     }
 
     /*
     Go back to junkyards list when filter is loaded
     */
-    func filterJunkyards() {
+    @objc func filterJunkyards() {
         LoadingView.show(on: self.view, style: .transparent)
 
         let locationPoint = LocationManager.manager.currentLocation.coordinate
@@ -167,7 +167,7 @@ class JunkyardFiltViewController: ViewController, UIPickerViewDelegate, UIPicker
 		tfDisplay.text = self.size?.localizedName ?? "collectionPoint.size.all".localized
 	}
 
-	func didSelectDisplay() {
+	@objc func didSelectDisplay() {
 		tfDisplay.resignFirstResponder()
 	}
 

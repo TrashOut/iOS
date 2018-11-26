@@ -68,7 +68,7 @@ open class Async {
 	internal static func executeWaterfall (_ blocks: [Block], index: Int, failure: @escaping ErrorBlock) {
 		guard index < blocks.count else { return }
 		let block = blocks[index]
-		block({ _ in
+		block({ 
 			Async.executeWaterfall(blocks, index: index + 1, failure:  failure)
 		}, failure)
 	}

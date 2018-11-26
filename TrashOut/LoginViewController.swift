@@ -74,10 +74,10 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 		frEmail.textField.delegate = self
 		frPassword.textField.delegate = self
 
-		let passwordText = NSAttributedString.init(string: "global.forgotPassword".localized, attributes: [
-			NSForegroundColorAttributeName: UIColor.theme.green,
-			NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue
-			])
+		let passwordText = NSAttributedString.init(string: "global.forgotPassword".localized, attributes: convertToOptionalNSAttributedStringKeyDictionary([
+			convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.theme.green,
+			convertFromNSAttributedStringKey(NSAttributedString.Key.underlineStyle): NSUnderlineStyle.single.rawValue
+			]))
 		lblPassword.attributedText = passwordText
 
 		frPassword.hideSeperator()
@@ -240,4 +240,15 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 			}, completion: nil)
 	}
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

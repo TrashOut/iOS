@@ -1104,6 +1104,7 @@
 					C3A3B23B1DA7A6E00099D1C2 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 86URP76MUB;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1119,11 +1120,13 @@
 					};
 					C3A3B24F1DA7A6E10099D1C2 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Manual;
 						TestTargetID = C3A3B23B1DA7A6E00099D1C2;
 					};
 					C3A3B25A1DA7A6E10099D1C2 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Manual;
 						TestTargetID = C3A3B23B1DA7A6E00099D1C2;
 					};
@@ -2184,7 +2187,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "TrashOut-Prod Distribution";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Hockeyapp;
 		};
@@ -2202,7 +2206,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cz.lithio.trashout.TrashoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrashOut.app/TrashOut";
 			};
 			name = Hockeyapp;
@@ -2220,7 +2225,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = TrashOut;
 			};
 			name = Hockeyapp;
@@ -2364,7 +2370,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "TrashOut-Prod Development";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -2408,7 +2415,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "TrashOut-Prod Distribution";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -2426,7 +2434,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cz.lithio.trashout.TrashoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrashOut.app/TrashOut";
 			};
 			name = Debug;
@@ -2445,7 +2454,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cz.lithio.trashout.TrashoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrashOut.app/TrashOut";
 			};
 			name = Release;
@@ -2463,7 +2473,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = TrashOut;
 			};
 			name = Debug;
@@ -2481,7 +2492,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = TrashOut;
 			};
 			name = Release;

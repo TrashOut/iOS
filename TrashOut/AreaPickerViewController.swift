@@ -55,7 +55,7 @@ class AreaPickerViewController: ViewController,
 
         tableView.tableFooterView = UIView()
 
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
 
         let doneButton = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(done))
@@ -211,7 +211,7 @@ class AreaPickerViewController: ViewController,
 
     // MARK: - Actions
 
-    func done() {
+    @objc func done() {
         _ = self.navigationController?.popViewController(animated: true)
         self.delegate?.areaPicker(self, didSelect: selectedAreas)
     }

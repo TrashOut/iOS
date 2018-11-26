@@ -65,7 +65,7 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
 
         // Setup the dynamic cell height.
         tableView.estimatedRowHeight = 90
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         
         // Set filter size
@@ -107,7 +107,7 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
     /**
     Go to filter
     */
-    func goToFilter() {
+    @objc func goToFilter() {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "JunkyardFiltViewController") as? JunkyardFiltViewController else { fatalError("Could not dequeue storyboard with identifier: JunkyardFiltViewController") }
         vc.ShowFilterDataDelegate = self
         vc.SendDataForJunkyardFilterDelegate = self
@@ -307,10 +307,10 @@ class JunkyardTopTableViewCell: JunkyardTableViewCell {
 			let allTypes = types.map { $0.localizedName }.joined(separator: ", ").uppercaseFirst
 			if allTypes.count > 0 {
                 let mutableString = NSMutableAttributedString(string: "collectionPoint.detail.mobile.recycable".localized + ": ")
-				mutableString.addAttribute(NSForegroundColorAttributeName, value: Theme.current.color.lightGray, range: NSRange(location: 0, length: mutableString.length))
-				mutableString.append(NSMutableAttributedString.init(string: allTypes, attributes: [
-					NSForegroundColorAttributeName: UIColor.black
-					]))
+				mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: Theme.current.color.lightGray, range: NSRange(location: 0, length: mutableString.length))
+				mutableString.append(NSMutableAttributedString.init(string: allTypes, attributes: convertToOptionalNSAttributedStringKeyDictionary([
+					convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.black
+					])))
 				self.lblJunkyardType.attributedText = mutableString
 			} else {
 				self.lblJunkyardType.text = ""
@@ -351,4 +351,15 @@ extension JunkyardListViewController: SendDataForJunkyardFilter {
         filterTypes = type
     }
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

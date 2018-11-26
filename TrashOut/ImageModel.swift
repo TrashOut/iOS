@@ -71,13 +71,13 @@ class LocalImage {
 
 	var jpegData: Data? {
 		guard let image = image else { return nil }
-		return UIImageJPEGRepresentation(image, 80)
+		return image.jpegData(compressionQuality: 80)
 	}
     
     var thumbnailJpegData: Data? {
         guard let image = image else { return nil }
         let cropedImage = image.resizeImage(targetSize: CGSize(width: 150, height: 150))
-        return UIImageJPEGRepresentation(cropedImage, 80)
+        return cropedImage.jpegData(compressionQuality: 80)
     }
 }
 

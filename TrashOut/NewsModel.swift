@@ -68,9 +68,9 @@ class Article: JsonDecodable, Cachable {
         let htmlContent = "<style type=\"text/css\">body{font-family: '-apple-system','HelveticaNeue'; font-size:15;}</style>" + (self.content ?? "")
         if let htmlData = htmlContent.data(using: String.Encoding.unicode) {
             do {
-                let attributedText = try NSAttributedString(data: htmlData, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+                let attributedText = try NSAttributedString(data: htmlData, options: convertToNSAttributedStringDocumentReadingOptionKeyDictionary([convertFromNSAttributedStringDocumentAttributeKey(NSAttributedString.DocumentAttributeKey.documentType): convertFromNSAttributedStringDocumentType(NSAttributedString.DocumentType.html)]), documentAttributes: nil)
                 let mutableAttributedText = NSMutableAttributedString(attributedString: attributedText)
-                mutableAttributedText.addAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 13.0)], range: NSMakeRange(0, mutableAttributedText.length))
+                mutableAttributedText.addAttributes(convertToNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.systemFont(ofSize: 13.0)]), range: NSMakeRange(0, mutableAttributedText.length))
                 attributedContent = attributedText
                 plainAttributedContent = mutableAttributedText.copy() as? NSAttributedString
             } catch let e as NSError {
@@ -131,4 +131,29 @@ class Article: JsonDecodable, Cachable {
 		return dict
 	}
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringDocumentReadingOptionKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.DocumentReadingOptionKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.DocumentReadingOptionKey(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringDocumentAttributeKey(_ input: NSAttributedString.DocumentAttributeKey) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringDocumentType(_ input: NSAttributedString.DocumentType) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

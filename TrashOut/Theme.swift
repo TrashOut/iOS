@@ -92,7 +92,7 @@ open class Theme {
         UINavigationBar.appearance().barStyle = UIBarStyle.black // Removes hairline at the top of the bar
 		UINavigationBar.appearance().barTintColor = color.navBar
 		UINavigationBar.appearance().tintColor = color.navBarText
-		UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: color.navBarText]
+		UINavigationBar.appearance().titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue: color.navBarText])
         UINavigationBar.appearance().shadow = true
         UITabBar.appearance().alpha = 1
         UITabBar.appearance().isOpaque = true
@@ -169,4 +169,10 @@ public extension UIColor {
 		self.init(red: red, green: green, blue: blue, alpha: alpha)
 	}
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

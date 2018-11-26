@@ -132,7 +132,7 @@ class ProfileViewController: ViewController,
 		} else {
 			LoadingView.show(on: self.view, style: .white)
 		}
-		let finalize: () -> () = { [weak self] _ in
+        let finalize: () -> () = { [weak self] in
             DispatchQueue.main.async {
                 if refreshing {
                     self?.scrollView.pullToRefreshView?.stopAnimating()
@@ -221,15 +221,15 @@ class ProfileViewController: ViewController,
 			btnSelectOrganization.isHidden = true
 
 			lblOrganizations.text = user.organizations.map({$0.name ?? ""}).joined(separator: ", ")
-			cnsNameOrgsBottom.priority = 999
-			cnsNameBtnBottom.priority = 1
+			cnsNameOrgsBottom.priority = UILayoutPriority(rawValue: 999)
+			cnsNameBtnBottom.priority = UILayoutPriority(rawValue: 1)
 
 		} else {
 			lblOrganizations.isHidden = true
 			lblNotPickedOrganization.isHidden = false
 			btnSelectOrganization.isHidden = false
-			cnsNameOrgsBottom.priority = 1
-			cnsNameBtnBottom.priority = 999
+			cnsNameOrgsBottom.priority = UILayoutPriority(rawValue: 1)
+			cnsNameBtnBottom.priority = UILayoutPriority(rawValue: 999)
 		}
 
 		lblEmail.text = user.email
@@ -265,12 +265,12 @@ class ProfileViewController: ViewController,
 			user.stats.updated == 0 {
 			btnActivitiesMore.theme()
 			btnActivitiesMore.isHidden = true
-			btnActivitiesMore.constraint(for: .top)?.priority = 1
-			btnActivitiesMore.constraint(for: .bottom)?.priority = 1
+            btnActivitiesMore.constraint(for: .top)?.priority = UILayoutPriority(rawValue: 1)
+            btnActivitiesMore.constraint(for: .bottom)?.priority = UILayoutPriority(rawValue: 1)
 		} else {
 			btnActivitiesMore.isHidden = false
-			btnActivitiesMore.constraint(for: .top)?.priority = 999
-			btnActivitiesMore.constraint(for: .bottom)?.priority = 999
+            btnActivitiesMore.constraint(for: .top)?.priority = UILayoutPriority(rawValue: 999)
+            btnActivitiesMore.constraint(for: .bottom)?.priority = UILayoutPriority(rawValue: 999)
 			btnActivitiesMore.theme()
 
 		}
@@ -311,21 +311,21 @@ class ProfileViewController: ViewController,
 
 		let boldPoints = "profile.points_X".localized(points)
 
-		let attrString = NSMutableAttributedString.init(string: str, attributes: [
-			NSForegroundColorAttributeName: UIColor.lightGray,
-			NSFontAttributeName: UIFont.systemFont(ofSize: 12)
-			])
+		let attrString = NSMutableAttributedString.init(string: str, attributes: convertToOptionalNSAttributedStringKeyDictionary([
+			convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.lightGray,
+			convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.systemFont(ofSize: 12)
+			]))
 
 		let range = (str as NSString).range(of: boldPoints)
-		attrString.addAttributes([
-			NSForegroundColorAttributeName: UIColor.black,
-			NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12)
-			], range: range)
+		attrString.addAttributes(convertToNSAttributedStringKeyDictionary([
+			convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.black,
+			convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.boldSystemFont(ofSize: 12)
+			]), range: range)
 
 		self.lblBadgesDescription.attributedText = attrString
 	}
 
-	func editProfile() {
+	@objc func editProfile() {
 		guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileEditViewController") as? ProfileEditViewController else {return}
         vc.user = user
 //        vc.image = user?.image?.fullDownloadUrl
@@ -334,7 +334,7 @@ class ProfileViewController: ViewController,
 		navigationController?.pushViewController(vc, animated: true)
 	}
 
-    func logout() {
+    @objc func logout() {
         UserManager.instance.logout {
             
             // Register notifications.
@@ -441,9 +441,9 @@ class ProfileViewController: ViewController,
 			cell.setup(type)
 
 			if indexPath.row == 2 { // last cell
-				cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width, 0, 0) // remove separator
+				cell.separatorInset = UIEdgeInsets.init(top: 0, left: cell.bounds.size.width, bottom: 0, right: 0) // remove separator
 			} else {
-				cell.separatorInset = UIEdgeInsetsMake(0, 5, 0, 5) // add separator
+				cell.separatorInset = UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 5) // add separator
 			}
 
 			cell.lblValue.text = "global.numberOfTimes_X".localized(type.value)
@@ -545,4 +545,20 @@ class BadgesCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         ivPhoto.cancelRemoteImageRequest()
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

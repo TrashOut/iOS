@@ -109,7 +109,7 @@ class ViewController: UIViewController {
     func showWithSettings(message: String) {
         let alert = UIAlertController(title: nil, message: message.localized, preferredStyle: .alert)
         let settings = UIAlertAction.init(title: "global.settings".localized, style: .default) { (alertAction) in
-            guard let appSettings = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            guard let appSettings = URL(string: UIApplication.openSettingsURLString) else { return }
             UIApplication.shared.openURL(appSettings)
         }
         let ok = UIAlertAction.init(title: "global.ok".localized, style: .default, handler: nil)

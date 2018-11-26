@@ -91,7 +91,7 @@ extension DashboardViewController {
                 }
             }
         }
-        cell.joinAction = { [unowned self] _ in
+        cell.joinAction = { [unowned self] in
             self.joinEvent(event)
         }
         

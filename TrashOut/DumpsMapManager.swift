@@ -366,7 +366,7 @@ class DumpsMapManager: ClusteringManagerDelegate {
 	}
 
 	func geocells(between northwest: CLLocationCoordinate2D, southeast: CLLocationCoordinate2D, with resolution: Int) -> [String] {
-		let span = MKCoordinateSpanMake(southeast.latitude - northwest.latitude, southeast.longitude - northwest.longitude)
+		let span = MKCoordinateSpan.init(latitudeDelta: southeast.latitude - northwest.latitude, longitudeDelta: southeast.longitude - northwest.longitude)
 
 		let checkCoords = CLLocationCoordinate2DMake(northwest.latitude,northwest.longitude)
 		let size = self.cellSize(for: checkCoords, resolution: resolution)
@@ -431,8 +431,8 @@ class DumpsMapManager: ClusteringManagerDelegate {
 		let topLeft = CLLocationCoordinate2D(latitude: region.center.latitude + (region.span.latitudeDelta/2), longitude: region.center.longitude - (region.span.longitudeDelta/2))
 		let bottomRight = CLLocationCoordinate2D(latitude: region.center.latitude - (region.span.latitudeDelta/2), longitude: region.center.longitude + (region.span.longitudeDelta/2))
 
-		let a = MKMapPointForCoordinate(topLeft)
-		let b = MKMapPointForCoordinate(bottomRight)
+		let a = MKMapPoint.init(topLeft)
+		let b = MKMapPoint.init(bottomRight)
 
 		return MKMapRect(origin: MKMapPoint(x: min(a.x, b.x), y: min(a.y, b.y)), size: MKMapSize(width: abs(a.x - b.x), height: abs(a.y - b.y)))
 	}

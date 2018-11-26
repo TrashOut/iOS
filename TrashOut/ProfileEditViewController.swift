@@ -135,7 +135,7 @@ class ProfileEditViewController: ViewController,
 		tfSurname.keyboardType = .alphabet
 
 		tvOther.estimatedRowHeight = 44
-		tvOther.rowHeight = UITableViewAutomaticDimension
+		tvOther.rowHeight = UITableView.automaticDimension
 
         ivPhoto.layer.cornerRadius = 137/2
 		ivPhoto.layer.masksToBounds = true
@@ -185,14 +185,14 @@ class ProfileEditViewController: ViewController,
 
     // MARK: - Actions
     
-    func close() {
+    @objc func close() {
 		_ = navigationController?.popViewController(animated: true)
     }
 
     /**
     Send data to server, (image first)
     */
-	func done() {
+	@objc func done() {
 		LoadingView.show(on: self.view, style: .transparent)
         if let image = userImage {
             FirebaseImages.instance.uploadImage(image) { [weak self] (thumbnailUrl, thumbnailStorage, imageUrl, imageStorage, error) in

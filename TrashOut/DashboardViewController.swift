@@ -307,7 +307,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
     /**
     Go to info about app
     */
-    func goToInfo() {
+    @objc func goToInfo() {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "InfoViewController") as? InfoViewController else { fatalError("Could not dequeue storyboard with identifier: DumpsDetailViewController") }
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -315,7 +315,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
     /**
     Show detail of the nearest dump
     */
-    func showDetailNearestDump(_ sender: UITapGestureRecognizer) {
+    @objc func showDetailNearestDump(_ sender: UITapGestureRecognizer) {
 		guard trashes.count > 0 else {return}
         let trashId = trashes[0]
 
@@ -328,7 +328,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
     /**
     Show detail of the second nearest dump
     */
-    func showDetailSecondNearestDump(_ sender: UITapGestureRecognizer) {
+    @objc func showDetailSecondNearestDump(_ sender: UITapGestureRecognizer) {
 		guard trashes.count > 1 else {return}
         let trashId = trashes[1]
 
@@ -341,7 +341,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
     /**
     Show detail of the only presenting dump
     */
-    func showDetailFullNearestDump(_ sender: UITapGestureRecognizer) {
+    @objc func showDetailFullNearestDump(_ sender: UITapGestureRecognizer) {
         let trashId = trashes[0]
 
         let storyboard = UIStoryboard.init(name: "Dumps", bundle: Bundle.main)
@@ -353,7 +353,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
     /**
     Show detail of the second nearest dump
     */
-    func showDetailTrashCan(_ sender: UITapGestureRecognizer) {
+    @objc func showDetailTrashCan(_ sender: UITapGestureRecognizer) {
         guard let dustbinData = dustbinData else { return }
         
         let storyboard = UIStoryboard.init(name: "Junkyards", bundle: Bundle.main)
@@ -365,7 +365,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
     /**
     Show detail of the second nearest dump
     */
-    func showDetailJunkyard(_ sender: UITapGestureRecognizer) {
+    @objc func showDetailJunkyard(_ sender: UITapGestureRecognizer) {
         guard let junkyardData = junkyardData else { return }
         
         let storyboard = UIStoryboard.init(name: "Junkyards", bundle: Bundle.main)
@@ -573,11 +573,11 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 	*/
 	func loadNews(completion: @escaping () -> (), failure: @escaping (Error) -> ()) {
 		articlesManager.limit = 1
-		articlesManager.loadData(callback: {  [weak self] _ in
+		articlesManager.loadData(callback: { [weak self] in
 			NoDataView.hide(from: self?.vNews)
 			self?.updateArticle()
 			completion()
-			}) { [weak self] (error) in
+        }) { [weak self] (error) in
 			NoDataView.show(over: self?.vNews, text: "global.loadingError".localized)
 			completion()
 //			print(error.localizedDescription)
@@ -595,7 +595,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 	*/
 	var statistics = StatisticsManager()
 	func loadStatistics(completion: @escaping ()->(), failure: @escaping (Error)->()) {
-		statistics.loadWorld(completion: { [weak self] _ in
+		statistics.loadWorld(completion: { [weak self] in
 			NoDataView.hide(from: self?.vStatistics)
 			self?.updateStatistics()
 			completion()
@@ -812,7 +812,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
         NotificationCenter.default.addObserver(self, selector: #selector(DashboardViewController.catchNotification), name: .userLoggedOut, object: nil)
     }
     
-    func catchNotification(notification:Notification) -> Void {
+    @objc func catchNotification(notification:Notification) -> Void {
         self.loadData(reload: true)
     }
     

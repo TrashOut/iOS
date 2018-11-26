@@ -111,7 +111,7 @@ class NewsDetailViewController: ViewController, UICollectionViewDelegate, UIText
 		navigationItem.rightBarButtonItem = share
 	}
 
-	func shareArticle() {
+	@objc func shareArticle() {
 		guard let url = article?.url else { return }
 		guard let title = article?.title else { return }
 		let message = "\(title)\n\(url)"
@@ -200,11 +200,11 @@ class NewsDetailViewController: ViewController, UICollectionViewDelegate, UIText
 	}
 
     func createInfoLabelLine(label:String, value:String) -> NSAttributedString? {
-        let attrs1 = [NSForegroundColorAttributeName : UIColor.theme.leadBlack]
-        let attrs2 = [NSForegroundColorAttributeName : UIColor.theme.dimGray]
+        let attrs1 = [convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.theme.leadBlack]
+        let attrs2 = [convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.theme.dimGray]
         
-        let attributedString1 = NSMutableAttributedString(string: label, attributes:attrs1)
-        let attributedString2 = NSMutableAttributedString(string: value, attributes:attrs2)
+        let attributedString1 = NSMutableAttributedString(string: label, attributes:convertToOptionalNSAttributedStringKeyDictionary(attrs1))
+        let attributedString2 = NSMutableAttributedString(string: value, attributes:convertToOptionalNSAttributedStringKeyDictionary(attrs2))
         
         attributedString1.append(attributedString2)
         return attributedString1.copy() as? NSAttributedString
@@ -341,4 +341,15 @@ class ArticleVideoCollectionViewCell: UICollectionViewCell {
 	}
 
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

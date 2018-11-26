@@ -45,7 +45,7 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
 	var store: LocalImage.StoreType = .temp
 
 	func checkCameraPermissions (vc: UIViewController, callback: @escaping (Error?) -> ()) {
-		let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+		let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video)))
 		switch cameraAuthorizationStatus {
 		case .denied, .restricted:
 			let error = NSError.init(domain: "cz.trashout.TrashOut", code: 300, userInfo: [
@@ -57,7 +57,7 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
 			callback(nil)
 			break
 		case .notDetermined:
-			AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { granted in
+            AVCaptureDevice.requestAccess(for: .video) { granted in
 				if granted {
 					callback(nil)
 				} else {
@@ -70,7 +70,7 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
 		}
 	}
 
-	func openImagePicker(vc: UIViewController, source: UIImagePickerControllerSourceType, animated: Bool) {
+	func openImagePicker(vc: UIViewController, source: UIImagePickerController.SourceType, animated: Bool) {
         DispatchQueue.main.async {
             UIApplication.shared.isStatusBarHidden = true
             let picker = UIImagePickerController()
@@ -91,7 +91,7 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
 	}
 
 
-    func takePhoto(vc: UIViewController, animated: Bool = true, source: UIImagePickerControllerSourceType, store: LocalImage.StoreType = .temp, success: @escaping (LocalImage) -> (), failure: @escaping (Error) -> ()) {
+    func takePhoto(vc: UIViewController, animated: Bool = true, source: UIImagePickerController.SourceType, store: LocalImage.StoreType = .temp, success: @escaping (LocalImage) -> (), failure: @escaping (Error) -> ()) {
 		self.success = success
 		self.failure = failure
 		self.animated = animated
@@ -121,8 +121,11 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
 		}
 	}
 
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-		guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+		guard let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as? UIImage else { return }
         let resizedImage = resizeImageToFormat(image)
 		let localImage = LocalImage()
 		localImage.store = .temp
@@ -144,4 +147,19 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
         let newSize = CGSize(width: image.size.width * ratio, height: image.size.height * ratio)
         return image.resizeImage(targetSize: newSize)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVMediaType(_ input: AVMediaType) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

@@ -97,7 +97,7 @@ class EventDumpsViewController: ViewController, MKMapViewDelegate {
     /**
     Go to previous controller
     */
-    func saveChoice() {
+    @objc func saveChoice() {
         _ = navigationController?.popViewController(animated: true)
     }
 
@@ -105,8 +105,8 @@ class EventDumpsViewController: ViewController, MKMapViewDelegate {
     Set load region according saved meeting point
     */
     fileprivate func setStartingRegion(coords: CLLocationCoordinate2D) {
-        let span = MKCoordinateSpanMake(0.01, 0.01)
-        let region = MKCoordinateRegionMake(coords, span)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion.init(center: coords, span: span)
         map.setRegion(region, animated: true)
     }
 

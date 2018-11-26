@@ -47,7 +47,7 @@ class LoadingView: UIView {
 	weak static var activeView: LoadingView?
 
 
-	var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
+	var indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.white)
 
 
 	override init(frame: CGRect) {

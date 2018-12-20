@@ -151,6 +151,18 @@ class ViewController: UIViewController {
         label.text = DistanceRounding.shared.localizedDistance(meteres: distanceInM)
     }
     
+    func setAddress(gps: GPS, input: inout String?) {
+        input = "global.noAddress".localized
+        if let zip = gps.zip, let street = gps.street, let country = gps.country {
+            input = "\(zip) " + street + ", " + country
+        } else if gps.zip == nil, let street = gps.street, let country = gps.country {
+            input = street + ", " + country
+        } else {
+            input = gps.locality
+        }
+    }
+    
+    
     /**
      Set the most accurate address
      */

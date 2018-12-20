@@ -77,6 +77,7 @@ class EventManager {
 				callback(error)
 				return
 			}
+            
             let error = NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [
                 NSLocalizedDescriptionKey: "event.joinEventFailed".localized
                 ])
@@ -84,16 +85,19 @@ class EventManager {
 				callback(error)
 				return
 			}
+            
             if userId == event.userId {
                 callback(error)
                 return
             }
+            
 			if event.users.contains(where: { (u) -> Bool in
 				return u.id == userId
 			}) {
 				self.addToCalendar(event: event, controller: controller, callback: callback)
 				return
 			}
+            
 			Networking.instance.userJoinedEvent(event.id, userId: userId) { [weak self] (_, error) in
 				guard error == nil else {
 					callback(error)
@@ -106,7 +110,7 @@ class EventManager {
 
 	}
 
-	func addToCalendar(event: Event, controller: UIViewController, callback: @escaping (Error?)->()) {
+    func addToCalendar(event: Event, controller: UIViewController, callback: @escaping (Error?)->()) {
 		guard let startDate = event.start, let name = event.name, let description = event.description else {
 			callback(nil)
 			return
@@ -134,15 +138,11 @@ class EventManager {
 		let ok = UIAlertAction.init(title: "global.add".localized, style: .default) { (_) in
 			callback(true)
 		}
-        /*
-		let cancel = UIAlertAction(title: "global.cancel".localized, style: .cancel) { (_) in
-			callback(false)
-		}*/
+        
 		alert.addAction(ok)
-		//alert.addAction(cancel)
+        alert.addAction(UIAlertAction(title: "global.cancel".localized, style: .cancel, handler: { _ in callback(false) }))
 
 		controller.present(alert, animated: true, completion: nil)
-
 	}
 
 	/**

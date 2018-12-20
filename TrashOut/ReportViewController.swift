@@ -279,6 +279,9 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
         LocationManager.manager.refreshCurrentLocation({ [weak self](_) in
             self?.setLocationView()
         })
+        
+        locationAddressView.isUserInteractionEnabled = true
+        locationAddressView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationAddressViewWasClicked(_:))))
     }
 
 	override func viewDidLayoutSubviews() {
@@ -309,6 +312,10 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
         LoadingView.hide()
 		navigationController?.dismiss(animated: true, completion: nil)
 	}
+    
+    @objc func locationAddressViewWasClicked(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: "showReportLocation", sender: nil)
+    }
 
     /**
     Report a dump or update one
@@ -932,6 +939,16 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
                 tyvc.trash = sender as? Trash
                 tyvc.dismissHandler = { [weak self] in
                     self?.close()
+                }
+            }
+        }
+        
+        if segue.identifier == "showReportLocation" {
+            if let vc = segue.destination as? ReportLocationViewController {
+                vc.saveHandler = { [weak self] savedCoordinates in
+                    self?.gps = Coordinates(lat: savedCoordinates.latitude, long: savedCoordinates.longitude, accuracy: 0, source: "gps")
+                    
+                    self?.setLocationView()
                 }
             }
         }

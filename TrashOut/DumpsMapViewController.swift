@@ -143,20 +143,6 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
     }
 
 	/**
-	Restore map (if there is restoration state)
-	*/
-    override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		restoreMap()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        showLocation(map)
-    }
-
-	/**
 	Drop map to free some memory
 	*/
 	override func viewWillDisappear(_ animated: Bool) {
@@ -229,11 +215,15 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
     Shows user current location
     */
     @IBAction func showLocation(_ sender: Any) {
-        let newLocation = CLLocationCoordinate2D(latitude: LocationManager.manager.currentLocation.coordinate.latitude, longitude: LocationManager.manager.currentLocation.coordinate.longitude)
-        map.centerCoordinate = newLocation
+        if let currentRect = self.currentLoadedRect {
+            map.setVisibleMapRect(currentRect, animated: false)
+        } else {
+            let newLocation = CLLocationCoordinate2D(latitude: LocationManager.manager.currentLocation.coordinate.latitude, longitude: LocationManager.manager.currentLocation.coordinate.longitude)
+            map.centerCoordinate = newLocation
 
-        let region = MKCoordinateRegion(center: newLocation, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-        map.setRegion(region, animated: true)
+            let region = MKCoordinateRegion(center: newLocation, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+            map.setRegion(region, animated: true)
+        }
     }
 
     /**
@@ -339,9 +329,9 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 		}
 
 	}
-
+    
+    
     // MARK: Map view delegate
-
 	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
 		let zoom = mapView.zoomLevel
 		if zoom != self.currentCellsZoomLevel {
@@ -349,8 +339,9 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 		} else if let cr = currentLoadedRect, cr.contains(mapView.visibleMapRect) {
 			return // no need to load anything
 		}
+        
 		let newrect = self.extendedRect(for: mapView.visibleMapRect)
-
+        
 		manager.cells(withZoomLevel: zoom, region: MKCoordinateRegion.init(newrect), filter: self.filter, success: { [weak self] (cells) in
             self?.cells = cells
             self?.currentLoadedRect = newrect
@@ -368,6 +359,8 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 	}
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        mapView.deselectAnnotation(view.annotation, animated: true)
+        
         if let annotation = view.annotation as? MapAnnotation {
             guard let id = annotation.id else { return }
 

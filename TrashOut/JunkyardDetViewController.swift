@@ -53,10 +53,11 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
         }
     }
 
+    @IBOutlet var txvCoordinates: UITextView!
+    @IBOutlet var txvJunkyardAddress: UITextView!
+    
     @IBOutlet var lblJunkyardName: UILabel!
-    @IBOutlet var lblJunkyardAddress: UILabel!
     @IBOutlet var lblDistance: UILabel!
-    @IBOutlet var lblCoordinates: UILabel!
     @IBOutlet var lblRecycable: UILabel!
     @IBOutlet var lblContact: UILabel!
     @IBOutlet var lblTelephone: UILabel!
@@ -82,7 +83,7 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
         title = "tab.recycling".localized
 
         lblDistance.textColor = Theme.current.color.lightGray
-        lblCoordinates.textColor = Theme.current.color.lightGray
+        txvCoordinates.textColor = Theme.current.color.lightGray
         lblContact.text = "event.contact".localized
         lblContact.textColor = Theme.current.color.green
         lblOpeningHours.text = "collectionPoint.openingHours".localized
@@ -96,9 +97,19 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
 
         setJunkyardsInfo()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        txvCoordinates.textContainer.lineFragmentPadding = 0
+        txvCoordinates.textContainerInset = .zero
+        
+        txvJunkyardAddress.textContainer.lineFragmentPadding = 0
+        txvJunkyardAddress.textContainerInset = .zero
+    }
 
     func setJunkyardAddress() {
-        setAddress(gps: junkyard.gps!, label: lblJunkyardAddress)
+        setAddress(gps: junkyard.gps!, input: &txvJunkyardAddress.text)
     }
     
 	func setJunkyardName() {
@@ -122,7 +133,7 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
 
 	func setCoordsAndDistance() {
 		guard let gps = junkyard.gps else {
-			lblCoordinates.text = ""
+			txvCoordinates.text = ""
 			lblDistance.text = ""
 			return
 		}
@@ -130,7 +141,7 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
 		let distance = LocationManager.manager.currentLocation.distance(from: junkyardCollection)
 		let distanceInM = Int(round(distance))
 		// Coordinates label
-		lblCoordinates.text = GpsFormatter.instance.string(from: gps)
+		txvCoordinates.text = GpsFormatter.instance.string(from: gps)
 		lblDistance.text = DistanceRounding.shared.localizedDistance(meteres: distanceInM)
 	}
 

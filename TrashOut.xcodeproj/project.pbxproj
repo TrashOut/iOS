@@ -346,7 +346,6 @@
 		8E2747B620036FA900934D62 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		8E2747B82003B58200934D62 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		8E2A1B8B202236E800C1AC70 /* TrashOut-Stage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TrashOut-Stage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E2A1B8C202236E800C1AC70 /* TrashOut copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TrashOut copy-Info.plist"; path = "/Users/lukes/Documents/workspace/iOS/TrashoutGit/TrashOut copy-Info.plist"; sourceTree = "<absolute>"; };
 		8E2A1B9720223A5F00C1AC70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E30EBC8202B5B0900C8BD06 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E37D2AC1FC6F6E2001E61D5 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -725,7 +724,6 @@
 				C3A3B2531DA7A6E10099D1C2 /* TrashOutTests */,
 				C3A3B25E1DA7A6E10099D1C2 /* TrashOutUITests */,
 				C3A3B23D1DA7A6E00099D1C2 /* Products */,
-				8E2A1B8C202236E800C1AC70 /* TrashOut copy-Info.plist */,
 				76CFF23503E91AEF603228B6 /* Pods */,
 				CCAE247BCF5FC187E7103F3D /* Frameworks */,
 			);

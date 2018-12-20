@@ -51,7 +51,7 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
     @IBOutlet var lblEventName: UILabel!
     @IBOutlet var lblEventDateAndTime: UILabel!
     @IBOutlet var lblEventInfo: UILabel!
-    @IBOutlet var lblAddress: UILabel!
+    
     @IBOutlet var lblWeHave: UILabel!
     @IBOutlet var lblGlovesBags: UILabel!
     @IBOutlet var lblPleaseBring: UILabel!
@@ -62,7 +62,8 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
     @IBOutlet var btnDirections: UIButton!
 
     @IBOutlet var tvCoordinates: UITextView!
-
+    @IBOutlet var tvAddress: UITextView!
+    
     @IBOutlet var cnListOfDumpsTableView: NSLayoutConstraint!
     
     @IBOutlet weak var svContact: UIStackView?
@@ -138,6 +139,17 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
         registerForNotifcations()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        tvCoordinates.textContainer.lineFragmentPadding = 0
+        tvCoordinates.textContainerInset = .zero
+        
+        tvAddress.textContainer.lineFragmentPadding = 0
+        tvAddress.textContainerInset = .zero
+    }
+    
+    
     // MARK: - Networking
 
     fileprivate func loadData() {
@@ -208,7 +220,7 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
         // Address and coordinates labels
         let coords = CLLocationCoordinate2DMake(gps.lat, gps.long)
         showEventOnMap(coords: coords)
-        setAddress(gps:gps, label:lblAddress)
+        setAddress(gps:gps, input: &tvAddress.text)
         tvCoordinates.text = "\(gps.lat), \(gps.long)"
     }
 

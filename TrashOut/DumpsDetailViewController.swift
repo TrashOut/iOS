@@ -64,7 +64,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
     @IBOutlet var lblHistory: UILabel!
     @IBOutlet var lblLocation: UILabel!
     @IBOutlet var lblDistance: UILabel!
-    @IBOutlet var lblRemainAddress: UILabel!
+    
     @IBOutlet var lblAccuracy: UILabel!
     @IBOutlet var lblSizeAndType: UILabel!
     @IBOutlet var lblSizeOfTrash: UILabel!
@@ -87,7 +87,8 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
     @IBOutlet var btnReportAsSpam: UIButton!
 
     @IBOutlet var tvCoordinates: UITextView!
-
+    @IBOutlet var tvRemainAddress: UITextView!
+    
     @IBOutlet var ivMainPhoto: UIImageView!
     @IBOutlet var ivCurrentStatusImage: UIImageView!
     @IBOutlet var ivSizeOfTrash: UIImageView!
@@ -209,6 +210,16 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         loadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        tvCoordinates.textContainer.lineFragmentPadding = 0
+        tvCoordinates.textContainerInset = .zero
+        
+        tvRemainAddress.textContainer.lineFragmentPadding = 0
+        tvRemainAddress.textContainerInset = .zero
     }
 
     /**
@@ -387,25 +398,25 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
         guard let gps = trash?.gps else { return }
 
         if let zip = gps.zip, let street = gps.street {
-            lblRemainAddress.text = "\(zip) " + street
+            tvRemainAddress.text = "\(zip) " + street
         } else if gps.zip == nil, let street = gps.street {
-            lblRemainAddress.text = street
+            tvRemainAddress.text = street
         } else if let subLocality = gps.subLocality {
-            lblRemainAddress.text = subLocality
+            tvRemainAddress.text = subLocality
         } else if let locality = gps.locality {
-            lblRemainAddress.text = locality
+            tvRemainAddress.text = locality
         } else if let aa3 = gps.aa3 {
-            lblRemainAddress.text = aa3
+            tvRemainAddress.text = aa3
         } else if let aa2 = gps.aa2 {
-            lblRemainAddress.text = aa2
+            tvRemainAddress.text = aa2
         } else if let aa1 = gps.aa1 {
-            lblRemainAddress.text = aa1
+            tvRemainAddress.text = aa1
         } else if let country = gps.country {
-            lblRemainAddress.text = country
+            tvRemainAddress.text = country
         } else if let continent = gps.continent {
-            lblRemainAddress.text = continent
+            tvRemainAddress.text = continent
         } else {
-            lblRemainAddress.text = "global.noAddress".localized
+            tvRemainAddress.text = "global.noAddress".localized
         }
     }
 
@@ -545,7 +556,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
 		guard let trash = trash else { return }
         if MFMailComposeViewController.canSendMail() {
 			let controller = MFMailComposeViewController()
-			let s = String(format: "trash.illegalDumpIn_X".localized, (lblRemainAddress.text ?? ""))
+			let s = String(format: "trash.illegalDumpIn_X".localized, (tvRemainAddress.text ?? ""))
             controller.setSubject(s)
 			let b = String(format: "trash.reportedDetailsonWeb_X".localized, trash.sharingUrl)
             controller.setMessageBody(b, isHTML: false)

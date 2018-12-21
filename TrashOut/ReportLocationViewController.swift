@@ -14,7 +14,7 @@ class ReportLocationViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - Properties
     
-    var currentLocation: CLLocation!
+    var currentLocation: CLLocationCoordinate2D!
     
     public var saveHandler: ((CLLocationCoordinate2D) -> Void)?
     
@@ -29,9 +29,10 @@ class ReportLocationViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
 
         // Setup map view
-        mapView.showsUserLocation = true
         mapView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(didSelectLocation(_:))))
         mapView.delegate = self
+        loadInitRegion(for: currentLocation)
+        addAnnotation(to: currentLocation)
         
         // Set title
         title = "event.create.setLocation".localized
@@ -46,21 +47,29 @@ class ReportLocationViewController: UIViewController, MKMapViewDelegate {
     
     @objc func didSelectLocation(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-            let coordinate = mapView.convert(sender.location(in: mapView), toCoordinateFrom: mapView)
-            
-            addAnnotation(to: coordinate)
+            currentLocation = mapView.convert(sender.location(in: mapView), toCoordinateFrom: mapView)
+            addAnnotation(to: currentLocation)
         }
     }
     
     @objc func saveButtonWasClicked(_ sender: UIBarButtonItem) {
-        saveHandler?(currentLocation.coordinate)
+        self.saveHandler?(currentLocation)
     }
+    
     
     // MARK: - Functions
     
     private func addAnnotation(to coordinate: CLLocationCoordinate2D) {
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(Annotation(coordinate: coordinate))
+    }
+    
+    /// Load init region for map view.
+    private func loadInitRegion(for location: CLLocationCoordinate2D) {
+        mapView.centerCoordinate = location
+        
+        let region = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        mapView.setRegion(region, animated: true)
     }
     
     

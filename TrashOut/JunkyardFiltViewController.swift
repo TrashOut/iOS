@@ -90,8 +90,6 @@ class JunkyardFiltViewController: ViewController, UIPickerViewDelegate, UIPicker
         /// If saved load filter types
         if let filterType = defaults.object(forKey: "FilterTypes") as? [String] {
 			filterTypes = filterType
-        } else {
-			filterTypes = types.map({$0.rawValue})
         }
 
         /// If saved load which switcher are unselected

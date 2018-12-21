@@ -687,7 +687,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     /**
     Set Location part of UI
     */
-    fileprivate func setLocationView() {
+    fileprivate func setLocationView(for coordinates: Coordinates? = nil) {
         // If user wants to report new dump, the trash is nill. Otherwise user is updating existing trash.
         if trash == nil {
             locationAddressView.isHidden = false
@@ -701,11 +701,14 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
                 cnAddressTop.constant = 0
             }
 
-            let coords = LocationManager.manager.currentLocation.coordinate
-
-            gps = Coordinates.init(lat: coords.latitude, long: coords.longitude, accuracy: accuracy, source: "gps")
-
-            showAddressAndCoorinates(latitude: coords.latitude, longitude: coords.longitude)
+            if let coordinates = coordinates {
+                gps = coordinates
+                showAddressAndCoorinates(latitude: coordinates.lat, longitude: coordinates.long)
+            } else {
+                let coords = LocationManager.manager.currentLocation.coordinate
+                gps = Coordinates.init(lat: coords.latitude, long: coords.longitude, accuracy: accuracy, source: "gps")
+                showAddressAndCoorinates(latitude: coords.latitude, longitude: coords.longitude)
+            }
         } else {
             cnAccuracyViewHeight.constant = 76
 
@@ -945,10 +948,25 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
         
         if segue.identifier == "showReportLocation" {
             if let vc = segue.destination as? ReportLocationViewController {
+                vc.currentLocation = CLLocationCoordinate2D(latitude: gps.lat, longitude: gps.long)
                 vc.saveHandler = { [weak self] savedCoordinates in
-                    self?.gps = Coordinates(lat: savedCoordinates.latitude, long: savedCoordinates.longitude, accuracy: 0, source: "gps")
+                    print(savedCoordinates)
                     
+                    var source = ""
+                    if Reachability.isConnectedToCellularNetwork() {
+                        source = "network"
+                    } else if Reachability.isConnectedToNetwork() {
+                        source = "wifi"
+                    } else {
+                        source = "gps"
+                    }
+                    
+                    let accuracy = Int(LocationManager.manager.currentLocation.horizontalAccuracy)
+                    
+                    self?.gps = Coordinates(lat: savedCoordinates.latitude, long: savedCoordinates.longitude, accuracy: accuracy, source: source)
                     self?.setLocationView()
+                    
+                    self?.navigationController?.popViewController(animated: true)
                 }
             }
         }

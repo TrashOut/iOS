@@ -127,6 +127,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - FBSDKCoreKit (from `https://github.com/facebook/facebook-objc-sdk.git`, branch `master`)
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Messaging
@@ -147,7 +148,6 @@ SPEC REPOS:
     - FacebookCore
     - FacebookLogin
     - FacebookShare
-    - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
     - Firebase
@@ -167,6 +167,16 @@ SPEC REPOS:
     - Protobuf
     - SwiftDate
 
+EXTERNAL SOURCES:
+  FBSDKCoreKit:
+    :branch: master
+    :git: https://github.com/facebook/facebook-objc-sdk.git
+
+CHECKOUT OPTIONS:
+  FBSDKCoreKit:
+    :commit: 9c5fc38f8f12efb3917699c5befcc10305fcabda
+    :git: https://github.com/facebook/facebook-objc-sdk.git
+
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
@@ -179,7 +189,7 @@ SPEC CHECKSUMS:
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
-  FBSDKCoreKit: 1e3981faefab8c88edfaa9eecd94aab02d99a9bc
+  FBSDKCoreKit: 5aa4a666fe80c12621fb8d6214bfdbd18d3b5a88
   FBSDKLoginKit: 30ba5039a2c53d65a75103889bc2deebdacd5a1f
   FBSDKShareKit: 5a0021c30abb64df9eeba87351dd8a627874543b
   Firebase: 8bb9268bff82374f2cbaaabb143e725743c316ae
@@ -199,6 +209,6 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SwiftDate: 4ef029fd3117cc287fe642658b9aca2217628976
 
-PODFILE CHECKSUM: 1469f50a5f2a41972be3e8fe4327bdaae124647d
+PODFILE CHECKSUM: fdd93729c9bb70d12dc8b16337d33b65125b4806
 
 COCOAPODS: 1.5.3

@@ -18,6 +18,7 @@ def common_pods_for_target
     pod 'Crashlytics'
     
     # Facebook SDK
+    pod 'FBSDKCoreKit', :git => 'https://github.com/facebook/facebook-objc-sdk.git', :branch => 'master'
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'FacebookShare'

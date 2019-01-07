@@ -80,11 +80,12 @@ class GpsFormatter {
 }
 
 class DecimalGpsFormatter: GpsFormatter {
-
     override func string(fromLat lat: Double, lng: Double) -> String {
         let nf = NumberFormatter()
         nf.maximumFractionDigits = 7
         nf.minimumIntegerDigits = 1
+        nf.decimalSeparator = "."
+        
         if let latitude = nf.string(from: NSNumber.init(value: lat)),
             let longitude = nf.string(from: NSNumber.init(value: lng)) {
             return "\(latitude), \(longitude)"

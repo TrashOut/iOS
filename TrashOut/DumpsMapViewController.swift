@@ -147,8 +147,15 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 	*/
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
+        
 		//self.cleanUpMap()
 	}
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.setCurrentLocation(animated: false)
+    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -215,15 +222,7 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
     Shows user current location
     */
     @IBAction func showLocation(_ sender: Any) {
-        if let currentRect = self.currentLoadedRect {
-            map.setVisibleMapRect(currentRect, animated: false)
-        } else {
-            let newLocation = CLLocationCoordinate2D(latitude: LocationManager.manager.currentLocation.coordinate.latitude, longitude: LocationManager.manager.currentLocation.coordinate.longitude)
-            map.centerCoordinate = newLocation
-
-            let region = MKCoordinateRegion(center: newLocation, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-            map.setRegion(region, animated: true)
-        }
+        self.setCurrentLocation(animated: true)
     }
 
     /**
@@ -269,6 +268,14 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
             size: MKMapSize.init(width: rect.size.width*(enchangeRect + 1), height: rect.size.height*(enchangeRect + 1))
         )
 	}
+    
+    private func setCurrentLocation(animated: Bool) {
+        let newLocation = CLLocationCoordinate2D(latitude: LocationManager.manager.currentLocation.coordinate.latitude, longitude: LocationManager.manager.currentLocation.coordinate.longitude)
+        map.centerCoordinate = newLocation
+        
+        let region = MKCoordinateRegion(center: newLocation, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        map.setRegion(region, animated: animated)
+    }
 
 	/**
 	Add and remove markers on map

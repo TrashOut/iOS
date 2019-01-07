@@ -202,11 +202,11 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 	fileprivate func startManagerForLocationUpdates() {
 		self.processLocationUsageAuthorization( { [weak self] in
             
-			self?.locationManager.startUpdatingLocation()
+        self?.locationManager.startUpdatingLocation()
 
-			}, failure: { [weak self] in
-				self?.processCallback()
-            })
+        }, failure: { [weak self] in
+            self?.processCallback()
+        })
 	}
 
 	/**

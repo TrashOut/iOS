@@ -612,6 +612,16 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
             notForGeneralCleanup = (trash?.accessibility?.notForGeneralCleanup)!
         }
     }
+    
+    fileprivate func showTrashOnMap(coords: CLLocationCoordinate2D) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coords
+        
+        map.addAnnotation(annotation)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion.init(center: coords, span: span)
+        map.setRegion(region, animated: true)
+    }
 
     /**
     If accessibility is true, set its switch on
@@ -676,7 +686,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
             cleanedByMe = false
         }
     }
-
+    
     /**
     Set Location part of UI
     */
@@ -727,6 +737,8 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
                         lblLocationAccuracy.text = "trash.dumpsDistance".localized
                         lblTryingBetterLocation.text = "trash.edit.getCloser".localized
                         lblAccuracy.adjustsFontSizeToFitWidth = true
+                        
+                        
                     } else {
                         locationView.isHidden = true
                     }
@@ -744,6 +756,9 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
                 }
             }
         }
+        
+        let coords = CLLocationCoordinate2DMake(gps.lat, gps.long)
+        showTrashOnMap(coords: coords)
     }
 
     /**

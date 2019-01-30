@@ -238,13 +238,11 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
     }
 
     fileprivate func setWeHaveView() {
-        guard let have = event?.have else { return }
-        lblGlovesBags.text = have
+        lblGlovesBags.text = event?.have ?? " "
     }
 
     fileprivate func setPleaseBringView() {
-        guard let bring = event?.bring else { return }
-        lblShovelGoodMood.text = bring
+        lblShovelGoodMood.text = event?.bring ?? " "
     }
 
     @IBAction func joinEvent(_ sender: Any) {

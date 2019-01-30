@@ -57,6 +57,10 @@ class TrashFilter: JsonDecodable {
 		}
 		return TrashFilter()
 	}
+    
+    static func clearCachedFilter() {
+        UserDefaults.standard.removeObject(forKey: "TrashFilter")
+    }
 
 	func cache() {
 		let dict = self.dictionary()

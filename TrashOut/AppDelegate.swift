@@ -51,7 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 		Theme.current.setupAppearance()
 		FirebaseLocalization().update()
+        TrashFilter.clearCachedFilter()
 		acceptInvalidSSLCerts()
+        
         generateUniqueId()
         
         // Register messaging

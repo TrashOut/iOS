@@ -72,7 +72,7 @@ class InfoViewController: ViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         
-        if let date = formatter.date(from: "2018/02/12 00:00") {
+        if let date = formatter.date(from: "2019/04/12 00:00") {
             lblVersionDate.text = String.init(format: "info.appVerison_X".localized, df.string(from: date))
         }
 

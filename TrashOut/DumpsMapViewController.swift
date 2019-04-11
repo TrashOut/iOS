@@ -132,6 +132,8 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
         let filter = UIBarButtonItem(image: UIImage(named: "Filter"), style: .plain, target: self, action: #selector(goToFilter))
         parent?.navigationItem.rightBarButtonItem = filter
         setMapButton(image: "Location", button: btnLocation)
+        
+         self.setCurrentLocation(animated: false)
 	}
 
     override func viewDidLayoutSubviews() {
@@ -151,11 +153,11 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
 		//self.cleanUpMap()
 	}
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.setCurrentLocation(animated: false)
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        self.setCurrentLocation(animated: false)
+//    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()

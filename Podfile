@@ -11,14 +11,14 @@ def common_pods_for_target
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
     pod 'Firebase/Messaging'
-    pod 'Firebase/Storage'
+    pod 'Firebase/Storage' 
     
     # Crashlytics
     pod 'Fabric'
     pod 'Crashlytics'
     
     # Facebook SDK
-    pod 'FBSDKCoreKit', :git => 'https://github.com/facebook/facebook-objc-sdk.git', :branch => 'master'
+    pod 'FBSDKCoreKit'
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'FacebookShare'
@@ -49,7 +49,7 @@ end
 # workaround for pods swift version, remove me with new cocoa pod release
 post_install do |installer|
     installer.pods_project.targets.each do |target|
-        if ['SwiftDate', 'Cache'].include? target.name
+        if ['Cache', 'SwiftDate'].include? target.name
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '3.0'
             end

@@ -23,10 +23,10 @@ def common_pods_for_target
     pod 'FacebookLogin'
     pod 'FacebookShare'
     
-    pod 'Cache', '2.2.2'
+    pod 'Cache', '2.3.0'
     pod 'SwiftDate', '~> 4.0.11'
     
-    pod 'Charts'
+    pod 'Charts', '3.2.2'
     pod 'Keychain'
 end
 

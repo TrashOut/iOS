@@ -1158,7 +1158,7 @@
 "collectionPoint.filter.selectAll" = "Vybrať všetko";
 "profile.activity.mobileHeader" = "Aktivita";
 "info.aboutApp" = "TrashOut je environmentálny projekt, ktorého cieľom je mapovať a monitorovať všetky nelegálne skládky po celom svete.\n\nNašou snahou je zapojiť občanov, vlády, obce a organizácie, aby sme mohli spoločne prispieť k čistejšiemu svetu pre všetkých.";
-"info.appVerison_X" = "Verzia z";
+"info.appVerison_X" = "Verzia z %@";
 "tutorial.register" = "Registrovať/Prihlásiť sa";
 "global.distanceAttribute.away" = "ďaleko";
 "event.create.successMobile" = "Ďakujeme, udalosť bola úspešne vytvorená. Vašu udalosť môžete upraviť a navštíviť účastníkov www.admin.trashout.ngo.";

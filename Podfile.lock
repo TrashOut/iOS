@@ -8,7 +8,7 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - Cache (2.2.2):
+  - Cache (2.3.0):
     - CryptoSwift
   - Charts (3.2.2):
     - Charts/Core (= 3.2.2)
@@ -122,8 +122,8 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
-  - Cache (= 2.2.2)
-  - Charts
+  - Cache (= 2.3.0)
+  - Charts (= 3.2.2)
   - Crashlytics
   - Fabric
   - FacebookCore
@@ -174,7 +174,7 @@ SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  Cache: b00196618af3facf17986fadda228cc77b5a5a10
+  Cache: 077e4e799c394ccffc18bb3240f5b55cb9b3cc1b
   Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
@@ -202,6 +202,6 @@ SPEC CHECKSUMS:
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SwiftDate: 4ef029fd3117cc287fe642658b9aca2217628976
 
-PODFILE CHECKSUM: 812bdce95ae7f598eb037bc02803bf22ce99888b
+PODFILE CHECKSUM: fb8258983489365c79ef17b3f5c7ccff69eec848
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.0

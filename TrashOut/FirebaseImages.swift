@@ -114,7 +114,7 @@ class FirebaseImages {
     
 	static let instance = FirebaseImages()
 	let cache: Cache<UIImage>
-
+    
 	/**
 	Init with new cache
 

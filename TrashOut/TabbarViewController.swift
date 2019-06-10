@@ -62,12 +62,12 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
 		self.viewControllers?[1].title = "tab.dumps".localized
 		self.viewControllers?[2].title = "tab.news".localized
 		self.viewControllers?[3].title = "tab.recycling".localized
-
-		if signIn {
-			self.selectedIndex = 4
-		}
         
         openDashboard()
+        
+        if signIn {
+            self.selectedIndex = 4
+        }
 	}
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {

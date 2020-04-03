@@ -23,7 +23,7 @@ def common_pods_for_target
     pod 'FacebookLogin'
     pod 'FacebookShare'
     
-    pod 'Cache', '2.3.0'
+    pod 'Cache', '5.2.0'
     pod 'SwiftDate', '~> 4.0.11'
     
     pod 'Charts', '3.2.2'
@@ -44,15 +44,4 @@ end
 
 target 'TrashOutUITests' do
     common_pods_for_target
-end
-
-# workaround for pods swift version, remove me with new cocoa pod release
-post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        if ['Cache', 'SwiftDate'].include? target.name
-            target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '3.0'
-            end
-        end
-    end
 end

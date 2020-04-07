@@ -36,7 +36,7 @@ extension DashboardViewController {
 				return dist < 50000
 			}.filter { (event) -> Bool in
 				guard let start = event.start else { return false }
-				let now = try! Date().atTime(hour: 0, minute: 0, second: 0)
+				let now = Date().dateAt(.startOfDay)
 				return start >= now
 			}.sorted { (e1, e2) -> Bool in
 				guard let start2 = e2.start else { return true }

@@ -36,8 +36,6 @@ import Cache
 
 class Article: JsonDecodable, Cachable {
 
-	typealias CacheType = Article
-
     // MARK: - Properties
 
 	var id: Int?

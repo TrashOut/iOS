@@ -135,7 +135,7 @@ PODS:
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.4)
-  - SwiftDate (4.0.14)
+  - SwiftDate (6.1.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -153,7 +153,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - Keychain
-  - SwiftDate (~> 4.0.11)
+  - SwiftDate (= 6.1.0)
 
 SPEC REPOS:
   trunk:
@@ -226,8 +226,8 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
-  SwiftDate: 4ef029fd3117cc287fe642658b9aca2217628976
+  SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
 
-PODFILE CHECKSUM: 63fcd78f7b931dc12e3f237d5938c24e1b5a7a59
+PODFILE CHECKSUM: 9773df889044e1c9decbb7d4330b24a58e2d6073
 
 COCOAPODS: 1.8.4

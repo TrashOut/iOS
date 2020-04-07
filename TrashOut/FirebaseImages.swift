@@ -113,7 +113,7 @@ extension UIImageView {
 class FirebaseImages {
     
 	static let instance = FirebaseImages()
-	let cache: Cache<UIImage>
+    let cache: Cache.Storage<UIImage>?
     
 	/**
 	Init with new cache
@@ -121,28 +121,30 @@ class FirebaseImages {
 	- Warning: Use `instance` singleton to access single cache
 	*/
 	init() {
-		let expiryDays: Double = 28
-		let size: UInt = 40000000
-		let config = Config(frontKind: .memory,
-                            backKind: .disk,
-                            expiry: .seconds(60*60*24*expiryDays),
-                            maxSize: size,
-                            maxObjects: Int(size))
-
-		cache = Cache<UIImage>(name: "ImageCache", config: config)
+        let expiryDays: TimeInterval = 28
+        let maxDiskSize: UInt = 100 * 1000 * 1000
+        let maxMemorySize: UInt = 10 * 1000 * 1000
+        cache = try? Cache.Storage(
+            diskConfig: DiskConfig(name: "ImageCache", expiry: .seconds(expiryDays * 24 * 3600), maxSize: maxDiskSize),
+            memoryConfig: MemoryConfig(expiry: .never, countLimit: maxMemorySize, totalCostLimit: maxMemorySize),
+            transformer: TransformerFactory.forImage()
+        )
 	}
 
 	/**
 	Load image from cache or call download
     */
     func loadImage(_ id: String, callback: @escaping (UIImage?, Error?) -> ()) {
-        cache.object(id) { [weak self] (image: UIImage?) in
-            DispatchQueue.main.async {
-                if let image = image {
-                    callback(image, nil)
-                } else {
-                    self?.downloadImage(id, callback: callback)
-                }
+        guard let cache = self.cache else {
+            self.downloadImage(id, callback: callback)
+            return
+        }
+        cache.async.object(forKey: id) { [weak self] result in
+            switch result {
+            case .value(let image):
+                DispatchQueue.main.async { callback(image, nil) }
+            case .error(_):
+                self?.downloadImage(id, callback: callback)
             }
         }
     }
@@ -163,9 +165,8 @@ class FirebaseImages {
 					callback(nil, error)
 					return
 				}
-				guard let data = response.result.value else { return }
-				guard let image = UIImage.init(data: data) else { return }
-				self?.cache.add(link, object: image)
+				guard let data = response.result.value, let image = UIImage.init(data: data) else { return }
+                try? self?.cache?.setObject(image, forKey: link)
 				callback(image, nil)
 			}
 		}

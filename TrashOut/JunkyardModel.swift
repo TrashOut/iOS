@@ -36,8 +36,6 @@ import CoreLocation
 
 class Junkyard: JsonDecodable, Cachable {
 
-    typealias CacheType = Junkyard
-
     // MARK: - Enums
 
 	enum Category: String, EnumCollection {
@@ -216,7 +214,6 @@ class Junkyard: JsonDecodable, Cachable {
 }
 
 class DayOpeningHours: JsonDecodable, Cachable {
-    typealias CacheType = DayOpeningHours
     
     var name: String?
     var periods: [OpeningPeriod] = []
@@ -272,7 +269,6 @@ class DayOpeningHours: JsonDecodable, Cachable {
 }
 
 class OpeningPeriod: JsonDecodable, Cachable {
-    typealias CacheType = OpeningPeriod
     
     var start: String!
     var finish: String!

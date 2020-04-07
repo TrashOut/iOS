@@ -38,7 +38,7 @@ extension UserManager {
         }
         
         let loginManager = LoginManager()
-        loginManager.logIn(readPermissions: [ .publicProfile, .email ], viewController: controller) { loginResult in
+        loginManager.logIn(permissions: [ .publicProfile, .email ], viewController: controller) { loginResult in
             switch loginResult {
             case .failed(let error):
                 print("fb login \(error)")
@@ -54,9 +54,9 @@ extension UserManager {
                 }
        
                 if (self.isAnonymous && self.user != nil) {
-                    self.linkUserWithFacebook(facebookAccessToken: accessToken.authenticationToken, callback: callback)
+                    self.linkUserWithFacebook(facebookAccessToken: accessToken.tokenString, callback: callback)
                 } else {
-                    self.loginIntoFirebaseWithFacebook(action:.direct, facebookAccessToken: accessToken.authenticationToken, callback: callback)
+                    self.loginIntoFirebaseWithFacebook(action:.direct, facebookAccessToken: accessToken.tokenString, callback: callback)
                 }
             }
         }
@@ -185,26 +185,18 @@ extension UserManager {
 	internal func readUserDataFromFacebook(callback: @escaping (User?, Error?) -> ()) {
 		
         let params = ["fields" : "email, first_name, last_name"]
-        let graphRequest = GraphRequest(graphPath: "me", parameters: params)
-        graphRequest.start {
-            (urlResponse, requestResult) in
-            
-            switch requestResult {
-            case .failed(let error):
+        GraphRequest(graphPath: "me", parameters: params).start { (connection, result, error) in
+            if let error = error {
                 print("error in graph request:", error)
                 callback(nil, error)
-                break
-            case .success(let graphResponse):
-                if let responseDictionary = graphResponse.dictionaryValue {
-                    print(responseDictionary)
-                    
-                    let user = User()
-                    user.firstName = responseDictionary["first_name"] as? String
-                    user.lastName = responseDictionary["last_name"] as? String
-                    user.email = responseDictionary["email"] as? String
-                    callback(user, nil)
-                    
-                }
+            } else {
+                let data: [String: Any] = result as? [String: Any] ?? [:]
+                //print("GET /me: \(data)")
+                let user = User()
+                user.firstName = data["first_name"] as? String
+                user.lastName = data["last_name"] as? String
+                user.email = data["email"] as? String
+                callback(user, nil)
             }
         }
 	}

@@ -51,7 +51,7 @@ extension Networking {
         }
         
 		var params: Parameters = [:]
-		let date = try! Date().atTime(hour: 0, minute: 0, second: 0)
+		let date = Date().dateAt(.startOfDay)
 		let end = date.addDays(daysToAdd: 8)
 		params["limit"] = limit
 		params["orderBy"] = "gps"

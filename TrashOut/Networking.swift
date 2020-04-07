@@ -41,10 +41,12 @@ Create object from json dictionary
 Give id if specified for request, nil otherwise
 */
 public protocol JsonDecodable {
+    
+    typealias JsonDictionary = [String: AnyObject]
 
-	static func create (from json: [String: AnyObject], usingId id: Int?) -> AnyObject
+	static func create(from json: JsonDictionary, usingId id: Int?) -> AnyObject
 
-	func dictionary() -> [String: AnyObject]
+	func dictionary() -> JsonDictionary
 
 }
 
@@ -92,86 +94,17 @@ class Networking {
     
 	// MARK: - Cache
 
-	var cache : HybridCache?
+    var cache : Cache.Storage<Data>?
 
 	func setupCache() {
-		let expiryDays: Double = 28
-		let size: UInt = 10000000
-		let config = Config.init(
-			frontKind: .memory,
-			backKind: .disk,
-			expiry: .seconds(60*60*24*expiryDays),
-			maxSize: size,
-			maxObjects: Int(size)
-		)
-		cache = HybridCache(name: "NetworkCache", config: config)
-	}
-	
-	/**
-	Load object from cache
-	*/
-	func loadFromCache<T>
-		(key: String, dueTo error: Error?, callback: @escaping (T?, Error?)->())
-		where T: Cachable {
-			#if DEBUG
-				print("Loading from cache using: \(key)")
-			#endif
-			cache?.object(key, completion: { (object: T?) -> () in
-				if let value = object {
-					DispatchQueue.main.async(execute: {
-						callback(value, nil)
-					})
-				}
-				else {
-					DispatchQueue.main.async(execute: {
-						callback(nil, error)
-					})
-				}
-			})
-	}
-
-	/**
-	Load list of object from cache
-	*/
-	func loadFromCache<T>
-        (key: String, dueTo error: Error?, callback: @escaping ([T]?, Error?)->())
-		where T: Cachable, T: JsonDecodable {
-			#if DEBUG
-			print("Loading from cache using: \(key)")
-			#endif
-			cache?.object(key, completion: { (json: JSON?) -> () in
-				if let list = json?.object as? [[String: AnyObject]] {
-					var objects : [T] = []
-					for dict in list {
-						if let obj = T.create(from: dict, usingId: nil) as? T {
-							objects.append(obj)
-						}
-					}
-					DispatchQueue.main.async(execute: {
-						callback(objects, nil)
-					})
-				}
-				else {
-					DispatchQueue.main.async(execute: {
-						callback(nil, error)
-					})
-				}
-			})
-	}
-
-	/**
-	Store list into cache
-	*/
-	func cacheList<T>
-		(key: String, list: [T])
-		where T: Cachable, T: JsonDecodable {
-
-        var dataList: [[String: AnyObject]] = []
-		for obj in list {
-			let dict = obj.dictionary()
-			dataList.append(dict)
-		}
-		cache?.add(key, object: JSON.array(dataList) )
+        let expiryDays: TimeInterval = 28
+        let maxDiskSize: UInt = 10 * 1000 * 1000
+        let maxMemorySize: UInt = 10 * 1000 * 1000
+        cache = try? Cache.Storage(
+            diskConfig: DiskConfig(name: "NetworkCache", expiry: .seconds(expiryDays * 24 * 3600), maxSize: maxDiskSize),
+            memoryConfig: MemoryConfig(expiry: .never, countLimit: maxMemorySize, totalCostLimit: maxMemorySize),
+            transformer: TransformerFactory.forData()
+        )
 	}
 
 	// MARK: - Error handling
@@ -192,31 +125,41 @@ class Networking {
 				return
 			}
 		}
-		callback(nil, response.result.error)
+		if let error = response.result.error as NSError?, error.code == 1009 {
+            callback(nil, NSError.fetch)
+        } else {
+            callback(nil, response.result.error)
+        }
 	}
-
-	/**
-	Load from cache for network error, else propagate error
-	*/
-	func resolveFailure<T>
-		(response: DataResponse<Any>,
-		 cachingEnabled: Bool = true,
-		 cacheKey: String? = nil,
-		 callback: @escaping ([T]?, Error?)->()
-		) where T: Cachable, T:JsonDecodable {
-
-			if cachingEnabled, let error = response.result.error, error.isNetworkConnectionError {
-				if let cacheKey = (cacheKey ?? response.request?.url?.absoluteString) {
-					self.loadFromCache(key: cacheKey, dueTo: response.result.error, callback: callback)
-					return
-				}
-			}
-            if let error = response.result.error as NSError?, error.code == 1009 {
-                callback(nil, NSError.fetch)
+    
+    /**
+    Load object from cache
+    */
+    func loadFromCache<T>
+        (key: String, dueTo error: Error?, callback: @escaping (T?, Error?) -> ())
+        where T: Cachable {
+            
+        #if DEBUG
+            print("Loading from cache using: \(key)")
+        #endif
+        
+        let completion: (T?, Error?) -> () = { obj, err in
+            DispatchQueue.main.async { callback(obj, err) }
+        }
+        
+        guard let cache = self.cache else {
+            completion(nil, error)
+            return
+        }
+        
+        cache.async.object(forKey: key) { result in
+            if case .value(let data) = result, let object = T.decode(data) {
+                completion(object, nil)
             } else {
-                callback(nil, response.result.error)
+                completion(nil, error)
             }
-	}
+        }
+    }
 	
 	// MARK: - Default Callbacks
 	
@@ -261,10 +204,10 @@ class Networking {
 				callback(nil, error)
 				return
 			}
-			if cachingEnabled {
-				if let cacheKey = (cacheKey ?? response.request?.url?.absoluteString) {
-					cache?.add(cacheKey, object: obj)
-				}
+            if cachingEnabled,
+                let cacheKey = (cacheKey ?? response.request?.url?.absoluteString),
+                let cacheData = obj.encode() {
+                try? cache?.setObject(cacheData, forKey: cacheKey)
 			}
 			callback(obj, nil)
 		}
@@ -314,10 +257,10 @@ class Networking {
 					}
 				}
 			}
-			if cachingEnabled {
-				if let cacheKey = (cacheKey ?? response.request?.url?.absoluteString) {
-					self.cacheList(key: cacheKey, list: list)
-				}
+			if cachingEnabled,
+                let cacheKey = (cacheKey ?? response.request?.url?.absoluteString),
+                let cacheData = list.encode() {
+                try? cache?.setObject(cacheData, forKey: cacheKey)
 			}
 			callback(list, nil)
 		}

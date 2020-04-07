@@ -111,7 +111,6 @@ class GPS: JsonDecodable {
 
 
 class Area: GPS, Cachable, Hashable, Equatable {
-	typealias CacheType = Area
 
 	enum AreaType: String, EnumCollection {
 		case continent

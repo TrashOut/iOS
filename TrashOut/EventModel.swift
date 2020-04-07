@@ -36,8 +36,6 @@ import CoreLocation
 
 class Event: JsonDecodable, Cachable {
 
-    typealias CacheType = Event
-
     // MARK: - Properties
 
     var id = 0

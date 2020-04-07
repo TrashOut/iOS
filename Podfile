@@ -24,7 +24,7 @@ def common_pods_for_target
     pod 'FacebookShare'
     
     pod 'Cache', '5.2.0'
-    pod 'SwiftDate', '~> 4.0.11'
+    pod 'SwiftDate', '6.1.0'
     
     pod 'Charts', '3.2.2'
     pod 'Keychain'

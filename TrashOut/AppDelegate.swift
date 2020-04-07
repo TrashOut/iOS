@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let file = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
         let opt = FirebaseOptions.init(contentsOfFile: file!)
         FirebaseApp.configure(options: opt!)
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
 		Theme.current.setupAppearance()
 		FirebaseLocalization().update()
@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        return ApplicationDelegate.shared.application(app, open: url, options: options)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

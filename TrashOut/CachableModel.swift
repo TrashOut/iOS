@@ -33,33 +33,60 @@
 import Foundation
 import Cache
 
+protocol Cachable {
+    
+    func encode() -> Data?
+    
+    static func decode(_ data: Data) -> Self?
+}
+
 /**
 Default cachable encode and decode using json serialization
 */
-extension Cachable {
+extension Cachable where Self: JsonDecodable {
 
 	func encode() -> Data? {
 		do {
-			if let meDecodable = self as? JsonDecodable {
-				let data = try JSONSerialization.data(withJSONObject: meDecodable.dictionary(), options: [])
-				return data
-			}
-		} catch {}
-		return nil
+            return try JSONSerialization.data(withJSONObject: self.dictionary(), options: [])
+		} catch {
+            return nil
+        }
 	}
 
-	static func decode(_ data: Data) -> CacheType? {
+	static func decode(_ data: Data) -> Self? {
 		do {
-			let json = try JSONSerialization.jsonObject(with: data, options: [])
-			if let dict = json as? [String: AnyObject] {
-
-				if let me = self as? JsonDecodable.Type {
-					let obj = me.create(from: dict, usingId: nil) as! CacheType
-					return obj
-				}
+            let json = try JSONSerialization.jsonObject(with: data, options: [])
+			if let jsonDict = json as? [String: AnyObject] {
+                return Self.create(from: jsonDict, usingId: nil) as? Self
 			}
 		} catch {}
 		return nil
 	}
+}
 
+/**
+Default array of cachables encode and decode using json serialization
+*/
+extension Array: Cachable where Element: JsonDecodable {
+    
+    func encode() -> Data? {
+        do {
+            let jsonArray = self.map { $0.dictionary() }
+            return try JSONSerialization.data(withJSONObject: jsonArray, options: [])
+        } catch {
+            return nil
+        }
+    }
+    
+    static func decode(_ data: Data) -> Self? {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: [])
+            if let jsonArray = json as? [[String: AnyObject]] {
+                return jsonArray.compactMap {
+                    Element.create(from: $0, usingId: nil) as? Element
+                }
+            }
+        } catch {}
+        return nil
+    }
 }

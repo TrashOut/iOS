@@ -34,7 +34,6 @@ import Foundation
 import Cache
 
 class User: JsonDecodable, Cachable {
-    typealias CacheType = User
 
     // MARK: - Properties
 
@@ -191,7 +190,6 @@ class User: JsonDecodable, Cachable {
 }
 
 class Badge: JsonDecodable, Cachable {
-    typealias CacheType = Badge
 
     func dictionary() -> [String: AnyObject] {
         var dict: [String: AnyObject] = [:]

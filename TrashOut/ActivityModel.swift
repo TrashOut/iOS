@@ -47,8 +47,6 @@ enum Action: String, EnumCollection {
 
 class Activity: JsonDecodable, Cachable {
 
-    typealias CacheType = Activity
-
     enum ActivityType: String {
         case trashPoint
         case collectionPoint

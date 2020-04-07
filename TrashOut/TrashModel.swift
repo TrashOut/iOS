@@ -36,8 +36,6 @@ import CoreLocation
 
 class Trash: JsonDecodable, Cachable {
 
-    typealias CacheType = Trash
-
     // MARK: - Enums
 
     /**
@@ -365,8 +363,6 @@ class TrashUpdateGalleryData {
  */
 class TrashPoint: JsonDecodable, Cachable {
 
-    typealias CacheType = TrashPoint
-
     var coords: CLLocationCoordinate2D?
     var id: Int?
     var status: Trash.Status?
@@ -410,8 +406,6 @@ class TrashPoint: JsonDecodable, Cachable {
  Grouped trashes according location
  */
 class GeoCell: JsonDecodable, Cachable {
-
-    typealias CacheType = GeoCell
 
     var coords: CLLocationCoordinate2D?
     var geocell: String?

@@ -10,7 +10,6 @@ import Foundation
 import Cache
 
 class EventContact: JsonDecodable, Cachable {
-    typealias CacheType = EventContact
     
     var email: String?
     var name: String?

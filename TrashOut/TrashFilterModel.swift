@@ -43,7 +43,7 @@ class TrashFilter: JsonDecodable {
 			case .lastMonth: return Date.init(timeIntervalSinceNow: -30*24*60*60)
 			case .lastWeek: return Date.init(timeIntervalSinceNow: -7*24*60*60)
 			case .lastYear: return Date.init(timeIntervalSinceNow: -365*24*60*60)
-			case .today: return Date().startOfDay //init(timeIntervalSinceNow: -24*60*60)
+			case .today: return Date().dateAt(.startOfDay)
 			}
 		}
 	}

@@ -102,7 +102,7 @@ class FirebaseAuthentificator {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            FBSDKLoginManager().logOut()
+            LoginManager().logOut()
         } catch let signOutError as NSError {
             firAuthLog(signOutError.description)
         }

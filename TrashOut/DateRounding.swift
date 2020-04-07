@@ -47,16 +47,16 @@ class DateRounding {
 		if date.isYesterday {
 			return "trash.lastUpdate.yesterday".localized
 		}
-		if date > now - 1.week {
+		if date > now - 1.weeks {
 			return "trash.lastUpdate.thisWeek".localized
 		}
-		if date > now - 1.month {
+		if date > now - 1.months {
 			return "trash.lastUpdate.moreThanWeekAgo".localized
 		}
 		if date > now - 6.months {
 			return "trash.lastUpdate.moreThanMonthAgo".localized
 		}
-		if date > now - 1.year {
+		if date > now - 1.years {
 			return "trash.lastUpdate.moreThanSixMonthAgo".localized
 		}
 		return "trash.lastUpdate.moreThanYearAgo".localized

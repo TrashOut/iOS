@@ -37,9 +37,6 @@ import Cache
 
 class Organization: JsonDecodable, Cachable {
 
-	typealias CacheType = Organization
-
-
 	var id: Int = 0
 	var name: String?
 

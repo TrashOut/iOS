@@ -98,7 +98,6 @@ class DistanceRounding {
 		}
 	}
 
-	@available(iOS 10.0, *)
 	internal func milesDistanceV2(meteres: Int) -> String {
 
 		let miles: Double = Double(meteres) * 0.00062137

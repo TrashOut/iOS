@@ -1,5 +1,5 @@
 
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 
 def common_pods_for_target

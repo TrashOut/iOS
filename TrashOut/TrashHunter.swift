@@ -111,7 +111,7 @@ class TrashHunter: NSObject, CLLocationManagerDelegate {
 			if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
 				let settingsAction = UIAlertAction(title: "Settings".localized, style: .default, handler: { (_) in
 					if UIApplication.shared.canOpenURL(settingsUrl) {
-						UIApplication.shared.openURL(settingsUrl)
+						UIApplication.shared.open(settingsUrl)
 					}
 				})
 				error.actions.append(settingsAction)
@@ -135,7 +135,7 @@ class TrashHunter: NSObject, CLLocationManagerDelegate {
 				if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
 					let settingsAction = UIAlertAction(title: "Settings".localized, style: .default, handler: { (_) in
 						if UIApplication.shared.canOpenURL(settingsUrl) {
-							UIApplication.shared.openURL(settingsUrl)
+							UIApplication.shared.open(settingsUrl)
 						}
 					})
 					error.actions.append(settingsAction)

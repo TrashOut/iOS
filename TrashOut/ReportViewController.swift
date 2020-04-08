@@ -298,10 +298,6 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
 		setRoundedButtonWithBorder(button: btnDeadAnimals)
         setRoundedButtonWithBorder(button: btnGlass)
 	}
-
-    override func viewWillAppear(_ animated: Bool) {
-        UIApplication.shared.isStatusBarHidden = false
-    }
     
 	// MARK: - Actions
 
@@ -490,7 +486,6 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     }
 
     @IBAction func addPhoto(_ sender: UIButton) {
-        UIApplication.shared.isStatusBarHidden = true
 		photoManager.takePhoto(vc: self, source: .camera, success: { [weak self] (image) in
 			self?.photos.append(image)
 			self?.cvPhoto.reloadData()

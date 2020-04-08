@@ -347,7 +347,7 @@ class DumpsMapManager: ClusteringManagerDelegate {
 	func geocells(between northwest: String, southeast: String) -> [String] {
 		let start = northwest.commonPrefix(with: southeast)
 		print("same: \(start)")
-		let differentCount = northwest.count - start.characters.count
+		let differentCount = northwest.count - start.count
 		var cells: [String] = [start]
 
 		for _ in 0..<differentCount {

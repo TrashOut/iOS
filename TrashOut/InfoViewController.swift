@@ -84,17 +84,17 @@ class InfoViewController: ViewController {
     
     @IBAction func showPrivacePolicy(_ sender: Any) {
 		guard let url = URL(string: "http://www.trashout.ngo/policy") else { return }
-		UIApplication.shared.openURL(url)
+		UIApplication.shared.open(url)
     }
 
     @IBAction func showTermsAndConditions(_ sender: Any) {
 		guard let url = URL(string: "http://www.trashout.ngo/terms") else { return }
-		UIApplication.shared.openURL(url)
+		UIApplication.shared.open(url)
     }
     
     @IBAction func showFeedback(_ sender: Any) {
         let email = "feedback@trashout.ngo"
         guard let url = URL(string: "mailto:\(email)") else { return }
-        UIApplication.shared.openURL(url)
+        UIApplication.shared.open(url)
     }
 }

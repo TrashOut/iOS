@@ -274,7 +274,7 @@ class NetworkingTests: XCTestCase {
                 XCTAssert(junkyard.gps != nil, "GPS is nil")
                 XCTAssert(junkyard.email != nil, "Email is nil")
                 XCTAssert(junkyard.phone != nil, "Phone is nil")
-                XCTAssert(junkyard.openingHours != nil, "Opening hours are nil")
+                XCTAssert(!junkyard.openingHours.isEmpty, "No opening hours")
                 XCTAssert(junkyard.note != nil, "Note is nil")
             } else {
                 XCTAssert(junkyard.size != nil, "Size is nil")
@@ -388,10 +388,10 @@ class NetworkingTests: XCTestCase {
                 print(error?.localizedDescription as Any)
                 return
             }
-            XCTAssert(article.id != 0, "\(article.id)")
-            XCTAssert(article.title != nil, "Title is nill")
-            XCTAssert(article.published != nil, "Published is nill")
-            XCTAssert(article.content != nil, "Content is nill")
+            XCTAssert(article.id != nil, "Id is nil")
+            XCTAssert(article.title != nil, "Title is nil")
+            XCTAssert(article.published != nil, "Published is nil")
+            XCTAssert(article.content != nil, "Content is nill=")
             XCTAssert(!article.tags.isEmpty, "No tags")
             /*
             XCTAssert(article.photos.count > 0, "No photos")

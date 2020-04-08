@@ -120,7 +120,7 @@ class EventDumpsViewController: ViewController, MKMapViewDelegate {
 
         for location in locations {
             let annotation = MapAnnotation()
-            annotation.id = location["id"] as! Int!
+            annotation.id = location["id"] as? Int
             annotation.coordinate = CLLocationCoordinate2D(latitude: location["latitude"] as! Double, longitude: location["longitude"] as! Double)
             map.addAnnotation(annotation)
         }

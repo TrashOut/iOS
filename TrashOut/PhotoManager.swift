@@ -72,7 +72,6 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
 
 	func openImagePicker(vc: UIViewController, source: UIImagePickerController.SourceType, animated: Bool) {
         DispatchQueue.main.async {
-            UIApplication.shared.isStatusBarHidden = true
             let picker = UIImagePickerController()
             if UIImagePickerController.isSourceTypeAvailable(source) {
                 picker.sourceType = source

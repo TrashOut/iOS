@@ -269,7 +269,7 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
             if let junkyard = self?.junkyard {
                 guard let phone = junkyard.phone else { return }
                 guard let number = URL(string: "telprompt://" + phone) else { return }
-                UIApplication.shared.openURL(number)
+                UIApplication.shared.open(number)
             }
         })
 	}

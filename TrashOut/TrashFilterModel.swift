@@ -102,15 +102,15 @@ class TrashFilter: JsonDecodable {
 		for (s, v) in self.status {
 			status[s.rawValue] = v
 		}
-		dict["status"] = status as AnyObject!
+		dict["status"] = status as AnyObject
 
 		if let lu = self.lastUpdate {
-			dict["lastUpdate"] = lu.rawValue as AnyObject!
+			dict["lastUpdate"] = lu.rawValue as AnyObject
 		}
 
-		dict["sizes"] = self.sizes.map({$0.rawValue}) as AnyObject!
-		dict["types"] = self.types.map({$0.rawValue}) as AnyObject!
-		dict["accessibility"] = self.accessibility.dictionary() as AnyObject!
+		dict["sizes"] = self.sizes.map({$0.rawValue}) as AnyObject
+		dict["types"] = self.types.map({$0.rawValue}) as AnyObject
+		dict["accessibility"] = self.accessibility.dictionary() as AnyObject
 
 		return dict
 	}

@@ -289,7 +289,7 @@ class NewsDetailViewController: ViewController, UICollectionViewDelegate, UIText
 			guard let video = self.article?.videos[indexPath.item] else { return }
 			guard let urlString = video.url else {return}
 			guard let url = URL(string: urlString) else {return}
-			UIApplication.shared.openURL(url)
+			UIApplication.shared.open(url)
 		}
 		if collectionView == cvPhotos {
 			guard let photos = article?.photos else { return }

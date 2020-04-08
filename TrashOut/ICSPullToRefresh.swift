@@ -23,7 +23,7 @@ fileprivate struct Constants {
 
 public extension UIScrollView {
     
-    public var pullToRefreshView: PullToRefreshView? {
+    var pullToRefreshView: PullToRefreshView? {
         get {
             return objc_getAssociatedObject(self, &pullToRefreshViewKey) as? PullToRefreshView
         }
@@ -34,14 +34,14 @@ public extension UIScrollView {
         }
     }
     
-    public var showsPullToRefresh: Bool {
+    var showsPullToRefresh: Bool {
         guard let pullToRefreshView = pullToRefreshView else {
             return false
         }
         return !pullToRefreshView.isHidden
     }
     
-    public func addPullToRefreshHandler(_ actionHandler: @escaping ActionHandler){
+    func addPullToRefreshHandler(_ actionHandler: @escaping ActionHandler){
         if pullToRefreshView == nil {
             pullToRefreshView = PullToRefreshView(frame: CGRect(x: CGFloat(0), y: -Constants.pullToRefreshViewHeight, width: self.bounds.width, height: Constants.pullToRefreshViewHeight))
             addSubview(pullToRefreshView!)
@@ -52,12 +52,12 @@ public extension UIScrollView {
         setShowsPullToRefresh(true)
     }
     
-    public func triggerPullToRefresh() {
+    func triggerPullToRefresh() {
         pullToRefreshView?.state = .triggered
         pullToRefreshView?.startAnimating()
     }
     
-    public func setShowsPullToRefresh(_ showsPullToRefresh: Bool) {
+    func setShowsPullToRefresh(_ showsPullToRefresh: Bool) {
         guard let pullToRefreshView = pullToRefreshView else {
             return
         }

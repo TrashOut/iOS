@@ -161,8 +161,8 @@ class EventManager {
 				event.calendar = eventStore.defaultCalendarForNewEvents
 				do {
 					try eventStore.save(event, span: .thisEvent)
-				} catch let e as NSError {
-					let error = NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [
+				} catch {
+					let error = NSError(domain: "cz.trashout.TrashOut", code: 500, userInfo: [
 						NSLocalizedDescriptionKey: "event.validation.cannotBeAddedToCalendar".localized
 						])
 					completion?(false, error)

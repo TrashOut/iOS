@@ -249,11 +249,12 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
         guard let event = self.event else { return }
 		eventsManager.joinEvent(event, controller: self) { [weak self, weak event] (error) in
             DispatchQueue.main.async {
-                if let error = error as? NSError {
-                    if error.code == 300 {
-                        self?.showWithSettings(message: error.localizedDescription)
+                if let error = error {
+                    let nsError = error as NSError
+                    if nsError.code == 300 {
+                        self?.showWithSettings(message: nsError.localizedDescription)
                     } else {
-                        self?.show(message: error.localizedDescription)
+                        self?.show(message: nsError.localizedDescription)
                     }
                     event?.showJoinButton = true
                 } else {

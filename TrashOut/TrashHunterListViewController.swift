@@ -92,7 +92,7 @@ class TrashHunterListViewController: ViewController, UITableViewDataSource, UITa
 		LocationManager.manager.refreshCurrentLocationIfNeeded { (loc) in
 			Networking.instance.trashes(position: loc.coordinate, area: CLLocationDistance(distance), filter: filter, limit: 100, page: 1, callback: { [weak self] (trashes, error) in
 				guard error == nil else {
-					print(error?.localizedDescription)
+					print(error?.localizedDescription ?? "")
 					self?.isWaitingForData = false
 					return
 				}

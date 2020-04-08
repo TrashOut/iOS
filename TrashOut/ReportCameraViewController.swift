@@ -50,7 +50,6 @@ class ReportCameraViewController: ViewController {
         super.viewDidLoad()
 
         navigationController?.isNavigationBarHidden = true
-        UIApplication.shared.isStatusBarHidden = true
 
 		LoadingView.show(on: self.view, style: .transparent)
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {

@@ -66,7 +66,7 @@ class TrashMapTests: XCTestCase {
 	Generating geocell strings
 	*/
 	func testGeocellStringGeneration() {
-		var coords: CLLocationCoordinate2D!
+		var coords: CLLocationCoordinate2D
 		coords = CLLocationCoordinate2DMake(0, 0) // lots of water there
 		XCTAssert(manager.cell(for: coords, resolution: 5) == "c0000", "Geocell for \(coords) should be 'c0000'")
 

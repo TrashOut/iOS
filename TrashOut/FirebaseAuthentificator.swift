@@ -93,7 +93,7 @@ class FirebaseAuthentificator {
 	}
 
     func loginWithFacebook(credentials: AuthCredential, callback: @escaping (String?, Error?) -> ()) {
-        Auth.auth().signInAndRetrieveData(with: credentials) { (firUser, error) in
+        Auth.auth().signIn(with: credentials) { (firUser, error) in
             callback(firUser?.user.uid, error)
         }
     }
@@ -112,7 +112,7 @@ class FirebaseAuthentificator {
         if let user = Auth.auth().currentUser {
             token { (token, error) in
                 let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-                user.linkAndRetrieveData(with: credential) { (user, error) in
+                user.link(with: credential) { (user, error) in
                     callback(user?.user.uid, error)
                 }
             }
@@ -123,7 +123,7 @@ class FirebaseAuthentificator {
         if let user = Auth.auth().currentUser {
 			self.token { (token, error) in
                 let credential = FacebookAuthProvider.credential(withAccessToken: facebookAccessToken)
-                user.linkAndRetrieveData(with: credential) { (user, error) in
+                user.link(with: credential) { (user, error) in
 					callback(user?.user.uid, error)
 				}
 			}

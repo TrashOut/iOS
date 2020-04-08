@@ -112,7 +112,7 @@ class StatisticViewController: ViewController,
             entries.append(entry)
         }
 
-        let dataset = PieChartDataSet.init(values: entries, label: nil)
+        let dataset = PieChartDataSet.init(entries: entries, label: nil)
         dataset.colors = types.map { $0.color }
 
         let data = PieChartData.init(dataSets: [dataset])

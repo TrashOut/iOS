@@ -48,7 +48,7 @@ class TrashHunterContainerViewController: UIViewController {
 
 	func errorHandler(_ error: TrashHunterError) {
 		print(error.localizedDescription)
-		print(error.message)
+		print(error.message ?? "")
 
 		let alert = UIAlertController(title: "TrashHunter", message: error.message, preferredStyle: .alert)
 

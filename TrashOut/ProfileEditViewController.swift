@@ -161,10 +161,6 @@ class ProfileEditViewController: ViewController,
         }
 	}
 
-    override func viewWillAppear(_ animated: Bool) {
-        UIApplication.shared.isStatusBarHidden = false
-    }
-
 	func fillData(user: User) {
 		self.receiveNotifications = user.newsletter
 		self.organizeEvents = user.eventOrganizer

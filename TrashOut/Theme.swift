@@ -35,64 +35,63 @@ import UIKit
 
 open class Theme {
 
-	open static var current = Theme()
+	public static var current = Theme()
 
-	var color: Color = Color()
-	var font: Font = Font()
+	open var color: Color = Color()
+	open var font: Font = Font()
 
-	init() {}
+	public init() {}
 
 	// MARK: - Theme definitions
 
 	open class Color {
-		init() {}
+		public init() {}
 
-		open let navBar: UIColor = UIColor.init(rgba: "#8CC947")
-		open let navBarText: UIColor = .white
-		open let tabBar: UIColor = .white
-		open let tabBarSelected: UIColor = UIColor.init(rgba: "#8CC947")
-		open let separatorLine: UIColor = UIColor.init(rgba: "#dadada")
-        open let green: UIColor = UIColor.init(rgba: "#8CC947")
-        open let red: UIColor = UIColor.init(rgba: "#DE371C")
-        open let orange: UIColor = UIColor.init(rgba: "#EA6B2D")
-		open let yellow: UIColor = UIColor.init(rgba: "#FFDC00")
-        open let lightGray: UIColor = .lightGray
-        open let dimGray: UIColor = UIColor.init(rgba: "#8E8E8E")
-        open let leadBlack: UIColor = UIColor.init(rgba: "#212121")
-        open let domestic: UIColor = UIColor.init(rgba: "#B88854")
-        open let automotive: UIColor = UIColor.init(rgba: "#567980")
-        open let construction: UIColor = UIColor.init(rgba: "#FF904E")
-        open let plastic: UIColor = UIColor.init(rgba: "#6DBAE1")
-        open let electronic: UIColor = UIColor.init(rgba: "#35567B")
-        open let organic: UIColor = UIColor.init(rgba: "#80A920")
-        open let metal: UIColor = UIColor.init(rgba: "#D1D1D1")
-        open let liquid: UIColor = UIColor.init(rgba: "#E0DB39")
-        open let dangerous: UIColor = UIColor.init(rgba: "#FF4444")
-        open let deadAnimals: UIColor = UIColor.init(rgba: "#C2660B")
-        open let glass: UIColor = UIColor.init(rgba: "#0c874e")
+		open var navBar: UIColor = UIColor.init(rgba: "#8CC947")
+		open var navBarText: UIColor = .white
+		open var tabBar: UIColor = .white
+		open var tabBarSelected: UIColor = UIColor.init(rgba: "#8CC947")
+		open var separatorLine: UIColor = UIColor.init(rgba: "#dadada")
+        open var green: UIColor = UIColor.init(rgba: "#8CC947")
+        open var red: UIColor = UIColor.init(rgba: "#DE371C")
+        open var orange: UIColor = UIColor.init(rgba: "#EA6B2D")
+		open var yellow: UIColor = UIColor.init(rgba: "#FFDC00")
+        open var lightGray: UIColor = .lightGray
+        open var dimGray: UIColor = UIColor.init(rgba: "#8E8E8E")
+        open var leadBlack: UIColor = UIColor.init(rgba: "#212121")
+        open var domestic: UIColor = UIColor.init(rgba: "#B88854")
+        open var automotive: UIColor = UIColor.init(rgba: "#567980")
+        open var construction: UIColor = UIColor.init(rgba: "#FF904E")
+        open var plastic: UIColor = UIColor.init(rgba: "#6DBAE1")
+        open var electronic: UIColor = UIColor.init(rgba: "#35567B")
+        open var organic: UIColor = UIColor.init(rgba: "#80A920")
+        open var metal: UIColor = UIColor.init(rgba: "#D1D1D1")
+        open var liquid: UIColor = UIColor.init(rgba: "#E0DB39")
+        open var dangerous: UIColor = UIColor.init(rgba: "#FF4444")
+        open var deadAnimals: UIColor = UIColor.init(rgba: "#C2660B")
+        open var glass: UIColor = UIColor.init(rgba: "#0c874e")
 
-		open let button: UIColor = UIColor.init(rgba: "#8BC34A")
-		open let facebook: UIColor = UIColor.init(rgba: "#36549c")
+		open var button: UIColor = UIColor.init(rgba: "#8BC34A")
+		open var facebook: UIColor = UIColor.init(rgba: "#36549c")
 	}
 
 	open class Font {
-		init() {}
+		public init() {}
 
-        open let boldTitle: UIFont = .boldSystemFont(ofSize: 22)
-		open let title: UIFont = .systemFont(ofSize: 22)
-        open let boldText: UIFont = .boldSystemFont(ofSize: 17)
-		open let text: UIFont = .systemFont(ofSize: 17)
-		open let subtext: UIFont = .systemFont(ofSize: 13)
+        open var boldTitle: UIFont = .boldSystemFont(ofSize: 22)
+		open var title: UIFont = .systemFont(ofSize: 22)
+        open var boldText: UIFont = .boldSystemFont(ofSize: 17)
+		open var text: UIFont = .systemFont(ofSize: 17)
+		open var subtext: UIFont = .systemFont(ofSize: 13)
 	}
 
 	// MARK: - Appearance
 
 	open func setupAppearance() {
-        UIApplication.shared.statusBarStyle = .lightContent
         UINavigationBar.appearance().barStyle = UIBarStyle.black // Removes hairline at the top of the bar
 		UINavigationBar.appearance().barTintColor = color.navBar
 		UINavigationBar.appearance().tintColor = color.navBarText
-		UINavigationBar.appearance().titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue: color.navBarText])
+		UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: color.navBarText]
         UINavigationBar.appearance().shadow = true
         UITabBar.appearance().alpha = 1
         UITabBar.appearance().isOpaque = true
@@ -101,13 +100,13 @@ open class Theme {
         UITabBar.appearance().barTintColor = color.tabBar
 		UITabBar.appearance().tintColor = color.tabBarSelected
         UITabBar.appearance().shadow = true
-        // UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: color.tabBarSelected], for: .normal)
     }
 
 }
 
 public extension UIFont {
-	public static var theme: Theme.Font {
+    
+	static var theme: Theme.Font {
 		return Theme.current.font
 	}
 }
@@ -117,7 +116,7 @@ Inspired by https://github.com/yeahdongcn/UIColor-Hex-Swift
 */
 public extension UIColor {
 
-	public static var theme: Theme.Color {
+	static var theme: Theme.Color {
 		return Theme.current.color
 	}
 
@@ -126,7 +125,7 @@ public extension UIColor {
 
 	Starts with #, number of characters after '#' should be either 3, 4, 6 or 8
 	*/
-	public convenience init(rgba: String) {
+	convenience init(rgba: String) {
 		var red: CGFloat = 0.0
 		var green: CGFloat = 0.0
 		var blue: CGFloat = 0.0
@@ -134,7 +133,7 @@ public extension UIColor {
 
 		if rgba.hasPrefix("#") {
 			let index   = rgba.index(rgba.startIndex, offsetBy: 1)
-			let hex     = rgba.substring(from: index)
+            let hex     = String(rgba[index...])
 			let scanner = Scanner(string: hex)
 			var hexValue: CUnsignedLongLong = 0
 			if scanner.scanHexInt64(&hexValue) {
@@ -169,10 +168,4 @@ public extension UIColor {
 		self.init(red: red, green: green, blue: blue, alpha: alpha)
 	}
 
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

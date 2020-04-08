@@ -227,11 +227,10 @@ class Area: GPS, Cachable, Hashable, Equatable {
 			return nil
 		}
 	}
-
-
-	var hashValue: Int {
-		return id
-	}
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 
 	static func == (lhs: Area, rhs: Area) -> Bool {
 		return lhs.id == rhs.id

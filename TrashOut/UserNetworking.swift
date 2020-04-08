@@ -262,7 +262,7 @@ extension Networking {
                 })
             })
         }
-        blocks.append({ [weak self] (completion: ()->(), failure: (Error)->()) in
+        blocks.append({ (completion: ()->(), failure: (Error)->()) in
             callback(nil)
             completion()
         })

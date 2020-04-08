@@ -56,7 +56,7 @@ open class Async {
 	- Parameter blocks: List of blocks to be executed in order
 	- Parameter failure: Callback for error
 	*/
-	open static func waterfall (_ blocks: [Block], failure: @escaping ErrorBlock) {
+	open class func waterfall (_ blocks: [Block], failure: @escaping ErrorBlock) {
 		self.executeWaterfall(blocks, index: 0, failure: failure)
 	}
 	

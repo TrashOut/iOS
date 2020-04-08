@@ -181,7 +181,7 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		var cell: JunkyardTableViewCell!
+		let cell: JunkyardTableViewCell
 		if indexPath.section == 1 {
         	cell = tableView.dequeueReusableCell(withIdentifier: "JunkyardCell", for: indexPath) as! JunkyardTableViewCell
 		} else {

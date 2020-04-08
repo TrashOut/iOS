@@ -3,9 +3,9 @@ PODS:
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
   - Cache (5.2.0)
-  - Charts (3.2.2):
-    - Charts/Core (= 3.2.2)
-  - Charts/Core (3.2.2)
+  - Charts (3.4.0):
+    - Charts/Core (= 3.4.0)
+  - Charts/Core (3.4.0)
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - Fabric (1.10.2)
@@ -141,7 +141,7 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - Cache (= 5.2.0)
-  - Charts (= 3.2.2)
+  - Charts (= 3.4.0)
   - Crashlytics
   - Fabric
   - FacebookCore
@@ -196,7 +196,7 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
   Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
-  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
+  Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
@@ -228,6 +228,6 @@ SPEC CHECKSUMS:
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
 
-PODFILE CHECKSUM: 9773df889044e1c9decbb7d4330b24a58e2d6073
+PODFILE CHECKSUM: b9c28da3e5e8bf48a5bf9f78cb346a4608139439
 
 COCOAPODS: 1.8.4

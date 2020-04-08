@@ -35,11 +35,10 @@ import MapKit
 
 class ClusterMapAnnotation: MapAnnotation, AnnotationCluster {
 
-    var count: Int? = 0
+    var count: Int = 0
     var cleaned: Int = 0
     var updateNeeded: Int = 0
     var reported: Int = 0
-    // var remains: Int = 0 // not needed
 
     var annotations: [MKAnnotation] = [] {
         didSet {
@@ -202,9 +201,7 @@ class ClusterMapAnnotation: MapAnnotation, AnnotationCluster {
     }
 
     func setupLabel(at view: ClusterMapAnnotationView) {
-        if let cnt = self.count {
-            view.label?.text = ClusterRounding.shared.round(count: cnt)
-        }
+        view.label?.text = ClusterRounding.shared.round(count: count)
     }
 
     override var debugDescription: String {

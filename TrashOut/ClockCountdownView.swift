@@ -241,7 +241,7 @@ open class ClockCountdownView: UIView {
 
 fileprivate extension UIColor {
 
-    fileprivate func interpolateRGB(to end: UIColor, with fraction: CGFloat) -> UIColor {
+    func interpolateRGB(to end: UIColor, with fraction: CGFloat) -> UIColor {
         let f = max(0, min(1, fraction))
         guard self.cgColor.numberOfComponents > 3 else { return self }
         guard end.cgColor.numberOfComponents > 3 else { return self }

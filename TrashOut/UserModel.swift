@@ -192,14 +192,11 @@ class User: JsonDecodable, Cachable {
 class Badge: JsonDecodable, Cachable {
 
     func dictionary() -> [String: AnyObject] {
-        var dict: [String: AnyObject] = [:]
-        return dict
+        return [:]
     }
 
     static func create(from _: [String: AnyObject], usingId _: Int?) -> AnyObject {
-        let badge = Badge()
-
-        return badge
+        return Badge()
     }
 }
 

@@ -71,7 +71,7 @@ extension String {
     Uppercase only the first letter in string
     */
     var uppercaseFirst: String {
-        return String(characters.prefix(1)).uppercased() + String(characters.dropFirst())
+        prefix(1).uppercased() + dropFirst()
     }
 
 }

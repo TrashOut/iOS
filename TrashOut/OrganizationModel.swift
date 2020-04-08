@@ -38,7 +38,7 @@ import Cache
 class Organization: JsonDecodable, Cachable {
 
 	var id: Int = 0
-	var name: String?
+	var name: String = ""
 
 
 	init(){}
@@ -55,7 +55,7 @@ class Organization: JsonDecodable, Cachable {
 	static func create(from json: [String: AnyObject], usingId id: Int? = nil) -> AnyObject {
 		let o = Organization()
 		o.id = json["id"] as? Int ?? id ?? 0
-		o.name = json["name"] as? String
+		o.name = json["name"] as? String ?? ""
 
 		return o
 	}

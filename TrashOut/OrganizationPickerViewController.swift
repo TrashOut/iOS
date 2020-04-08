@@ -62,6 +62,7 @@ class OrganizationPickerViewController: ViewController,
         Networking.instance.organizations(page: 1, limit: 20) { [weak self] organizations, _ in
             if let o = organizations {
                 self?.organizations.append(contentsOf: o)
+                self?.organizations.sort { $0.name < $1.name }
             }
         }
 
@@ -76,25 +77,16 @@ class OrganizationPickerViewController: ViewController,
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrganizationCell") as! OrganizationCell
-
         let organization = organizations[indexPath.row]
-
         cell.lblName.text = organization.name
-
         cell.swJoined.isOn = isSelected(organization: organization)
-
         cell.onSwitch = { [weak self] isSelected in
             if isSelected {
                 self?.selectedOrganizations.append(organization)
             } else {
-                if let index = self?.selectedOrganizations.index(where: { (o) -> Bool in
-                    return o.id == organization.id
-                }) {
-                    self?.selectedOrganizations.remove(at: index)
-                }
+                self?.selectedOrganizations.removeAll(where: { $0.id == organization.id })
             }
         }
-
         return cell
     }
 
@@ -113,9 +105,7 @@ class OrganizationPickerViewController: ViewController,
 class OrganizationCell: UITableViewCell {
 
     @IBOutlet var lblName: UILabel!
-
     @IBOutlet var swJoined: UISwitch!
-
 
 	var onSwitch: ((Bool) -> Void)?
 
@@ -124,9 +114,4 @@ class OrganizationCell: UITableViewCell {
             cb(swJoined.isOn)
         }
     }
-
-//	override func didMoveToSuperview() {
-//		super.didMoveToSuperview()
-//		self.layoutIfNeeded()
-//	}
 }

@@ -146,7 +146,7 @@ extension Trash.DetailStatus {
         switch self {
         case .cleaned: return Theme.current.color.green
         case .less, .more, .updated: return Theme.current.color.orange
-        case .updateNeeded: return Theme.current.color.yellow
+        case .updateNeeded: return Theme.current.color.red
         case .reported: return Theme.current.color.red
         }
     }

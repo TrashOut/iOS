@@ -223,7 +223,7 @@ class ClusterMapAnnotationView: MKAnnotationView {
             if i < red {
                 dots[i].backgroundColor = UIColor.theme.red
             } else if i < red + yellow {
-                dots[i].backgroundColor = UIColor.theme.yellow
+                dots[i].backgroundColor = UIColor.theme.red
             } else {
                 dots[i].backgroundColor = UIColor.theme.green
             }

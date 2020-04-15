@@ -54,7 +54,9 @@ class NewsViewController: ViewController, UICollectionViewDelegate, UICollection
 
 	func addPullToRefresh(into scrollView: UIScrollView) {
 		scrollView.addPullToRefreshHandler { [weak self] in
-            self?.loadData(reload: true)
+            DispatchQueue.main.async {
+                self?.loadData(reload: true)
+            }
         }
 	}
 
@@ -121,6 +123,7 @@ class NewsViewController: ViewController, UICollectionViewDelegate, UICollection
 		self.collectionView.setNeedsLayout()
 		self.collectionView.layoutIfNeeded()
 	}
+    
 	func hideNoArticles() {
 		NoDataView.hide(from: self.view)
 	}

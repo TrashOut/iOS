@@ -97,7 +97,7 @@ class DumpsImageViewController: ViewController, UICollectionViewDelegate, UIColl
         self.lblInfo.text = "global.unknow".localized
         
         // Set user
-        if let displayName = data.users[index]?.displayName {
+        if !trash.anonymous, let displayName = data.users[index]?.displayName {
             self.lblUser.text = displayName
         }
         

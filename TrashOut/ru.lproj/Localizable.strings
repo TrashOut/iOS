@@ -70,7 +70,6 @@
 "info.header.aboutApp" = "О приложении TrashOut";
 "global.aboutProject" = "TrashOut — это экологический проект, цель которого — определять местонахождение незаконных свалок по всему миру. \n\nНаши усилия направлены на то, чтобы вовлекать в участие в проекте обычных людей, местные власти и организации. Так мы сможем изменить мир к лучшему и сделать его еще более прекрасным местом для жизни.\n\nСпасибо, что присоединились к экологическому сообществу TrashOut и помогаете нам делать свое дело.";
 "global.writeReview" = "Написать отзыв";
-
 "info.privatePolicy" = "Политика конфиденциальности";
 "info.termsAndConditions" = "Правила и условия";
 "info.feedbackAndSupport" = "Обратная связь и поддержка";
@@ -237,7 +236,7 @@
 "home.nearestDumps" = "Ближайшие свалки";
 "home.goAndFindDumps" = "Вперед, найдите и обновите эти свалки";
 "home.didYouKnow" = "Новости и обновления";
-"home.nearestRecyclingPoints" = "Ближайший пункт переработки";
+"home.nearestRecyclingPoints" = "Ближайшие пункты по переработке";
 "collectionPoint.size.recyclingBin" = "Корзина";
 "collectionPoint.size.recyclingCenter" = "Центр";
 "collectionPoint.size.all" = "Все";
@@ -277,7 +276,7 @@
 "trash.accessibility.byCar" = "Доступна на машине";
 "trash.accessibility.inCave" = "Расположена в пещере";
 "trash.accessibility.underWater" = "Расположена под водой";
-"trash.accessibility.notForGeneralCleanup" = "Не для общей уюорки";
+"trash.accessibility.notForGeneralCleanup" = "Не для общей уборки";
 "trash.valiadation.accessibilityRequired" = "Необходимо определить доступность";
 "global.status" = "Состояние";
 "trash.status" = "Состояние свалки";
@@ -388,9 +387,6 @@
 "collectionPoint.types.cardboard" = "картон";
 "collectionPoint.types.clothes" = "одежда";
 "collectionPoint.types.biodegradable" = "биоразлагаемые отходы";
-"global.internet.offline"="Пожалуйста, подключитесь к Интернету, чтобы увидеть этот раздел.";
-"global.error.api.text"="Мы периодически сталкиваемся с нашим сервером. Мы делаем все возможное, чтобы исправить это в ближайшее время. Пожалуйста, вернитесь позже.";
-"global.internet.error.offline"="Ваше мобильное устройство не подключено к Интернету. Сделайте снимок и сообщите об этом позже через www.admin.trashout.ngo.";
 
 /*Fuzzy*/
 "collectionPoint.types.electronic" = "электроника";
@@ -492,7 +488,7 @@
 "trash.confirmation.deleteImage" = "Действительно хотите удалить изображение?";
 "trash.confirmation.deleteTrash" = "Действительно хотите удалить свалку?";
 "global.confirmation.header" = "Подтверждение";
-"event.confirmation.joinEvent" = "Действительно хотите присоединиться к мероприятию?";
+"event.confirmation.joinEvent" = "Пожалуйста, подтвердите свое участие. Информация об участниках доступна для организаторов, чтобы помочь им в подготовке";
 "trash.confirmation.markSpam" = "Действительно хотите отметить эту свалку как спам?";
 "global.confirmation.reject" = "хочу отклонить";
 "event.confirmation.unjoinEvent" = "На самом деле хотите покинуть мероприятие?";
@@ -1178,6 +1174,8 @@
 "news.success.photo.deleted" = "Изображение из статьи было удалено";
 "global.resendVerificationEmail" = "Отправить письмо с подтверждением";
 "global.emailResent" = "Письмо с подтверждением было отправлено снова";
+
+/*Fuzzy*/
 "event.addToCalendar" = "добавить в календарь";
 "global.add" = "Добавить";
 "profile.myEvents.timeDecision.ongoing" = "постоянный";
@@ -1201,9 +1199,62 @@
 
 /*note*/
 /*Fuzzy*/
-"global.signUp.acceptRegister.startSentense" = "Регистрируясь, вы соглашаетесь с";
-"global.signUp.acceptRegister.privatePolicy" = "Условиями предоставления услуг";
+"global.signUp.acceptRegister.startSentense" = "Я согласен с обработкой моих личных данных. Я прочитал и принял";
+"global.signUp.acceptRegister.privatePolicy" = "политика конфиденциальности";
 
 /*Fuzzy*/
 "global.signUp.acceptRegister.and" = "и";
-"global.signUp.acceptRegister.terms" = "Политикой конфиденциальности";
+"global.signUp.acceptRegister.terms" = "Условия использования";
+
+/*error with communication with API server*/
+/*Fuzzy*/
+"global.error.api.text" = "Мы периодически сталкиваемся с нашим сервером. Мы делаем все возможное, чтобы исправить это в ближайшее время. Пожалуйста, вернитесь позже.";
+"global.internet.offline" = "Пожалуйста, подключитесь к Интернету, чтобы увидеть этот раздел.";
+"global.cookiesPolicy" = "Этот веб-сайт использует файлы cookie, чтобы дать вам лучший опыт. Согласитесь, нажав кнопку «Я принимаю». Мы используем файлы cookie для предоставления возможностей социальных сетей, анализа нашего трафика и поведения посетителей на нашем веб-сайте и в маркетинговых целях. Иногда мы предоставляем эту анонимную информацию сторонним инструментам. Читайте наши";
+"global.acceptCookiesPolicy" = "Я принимаю";
+"global.cookiesPolicy.link" = "Политика конфиденциальности";
+
+/*Error show only if there is issue with creating dumps*/
+"global.internet.error.offline" = "Ваше мобильное устройство не подключено к Интернету. Сделайте снимок и сообщите об этом позже через www.admin.trashout.ngo.";
+"global.images.requirements" = "Используйте изображения с соотношением сторон 1: 2 или менее (не широкоэкранное изображение) и до 2 МБ.";
+
+/*On the screen "Recycling" in singular*/
+"home.nearestRecyclingPoint" = "Ближайшая точка перерабатывания";
+"home.recycling_point_add_new_do_later" = "Отмена";
+"home.recycling_point_add_new_go_to_web" = "Добавить сейчас";
+"home.recycling_point_add_new_redirect" = "Точка сбора может быть добавлена только из нашего веб-приложения, в которое вы можете войти через веб-браузер";
+
+/*Fuzzy*/
+"info.frequentlyAskedQuestions" = "Часто задаваемые вопросы";
+"info.supportUs" = "Поддерживать нас";
+"home.recycling_point_edit_redirect" = "точка сбора может быть отредактирована только из веб-приложения, доступ к которому осуществляется через веб-браузер";
+"collectionPoint.email_is_missing" = "Добавить адрес электронной почты";
+"collectionPoint.phone_is_missing" = "Добавьте номер телефона";
+"collectionPoint.web_is_missing" = "Добавить веб-адрес";
+"event.meeting_point" = "Место встречи";
+"home.recycling_point_add_new_tittle" = "Добавить пункт сбора";
+"home.recycling_point_edit_title" = "Обновить точку сбора";
+"home.recycling_point_edit_go_to_web" = "Изменить сейчас";
+"home.recycling_point_edit_do_later\n" = "Отмена";
+"event.event_edit_title" = "Изменить это событие";
+"event.event_edit_redirect\n" = "События можно редактировать только из веб-приложения, которое доступно через веб-браузер";
+
+/*Fuzzy*/
+"event.event_edit_do_later\n" = "Отмена";
+"event.event_edit_go_to_web\n" = "Изменить сейчас";
+"event.event_joinEventTitle" = "Присоединяйтесь к событию";
+"home.orderTrashPickup" = "Заказать вывоз мусора";
+"event.create_event_meeting_date_title" = "Дата встречи";
+"notification_new_trash_formatter" = "Вы охотитесь на% d новых или обновленных корзин.";
+"about_version_date_formatted" = "Версия от% s";
+"skip_btn" = "ПРОПУСКАТЬ";
+"event.create.thankYou.sentence1" = "Спасибо за создание этого события";
+"event.create.thankYou.sentence2" = "Ты обалденный!";
+"event.create.thankYou.sentence3" = "Не забудьте обновить все дампы, которые вы очистили во время мероприятия";
+"event.create.thankYou.shareTitle" = "Поделиться с другими";
+"event.create.thankYou.detail\n" = "Посмотреть событие";
+"trash.create.thankYou.detail" = "Посмотреть отчет";
+"organization.statistics.title" = "Статистика о деятельности участников";
+"organization.dumpsReported" = "Отчеты";
+"organization.dumpsUpdated" = "Обновления";
+"organization.dumpsCleaned" = "Отвалы убраны";

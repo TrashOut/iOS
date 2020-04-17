@@ -9,7 +9,7 @@
 "global.menu.notifications" = "Notifications";
 "global.menu.organizations" = "Organizations";
 "global.menu.dumps" = "Dumps";
-"global.menu.collectionPoints" = "Recycling Points";
+"global.menu.collectionPoints" = "Collection Points";
 "global.showAll" = "Show all";
 "global.save" = "Save";
 "global.back" = "Back";
@@ -68,9 +68,6 @@
 "global.userNotLogged" = "Sorry for inconvenience, you are now logged out.\nPlease sign in again.";
 "global.now" = "now";
 "profile.header" = "Profile";
-"global.internet.offline"="Please connect to the internet in order to see this section.";
-"global.error.api.text"="We are experiencing temporary issue with our server. We are doing our best to fix it soon. Please come back later.";
-"global.internet.error.offline"="Your device is not connected to the internet. Take a picture and report it later via www.admin.trashout.ngo.";
 
 /*Fuzzy*/
 "global.welcomeText" = "Report Trash allows you report illegal dump anywhere in the world. Reporting is the first step which leads to cleaning.\n\nGO, locate illegal dump by pressing the button “Report Trash”!";
@@ -190,7 +187,7 @@
 "home.noDumpsNear" = "No illegal dumps nearby";
 "global.enableGps" = "Allow location services";
 "trash.loadingDumps" = "Loading dumps in your area...";
-"global.loadingError" = "Please connect to the internet in order to see this section.";
+"global.loadingError" = "“Please connect to the internet in order to see this section.”";
 "trash.edit.betterLocation" = "Trying to get better location";
 "trash.create.error" = "Sending has been interrupted.";
 "global.dbError" = "Oops, we could NOT save the data.";
@@ -247,22 +244,22 @@
 "home.nearestDumps" = "Nearest Dumps";
 "home.goAndFindDumps" = "Go, find and update these dumps";
 "home.didYouKnow" = "News and Updates";
-"home.nearestRecyclingPoints" = "Nearest Recycling Point";
+"home.nearestRecyclingPoints" = "Nearest collection Points";
 "collectionPoint.size.recyclingBin" = "Bin";
 "collectionPoint.size.recyclingCenter" = "Center";
 "collectionPoint.size.all" = "All";
-"collectionPoint.header" = "Recycling Points";
-"collectionPoint.list.header" = "Recycling Point List";
-"collectionPoint.create.header" = "Create Recycling Point";
-"collectionPoint.edit.header" = "Edit Recycling Point";
+"collectionPoint.header" = "Collection Points";
+"collectionPoint.list.header" = "Collection Point List";
+"collectionPoint.create.header" = "Create Collection Point";
+"collectionPoint.edit.header" = "Edit Collection Point";
 "collectionPoint.edit.firstStep" = "General Information";
 "collectionPoint.edit.secondStep" = "Opening Hours and Description";
 "collectionPoint.edit.thirdStep" = "Choose Images";
 "collectionPoint.id" = "ID";
 "collectionPoint.name" = "Name";
-"collectionPoint.location" = "Address of recycling point";
-"collectionPoint.size" = "Size of Recycling Point";
-"collectionPoint.type" = "Recycling point type";
+"collectionPoint.location" = "Address of collection point";
+"collectionPoint.size" = "Size of Collection Point";
+"collectionPoint.type" = "Collection point type";
 "home.recentActivity.header" = "Recent Activity on Dumps You Follow";
 "home.recentActivity.noActivity" = "No recent activity.";
 "events.header" = "Events";
@@ -286,7 +283,7 @@
 "trash.accessibility" = "Trash Accessibility";
 "trash.accessibility.byCar" = "Accessible by car";
 "trash.accessibility.inCave" = "Located in a cave";
-"trash.accessibility.underWater" = "Located under water";
+"trash.accessibility.underWater" = "Under water/ on the waterside";
 "trash.accessibility.notForGeneralCleanup" = "Not for general cleanup";
 "trash.valiadation.accessibilityRequired" = "Accessibility required";
 "global.status" = "Status";
@@ -335,14 +332,14 @@
 "event.addedToCalender.success" = "Cleaning event was added to your calendar";
 "global.enableAccessToCalendar" = "Enable access to calendar in settings";
 "collectionPoint.allowedTypes" = "Type of waste you can dispose here";
-"collectionPoint.other" = "More Recycling Points Around You";
+"collectionPoint.other" = "More collection Points Around You";
 "global.filter.noResult" = "No results, change filter options";
-"collectionPoint.filter.header" = "Recycling Point Filter";
+"collectionPoint.filter.header" = "collection Point Filter";
 "trash.filter.header" = "Trash Filter";
 "global.filter" = "Filter";
 
 /*Fuzzy*/
-"collectionPoint.filter.size" = "Size of Recycling Point";
+"collectionPoint.filter.size" = "Size of collection Point";
 
 /*Fuzzy*/
 "collectionPoint.filter.types" = "Type of Trash to Dispose";
@@ -457,7 +454,7 @@
 "global.login" = "Log in";
 "global.backToLogin" = "Back to login";
 "notifications.header" = "Notifications";
-"collectionPoint.filter.ids" = "Recycling Points IDs";
+"collectionPoint.filter.ids" = "Collection Points IDs";
 "collectionPoint.create.openDaysAddException" = "Add Exception Hours";
 "collectionPoint.note" = "Note";
 "global.reviewed" = "Reviewed";
@@ -467,7 +464,7 @@
 "trash.filter.userIds" = "User IDs";
 "notifications.unreviewedUsers" = "Unreviewed users";
 "notifications.reportedTrashes" = "Reported trashes";
-"notifications.reportedCollectionPoints" = "Reported Recycling Points";
+"notifications.reportedCollectionPoints" = "Reported Collection Points";
 "notifications.users.approve" = "Approve";
 "notifications.users.deny" = "Remove Activities";
 "notifications.spam.confirm" = "Confirm as Spam";
@@ -515,7 +512,7 @@
 "trash.confirmation.deleteImage" = "Do you really want to delete image?";
 "trash.confirmation.deleteTrash" = "Do you really want to delete trash?";
 "global.confirmation.header" = "Confirmation";
-"event.confirmation.joinEvent" = "Do you really want to join event?";
+"event.confirmation.joinEvent" = "Please confirm your attendance. Information about attendees is available for the organisers in order to help them with preparations";
 "trash.confirmation.markSpam" = "Do you really want to mark this dump as spam?";
 "global.confirmation.reject" = "really want to reject";
 "event.confirmation.unjoinEvent" = "Really want to leave event?";
@@ -781,7 +778,7 @@
 "user.reviewed" = "Reviewed User";
 "user.created" = "Account created";
 "trash.create.successs" = "Thank you for keeping our database up to date and taking care of our environment.";
-"collectionPoint.create.images" = "Please select Image or Logo of Recycling Point. It's not necessary, but it helps others to find the place easier. ";
+"collectionPoint.create.images" = "Please select Image or Logo of collection Point. It's not necessary, but it helps others to find the place easier. ";
 "global.phone.placeholder" = "+420123456789";
 "global.email.placeholder" = "john@example.com";
 "organization.detail.header" = "Organization detail";
@@ -793,7 +790,7 @@
 "geo.noAliasExists" = "No Alias exists for selected Area";
 "collectionPoint.contact.header" = "Contacts";
 "global.url.placeholder" = "https://www.trashout.ngo";
-"collectionPoint.update.success" = "Recycling point was successfully updated.";
+"collectionPoint.update.success" = "Collection point was successfully updated.";
 "user.editArea" = "Edit Area of interest";
 "user.geo.notificationFrequency.perHour" = "Per hour";
 "user.geo.notificationFrequency.never" = "Never";
@@ -819,9 +816,9 @@
 "organization.contacts" = "Contacts";
 "organization.created" = "Created";
 "organization.members" = "Members";
-"collectionPoint.delete.confirmation" = "Do you really want to delete this Recycling Point?";
-"collectionPoint.detail.header" = "Recycling Point Detail";
-"collectionPoint.create.success" = "Recycling point was successfully created.";
+"collectionPoint.delete.confirmation" = "Do you really want to delete this Collection Point?";
+"collectionPoint.detail.header" = "Collection Point Detail";
+"collectionPoint.create.success" = "Collection point was successfully created.";
 
 /*Fuzzy*/
 "organization.create.success" = "Organization was successfully created.";
@@ -877,8 +874,8 @@
 /*Fuzzy*/
 "event.map.removeRectangle" = "Remove rectangle";
 "event.detail.duration" = "Event Duration";
-"collectionPoint.gpsLocation" = "Recycling point GPS";
-"collectionPoint.gpsMap" = "Recycling point on map";
+"collectionPoint.gpsLocation" = "Collection point GPS";
+"collectionPoint.gpsMap" = "Collection point on map";
 "collectionPoint.category.recyclabes" = "Recyclabes";
 "collectionPoint.category.dangerous" = "Dangerous";
 "collectionPoint.category.construction" = "Construction";
@@ -892,8 +889,8 @@
 "user.roles.organization" = "Organization Role";
 "profile.changeEmail" = "Change E-mail";
 "profile.newEmail" = "New E-mail";
-"collectionPoint.remove.success" = "Recycling point was successfully removed.";
-"collectionPoint.markedAsSpam.alreadyMarked" = "This Recycling Point is already marked as SPAM.";
+"collectionPoint.remove.success" = "Collection point was successfully removed.";
+"collectionPoint.markedAsSpam.alreadyMarked" = "This Collection Point is already marked as SPAM.";
 "event.detail.when" = "When";
 "event.detail.date" = "Date";
 "event.detail.time" = "Time";
@@ -912,7 +909,7 @@
 /*Fuzzy*/
 "global.showWholeGallery" = "Show whole gallery";
 "event.detail.dumpsToBeCleaned" = "Dumps to be cleaned";
-"event.detail.collectionPoints" = "Recycling Points";
+"event.detail.collectionPoints" = "Collection Points";
 "event.detail.joinedUsers" = "Joined Users";
 "event.feedback.header" = "Feedback";
 "event.feedback.guessGuestCount" = "Guess guest count";
@@ -934,7 +931,7 @@
 "event.validation.startDateRequired" = "Start Date of Event is required";
 "event.validation.startTimeRequired" = "Start time is required";
 "global.noResult" = "No result.";
-"event.create.collectionPoints" = "Recycling Points in area";
+"event.create.collectionPoints" = "Collection Points in area";
 "event.filter.upcomingOrOld" = "Show Upcoming or Old";
 "event.filter.showUpcoming" = "Show only upcoming";
 "event.filter.showOld" = "Show only passed";
@@ -1192,9 +1189,9 @@
 "global.phone.hint" = "Phone number starts with +/ 00";
 "profile.currentPassword" = "Current Password";
 "user.addToArea.success" = "Area was successfully added";
-"collectionPoint.created.success" = "Recycling point was successfully created";
-"collectionPoint.markedAsSpam.success" = "Recycling point was successfully marked as spam.";
-"collectionPoint.removed.success" = "Recycling point was successfully removed";
+"collectionPoint.created.success" = "Collection point was successfully created";
+"collectionPoint.markedAsSpam.success" = "Collection point was successfully marked as spam.";
+"collectionPoint.removed.success" = "Collection point was successfully removed";
 "profile.passwordChanged.success" = "Password was successfully changed.";
 "profile.emailChanged.success" = "E-mail was successfully changed.";
 "profile.signedOut.success" = "Sign out successful.";
@@ -1265,7 +1262,7 @@
 "spam.user.permissionDenied" = "You don't have permission to approve user.";
 "trash.filter.area.hint" = "In this section you choose area you wish to see. You can filter from continents up to smaller areas such as city districts. Either select some option from drop down menu or leave it on \"select\" and click submit.";
 "user.emailNotFound" = "User not found in TrashOut";
-"global.trashoutShareDescription" = "TrashOut is an environmental project which aims to map all illegal dumps around the world and to help citizens to recycle more.";
+"global.trashoutShareDescription" = "TrashOut is an environmental project which aims to map all illegal dumps around the world and to help citizens recycle more.";
 "collectionPoint.mapNavigation.message" = "Do you really wish to open another app containing maps to navigate you?";
 "collectionPoint.phoneCall.message" = "Do you really want to call the collection point?";
 "collectionPoint.email.message" = "Do you really want to open email composer?";
@@ -1326,7 +1323,9 @@
 "news.success.photo.deleted" = "Image from article was deleted";
 "global.resendVerificationEmail" = "Resend verification e-mail";
 "global.emailResent" = "Verification email was sent again";
-"event.addToCalendar" = "Add to calendar";
+
+/*Fuzzy*/
+"event.addToCalendar" = "Add to my calendar";
 "global.add" = "Add";
 "profile.myEvents.timeDecision.ongoing" = "Ongoing";
 "mail.eventConfirm.subject" = "TrashOut - attendance confirmation";
@@ -1349,9 +1348,78 @@
 
 /*note*/
 /*Fuzzy*/
-"global.signUp.acceptRegister.startSentense" = "When you register or use this app, you agree with our";
+"global.signUp.acceptRegister.startSentense" = "I agree with processing of my personal data. I have read and accepted";
 "global.signUp.acceptRegister.privatePolicy" = "Privacy Policy";
 
 /*Fuzzy*/
 "global.signUp.acceptRegister.and" = "and";
 "global.signUp.acceptRegister.terms" = "Terms and Conditions";
+
+/*error with communication with API server*/
+/*Fuzzy*/
+"global.error.api.text" = "We are experiencing temporary issue with our server. We are doing our best to fix it soon. Please come back later.";
+"global.internet.offline" = "Please connect to the internet in order to see this section.";
+"global.cookiesPolicy" = "This website uses cookies to give you the best experience. Agree by clicking the 'Accept' button. We use cookies to be able to provide social media features, analyze our traffic and behavior of the visitors on our website and for marketing purposes. Sometimes we share this anonymized information with the 3rd parties' tools. Read our ";
+"global.acceptCookiesPolicy" = "Accept Cookies";
+"global.cookiesPolicy.link" = "Privacy Policy";
+
+/*Error show only if there is issue with creating dumps*/
+"global.internet.error.offline" = "Your device is not connected to the internet. Take a picture and report it later via www.admin.trashout.ngo.";
+"global.images.requirements" = "Please use images with aspect ratio 1:2 or smaller (not a widescreen image) and with size up to 2 MB.";
+
+/*On the screen "Recycling" in singular*/
+"home.nearestRecyclingPoint" = "Nearest collection Point";
+
+/*Fuzzy*/
+"home.recycling_point_add_new_do_later" = "Cancel";
+
+/*Fuzzy*/
+"home.recycling_point_add_new_go_to_web" = "Add now";
+"home.recycling_point_add_new_redirect" = "The collection point can only be added from the web application to which you can log in via a web browser";
+
+/*Fuzzy*/
+"info.frequentlyAskedQuestions" = "Frequently Asked Questions";
+"info.supportUs" = "Support us";
+
+/*Fuzzy*/
+"home.recycling_point_edit_redirect" = "At the moment, the collection point can only be edited from the web application that is accessible through a web browser";
+
+/*Fuzzy*/
+"collectionPoint.email_is_missing" = "Add email address";
+
+/*Fuzzy*/
+"collectionPoint.phone_is_missing" = "Add phone number";
+
+/*Fuzzy*/
+"collectionPoint.web_is_missing" = "Add web address";
+
+/*Fuzzy*/
+"event.meeting_point" = "Meeting point";
+"home.recycling_point_add_new_tittle" = "Add a collection point";
+"home.recycling_point_edit_title" = "Update collection point";
+"home.recycling_point_edit_go_to_web" = "Edit now";
+"home.recycling_point_edit_do_later\n" = "Cancel";
+"event.event_edit_title" = "Edit this event";
+"event.event_edit_redirect\n" = "Events can only be edited from the TrashOut web application that is accessible through a web browser";
+
+/*Fuzzy*/
+"event.event_edit_do_later\n" = "Cancel";
+"event.event_edit_go_to_web\n" = "Edit now";
+"event.event_joinEventTitle" = "Join this event";
+"home.orderTrashPickup" = "Order waste pickup";
+
+/*Fuzzy*/
+"event.create_event_meeting_date_title" = "Meeting Date";
+"notification_new_trash_formatter" = "You hunt %d new or updated trashes.";
+"about_version_date_formatted" = "Version from %s";
+"skip_btn" = "SKIP";
+"event.create.thankYou.sentence1" = "Thank you for creating this event";
+"event.create.thankYou.sentence2" = "You are awesome!";
+"event.create.thankYou.sentence3" = "Do not forget to update all dumps you cleaned during the event";
+"event.create.thankYou.shareTitle" = "Share with others";
+"event.create.thankYou.detail\n" = "See event";
+"trash.create.thankYou.detail" = "See report";
+"organization.statistics.title" = "Statistics about members' activities";
+"organization.dumpsReported" = "Reports";
+"organization.dumpsUpdated" = "Updates";
+"organization.dumpsCleaned" = "Dumps cleaned";

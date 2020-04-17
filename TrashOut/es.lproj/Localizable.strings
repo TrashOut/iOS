@@ -21,9 +21,6 @@
 "global.email" = "Correo electrónico";
 "global.password" = "Contraseña";
 "global.showDetail" = "Mostrar detalle";
-"global.internet.offline"="Por favor, conéctese a Internet para ver esta sección.";
-"global.error.api.text"="Estamos experimentando un problema temporal con nuestro servidor. Estamos haciendo nuestro mejor esfuerzo para solucionarlo pronto. Por favor regresa más tarde.";
-"global.internet.error.offline"="Su dispositivo no está conectado a internet. Tome una fotografía e infórmela más tarde a través de www.admin.trashout.ngo.";
 
 /*Could you porvide more context, please? "Firma de proceso" sounds weird.*/
 "global.processSigning" = "Firma de proceso";
@@ -243,7 +240,7 @@
 "home.nearestDumps" = "Los vertederos más cercanos";
 "home.goAndFindDumps" = "Vaya, localice y actualice estos vertederos";
 "home.didYouKnow" = "Noticias y actualizaciones";
-"home.nearestRecyclingPoints" = "Punto de reciclaje más cercano";
+"home.nearestRecyclingPoints" = "Puntos de reciclaje más cercanos";
 "collectionPoint.size.recyclingBin" = "Papelera";
 "collectionPoint.size.recyclingCenter" = "Centro";
 "collectionPoint.size.all" = "Todas";
@@ -497,7 +494,7 @@
 "trash.confirmation.deleteImage" = "¿Seguro de que quiere borrar la imagen?";
 "trash.confirmation.deleteTrash" = "¿Seguro de que quiere eliminar la basura?";
 "global.confirmation.header" = "Confirmación";
-"event.confirmation.joinEvent" = "¿Seguro de que quiere unirse al evento?";
+"event.confirmation.joinEvent" = "Por favor confirma tu asistencia. La información sobre los asistentes está disponible para los organizadores con el fin de ayudarlos con los preparativos.";
 "trash.confirmation.markSpam" = "¿Seguro de que quiere marcar este vertedero como spam?";
 "global.confirmation.reject" = "seguro de que quiero rechazar";
 "event.confirmation.unjoinEvent" = "¿Seguro de que quiere dejar el evento?";
@@ -1187,7 +1184,9 @@
 "news.success.photo.deleted" = "La imagen del artículo fue eliminada.";
 "global.resendVerificationEmail" = "Reenviar correo electrónico de verificación";
 "global.emailResent" = "Se envió un correo de verificación";
-"event.addToCalendar" = "añadir al calendario";
+
+/*Fuzzy*/
+"event.addToCalendar" = "Añadir al calendario";
 "global.add" = "añadir";
 "profile.myEvents.timeDecision.ongoing" = "en marcha";
 "mail.eventConfirm.subject" = "confirmación de asistencia";
@@ -1210,9 +1209,62 @@
 
 /*note*/
 /*Fuzzy*/
-"global.signUp.acceptRegister.startSentense" = "Al registrarte, aceptas las";
-"global.signUp.acceptRegister.privatePolicy" = "Condiciones de Servicio";
+"global.signUp.acceptRegister.startSentense" = "Estoy de acuerdo con el procesamiento de mis datos personales. He leído y acepto";
+"global.signUp.acceptRegister.privatePolicy" = "La política de privacidad";
 
 /*Fuzzy*/
 "global.signUp.acceptRegister.and" = "y la";
-"global.signUp.acceptRegister.terms" = "Política de Privacidad";
+"global.signUp.acceptRegister.terms" = "Términos de servicio";
+
+/*error with communication with API server*/
+/*Fuzzy*/
+"global.error.api.text" = "Estamos experimentando un problema temporal con nuestro servidor. Estamos haciendo nuestro mejor esfuerzo para solucionarlo pronto. Por favor regresa más tarde.";
+"global.internet.offline" = "Por favor, conéctese a Internet para ver esta sección.";
+"global.cookiesPolicy" = "Este sitio web utiliza cookies para brindarle la mejor experiencia. De acuerdo haciendo clic en el botón 'Aceptar'. Utilizamos cookies para proporcionar funciones de redes sociales, analizar nuestro tráfico y el comportamiento de los visitantes en nuestro sitio web y para fines de marketing. Algunas veces compartimos esta información anonimizada con herramientas de terceros. Lee nuestro";
+"global.acceptCookiesPolicy" = "Aceptar";
+"global.cookiesPolicy.link" = "Política de privacidad";
+
+/*Error show only if there is issue with creating dumps*/
+"global.internet.error.offline" = "Su dispositivo no está conectado a internet. Tome una fotografía e infórmela más tarde a través de www.admin.trashout.ngo.";
+"global.images.requirements" = "Utilice imágenes con una relación de aspecto de 1: 2 o menor (no una imagen de pantalla panorámica) y con un tamaño de hasta 2 MB.";
+
+/*On the screen "Recycling" in singular*/
+"home.nearestRecyclingPoint" = "Punto de reciclaje más cercano";
+"home.recycling_point_add_new_do_later" = "cancelar";
+"home.recycling_point_add_new_go_to_web" = "Añadir ahora";
+"home.recycling_point_add_new_redirect" = "El punto de recopilación solo se puede agregar desde la aplicación web a la que puede iniciar sesión a través de un navegador web";
+
+/*Fuzzy*/
+"info.frequentlyAskedQuestions" = "Preguntas frecuentes";
+"info.supportUs" = "Apoyanos";
+"home.recycling_point_edit_redirect" = "El punto de recopilación solo se puede editar desde la aplicación web a la que accede a través de un navegador web";
+"collectionPoint.email_is_missing" = "Agregar dirección de correo electrónico";
+"collectionPoint.phone_is_missing" = "Agregar el número de teléfono";
+"collectionPoint.web_is_missing" = "Agregar dirección web";
+"event.meeting_point" = "Punto de encuentro";
+"home.recycling_point_add_new_tittle" = "Añadir punto de reciclaje";
+"home.recycling_point_edit_title" = "Actualizar punto de recogida";
+"home.recycling_point_edit_go_to_web" = "Editar ahora";
+"home.recycling_point_edit_do_later\n" = "Cancelar";
+"event.event_edit_title" = "Editar este evento";
+"event.event_edit_redirect\n" = "Los eventos solo se pueden editar desde la aplicación web a la que se puede acceder a través de un navegador web";
+
+/*Fuzzy*/
+"event.event_edit_do_later\n" = "Cancelar";
+"event.event_edit_go_to_web\n" = "Editar ahora";
+"event.event_joinEventTitle" = "Únete al evento";
+"home.orderTrashPickup" = "Orden de recogida de residuos";
+"event.create_event_meeting_date_title" = "Fecha de la reunión";
+"notification_new_trash_formatter" = "Cazas% d papeleras nuevas o actualizadas.";
+"about_version_date_formatted" = "Versión de% s";
+"skip_btn" = "OMITIR";
+"event.create.thankYou.sentence1" = "Gracias por crear este evento.";
+"event.create.thankYou.sentence2" = "¡Usted es maravilloso!";
+"event.create.thankYou.sentence3" = "No olvides actualizar todos los volcados que limpiaste durante el evento";
+"event.create.thankYou.shareTitle" = "Comparte con otros";
+"event.create.thankYou.detail\n" = "Ver evento";
+"trash.create.thankYou.detail" = "Ver informe";
+"organization.statistics.title" = "Estadísticas sobre las actividades de los miembros.";
+"organization.dumpsReported" = "Informes";
+"organization.dumpsUpdated" = "Actualizaciones";
+"organization.dumpsCleaned" = "Vertederos limpiados";

@@ -90,9 +90,6 @@
 "global.allow" = "Povolit";
 "trash.loadingTrashMap" = "Načítavam TrashMap...";
 "user.username" = "Uživatelské jméno";
-"global.internet.offline"="Pro zobrazení této části se prosím připojte k internetu.";
-"global.error.api.text"="Aktuálne máme dočasný problém s naším serverem. Děláme vše pro to, abychom to brzy opravili. Vraťte se prosím později.";
-"global.internet.error.offline"="Vaše mobilní zařízení není připojeno k internetu. Udělejte fotografii a nahlaste skládku později prostřednictvím stránky www.admin.trashout.ngo.";
 
 /*Fuzzy*/
 "profile.wrongPassword" = "Jejda zadali jste nesprávné heslo.";
@@ -272,7 +269,7 @@
 "trash.create.takeAnotherPhoto" = "Vytvořte další fotografii";
 "trash.create.takeAtLeast2Photos" = "Vytvořte alespoň 2 fotografie";
 "trash.create.ofIllegalDump" = "nelegální skládky";
-"trash.size.bag" = "Vejde se do batohu";
+"trash.size.bag" = "Vejde se do pytle";
 "trash.size.wheelbarrow" = "Vejde se na kolečko";
 "trash.size.carNeeded" = "Nutné auto";
 "trash.validation.sizeRequired" = "Velikost je povinná";
@@ -282,7 +279,7 @@
 "trash.accessibility" = "Přístupnost";
 "trash.accessibility.byCar" = "autem";
 "trash.accessibility.inCave" = "v jeskyni";
-"trash.accessibility.underWater" = "pod vodou";
+"trash.accessibility.underWater" = "Nachádzí se pod vodou";
 "trash.accessibility.notForGeneralCleanup" = "nikoliv pro všeobecné vyčištění";
 "trash.valiadation.accessibilityRequired" = "Dostupnost je povinná";
 "global.status" = "Status";
@@ -319,14 +316,14 @@
 "event.searchForLocation" = "Hledat lokaci";
 "event.noAddressFound" = "Adresa nenalezena";
 "event.nearbyDumps" = "Skládky v okolí";
-"event.create.youSelectedDumps_X" = "?";
+"event.create.youSelectedDumps_X" = "Vybrali ste %d skládok";
 "event.create.setDate" = "Nastavte datum (nastavit)";
 "event.listOfDumpsToBeCleaned" = "Seznam skládek k vyčištění";
 "global.direction" = "Navigovat";
 "global.minutes" = "minut/minuty";
 "global.noAddress" = "Žádná adresa";
 "global.noDateToSave" = "Žádné datum k uložení";
-"event.header_X" = "?";
+"event.header_X" = "Čistící událost: %s";
 "event.validation.cannotBeAddedToCalendar" = "Čistící událost nelze přidat do kalendáře";
 "event.addedToCalender.success" = "Čistící událost byla přidána do kalendáře";
 "global.enableAccessToCalendar" = "Umožněte přístup do kalendáře v nastavení";
@@ -495,8 +492,8 @@
 "trash.filter.anyActivityDateFrom" = "Jakákoli aktivita na skládce od";
 "trash.filter.anyActivityDateTo" = "jakákoli aktivita na skládce do";
 "global.day" = "Den";
-"event.filter.startTimeFrom" = "Datum zahájení události od";
-"event.filter.startTimeTo" = "Datum zahájení události na";
+"event.filter.startTimeFrom" = "Datum a čas zahájení události ";
+"event.filter.startTimeTo" = "Datum a čas ukončení události";
 "global.pickOne" = "Vybrat jedno";
 "profile.edit.profileImage" = "Profilový obrázek";
 "global.table" = "Seznam";
@@ -505,7 +502,7 @@
 "trash.confirmation.deleteImage" = "Opravdu chcete smazat obrázek?";
 "trash.confirmation.deleteTrash" = "Opravdu chcete smazat skládku?";
 "global.confirmation.header" = "Potvrzení";
-"event.confirmation.joinEvent" = "Opravdu se chcete zůčastnit události?";
+"event.confirmation.joinEvent" = "Potvrďte vaši účast. Pořadatelé mají k dispozici informace o účastnících, aby jim pomohli s přípravami";
 "trash.confirmation.markSpam" = "Opravdu chcete označit tuto skládku jako SPAM?";
 "global.confirmation.reject" = "opravdu chcete odmítnout";
 "event.confirmation.unjoinEvent" = "Opravdu chcete opustit událost?";
@@ -623,7 +620,7 @@
 "user.login.validation.unknownError" = "Chyba přihlášení - neznámý server";
 "user.login.validation.notFirebaseUser" = "Chyba přihlášení - ......";
 "user.login.validation.autentification_filed" = "Ověření se nezdařilo.";
-"user.validation.confirmPasswordRequired" = "???";
+"user.validation.confirmPasswordRequired" = "Potvrďte heslo";
 "user.login.create.error" = "Chyba přihlášení - chybné vytvoření uživatele";
 "user.login.linkError" = "Chyba propojení uživatele";
 "user.register.notExists" = "Neexistující uživatel. Prosím, registrujte se. ";
@@ -1016,7 +1013,7 @@
 "mail.eventConfirm.thanks" = "Děkujeme, že jste udělali naši čisticí prostředek pro všechny.";
 "mail.eventConfirm.organizer" = "Pořadatel akce je";
 "mail.eventConfirm.footer" = "Tento e-mail jste obdrželi, protože jste se do této události připojili v aplikaci TrashOut a souhlasili s podmínkami aplikace TrashOut.";
-"mail.eventCreate.greeting" = "Milý";
+"mail.eventCreate.greeting" = "Milý/á";
 "mail.eventCreate.eventInfo1" = "Všimli jsme si, že jste vytvořili událost nazvanou";
 
 /* you are awesome!*/
@@ -1033,7 +1030,7 @@
 "mail.eventCreate.footer" = "Tento e-mail jste obdrželi, protože jste vytvořili událost v aplikaci TrashOut a souhlasili s podmínkami aplikace TrashOut.";
 "mail.eventFeedback.greeting" = "Milý";
 "mail.eventFeedback.eventFeedback1" = "děkujeme Vám za účast na čisticí akci";
-"mail.eventFeedback.eventFeedback2" = "která se konala včera. Jsi úžasný! Díky vašemu úsilí je toto místo nyní čistší.";
+"mail.eventFeedback.eventFeedback2" = "která se konala včera. Jste úžasný/á! Díky vašemu úsilí je toto místo nyní čistší.";
 
 /* bags of trash collected or share your photos. Inspire others to make the World cleaner.*/
 "mail.eventFeedback.eventFeedback3" = "Dejte ostatním vědět, jak jste byli úspěšní. Vyplňte počet účastníků.";
@@ -1154,7 +1151,7 @@
 "spam.user.permissionDenied" = "Nemáte oprávnění ke schválení uživatele.";
 "trash.filter.area.hint" = "V této sekci si vyberete oblast, kterou chcete vidět. Můžete filtrovat z kontinentů do menších oblastí, jako jsou městské části. Buď vyberte některou možnost z rozbalovací nabídky nebo ji ponechte na \"select\" a klikněte na Submit.";
 "user.emailNotFound" = "Uživatel nebyl nalezen v TrashOut";
-"global.trashoutShareDescription" = "TrashOut is environmental project, which aim is to localize illegal dumps all around the world.";
+"global.trashoutShareDescription" = "TrashOut je projekt zaměřený na ochranu životního prostředí, jehož cílem je mapovat nelegální skládky na celém světě a pomoci občanům více recyklovat.";
 "collectionPoint.mapNavigation.message" = "Chcete skutečně otevřít navigaci skrz mapu?";
 "collectionPoint.phoneCall.message" = "Chcete skutečně zavolat sběrný dvůr?";
 "collectionPoint.email.message" = "Opravdu chcete otevřít e-mailový klient?";
@@ -1188,7 +1185,7 @@
 "collectionPoint.filter.selectAll" = "Vybrat vše.";
 "profile.activity.mobileHeader" = "Aktivity";
 "info.aboutApp" = "TrashOut je environmentální projekt, kterého cílem je lokalizovat nelegální (černé) skládky po celém světě.\n\nNaší snahou je zapojit obyčejné lidi, místní samosprávy a další organizace do tohoto projektu tak, aby náš svět byl krásnějším a lepším místem pro život.";
-"info.appVerison_X" = "Verze od %@";
+"info.appVerison_X" = "Verze od";
 "tutorial.register" = "Registrovat/Přihlásit se";
 "global.distanceAttribute.away" = "odsud";
 "event.create.successMobile" = "Děkujeme, událost byla úspěšně vytvořena. Můžete upravit událost a navštívit účastníky na www.admin.trashout.ngo.";
@@ -1215,6 +1212,8 @@
 "news.success.photo.deleted" = "Smazání obrázku ze článku probšhlo úspěšně";
 "global.resendVerificationEmail" = "Znovu poslat verifikační email";
 "global.emailResent" = "Verifikační email byl znovu odeslán";
+
+/*Fuzzy*/
 "event.addToCalendar" = "Přidat do kalendáře";
 "global.add" = "Přidat";
 "profile.myEvents.timeDecision.ongoing" = "Probíhající";
@@ -1238,9 +1237,62 @@
 
 /*note*/
 /*Fuzzy*/
-"global.signUp.acceptRegister.startSentense" = "S registrací nebo používáním mobilní aplikace souhlasíte se zněním";
-"global.signUp.acceptRegister.privatePolicy" = "Ochrany osobních údajů";
+"global.signUp.acceptRegister.startSentense" = "Souhlasím se zpracováním osobních údajů. Četl/a jsem a přijímám";
+"global.signUp.acceptRegister.privatePolicy" = "Zásady ochrany osobních údajů";
 
 /*Fuzzy*/
 "global.signUp.acceptRegister.and" = "a";
 "global.signUp.acceptRegister.terms" = "Podmínkami používání";
+
+/*error with communication with API server*/
+/*Fuzzy*/
+"global.error.api.text" = "Aktuálne máme dočasný problém s naším serverem. Děláme vše pro to, abychom to brzy opravili. Vraťte se prosím později.";
+"global.internet.offline" = "Pro zobrazení této části se prosím připojte k internetu.";
+"global.cookiesPolicy" = "Tento web používá soubory cookie, ať vám poskytneme nejlepší zážitek. Souhlasíte kliknutím na tlačítko \"Akceptovat\". Cookies používáme k tomu, abychom mohli poskytovat funkce sociálních médií, analyzovat návštěvnost a chování návštěvníků na našich webových stránkách a pro marketingové účely. Někdy sdílíme anonymní informace s nástrojmi třetích stran. Přečtěte si naše";
+"global.acceptCookiesPolicy" = "Akceptovat";
+"global.cookiesPolicy.link" = "Zásady ochrany osobních údajů";
+
+/*Error show only if there is issue with creating dumps*/
+"global.internet.error.offline" = "Vaše mobilní zařízení není připojeno k internetu. Udělejte fotografii a nahlaste skládku\npozději prostřednictvím stránky www.admin.trashout.ngo.";
+"global.images.requirements" = "Použijte obrázky s poměrem stran 1: 2 nebo méně (ne širokoúhlý obrázky) a s velikostí do 2 MB.";
+
+/*On the screen "Recycling" in singular*/
+"home.nearestRecyclingPoint" = "Nejbližší sběrné místo";
+"home.recycling_point_add_new_do_later" = "Zrušit";
+"home.recycling_point_add_new_go_to_web" = "Přidat nyní";
+"home.recycling_point_add_new_redirect" = "Sběrné místo lze přidat pouze z webové aplikace, do které se můžete přihlásit pomocí webového prohlížeče";
+
+/*Fuzzy*/
+"info.frequentlyAskedQuestions" = "Často kladené otázky";
+"info.supportUs" = "Podpořit projekt";
+"home.recycling_point_edit_redirect" = "V současné době lze sběrné místo upravovat pouze z webové aplikace, ke které přistupíte prostřednictvím webového prohlížeče";
+"collectionPoint.email_is_missing" = "Přidat e-mailovou adresu";
+"collectionPoint.phone_is_missing" = "Přidat telefoní číslo";
+"collectionPoint.web_is_missing" = "Přidat webovou adresu";
+"event.meeting_point" = "Místo setkání";
+"home.recycling_point_add_new_tittle" = "Přidat sběrné místo";
+"home.recycling_point_edit_title" = "Upravit sběrné místo";
+"home.recycling_point_edit_go_to_web" = "Upravit nyní";
+"home.recycling_point_edit_do_later\n" = "Zrušit";
+"event.event_edit_title" = "Upravit událost";
+"event.event_edit_redirect\n" = "V současné době lze události upravovat pouze z naší webové aplikace, ke které přistupíte prostřednictvím webového prohlížeče";
+
+/*Fuzzy*/
+"event.event_edit_do_later\n" = "Zrušit";
+"event.event_edit_go_to_web\n" = "Upravit nyní";
+"event.event_joinEventTitle" = "Přidat se k události";
+"home.orderTrashPickup" = "Objednat odvoz odpadu";
+"event.create_event_meeting_date_title" = "Datum schůzky";
+"notification_new_trash_formatter" = "Našli jste %d hlásení";
+"about_version_date_formatted" = "Verze z %s";
+"skip_btn" = "PŘESKOČIT";
+"event.create.thankYou.sentence1" = "Děkujeme za vytvoření této události";
+"event.create.thankYou.sentence2" = "Jste úžasný/á!";
+"event.create.thankYou.sentence3" = "Nezapomeňte aktualizovat všechny skládky, které jste během události vyčistili";
+"event.create.thankYou.shareTitle" = "Sdílejte s ostatními";
+"event.create.thankYou.detail\n" = "Zobrazit událost";
+"trash.create.thankYou.detail" = "Zobrazit hlášení";
+"organization.statistics.title" = "Statistiky o aktivitách členů organizace";
+"organization.dumpsReported" = "Počet hlášení";
+"organization.dumpsUpdated" = "Počet aktualizací";
+"organization.dumpsCleaned" = "Vyčištěné skládky";

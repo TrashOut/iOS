@@ -54,7 +54,7 @@
 "trash.validation.typeRequired" = "Požadovaný typ";
 "global.meters" = "metrov";
 "global.km" = "km";
-"global.generalError" = "Huups, niečo sa pokazilo :(";
+"global.generalError" = "Huups, niečo sa pokazilo";
 "global.noInternetConnection" = "Prepáčte, nemáme pripojenie na internet :(";
 "global.uknownLocality" = "Neznáma lokalita";
 "global.pleaseUpdateApp" = "Je dostupná nová verzia TrashOut aplikácie. Prosím, aktualizujte si ju.";
@@ -90,9 +90,6 @@
 "global.allow" = "Povolte";
 "trash.loadingTrashMap" = "Pripravujem TrashMap...";
 "user.username" = "Používateľské meno";
-"global.internet.offline"="Pre zobrazenie tejto sekcie sa prosím pripojte k internetu.";
-"global.error.api.text"="Aktuálne máme dočasné problémy s naším serverom. Robíme všetko pre to, aby sme to čoskoro vyriešili. Prosím, vráťte sa neskôr.";
-"global.internet.error.offline"="Vaše mobilné zariadenie nie je pripojené k internetu. Urobte fotografiu a nahláste skládku neskôr prostredníctvom stránky www.admin.trashout.ngo.";
 
 /*Fuzzy*/
 "profile.wrongPassword" = "Jejda, zadali ste zlé heslo.";
@@ -109,9 +106,9 @@
 "user.roles.administrator" = "Administrátor";
 "profile.logoutQuestion" = "Chcete sa naozaj odhlásiť?";
 "profile.whyRegister" = "Všetky Vaše aktivity budú synchronizované.\nZískate odmenu vo forme odznakov.\nJe to zadarmo.";
-"profile.validation.invalidEmail" = "Huups, vložili ste neplatný email :(";
+"profile.validation.invalidEmail" = "Huups, vložili ste neplatnú emailovú adresu";
 "profile.validation.enterPassword" = "Huups! Prosím, zadajte heslo.";
-"profile.validation.invalidPasswordOrEmail" = "Huups, Vaše heslo a email nesedia :(";
+"profile.validation.invalidPasswordOrEmail" = "Huups, Vaše heslo a email nesedia";
 "profile.enterEmail" = "Prosím, vložte Vašu emailovú adresu, ktorú ste zadali pri registrácií.";
 "profile.emailExists" = "Huups, zdá sa, že táto emailová adresa je už registrovaná. Zvoľte inú, prosím.";
 "profile.resetPassword" = "Reset hesla";
@@ -187,7 +184,7 @@
 "global.loadingError" = "Pre zobrazenie tejto sekcie sa prosím pripojte k internetu.";
 "trash.edit.betterLocation" = "Snažíme sa získať lepšiu polohu";
 "trash.create.error" = "Odosielanie bolo prerušené.";
-"global.dbError" = "Huups, nepodarilo sa nám to uložiť :(.";
+"global.dbError" = "Huups, nepodarilo sa nám to uložiť";
 "global.gps" = "GPS";
 "global.search" = "vyhľadávanie";
 "global.remove" = "Odstrániť";
@@ -240,7 +237,7 @@
 "event.navigateTo" = "Chceli by ste spustiť navigáciu k tomuto miestu?";
 "home.nearestDumps" = "Najbližšie skládky";
 "home.goAndFindDumps" = "Choď, nájdi a aktualizuj skládky.";
-"home.didYouKnow" = "Novinky a aktualizácie";
+"home.didYouKnow" = "Novinky a aktuality";
 "home.nearestRecyclingPoints" = "Najbližšie zberné miesta";
 "collectionPoint.size.recyclingBin" = "Kôš";
 "collectionPoint.size.recyclingCenter" = "Dvor";
@@ -280,7 +277,7 @@
 "trash.accessibility" = "Dostupnosť skládky";
 "trash.accessibility.byCar" = "Dostupné autom";
 "trash.accessibility.inCave" = "Nachádza sa v jaskyni";
-"trash.accessibility.underWater" = "Nachádza sa pod vodou";
+"trash.accessibility.underWater" = "Nachádza sa pod vodou/ na brehu";
 "trash.accessibility.notForGeneralCleanup" = "Nie je pre bežné čistenie";
 "trash.valiadation.accessibilityRequired" = "Prístupnosť je požadovaná";
 "global.status" = "Stav";
@@ -328,10 +325,10 @@
 "event.validation.cannotBeAddedToCalendar" = "Čistiaca udalosť nemôže byť pridaná do kalendára";
 "event.addedToCalender.success" = "Čistiaca udalosť bola pridaná do kalendára";
 "global.enableAccessToCalendar" = "Povoliť prístup ku kalendáru v nastaveniach";
-"collectionPoint.allowedTypes" = "Druh odpadu, aký tu môžete odkladať";
-"collectionPoint.other" = "Viac recyklačných miest okolo vás";
+"collectionPoint.allowedTypes" = "Druh odpadu, aký tu môžete odovzdať";
+"collectionPoint.other" = "Viac zberných miest okolo vás";
 "global.filter.noResult" = "Žiadne výsledky, zmeniť možnosti filtra";
-"collectionPoint.filter.header" = "Filter pre recyklačné miesta";
+"collectionPoint.filter.header" = "Filter pre zberné miesta";
 "trash.filter.header" = "Filter skládok";
 "global.filter" = "Filter";
 "collectionPoint.filter.size" = "Veľkosť zberného miesta";
@@ -351,7 +348,7 @@
 "profile.points_X" = "%d bodov";
 "global.numberOfTimes_X" = "% dx";
 "profile.youReported" = "Vaše hlásenia";
-"profile.youUpdated" = "Vaše aktualizácie";
+"profile.youUpdated" = "Vaše aktivity";
 "profile.youCleaned" = "Vyčistené skládky";
 "profile.header.editProfile.header" = "Upraviť profil";
 "profile.yourProfile" = "Váš profil";
@@ -455,7 +452,7 @@
 "trash.filter.userIds" = "ID používateľov";
 "notifications.unreviewedUsers" = "Neschválení používatelia";
 "notifications.reportedTrashes" = "Nahlásené skládky";
-"notifications.reportedCollectionPoints" = "Hlásené recyklačné miesta";
+"notifications.reportedCollectionPoints" = "Hlásené zberné miesta";
 "notifications.users.approve" = "Schváliť";
 "notifications.users.deny" = "Odstrániť aktivity";
 "notifications.spam.confirm" = "Potvrdiť ako Spam";
@@ -495,7 +492,7 @@
 "trash.confirmation.deleteImage" = "Naozaj chcete odstrániť obrázok?";
 "trash.confirmation.deleteTrash" = "Naozaj chcete odstrániť skládku?";
 "global.confirmation.header" = "Potvrdenie";
-"event.confirmation.joinEvent" = "Naozaj sa chcete zúčastniť udalosti?";
+"event.confirmation.joinEvent" = "Potvrďte svoju účasť. Informácie o účastníkoch sú organizátorom k dispozícii, aby im pomohli s prípravami";
 "trash.confirmation.markSpam" = "Naozaj chcete označiť túto skládku ako spam?";
 "global.confirmation.reject" = "Naozaj chcete zamietnuť";
 "event.confirmation.unjoinEvent" = "Naozaj chcete opustiť podujatie?";
@@ -641,7 +638,7 @@
 "user.validation.authFbMalformed" = "Token Facebooku je poškodený alebo vypršal";
 "user.validation.authFbCollision" = "Účet už existuje. Prosím, prihláste sa e-mailovou adresou.";
 "user.validation.authFbInvalid" = "Účet používateľa bol zablokovaný, odstránený alebo jeho prihlasovacie údaje nie sú platné";
-"collectionPoint.validation.markAsNoLongerExistsFailed" = "Označenie zbernom mieste, ktoré sa už nepodarilo";
+"collectionPoint.validation.markAsNoLongerExistsFailed" = "Označenie zberného miesta ako spam sa nepodarilo";
 "collectionPoint.validation.markAsNoLongerExistsFailed.success" = "Označenie zberného miesta, ktoré už existuje bolo úspešné";
 "collectionPoint.markAsNoLongerExistsFailed.message" = "Naozaj chcete označiť, že zberné miesto už neexistuje?";
 "event.validation.selectTrash" = "Musíte vybrať aspoň jednu skládku";
@@ -751,7 +748,7 @@
 "user.reviewed" = "Zrevidovaný používateľ";
 "user.created" = "Konto vytvorené";
 "trash.create.successs" = "Ďakujeme Vám za aktualizáciu našej databázy a starostlivosť o naše životné prostredie.";
-"collectionPoint.create.images" = "Prosím, vyberte obrázok alebo logo recyklačného miesta. Nie je to nevyhnutné, ale pomôže ostatným nájsť miesto ľahšie.";
+"collectionPoint.create.images" = "Prosím, vyberte obrázok alebo logo zberného miesta. Nie je to nevyhnutné, ale pomôže ostatným nájsť miesto ľahšie.";
 "global.phone.placeholder" = "+420123456789";
 "global.email.placeholder" = "john@example.com";
 "organization.detail.header" = "Detail organizácie";
@@ -763,7 +760,7 @@
 "geo.noAliasExists" = "Pre vybratú oblasť neexistuje žiaden alias";
 "collectionPoint.contact.header" = "Kontakty";
 "global.url.placeholder" = "http://www.trashout.ngo";
-"collectionPoint.update.success" = "Recyklačné miesto bolo úspešne aktualizované";
+"collectionPoint.update.success" = "Zberné miesto bolo úspešne aktualizované";
 "user.editArea" = "Upraviť oblasť záujmu";
 "user.geo.notificationFrequency.perHour" = "Za hodinu";
 "user.geo.notificationFrequency.never" = "Nikdy";
@@ -787,9 +784,9 @@
 "organization.contacts" = "Kontakty";
 "organization.created" = "Vytvorené";
 "organization.members" = "Členovia";
-"collectionPoint.delete.confirmation" = "Naozaj chcete odstrániť toto recyklačné miesto?";
-"collectionPoint.detail.header" = "Detail recyklačného miesta";
-"collectionPoint.create.success" = "Recyklačné miesto bolo úspešne vytvorené";
+"collectionPoint.delete.confirmation" = "Naozaj chcete odstrániť toto zberné miesto?";
+"collectionPoint.detail.header" = "Detail zberného miesta";
+"collectionPoint.create.success" = "Zberné miesto bolo úspešne vytvorené";
 "organization.create.success" = "Organizácia bola úspešne vytvorená";
 "organization.create.firstStep" = "Všeobecné informácie";
 "organization.create.secondStep" = "Oblasť organizácie a materská organizácia";
@@ -837,8 +834,8 @@
 "global.findPlace" = "Nájdite miesto";
 "event.map.removeRectangle" = "Vyberte obdĺžnik";
 "event.detail.duration" = "Trvanie akcie";
-"collectionPoint.gpsLocation" = "Recyklačné miesto GPS";
-"collectionPoint.gpsMap" = "Recyklačné miesto na mape";
+"collectionPoint.gpsLocation" = "Zberné miesto GPS";
+"collectionPoint.gpsMap" = "Zberné miesto na mape";
 "collectionPoint.category.recyclabes" = "Recyklovateľné";
 "collectionPoint.category.dangerous" = "Nebezpečné";
 "collectionPoint.category.construction" = "Konštrukcia";
@@ -846,14 +843,14 @@
 "collectionPoint.category.automotive" = "Automobilové";
 "collectionPoint.category.other" = "Ostatné";
 "collectionPoint.category.everything" = "Všetko";
-"collectionPoint.category" = "Kategória recyklačného miesta";
+"collectionPoint.category" = "Kategória zberného miesta";
 "user.editArea.success" = "Oblasť bola úspešne aktualizovaná";
 "user.roles.organization.manager" = "Manažér";
 "user.roles.organization" = "Úloha organizácie";
 "profile.changeEmail" = "Zmeniť E-mail";
 "profile.newEmail" = "Nový e-mail";
-"collectionPoint.remove.success" = "Recyklačné miesto bolo úspešne odstránené";
-"collectionPoint.markedAsSpam.alreadyMarked" = "Toto recyklačné miesto je už označené ako SPAM";
+"collectionPoint.remove.success" = "Zberné miesto bolo úspešne odstránené";
+"collectionPoint.markedAsSpam.alreadyMarked" = "Toto zberné miesto je už označené ako SPAM";
 "event.detail.when" = "Kedy";
 "event.detail.date" = "Dátum";
 "event.detail.time" = "Čas";
@@ -866,7 +863,7 @@
 "event.detail.images" = "Obrázky z podujatia";
 "global.showWholeGallery" = "Zobraziť celú galériu";
 "event.detail.dumpsToBeCleaned" = "Skládky na čistenie";
-"event.detail.collectionPoints" = "Recyklačné miesta";
+"event.detail.collectionPoints" = "Zberné miesta";
 "event.detail.joinedUsers" = "Zúčastnení používatelia";
 "event.feedback.header" = "Spätná väzba";
 "event.feedback.guessGuestCount" = "Odhadnúť počet hostí";
@@ -888,7 +885,7 @@
 "event.validation.startDateRequired" = "Dátum začiatku udalosti je povinný";
 "event.validation.startTimeRequired" = "Čas spustenia je povinný";
 "global.noResult" = "Žiadny výsledok";
-"event.create.collectionPoints" = "Recyklačné miesta v oblasti";
+"event.create.collectionPoints" = "Zberné miesta v oblasti";
 "event.filter.upcomingOrOld" = "Zobraziť nadchádzajúce alebo staré";
 "event.filter.showUpcoming" = "Zobraziť len nadchádzajúce";
 "event.filter.showOld" = "Zobraziť len ukončené";
@@ -1050,12 +1047,12 @@
 "user.facebook.hint" = "Link vášho profilu";
 "user.twitter.hint" = "https://twitter.com/user";
 "user.google.hint" = "Link vášho profilu";
-"global.phone.hint" = "Číslo s predvoľnou začínajúce +/ 00";
+"global.phone.hint" = "Číslo s predvoľbou začínajúce +/ 00";
 "profile.currentPassword" = "Aktuálne heslo";
 "user.addToArea.success" = "Oblasť bola úspešne pridaná";
-"collectionPoint.created.success" = "Recyklačný bod bol úspešne vytvorený";
-"collectionPoint.markedAsSpam.success" = "Recyklačný bod bol úspešne označený ako spam.";
-"collectionPoint.removed.success" = "Recyklačný bod bol úspešne odstránený";
+"collectionPoint.created.success" = "Zberné miesto bolo úspešne vytvorené";
+"collectionPoint.markedAsSpam.success" = "Zberné miesto bolo úspešne označené ako spam.";
+"collectionPoint.removed.success" = "Zberné miesto bolo úspešne odstránené";
 "profile.passwordChanged.success" = "Heslo bolo úspešne zmenené.";
 "profile.emailChanged.success" = "E-mail bol úspešne zmenený.";
 "profile.signedOut.success" = "Odhlásenie bolo úspešné.";
@@ -1124,7 +1121,7 @@
 "spam.user.permissionDenied" = "Nemáte povolenie na schválenie používateľa.";
 "trash.filter.area.hint" = "V tejto sekcii si vyberiete oblasť, ktorú chcete vidieť. Môžete filtrovať podľa kontinentov až na úroveň okresu. Buď vyberiete nejakú voľbu z rozbaľovacieho menu alebo zvolte tlačidlo \"vybrať\" následne kliknite na Odoslať.";
 "user.emailNotFound" = "Používateľ sa nenašiel v TrashOut";
-"global.trashoutShareDescription" = "TrashOut je environmentálna organizácia, ktorá pomáha lokalizovať občanom nelegálne skládky.";
+"global.trashoutShareDescription" = "TrashOut je environmentálny projekt, ktorého cieľom je zmapovať všetky nelegálne skládky na celom svete a pomôcť občanom recyklovať viac.";
 "collectionPoint.mapNavigation.message" = "Naozaj chcete otvoriť navigáciu na mape?";
 "collectionPoint.phoneCall.message" = "Želáte si zavolať do Zbernej služby?";
 "collectionPoint.email.message" = "Želáte si otvoriť a odoslať e-mail?";
@@ -1158,7 +1155,7 @@
 "collectionPoint.filter.selectAll" = "Vybrať všetko";
 "profile.activity.mobileHeader" = "Aktivita";
 "info.aboutApp" = "TrashOut je environmentálny projekt, ktorého cieľom je mapovať a monitorovať všetky nelegálne skládky po celom svete.\n\nNašou snahou je zapojiť občanov, vlády, obce a organizácie, aby sme mohli spoločne prispieť k čistejšiemu svetu pre všetkých.";
-"info.appVerison_X" = "Verzia z %@";
+"info.appVerison_X" = "Verzia z";
 "tutorial.register" = "Registrovať/Prihlásiť sa";
 "global.distanceAttribute.away" = "ďaleko";
 "event.create.successMobile" = "Ďakujeme, udalosť bola úspešne vytvorená. Vašu udalosť môžete upraviť a navštíviť účastníkov www.admin.trashout.ngo.";
@@ -1185,7 +1182,9 @@
 "news.success.photo.deleted" = "Obrázok z članku bol vymazaný.";
 "global.resendVerificationEmail" = "Opätovne zaslať verifikačný e-mail.";
 "global.emailResent" = "Verifikačný e-mail bol zaslaný.";
-"event.addToCalendar" = "Chcete udalosť pridať do kalendára?";
+
+/*Fuzzy*/
+"event.addToCalendar" = "Pridať do kalendára";
 "global.add" = "Pridať";
 "profile.myEvents.timeDecision.ongoing" = "Práve prebieha";
 "mail.eventConfirm.subject" = "TrashOut - potvrdenie účasti na čistiacom podujatí";
@@ -1208,9 +1207,70 @@
 
 /*note*/
 /*Fuzzy*/
-"global.signUp.acceptRegister.startSentense" = "S registráciou alebo používaním mobilnej aplikácie súhlasíte so znením";
-"global.signUp.acceptRegister.privatePolicy" = "Ochrany osobných údajov";
+"global.signUp.acceptRegister.startSentense" = "Súhlasím so spracovaním mojich osobných údajov. Prečítal/a som si a prijímam";
+"global.signUp.acceptRegister.privatePolicy" = "Zásady ochrany osobných údajov";
 
 /*Fuzzy*/
 "global.signUp.acceptRegister.and" = "a";
-"global.signUp.acceptRegister.terms" = "Podmienkami používania";
+"global.signUp.acceptRegister.terms" = "Podmienky používania";
+
+/*error with communication with API server*/
+/*Fuzzy*/
+"global.error.api.text" = "Aktuálne máme dočasné problémy s naším serverom. Robíme všetko pre to, aby sme to čoskoro vyriešili. Prosím, vráťte sa neskôr.";
+"global.internet.offline" = "Pre zobrazenie tejto sekcie sa prosím pripojte k internetu.";
+"global.cookiesPolicy" = "Na tejto webovej stránke používame súbory cookie, aby sme vám poskytli najlepší zážitok. Súhlasíte kliknutím na tlačidlo \"Akceptovať\". Cookies používame, aby sme mohli analyzovať návštevnosť a správanie návštevníkov na našich webových stránkach a na marketingové účely. Niekedy zdieľame tieto anonymizované informácie s nástrojmi tretích strán. Prečítajte si naše";
+"global.acceptCookiesPolicy" = "Akceptovať Cookies";
+"global.cookiesPolicy.link" = "Zásady ochrany osobných údajov";
+
+/*Error show only if there is issue with creating dumps*/
+"global.internet.error.offline" = "Vaše mobilné zariadenie nie je pripojené k internetu. Urobte fotografiu a nahláste skládku \nneskôr prostredníctvom stránky www.admin.trashout.ngo.";
+"global.images.requirements" = "Používajte obrázky s pomerom strán 1: 2 alebo menším (nie širokouhlý obrázok) a veľkosťou do 2 MB.";
+
+/*On the screen "Recycling" in singular*/
+"home.nearestRecyclingPoint" = "Najbližšie zberné miesto";
+
+/*Fuzzy*/
+"home.recycling_point_add_new_do_later" = "Zrušiť";
+
+/*Fuzzy*/
+"home.recycling_point_add_new_go_to_web" = "Pridať teraz";
+"home.recycling_point_add_new_redirect" = "Zberné miesto je zatiaľ možné pridať len z webovej aplikácie do ktorej sa prihlásite cez webový prehliadač";
+
+/*Fuzzy*/
+"info.frequentlyAskedQuestions" = "Často kladené otázky";
+"info.supportUs" = "Podporiť projekt";
+
+/*Fuzzy*/
+"home.recycling_point_edit_redirect" = "Zberné miesto je zatiaľ možné upravovať len z webovej aplikácie, do ktorej sa prihlásite cez webový prehliada";
+"collectionPoint.email_is_missing" = "Pridať emailovú adresu";
+"collectionPoint.phone_is_missing" = "Pridať telefónne číslo";
+"collectionPoint.web_is_missing" = "Pridať webovú adresu";
+"event.meeting_point" = "Miesto stretnutia";
+
+/*Fuzzy*/
+"home.recycling_point_add_new_tittle" = "Pridať zberné miesto";
+"home.recycling_point_edit_title" = "Upraviť zberné miesto";
+"home.recycling_point_edit_go_to_web" = "Upraviť teraz";
+"home.recycling_point_edit_do_later\n" = "Zrušiť";
+"event.event_edit_title" = "Upraviť podujatie";
+"event.event_edit_redirect\n" = "Čistiace podujatia je zatiaľ možné upravovať len z našej webovej aplikácie, do ktorej sa prihlásite cez webový prehliadač";
+
+/*Fuzzy*/
+"event.event_edit_do_later\n" = "Zrušiť";
+"event.event_edit_go_to_web\n" = "Upraviť teraz";
+"event.event_joinEventTitle" = "Pridať sa k udalosti";
+"home.orderTrashPickup" = "Objednať odvoz odpadu";
+"event.create_event_meeting_date_title" = "Dátum stretnutia";
+"notification_new_trash_formatter" = "Našli ste %d nových alebo aktualizovaných skládok";
+"about_version_date_formatted" = "Verzia z %s";
+"skip_btn" = "Preskočiť";
+"event.create.thankYou.sentence1" = "Ďakujeme za vytvorenie podujatia";
+"event.create.thankYou.sentence2" = "Ste skvelý/á";
+"event.create.thankYou.sentence3" = "Nezabudnite aktualizovať skládky po ukončení podujatia";
+"event.create.thankYou.shareTitle" = "Zdieľať s priateľmi";
+"event.create.thankYou.detail\n" = "Prezrieť podujatie";
+"trash.create.thankYou.detail" = "Prezrieť hlásenie";
+"organization.statistics.title" = "Štatistiky o aktivitách členov organizácie";
+"organization.dumpsReported" = "Hlásenia";
+"organization.dumpsUpdated" = "Aktualizácie";
+"organization.dumpsCleaned" = "Vyčistené skládky";

@@ -3,7 +3,7 @@
 "tab.home" = "Home";
 "tab.dumps" = "Discariche";
 "tab.news" = "Notizie";
-"tab.recycling" = "Riciclaggio";
+"tab.recycling" = "Riciclo";
 "global.menu.events" = "Eventi";
 "global.menu.geoAreas" = "Aree Geografiche";
 "global.menu.notifications" = "Notifiche";
@@ -238,22 +238,22 @@
 "home.nearestDumps" = "Discariche più vicine";
 "home.goAndFindDumps" = "Vai, trova ed aggiorna le informazioni su queste discariche.";
 "home.didYouKnow" = "News ed aggiornamenti";
-"home.nearestRecyclingPoints" = "Centri di riciclo più vicini";
+"home.nearestRecyclingPoints" = "Punti di raccolta più vicini";
 "collectionPoint.size.recyclingBin" = "Cestino";
-"collectionPoint.size.recyclingCenter" = "Centro";
+"collectionPoint.size.recyclingCenter" = "Punto di raccolta";
 "collectionPoint.size.all" = "Tutto";
-"collectionPoint.header" = "Centri di riciclo";
-"collectionPoint.list.header" = "Lista dei centri di riciclo";
-"collectionPoint.create.header" = "Crea un centro di riciclo";
-"collectionPoint.edit.header" = "Modifica il centro di riciclo";
+"collectionPoint.header" = "Punti di raccolta";
+"collectionPoint.list.header" = "Elenco dei punti di raccolta";
+"collectionPoint.create.header" = "Crea un punto di raccolta";
+"collectionPoint.edit.header" = "Modifica il punto di raccolta";
 "collectionPoint.edit.firstStep" = "Informazioni generali";
 "collectionPoint.edit.secondStep" = "Orario di apertura e descrizione";
 "collectionPoint.edit.thirdStep" = "Scegli immagini";
 "collectionPoint.id" = "ID";
 "collectionPoint.name" = "Nome";
-"collectionPoint.location" = "Indirizzo del punto di riciclo";
-"collectionPoint.size" = "Dimensione del punto di riciclo";
-"collectionPoint.type" = "Tipo del punto di riciclo";
+"collectionPoint.location" = "Indirizzo del punto di raccolta";
+"collectionPoint.size" = "Dimensione del punto di raccolta";
+"collectionPoint.type" = "Tipo del punto di raccolta";
 "home.recentActivity.header" = "Azioni recenti nelle discariche che segui";
 "home.recentActivity.noActivity" = "Nessun azione recente";
 "events.header" = "Eventi";
@@ -328,10 +328,10 @@
 "collectionPoint.allowedTypes" = "Tipo di rifiuti che puoi conferire";
 "collectionPoint.other" = "Più punti di raccolta vicino a te";
 "global.filter.noResult" = "Nessun risultato, prova a cambiare i filtri di ricerca";
-"collectionPoint.filter.header" = "Filtra il punto di riciclo";
+"collectionPoint.filter.header" = "Filtra il punto di raccolta";
 "trash.filter.header" = "Filtra i Rifiuti";
 "global.filter" = "Filtri";
-"collectionPoint.filter.size" = "Dimensione del punto di riciclo";
+"collectionPoint.filter.size" = "Dimensione del punto di raccolta";
 "collectionPoint.filter.types" = "Tipo di rifiuti da conferire";
 "collectionPoint.openingHours" = "Orario di apertura";
 "global.noLongerExistQuestion" = "Non esiste?";
@@ -488,7 +488,7 @@
 "trash.confirmation.deleteImage" = "Vuoi davvero cancellare l'immagine?";
 "trash.confirmation.deleteTrash" = "Vuoi davvero cancellare i rifiuti?";
 "global.confirmation.header" = "Conferma";
-"event.confirmation.joinEvent" = "Vuoi davvero partecipare all'evento?";
+"event.confirmation.joinEvent" = "Conferma la tua presenza. Le informazioni sui partecipanti sono disponibili per gli organizzatori al fine di aiutarli con i preparativi";
 "trash.confirmation.markSpam" = "Vuoi davvero segnare questa discarica come spam?";
 "global.confirmation.reject" = "Vuoi davvero rifiutare?";
 "event.confirmation.unjoinEvent" = "Vuoi davvero abbandonare l'azione?";
@@ -594,7 +594,7 @@
 "event.detail.pleaseBring" = "Cosa ci serve";
 "global.cropImage" = "Ritaglia immagine";
 "collectionPoint.disposeTypes" = "Tipo di rifiuti da gestire";
-"global.readMore" = "Leggi di più";
+"global.readMore" = "Continua a leggere..";
 "user.validation.nonEmptyOrganization" = "Non hai scelto un'organizzazione. Scegli una società o organizzazione nella modifica del profilo.\n";
 "global.gpsFormat" = "Formato delle coordinate GPS";
 "global.locationFormatDegreesExample" = "48.654684, 19.1676514";
@@ -742,7 +742,7 @@
 "user.reviewed" = "Utente confermato.";
 "user.created" = "Account creato";
 "trash.create.successs" = "Grazie per tenere il nostro database aggiornato e prenderti cura della nostra Terra!";
-"collectionPoint.create.images" = "Perfavore seleziona un'immagine o logo per il punto di riciclo. Non é necessario, ma aiuta gli altri a trovare il posto più facilmente.";
+"collectionPoint.create.images" = "Perfavore seleziona un'immagine o logo per il punto di raccolta. Non é necessario, ma aiuta gli altri a trovare il posto più facilmente.";
 "global.phone.placeholder" = "+420123456789";
 "global.email.placeholder" = "mario.rossi@example.com";
 "organization.detail.header" = "Dettagli dell'organizzazione";
@@ -754,7 +754,7 @@
 "geo.noAliasExists" = "Non esistono Alias per l'area selezionata.";
 "collectionPoint.contact.header" = "Contatti";
 "global.url.placeholder" = "https://www.trashout.ngo";
-"collectionPoint.update.success" = "L' ecocentro è stato aggiornato con successo.";
+"collectionPoint.update.success" = "Il punto di  raccolta è stato aggiornato con successo.";
 "user.editArea" = "Modifica area di interesse";
 "user.geo.notificationFrequency.perHour" = "Per Ora";
 "user.geo.notificationFrequency.never" = "Mai";
@@ -879,7 +879,7 @@
 "event.validation.startDateRequired" = "Data inizio e fine evento richiesti";
 "event.validation.startTimeRequired" = "Orario inizio è un campo obbligatorio";
 "global.noResult" = "Nessun risultato";
-"event.create.collectionPoints" = "Centri di reciclaggio nella zona";
+"event.create.collectionPoints" = "Punti di raccolta nell'area";
 "event.filter.upcomingOrOld" = "Mostra eventi prossimi o passati";
 "event.filter.showUpcoming" = "Mostra solo prossimi";
 "event.filter.showOld" = "Mostra solo passati";
@@ -1046,9 +1046,9 @@
 "global.phone.hint" = "Il numero di telefono inizia con + / 00";
 "profile.currentPassword" = "Password attuale";
 "user.addToArea.success" = "Area aggiunta con successo";
-"collectionPoint.created.success" = "Il punto di riciclo è stato creato con successo";
-"collectionPoint.markedAsSpam.success" = "Il punto di riciclo è stato segnalato come spam correttamente";
-"collectionPoint.removed.success" = "Il punto di riciclo è stato rimosso con successo";
+"collectionPoint.created.success" = "Il punto di raccolta è stato creato con successo";
+"collectionPoint.markedAsSpam.success" = "Il punto di raccolta è stato segnalato come spam correttamente";
+"collectionPoint.removed.success" = "Il punto di raccolta è stato rimosso con successo";
 "profile.passwordChanged.success" = "La password è stata cambiata con successo";
 "profile.emailChanged.success" = "L'e-mail è stata cambiata con successo";
 "profile.signedOut.success" = "Logout eseguito con successo";
@@ -1196,6 +1196,8 @@
 "news.success.photo.deleted" = "L'immagine dall'articolo è stata cancellata";
 "global.resendVerificationEmail" = "Invia nuovamente email di verifica";
 "global.emailResent" = "L'email di verifica è stata inviata nuovamente";
+
+/*Fuzzy*/
 "event.addToCalendar" = "Aggiungi al calendario";
 "global.add" = "Aggiungi";
 "profile.myEvents.timeDecision.ongoing" = "In corso";
@@ -1244,3 +1246,41 @@
 
 /*On the screen "Recycling" in singular*/
 "home.nearestRecyclingPoint" = "Eco-centro più vicino";
+"home.recycling_point_add_new_do_later" = "Annulla";
+"home.recycling_point_add_new_go_to_web" = "Aggiungi ora";
+"home.recycling_point_add_new_redirect" = "Il punto di raccolta può essere aggiunto solo dall'applicazione Web a cui è possibile accedere tramite un browser Web";
+
+/*Fuzzy*/
+"info.frequentlyAskedQuestions" = "Domande frequenti";
+"info.supportUs" = "Supportaci";
+"home.recycling_point_edit_redirect" = "Il punto di raccolta può essere modificato solo dall'applicazione Web a cui si accede tramite un browser Web";
+"collectionPoint.email_is_missing" = "Aggiungi indirizzo email";
+"collectionPoint.phone_is_missing" = "Aggiungi il numero di telefono";
+"collectionPoint.web_is_missing" = "Aggiungi indirizzo web";
+"event.meeting_point" = "Punto d'incontro";
+"home.recycling_point_add_new_tittle" = "Aggiungi punto di raccolta";
+"home.recycling_point_edit_title" = "Aggiorna punto di raccolta";
+"home.recycling_point_edit_go_to_web" = "Modifica ora";
+"home.recycling_point_edit_do_later\n" = "Annulla";
+"event.event_edit_title" = "Modifica questo evento";
+"event.event_edit_redirect\n" = "Gli eventi possono essere modificati solo dall'applicazione Web accessibile tramite un browser Web";
+
+/*Fuzzy*/
+"event.event_edit_do_later\n" = "Annulla";
+"event.event_edit_go_to_web\n" = "Modifica ora";
+"event.event_joinEventTitle" = "Unisciti all'evento";
+"home.orderTrashPickup" = "Ordina il ritiro dei rifiuti";
+"event.create_event_meeting_date_title" = "Data dell'incontro";
+"notification_new_trash_formatter" = "Dai la caccia a% d cestino nuovo o aggiornato.";
+"about_version_date_formatted" = "Versione da% s";
+"skip_btn" = "SALTA";
+"event.create.thankYou.sentence1" = "Grazie per aver creato questo evento";
+"event.create.thankYou.sentence2" = "Sei fantastico!";
+"event.create.thankYou.sentence3" = "Non dimenticare di aggiornare tutti i dump che hai pulito durante l'evento";
+"event.create.thankYou.shareTitle" = "Condividi con gli altri";
+"event.create.thankYou.detail\n" = "Vedi evento";
+"trash.create.thankYou.detail" = "Vedi rapporto";
+"organization.statistics.title" = "Statistiche sulle attività dei membri";
+"organization.dumpsReported" = "Rapporti";
+"organization.dumpsUpdated" = "aggiornamenti";
+"organization.dumpsCleaned" = "Discariche pulite";

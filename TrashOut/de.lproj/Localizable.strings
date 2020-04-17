@@ -173,8 +173,6 @@
 "global.pickAll" = "Alle auswählen";
 "global.share" = "Teilen";
 "global.facebookShare" = "Auf Facebook teilen";
-
-
 "trash.isCleaned" = "Sie wurde bereits aufgeräumt";
 "trash.cleanedByMe" = "Ich habe sie aufgeräumt";
 "home.loadingNearDumps" = "Laden von nahegelegenen illegalen Deponien";
@@ -238,7 +236,7 @@
 "home.nearestDumps" = "Nächste Deponien";
 "home.goAndFindDumps" = "Suche und aktualisiere diese Deponien";
 "home.didYouKnow" = "Neuigkeiten und Updates";
-"home.nearestRecyclingPoints" = "Nächste Recyclingstelle";
+"home.nearestRecyclingPoints" = "Nächste Recyclingpunkte";
 "collectionPoint.size.recyclingBin" = "Lagerort";
 "collectionPoint.size.recyclingCenter" = "Recyclinghof (groß)";
 "collectionPoint.size.all" = "Alle";
@@ -347,9 +345,6 @@
 "profile.earnedPoints_X" = "Du hast bisher% d Punkte verdient! Suche nach weiteren Deponien, es bringt dir neue Abzeichen!";
 "profile.points_X" = "% Punkte";
 "global.numberOfTimes_X" = "%dx";
-"global.internet.offline"="Bitte verbinden Sie sich mit dem Internet, um diesen Abschnitt zu sehen.";
-"global.error.api.text"="Wir haben ein vorübergehendes Problem mit unserem Server. Wir tun unser Bestes, um es bald zu beheben, bitte versuche es später noch einmal.";
-"global.internet.error.offline"="Ihr Mobilgerät ist nicht mit dem Internet verbunden. Machen Sie ein Foto und melden Sie es später über www.admin.trashout.ngo.";
 
 /*Bei Spielen oder Apps wird geduzt*/
 "profile.youReported" = "Deine Berichte";
@@ -497,7 +492,7 @@
 "trash.confirmation.deleteImage" = "Möchtest du das Bild wirklich löschen?";
 "trash.confirmation.deleteTrash" = "Möchtest du das Bild wirklich löschen?";
 "global.confirmation.header" = "Bestätigung";
-"event.confirmation.joinEvent" = "Willst du wirklich an der Veranstaltung teilnehmen?";
+"event.confirmation.joinEvent" = "Bitte bestätigen Sie Ihre Teilnahme. Informationen zu den Teilnehmern stehen den Organisatoren zur Verfügung, um sie bei den Vorbereitungen zu unterstützen";
 "trash.confirmation.markSpam" = "Willst du diesen Müll wirklich als Spam melden?";
 "global.confirmation.reject" = "wirklich ablehnen";
 
@@ -1205,6 +1200,8 @@
 "news.success.photo.deleted" = "Das Bild aus dem Artikel wurde gelöscht";
 "global.resendVerificationEmail" = "Senden sie e-mail verifizierung\n";
 "global.emailResent" = "Bestätigungs e-mail wurde gesendet.";
+
+/*Fuzzy*/
 "event.addToCalendar" = "Zum kalender hinzufügen\n";
 "global.add" = "ergänzen\n";
 "profile.myEvents.timeDecision.ongoing" = "Laufend";
@@ -1228,9 +1225,62 @@
 
 /*note*/
 /*Fuzzy*/
-"global.signUp.acceptRegister.startSentense" = "Indem du dich registrierst, stimmst du den";
-"global.signUp.acceptRegister.privatePolicy" = "Allgemeinen Geschäftsbedingungen";
+"global.signUp.acceptRegister.startSentense" = "Ich stimme der Verarbeitung meiner persönlichen Daten zu. Ich stimme den ";
+"global.signUp.acceptRegister.privatePolicy" = "Datenschutzrichtlinien";
 
 /*Fuzzy*/
 "global.signUp.acceptRegister.and" = "und";
-"global.signUp.acceptRegister.terms" = "Datenschutzrichtlinien";
+"global.signUp.acceptRegister.terms" = "Nutzungsbedingungen";
+
+/*error with communication with API server*/
+/*Fuzzy*/
+"global.error.api.text" = "Wir haben ein vorübergehendes Problem mit unserem Server. Wir tun unser Bestes, um es bald zu beheben, bitte versuche es später noch einmal.";
+"global.internet.offline" = "Bitte verbinden Sie sich mit dem Internet, um diesen Abschnitt zu sehen.";
+"global.cookiesPolicy" = "Diese Website verwendet Cookies, um Ihnen die bestmögliche Erfahrung zu bieten. Stimmen Sie zu, indem Sie auf die Schaltfläche \"Akzeptieren\" klicken. Wir verwenden Cookies, um Social-Media-Funktionen bereitzustellen, unseren Traffic und das Verhalten der Besucher auf unserer Website und zu Marketingzwecken zu analysieren. Manchmal teilen wir diese anonymisierten Informationen mit den Tools von Drittanbietern. Lesen Sie unsere";
+"global.acceptCookiesPolicy" = "Akzeptieren";
+"global.cookiesPolicy.link" = "Datenschutz-Bestimmungen";
+
+/*Error show only if there is issue with creating dumps*/
+"global.internet.error.offline" = "Ihr Mobilgerät ist nicht mit dem Internet verbunden. Machen Sie ein Foto und melden Sie es später über www.admin.trashout.ngo.";
+"global.images.requirements" = "Verwenden Sie Bilder mit einem Seitenverhältnis von 1: 2 oder weniger (kein Breitbild) und bis zu 2 MB.";
+
+/*On the screen "Recycling" in singular*/
+"home.nearestRecyclingPoint" = "Nächster Recyclingpunkt";
+"home.recycling_point_add_new_do_later" = "Stornieren";
+"home.recycling_point_add_new_go_to_web" = "Jetzt hinzufügen";
+"home.recycling_point_add_new_redirect" = "Die Sammelstelle kann nur über Webanwendung hinzugefügt werden, in die Sie sich über einen Webbrowser einloggen können";
+
+/*Fuzzy*/
+"info.frequentlyAskedQuestions" = "Häufig gestellte Fragen";
+"info.supportUs" = "unterstütze uns";
+"home.recycling_point_edit_redirect" = "Der Sammelpunkt kann nur in der Webanwendung bearbeitet werden, auf die Sie über einen Webbrowser zugreifen können";
+"collectionPoint.email_is_missing" = "E-Mail-Adresse hinzufügen";
+"collectionPoint.phone_is_missing" = "Telefonnummer hinzufügen";
+"collectionPoint.web_is_missing" = "Webadresse hinzufügen";
+"event.meeting_point" = "Treffpunkt";
+"home.recycling_point_add_new_tittle" = "Sammelstelle hinzufügen";
+"home.recycling_point_edit_title" = "Aktualisieren Sie die Sammelstelle";
+"home.recycling_point_edit_go_to_web" = "Bearbeiten Sie jetzt";
+"home.recycling_point_edit_do_later\n" = "Stornieren";
+"event.event_edit_title" = "Bearbeiten Sie dieses Ereignis";
+"event.event_edit_redirect\n" = "Ereignisse können nur in der Webanwendung bearbeitet werden, auf die über einen Webbrowser zugegriffen werden kann";
+
+/*Fuzzy*/
+"event.event_edit_do_later\n" = "Stornieren";
+"event.event_edit_go_to_web\n" = "Bearbeiten Sie jetzt";
+"event.event_joinEventTitle" = "Mach mit bei der Veranstaltung";
+"home.orderTrashPickup" = "Müllabholung bestellen";
+"event.create_event_meeting_date_title" = "Datum des Treffens";
+"notification_new_trash_formatter" = "Sie suchen nach neuen oder aktualisierten Abfällen.";
+"about_version_date_formatted" = "Version von% s";
+"skip_btn" = "ÜBERSPRINGEN";
+"event.create.thankYou.sentence1" = "Vielen Dank, dass Sie diese Veranstaltung erstellt haben";
+"event.create.thankYou.sentence2" = "Du bist toll!";
+"event.create.thankYou.sentence3" = "Vergessen Sie nicht, alle Dumps zu aktualisieren, die Sie während des Ereignisses bereinigt haben";
+"event.create.thankYou.shareTitle" = "Mit anderen teilen";
+"event.create.thankYou.detail\n" = "Siehe Veranstaltung";
+"trash.create.thankYou.detail" = "Siehe Bericht";
+"organization.statistics.title" = "Statistiken über die Aktivitäten der Mitglieder";
+"organization.dumpsReported" = "Berichte";
+"organization.dumpsUpdated" = "Aktualisierung";
+"organization.dumpsCleaned" = "Dumps gereinigt";

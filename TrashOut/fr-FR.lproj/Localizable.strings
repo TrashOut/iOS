@@ -150,8 +150,8 @@
 "trash.create.sendWasInterruptedHeader" = "L'envoi a été interrompu";
 "trash.create.sendWasInterruptedText" = "Ne vous inquiétez pas. Votre signalement est sauvegardé et nous essaierons de l'envoyer au prochain lancement de l'appli.";
 "trash.status.cleaned" = "Nettoyé";
-"trash.status.less" = "Mieux";
-"trash.status.more" = "Pire";
+"trash.status.less" = "Moins";
+"trash.status.more" = "Plus";
 "trash.status.stillHere" = "Inchangé";
 "trash.updated" = "Mis à jour";
 "trash.address" = "Localisation";
@@ -488,7 +488,7 @@
 "trash.confirmation.deleteImage" = "Voulez-vous vraiment supprimer cette image ?";
 "trash.confirmation.deleteTrash" = "Voulez-vous vraiment supprimer cette décharge ?";
 "global.confirmation.header" = "Confirmation";
-"event.confirmation.joinEvent" = "Voulez-vous vraiment vous inscrire à cet évènement ?";
+"event.confirmation.joinEvent" = "Veuillez confirmer votre présence. Des informations sur les participants sont disponibles pour les organisateurs afin de les aider dans la préparation";
 "trash.confirmation.markSpam" = "Voulez-vous vraiment signaler cette décharge comme inappropriée ?";
 "global.confirmation.reject" = "voulez-vous vraiment rejeter";
 "event.confirmation.unjoinEvent" = "Voulez-vous vraiment vous désinscrire à cet évènement ?";
@@ -1176,6 +1176,8 @@
 "news.success.photo.deleted" = "Image supprimée";
 "global.resendVerificationEmail" = "Réenvoyer mail de validation";
 "global.emailResent" = "Mail de validation envoyé à nouveau";
+
+/*Fuzzy*/
 "event.addToCalendar" = "Ajouter à l'agenda";
 "global.add" = "Ajouter";
 "profile.myEvents.timeDecision.ongoing" = "En cours";
@@ -1216,3 +1218,41 @@
 
 /*On the screen "Recycling" in singular*/
 "home.nearestRecyclingPoint" = "Point de collecte le plus proche";
+"home.recycling_point_add_new_do_later" = "Annuler";
+"home.recycling_point_add_new_go_to_web" = "Ajouter maintenant";
+"home.recycling_point_add_new_redirect" = "Le point de collecte ne peut être ajouté qu'à partir de l'application Web à laquelle vous pouvez vous connecter via un navigateur Web";
+
+/*Fuzzy*/
+"info.frequentlyAskedQuestions" = "Questions fréquemment posées";
+"info.supportUs" = "Nous soutenir";
+"home.recycling_point_edit_redirect" = "Le point de collecte ne peut être modifié qu'à partir de l'application Web à laquelle vous pouvez accéder via un navigateur Web";
+"collectionPoint.email_is_missing" = "Ajouter une adresse e-mail";
+"collectionPoint.phone_is_missing" = "Ajouter un numéro de téléphone";
+"collectionPoint.web_is_missing" = "Ajouter une adresse Web";
+"event.meeting_point" = "Point de rencontre";
+"home.recycling_point_add_new_tittle" = "Ajouter un point de collecte";
+"home.recycling_point_edit_title" = "Mettre à jour le point de collecte";
+"home.recycling_point_edit_go_to_web" = "Modifier maintenant";
+"home.recycling_point_edit_do_later\n" = "Annuler";
+"event.event_edit_title" = "Modifier cet événement";
+"event.event_edit_redirect\n" = "Les événements ne peuvent être modifiés qu'à partir de l'application Web accessible via un navigateur Web";
+
+/*Fuzzy*/
+"event.event_edit_do_later\n" = "Annuler";
+"event.event_edit_go_to_web\n" = "Modifier maintenant";
+"event.event_joinEventTitle" = "Rejoignez l'événement";
+"home.orderTrashPickup" = "Commander le ramassage des déchets";
+"event.create_event_meeting_date_title" = "Date de la réunion";
+"notification_new_trash_formatter" = "Vous avez créé ou ou mises à jour %d décharge(s).";
+"about_version_date_formatted" = "Version de %s";
+"skip_btn" = "Passer";
+"event.create.thankYou.sentence1" = "Merci d'avoir créé cet événement";
+"event.create.thankYou.sentence2" = "Vous êtes formidable !";
+"event.create.thankYou.sentence3" = "N'oubliez pas de mettre à jour toutes les décharges que vous avez nettoyées lors de l'événement";
+"event.create.thankYou.shareTitle" = "Partager avec les autres";
+"event.create.thankYou.detail\n" = "Voir l'événement";
+"trash.create.thankYou.detail" = "Voir le rapport";
+"organization.statistics.title" = "Statistiques sur les activités des membres";
+"organization.dumpsReported" = "Rapports";
+"organization.dumpsUpdated" = "Mises à jour";
+"organization.dumpsCleaned" = "Décharges nettoyées";

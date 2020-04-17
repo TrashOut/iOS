@@ -335,6 +335,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FD8FA952449A0D50064240A /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0FD8FA982449A1F90064240A /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0FD8FA992449A2F80064240A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5044628649835A8788D38635 /* Pods-TrashOut-Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.release.xcconfig"; sourceTree = "<group>"; };
 		5FAF8A347663A4F7A25D57D4 /* Pods-TrashOut-Stage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Stage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage.debug.xcconfig"; sourceTree = "<group>"; };
 		62209777A1B899EEBC59A7BA /* Pods-TrashOut-Prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.debug.xcconfig"; sourceTree = "<group>"; };
@@ -488,7 +491,6 @@
 		C3FF4FA91E533F35005D5530 /* HorizontalSeparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalSeparator.swift; sourceTree = "<group>"; };
 		C3FF4FAB1E5353CB005D5530 /* AutoSizingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSizingTableView.swift; sourceTree = "<group>"; };
 		CF110A3D212C2933008D2643 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
-		CF1EE6E5225F577A0011E30D /* fr-FR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-FR"; path = "fr-FR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		CF1EE6E6225F578B0011E30D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CF3B780220C0584A00E4D0CE /* EventContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContactModel.swift; sourceTree = "<group>"; };
 		CF3DDE2920D1079F00A93A87 /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
@@ -1145,8 +1147,10 @@
 				ru,
 				sk,
 				es,
-				"fr-FR",
 				it,
+				hu,
+				pt,
+				fr,
 			);
 			mainGroup = C3A3B2331DA7A6E00099D1C2;
 			productRefGroup = C3A3B23D1DA7A6E00099D1C2 /* Products */;
@@ -1926,8 +1930,10 @@
 				8EC88AC21FD6CF2300498FCA /* ru */,
 				8EC88AC51FD6CF9D00498FCA /* sk */,
 				8EC88AC71FD6CFAE00498FCA /* es */,
-				CF1EE6E5225F577A0011E30D /* fr-FR */,
 				CF1EE6E6225F578B0011E30D /* it */,
+				0FD8FA952449A0D50064240A /* hu */,
+				0FD8FA982449A1F90064240A /* pt */,
+				0FD8FA992449A2F80064240A /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

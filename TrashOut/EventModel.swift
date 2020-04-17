@@ -73,7 +73,6 @@ class Event: JsonDecodable, Cachable {
 		start <== json["start"]
         bring <== json["bring"]
         have <== json["have"]
-		trash <== json["trashPoints"]
 		users <== json["users"]
         if let image = json["images"] as? [[String: AnyObject]] {
             for update in image {

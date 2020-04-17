@@ -161,7 +161,11 @@ class Trash: JsonDecodable, Cachable {
      Parse json data into object vars
      */
     func parse(json: [String: AnyObject]) {
-        id = json["id"] as? Int ?? id
+        if let intId = json["id"] as? Int {
+            id = intId
+        } else if let stringId = json["id"] as? String, let intId = Int(stringId) {
+            id = intId
+        }
         activityId <== json["activityId"]
         if let statusValue = json["status"] as? String {
             status = Status.init(rawValue: statusValue) ?? .stillHere

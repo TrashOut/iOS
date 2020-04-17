@@ -437,6 +437,15 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let trashId = event?.trash[indexPath.row].id,
+            let vc = UIStoryboard(name: "Dumps", bundle: .main).instantiateViewController(withIdentifier: "DumpsDetailViewController") as? DumpsDetailViewController else {
+                return
+        }
+        vc.id = trashId
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     // MARK: Notifications handling
     
     func registerForNotifcations() {

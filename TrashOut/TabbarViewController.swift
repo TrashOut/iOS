@@ -64,10 +64,6 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
 		self.viewControllers?[3].title = "tab.recycling".localized
         
         openDashboard()
-        
-        if signIn {
-            self.selectedIndex = 4
-        }
 	}
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {

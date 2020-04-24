@@ -76,7 +76,7 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
             if UIImagePickerController.isSourceTypeAvailable(source) {
                 picker.sourceType = source
                 picker.mediaTypes = [kUTTypeImage as String]
-                picker.allowsEditing = true
+                picker.allowsEditing = false
                 picker.delegate = self
                 vc.present(picker, animated: animated)
             } else {
@@ -124,7 +124,7 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
 // Local variable inserted by Swift 4.2 migrator.
 let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
 
-		guard let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as? UIImage else { return }
+        guard let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else { return }
         let resizedImage = resizeImageToFormat(image)
 		let localImage = LocalImage()
 		localImage.store = .temp

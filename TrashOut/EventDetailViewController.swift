@@ -51,7 +51,7 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
     @IBOutlet var lblEventName: UILabel!
     @IBOutlet var lblEventDateAndTime: UILabel!
     @IBOutlet var lblEventInfo: UILabel!
-    
+    @IBOutlet var lblMeetingPoint: UILabel!
     @IBOutlet var lblWeHave: UILabel!
     @IBOutlet var lblGlovesBags: UILabel!
     @IBOutlet var lblPleaseBring: UILabel!
@@ -112,6 +112,7 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
 //        navigationItem.rightBarButtonItem = backButton
 
         lblEventDateAndTime.textColor = Theme.current.color.lightGray
+        lblMeetingPoint.text = "event.meetingPoint".localized
         lblWeHave.text = "event.whatWeHave".localized
         lblWeHave.textColor = Theme.current.color.green
         lblPleaseBring.text = "event.detail.pleaseBring".localized

@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -665,7 +665,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="1256"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="sME-4w-ZI1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1142.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1177"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3a-6Z-hnz">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="167.5"/>
@@ -855,13 +855,19 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHS-au-pa0">
-                                                <rect key="frame" x="0.0" y="295.5" width="375" height="407"/>
+                                                <rect key="frame" x="0.0" y="295.5" width="375" height="441.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pW-8M-jN6" customClass="Card" customModule="TrashOut" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="8" width="359" height="391"/>
+                                                        <rect key="frame" x="8" y="8" width="359" height="425.5"/>
                                                         <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meeting Point" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXX-iH-b32">
+                                                                <rect key="frame" x="8" y="8" width="343" height="23"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9e-kW-yYt">
-                                                                <rect key="frame" x="8" y="8" width="343" height="266.5"/>
+                                                                <rect key="frame" x="8" y="39" width="343" height="266.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="266.5" id="gO7-Jk-CAm"/>
                                                                 </constraints>
@@ -870,7 +876,7 @@
                                                                 </connections>
                                                             </mapView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="NeO-ou-b5C">
-                                                                <rect key="frame" x="8" y="282.5" width="343" height="57.5"/>
+                                                                <rect key="frame" x="8" y="313.5" width="343" height="61"/>
                                                                 <subviews>
                                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HHd-L4-uBE">
                                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="36.5"/>
@@ -879,7 +885,7 @@
                                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                     </textView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mP0-ts-E6b">
-                                                                        <rect key="frame" x="0.0" y="42.5" width="343" height="15"/>
+                                                                        <rect key="frame" x="0.0" y="46" width="343" height="15"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GPS" translatesAutoresizingMaskIntoConstraints="NO" id="NFD-IL-NVj">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -900,7 +906,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bM-RC-TSc">
-                                                                <rect key="frame" x="8" y="353" width="120" height="30"/>
+                                                                <rect key="frame" x="8" y="387.5" width="120" height="30"/>
                                                                 <color key="backgroundColor" red="0.45882352939999999" green="0.79607843140000001" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="MWL-OW-3Va"/>
@@ -916,12 +922,15 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="4bM-RC-TSc" firstAttribute="bottom" secondItem="2pW-8M-jN6" secondAttribute="bottomMargin" id="0BV-4t-sg2"/>
+                                                            <constraint firstItem="EXX-iH-b32" firstAttribute="top" secondItem="2pW-8M-jN6" secondAttribute="topMargin" id="55o-dj-Efn"/>
                                                             <constraint firstItem="NeO-ou-b5C" firstAttribute="top" secondItem="c9e-kW-yYt" secondAttribute="bottom" constant="8" id="Dd9-nN-MOb"/>
-                                                            <constraint firstItem="c9e-kW-yYt" firstAttribute="top" secondItem="2pW-8M-jN6" secondAttribute="topMargin" id="Ddc-XS-YET"/>
                                                             <constraint firstItem="c9e-kW-yYt" firstAttribute="trailing" secondItem="2pW-8M-jN6" secondAttribute="trailingMargin" id="KYQ-1m-asN"/>
                                                             <constraint firstAttribute="trailing" secondItem="NeO-ou-b5C" secondAttribute="trailing" constant="8" id="MDq-sZ-lvW"/>
+                                                            <constraint firstItem="c9e-kW-yYt" firstAttribute="top" secondItem="EXX-iH-b32" secondAttribute="bottom" constant="8" id="R9c-IG-Wta"/>
+                                                            <constraint firstItem="EXX-iH-b32" firstAttribute="leading" secondItem="2pW-8M-jN6" secondAttribute="leadingMargin" id="RJ5-KK-5dc"/>
                                                             <constraint firstItem="c9e-kW-yYt" firstAttribute="leading" secondItem="2pW-8M-jN6" secondAttribute="leadingMargin" id="SM5-o8-ulu"/>
                                                             <constraint firstAttribute="bottom" secondItem="4bM-RC-TSc" secondAttribute="bottom" constant="8" id="UBc-ql-SIB"/>
+                                                            <constraint firstAttribute="trailingMargin" secondItem="EXX-iH-b32" secondAttribute="trailing" id="ct1-zj-Lwq"/>
                                                             <constraint firstItem="NeO-ou-b5C" firstAttribute="leading" secondItem="2pW-8M-jN6" secondAttribute="leading" constant="8" id="pLM-HT-mBy"/>
                                                             <constraint firstItem="4bM-RC-TSc" firstAttribute="top" secondItem="NeO-ou-b5C" secondAttribute="bottom" constant="13" id="rio-Xz-zJ4"/>
                                                             <constraint firstItem="4bM-RC-TSc" firstAttribute="leading" secondItem="2pW-8M-jN6" secondAttribute="leading" constant="8" id="sam-0Q-A0o"/>
@@ -937,7 +946,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="two-DJ-tio">
-                                                <rect key="frame" x="0.0" y="702.5" width="375" height="119.5"/>
+                                                <rect key="frame" x="0.0" y="737" width="375" height="119.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We have" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1v-Wj-vSn">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -980,7 +989,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzg-wr-e5q">
-                                                <rect key="frame" x="0.0" y="822" width="375" height="119.5"/>
+                                                <rect key="frame" x="0.0" y="856.5" width="375" height="119.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please bring" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cff-YS-H6B">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -1023,7 +1032,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1m-s0-dAC">
-                                                <rect key="frame" x="0.0" y="941.5" width="375" height="201"/>
+                                                <rect key="frame" x="0.0" y="976" width="375" height="201"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of dumps to be cleaned" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sId-oL-TWk">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -1203,6 +1212,7 @@
                         <outlet property="lblEventName" destination="1I3-Yj-Cgd" id="5tH-Eb-ajt"/>
                         <outlet property="lblGlovesBags" destination="6ao-sZ-EIw" id="Kkv-Tp-5vp"/>
                         <outlet property="lblListOfDumps" destination="sId-oL-TWk" id="ON6-y1-qOI"/>
+                        <outlet property="lblMeetingPoint" destination="EXX-iH-b32" id="cLl-s5-XIZ"/>
                         <outlet property="lblPleaseBring" destination="Cff-YS-H6B" id="muz-sU-Azm"/>
                         <outlet property="lblShovelGoodMood" destination="dSu-Kn-HmP" id="tC7-bV-Pkw"/>
                         <outlet property="lblWeHave" destination="S1v-Wj-vSn" id="oiy-C4-iB8"/>

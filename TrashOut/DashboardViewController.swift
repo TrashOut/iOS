@@ -643,7 +643,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
             lblNewsInfo.numberOfLines = 2
         }
         
-		if let imageUrl = article.photos.first?.fullDownloadUrl {
+		if let imageUrl = (article.photos.first { $0.isMain ?? false } ?? article.photos.first)?.fullDownloadUrl {
 			ivNews.remoteImage(id: imageUrl, placeholder: #imageLiteral(resourceName: "No image wide"), animate: true, animationOptions: [.transitionCrossDissolve], success: nil)
 		} else {
 			ivNews.image = #imageLiteral(resourceName: "No image wide")

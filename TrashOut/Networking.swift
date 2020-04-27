@@ -59,10 +59,8 @@ class Networking {
 
 	#if STAGE
 		var apiBaseUrl = "https://dev-api.trashout.ngo/v1"
-        static let adminWebUrl = URL(string: "https://dev-admin.trashout.ngo")!
 	#else
 		var apiBaseUrl = "https://api.trashout.ngo/v1"
-        static let adminWebUrl = URL(string: "https://admin.trashout.ngo")!
 	#endif
 
 	static var instance: Networking = {

@@ -39,6 +39,8 @@ class InfoViewController: ViewController {
     @IBOutlet var lblVersionNumber: UILabel!
 
     @IBOutlet var btnFeedback: UIButton!
+    @IBOutlet var btnFAQ: UIButton!
+    @IBOutlet var btnSupport: UIButton!
     @IBOutlet var btnPrivace: UIButton!
     @IBOutlet var btnTerms: UIButton!
 
@@ -51,6 +53,10 @@ class InfoViewController: ViewController {
 
         btnFeedback.setTitle("info.feedbackAndSupport".localized.uppercased(with: .current), for: .normal)
         btnFeedback.theme()
+        btnFAQ.setTitle("info.frequentlyAskedQuestions".localized.uppercased(with: .current), for: .normal)
+        btnFAQ.theme()
+        btnSupport.setTitle("info.supportUs".localized.uppercased(with: .current), for: .normal)
+        btnSupport.theme()
         btnPrivace.setTitle("info.privatePolicy".localized.uppercased(with: .current), for: .normal)
         btnPrivace.theme()
         btnTerms.setTitle("info.termsAndConditions".localized.uppercased(with: .current), for: .normal)
@@ -83,18 +89,23 @@ class InfoViewController: ViewController {
     }
     
     @IBAction func showPrivacePolicy(_ sender: Any) {
-		guard let url = URL(string: "http://www.trashout.ngo/policy") else { return }
-		UIApplication.shared.open(url)
+        UIApplication.shared.open(Link.privacyPolicy.url)
+    }
+    
+    @IBAction func showFAQ() {
+        UIApplication.shared.open(Link.frequentlyAskedQuestions.url)
+    }
+    
+    @IBAction func showSupportUsPage() {
+        UIApplication.shared.open(Link.supportUs.url)
     }
 
     @IBAction func showTermsAndConditions(_ sender: Any) {
-		guard let url = URL(string: "http://www.trashout.ngo/terms") else { return }
-		UIApplication.shared.open(url)
+        UIApplication.shared.open(Link.termsAndConditions.url)
     }
     
     @IBAction func showFeedback(_ sender: Any) {
-        let email = "feedback@trashout.ngo"
-        guard let url = URL(string: "mailto:\(email)") else { return }
+        let url = Link.sendEmail(to: "feedback@trashout.ngo").url
         UIApplication.shared.open(url)
     }
 }

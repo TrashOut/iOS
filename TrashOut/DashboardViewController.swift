@@ -110,6 +110,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
     @IBOutlet var reportButtonWrapper: UIView!
     @IBOutlet var btnReportDump: UIButton!
 	@IBOutlet var btnAddDump: UIButton!
+    @IBOutlet var btnSupport: UIButton!
 
 	@IBOutlet var tblEvents: UITableView!
 
@@ -235,9 +236,10 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
         btnReportDump.layer.cornerRadius = btnReportDump.frame.size.height / 2
         btnReportDump.layer.masksToBounds = true
         btnAddDumpWrapper.isHidden = true
-
         btnMore.setTitle("home.more".localized.uppercased(with: .current), for: .normal)
         btnMore.theme()
+        btnSupport.setTitle("info.supportUs".localized.uppercased(with: .current), for: .normal)
+        btnSupport.theme()
 
         ivTrashCan.backgroundColor = Theme.current.color.green
 
@@ -426,6 +428,10 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 			profileVC.openActivityList()
 		}
 	}
+    
+    @IBAction func goToSupportUsPage() {
+        UIApplication.shared.open(Link.supportUs.url)
+    }
 
     // MARK: - Networking
 

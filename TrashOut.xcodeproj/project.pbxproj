@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F9A2147245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
+		0F9A2148245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		15B167678E5B118BE26F023C /* Pods_TrashOutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B508F54028E3BAAC67A7D92F /* Pods_TrashOutUITests.framework */; };
 		266CA2A25D67BB436B3FE49C /* Pods_TrashOut_Stage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1F227FB28D490627501BB4 /* Pods_TrashOut_Stage.framework */; };
 		7BB372C5200BDA40F6523B16 /* Pods_TrashOutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B055D53FC81752DE09176A10 /* Pods_TrashOutTests.framework */; };
@@ -335,6 +337,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F9A2146245745FE005A8F27 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		0FD8FA952449A0D50064240A /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA982449A1F90064240A /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA992449A2F80064240A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -848,6 +851,7 @@
 				C348802E1DF59C5E00C2E83E /* NewsNetworking.swift */,
 				C373F4391E57313100050F7B /* AreaNetworking.swift */,
 				CF7D8C9020C683F600F66F4C /* NotificationsNetworking.swift */,
+				0F9A2146245745FE005A8F27 /* Link.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -1651,6 +1655,7 @@
 				8E2A1B0B202236E800C1AC70 /* ViewController.swift in Sources */,
 				8E2A1B0C202236E800C1AC70 /* NotificationName.swift in Sources */,
 				8E2A1B0D202236E800C1AC70 /* GpsFormatter.swift in Sources */,
+				0F9A2148245745FE005A8F27 /* Link.swift in Sources */,
 				8E2A1B0E202236E800C1AC70 /* CachableModel.swift in Sources */,
 				8E2A1B0F202236E800C1AC70 /* Layout.swift in Sources */,
 				8E2A1B10202236E800C1AC70 /* EventDumpsViewController.swift in Sources */,
@@ -1787,6 +1792,7 @@
 				8E2747B720036FA900934D62 /* NotificationName.swift in Sources */,
 				C37579291E423F66002EA629 /* GpsFormatter.swift in Sources */,
 				C37994A51DACFFD600CE5E3F /* CachableModel.swift in Sources */,
+				0F9A2147245745FE005A8F27 /* Link.swift in Sources */,
 				CFBC999320C6D2B5009E5D7F /* UniqueIdentifier.swift in Sources */,
 				C3014DD21DAE721600FD7CFE /* Layout.swift in Sources */,
 				FCE79BE21DE44E6700D3E9B6 /* EventDumpsViewController.swift in Sources */,

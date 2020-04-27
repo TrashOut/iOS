@@ -269,10 +269,8 @@ extension SignupViewController {
     /// Create attributed string for terms and conditions.
     
     fileprivate func createTermsAndCoditionsAttributedString() -> NSAttributedString? {
-        guard
-            let privacyPolicyUrl = URL(string: "https://www.trashout.ngo/policy/"),
-            let termsAndCondUrl = URL(string: "https://www.trashout.ngo/terms")
-        else { return nil }
+        let privacyPolicyUrl = Link.privacyPolicy.url
+        let termsAndCondUrl = Link.termsAndConditions.url
         
         // Create attributed link string
         let createAttributedStringWithLink = { (string: String, url: URL) -> NSAttributedString in

@@ -279,8 +279,7 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
             show(message: "collectionPoint.phoneCall.message".localized, okAction: { [weak self] (alertAction) in
                 if let junkyard = self?.junkyard {
                     guard let phone = junkyard.phone else { return }
-                    guard let number = URL(string: "telprompt://" + phone) else { return }
-                    UIApplication.shared.open(number)
+                    UIApplication.shared.open(Link.call(phone: phone).url)
                 }
             })
         } else {
@@ -319,7 +318,7 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
 	}
     
     @IBAction func editJunkyard() {
-        let url = Networking.adminWebUrl.appendingPathComponent("/collection-points/update/\(junkyard.id)")
+        let url = Link.editJunkyard(id: junkyard.id).url
         show(title: "home.recycling_point_edit_title".localized, message: "home.recycling_point_edit_redirect".localized, okAction: { _ in
             UIApplication.shared.open(url)
         })

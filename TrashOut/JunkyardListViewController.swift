@@ -240,8 +240,7 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
 
     @IBAction func addJunkyard() {
         show(title: "home.recycling_point_add_new_tittle".localized, message: "home.recycling_point_add_new_redirect".localized, okAction: { _ in
-            let url = Networking.adminWebUrl.appendingPathComponent("/collection-points/list")
-            UIApplication.shared.open(url)
+            UIApplication.shared.open(Link.addJunkyard.url)
         })
     }
 }

@@ -407,10 +407,11 @@
                                                                         <rect key="frame" x="0.0" y="80" width="359" height="40"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Website" translatesAutoresizingMaskIntoConstraints="NO" id="DxN-xt-hM8">
-                                                                                <rect key="frame" x="10" y="10" width="20" height="20"/>
+                                                                                <rect key="frame" x="10" y="9" width="22" height="22"/>
+                                                                                <color key="tintColor" red="0.48627450980392156" green="0.75686274509803919" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="height" constant="20" id="CwL-rS-f4a"/>
-                                                                                    <constraint firstAttribute="width" constant="20" id="dSe-N3-yEL"/>
+                                                                                    <constraint firstAttribute="height" constant="22" id="CwL-rS-f4a"/>
+                                                                                    <constraint firstAttribute="width" constant="22" id="dSe-N3-yEL"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://holesovice.cz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ3-d6-yq5">
@@ -877,6 +878,6 @@
         <image name="Junkyards" width="21" height="20.5"/>
         <image name="Marker" width="11.5" height="18"/>
         <image name="Phone" width="20.5" height="20.5"/>
-        <image name="Website" width="19" height="19"/>
+        <image name="Website" width="24" height="24"/>
     </resources>
 </document>

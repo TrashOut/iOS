@@ -1,16 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "ico_website_1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ico_tb_dumps_active@2x black.png",
+      "filename" : "ico_website_2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ico_tb_dumps_active@3x black.png",
+      "filename" : "ico_website_3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

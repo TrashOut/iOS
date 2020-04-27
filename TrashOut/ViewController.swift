@@ -123,8 +123,8 @@ class ViewController: UIViewController {
      
      - Warning: avoid using this method
      */
-    func show(message:String , okAction: ((UIAlertAction) -> Swift.Void)? = nil, cancelAction: ((UIAlertAction) -> Swift.Void)? = nil ) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+    func show(title: String? = nil, message:String , okAction: ((UIAlertAction) -> Swift.Void)? = nil, cancelAction: ((UIAlertAction) -> Swift.Void)? = nil ) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction.init(title: "global.yes".localized, style: .default, handler: okAction)
         let cancel = UIAlertAction.init(title: "global.cancel".localized, style: .cancel, handler: cancelAction)
         alert.addAction(ok)
@@ -132,8 +132,8 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func show(message:String , okActionTitle: String ,okAction: ((UIAlertAction) -> Swift.Void)? = nil, cancelAction: ((UIAlertAction) -> Swift.Void)? = nil ) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+    func show(title: String? = nil, message:String , okActionTitle: String ,okAction: ((UIAlertAction) -> Swift.Void)? = nil, cancelAction: ((UIAlertAction) -> Swift.Void)? = nil ) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction.init(title: okActionTitle, style: .default, handler: okAction)
         let cancel = UIAlertAction.init(title: "global.cancel".localized, style: .cancel, handler: cancelAction)
         alert.addAction(ok)

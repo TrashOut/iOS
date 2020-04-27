@@ -45,6 +45,7 @@ protocol SendDataForJunkyardFilter {
 class JunkyardListViewController: ViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var btnAdd: UIButton!
 
     // MARK: - Internals
 
@@ -67,6 +68,10 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
+        
+        btnAdd.layer.cornerRadius = btnAdd.bounds.height / 2
+        btnAdd.layer.masksToBounds = true
+        btnAdd.superview?.circleButtonShadow = true
         
         // Set filter size
         if let filterSize = UserDefaults.standard.object(forKey: "FilterSize") as? String {
@@ -233,6 +238,12 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
         header.backgroundView?.backgroundColor = .white
     }
 
+    @IBAction func addJunkyard() {
+        show(title: "home.recycling_point_add_new_tittle".localized, message: "home.recycling_point_add_new_redirect".localized, okAction: { _ in
+            let url = Networking.adminWebUrl.appendingPathComponent("/collection-points/list")
+            UIApplication.shared.open(url)
+        })
+    }
 }
 
 class JunkyardTableViewCell: UITableViewCell {

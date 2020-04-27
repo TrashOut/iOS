@@ -62,6 +62,7 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
     @IBOutlet var lblContact: UILabel!
     @IBOutlet var lblTelephone: UILabel!
     @IBOutlet var lblEmail: UILabel!
+    @IBOutlet var lblWebsite: UILabel!
     @IBOutlet var lblOpeningHours: UILabel!
     @IBOutlet var lblDays: UILabel!
     @IBOutlet var lblDays2: UILabel!
@@ -70,10 +71,12 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
     @IBOutlet var lblInfo: UILabel!
 
     @IBOutlet var btnDirections: UIButton!
+    @IBOutlet var btnEdit: UIButton!
     @IBOutlet var btnNoLongerExists: UIButton!
 
 	@IBOutlet var vPhone: UIView!
 	@IBOutlet var vEmail: UIView!
+    @IBOutlet var vWebsite: UIView!
 
     var junkyard: Junkyard!
 
@@ -91,6 +94,8 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
 
         btnDirections.setTitle("global.direction".localized.uppercased(with: .current), for: .normal)
         btnDirections.theme()
+        btnEdit.setTitle("global.edit".localized.uppercased(with: .current), for: .normal)
+        btnEdit.theme()
         btnNoLongerExists.setTitle("global.noLongerExistQuestion".localized.uppercased(with: .current), for: .normal)
         btnNoLongerExists.theme()
         btnNoLongerExists.backgroundColor = Theme.current.color.red
@@ -171,23 +176,28 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
 	}
 
 	func showScrapyardInfo() {
+        telephoneAndEmailView.isHidden = false
+        
+        if let phone = junkyard.phone, phone.count > 0 {
+            lblTelephone.text = phone
+        } else {
+            lblTelephone.text = "collectionPoint.phone_is_missing".localized
+            lblTelephone.textColor = Theme.current.color.lightGray
+        }
+        
 		if let email = junkyard.email, email.count > 0 {
-			vEmail.isHidden = false
 			lblEmail.text = email
 		} else {
-			vEmail.isHidden = true
+            lblEmail.text = "collectionPoint.email_is_missing".localized
+            lblEmail.textColor = Theme.current.color.lightGray
 		}
-		if let phone = junkyard.phone, phone.count > 0 {
-			vPhone.isHidden = false
-			lblTelephone.text = phone
-		} else {
-			vPhone.isHidden = true
-		}
-		if vPhone.isHidden, vEmail.isHidden {
-			telephoneAndEmailView.isHidden = true
-		} else {
-			telephoneAndEmailView.isHidden = false
-		}
+		
+        if let website = junkyard.website, website.count > 0 {
+            lblWebsite.text = website
+        } else {
+            lblWebsite.text = "collectionPoint.web_is_missing".localized
+            lblWebsite.textColor = Theme.current.color.lightGray
+        }
 
 		infoView.isHidden = false
         openingHoursView.isHidden = false
@@ -265,30 +275,53 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
 	}
 
 	@IBAction func phoneTap() {
-        show(message: "collectionPoint.phoneCall.message".localized, okAction: { [weak self] (alertAction) in
-            if let junkyard = self?.junkyard {
-                guard let phone = junkyard.phone else { return }
-                guard let number = URL(string: "telprompt://" + phone) else { return }
-                UIApplication.shared.open(number)
-            }
-        })
+        if let phone = junkyard.phone, !phone.isEmpty {
+            show(message: "collectionPoint.phoneCall.message".localized, okAction: { [weak self] (alertAction) in
+                if let junkyard = self?.junkyard {
+                    guard let phone = junkyard.phone else { return }
+                    guard let number = URL(string: "telprompt://" + phone) else { return }
+                    UIApplication.shared.open(number)
+                }
+            })
+        } else {
+            editJunkyard()
+        }
 	}
+    
+    @IBAction func websiteTap() {
+        if let url = junkyard.website.flatMap(URL.init) {
+            UIApplication.shared.open(url)
+        } else {
+            editJunkyard()
+        }
+    }
 
 	@IBAction func emailTap() {
-        show(message: "collectionPoint.email.message".localized, okAction: { [weak self] (alertAction) in
-            if let junkyard = self?.junkyard {
-                guard let email = junkyard.email else { return }
-                guard MFMailComposeViewController.canSendMail() else { return }
-                let mail = MFMailComposeViewController.init()
-                mail.setToRecipients([email])
-                mail.mailComposeDelegate = self
-                mail.navigationBar.tintColor = UIColor.white
-                self?.present(mail, animated: true, completion: nil)
-            }
-        })
+        if let email = junkyard.email, !email.isEmpty {
+            show(message: "collectionPoint.email.message".localized, okAction: { [weak self] (alertAction) in
+                if let junkyard = self?.junkyard {
+                    guard let email = junkyard.email else { return }
+                    guard MFMailComposeViewController.canSendMail() else { return }
+                    let mail = MFMailComposeViewController.init()
+                    mail.setToRecipients([email])
+                    mail.mailComposeDelegate = self
+                    mail.navigationBar.tintColor = UIColor.white
+                    self?.present(mail, animated: true, completion: nil)
+                }
+            })
+        } else {
+            editJunkyard()
+        }
 	}
 
 	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
 		controller.dismiss(animated: true, completion: nil)
 	}
+    
+    @IBAction func editJunkyard() {
+        let url = Networking.adminWebUrl.appendingPathComponent("/collection-points/update/\(junkyard.id)")
+        show(title: "home.recycling_point_edit_title".localized, message: "home.recycling_point_edit_redirect".localized, okAction: { _ in
+            UIApplication.shared.open(url)
+        })
+    }
 }

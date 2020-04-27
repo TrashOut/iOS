@@ -121,6 +121,7 @@ class Junkyard: JsonDecodable, Cachable {
     var name: String?
     var phone: String?
     var email: String?
+    var website: String?
     var openingHours: [DayOpeningHours] = []
     var userId: Int?
     var anonymous: Bool = false
@@ -152,6 +153,7 @@ class Junkyard: JsonDecodable, Cachable {
         name = json["name"] as? String
         phone = json["phone"] as? String
         email = json["email"] as? String
+        //TODO: encode and decode website url
         userId = json["userId"] as? Int
         anonymous = json["anonymous"] as? Bool ?? false
 

@@ -153,7 +153,7 @@ class Junkyard: JsonDecodable, Cachable {
         name = json["name"] as? String
         phone = json["phone"] as? String
         email = json["email"] as? String
-        //TODO: encode and decode website url
+        website = json["url"] as? String
         userId = json["userId"] as? Int
         anonymous = json["anonymous"] as? Bool ?? false
 
@@ -182,9 +182,10 @@ class Junkyard: JsonDecodable, Cachable {
         dict["types"] = types.map{$0.rawValue} as AnyObject?
         dict["note"] = note as AnyObject?
         dict["size"] = size as AnyObject?
-        dict["name"] = size as AnyObject?
-        dict["phone"] = size as AnyObject?
-        dict["email"] = size as AnyObject?
+        dict["name"] = name as AnyObject?
+        dict["phone"] = phone as AnyObject?
+        dict["email"] = email as AnyObject?
+        dict["url"] = website as AnyObject?
         dict["openingHours"] = size as AnyObject?
         if let gps = gps {
             dict["gps"] = gps.dictionary() as AnyObject?

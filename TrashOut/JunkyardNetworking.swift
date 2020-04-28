@@ -77,7 +77,7 @@ extension Networking {
         var params: Parameters = [:]
         params["userPosition"] = positionString
         params["orderBy"] = "gps"
-        params["attributesNeeded"] = ["id", "gpsFull", "types", "size", "note", "openingHours", "name", "phone", "email"].joined(separator: ",")
+        params["attributesNeeded"] = ["id", "gpsFull", "types", "size", "note", "openingHours", "name", "phone", "email", "url"].joined(separator: ",")
 		if let size = size, size != "all" {
         	params["collectionPointSize"] = size
 		}

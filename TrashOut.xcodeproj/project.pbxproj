@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F682E6E245887F600DD135F /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F682E6D245887F600DD135F /* FirebaseAnalytics.swift */; };
+		0F682E6F245887F600DD135F /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F682E6D245887F600DD135F /* FirebaseAnalytics.swift */; };
 		0F9A2147245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		0F9A2148245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		15B167678E5B118BE26F023C /* Pods_TrashOutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B508F54028E3BAAC67A7D92F /* Pods_TrashOutUITests.framework */; };
@@ -337,6 +339,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F682E6D245887F600DD135F /* FirebaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalytics.swift; sourceTree = "<group>"; };
 		0F9A2146245745FE005A8F27 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		0FD8FA952449A0D50064240A /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA982449A1F90064240A /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -721,6 +724,7 @@
 				C30044391DB0CC3300709DDC /* FirebaseLocalization.swift */,
 				C37994A21DACDE7300CE5E3F /* FirebaseAuthentificator.swift */,
 				C34F3F431DB0DEF100F69348 /* FirebaseImages.swift */,
+				0F682E6D245887F600DD135F /* FirebaseAnalytics.swift */,
 			);
 			name = Firebase;
 			sourceTree = "<group>";
@@ -1739,6 +1743,7 @@
 				8E2A1B5A202236E800C1AC70 /* TrashUpdateModel+UI.swift in Sources */,
 				8E2A1B5B202236E800C1AC70 /* DumpsFilterViewController.swift in Sources */,
 				8E2A1B5C202236E800C1AC70 /* ClusterRounding.swift in Sources */,
+				0F682E6F245887F600DD135F /* FirebaseAnalytics.swift in Sources */,
 				8E2A1B5D202236E800C1AC70 /* Label.swift in Sources */,
 				8E2A1B5E202236E800C1AC70 /* Date.swift in Sources */,
 				8E2A1B5F202236E800C1AC70 /* TutorialLastPageViewController.swift in Sources */,
@@ -1876,6 +1881,7 @@
 				8E8E91BB1FD6F1820034AC69 /* TrashUpdateModel+UI.swift in Sources */,
 				FCE49AD01DFA96EF00D616D5 /* DumpsFilterViewController.swift in Sources */,
 				C38F7BD91E40BD7D00976B25 /* ClusterRounding.swift in Sources */,
+				0F682E6E245887F600DD135F /* FirebaseAnalytics.swift in Sources */,
 				8E1D037E1FC5CBFC007BD218 /* Label.swift in Sources */,
 				FC384A741DDCD0EF0073E955 /* Date.swift in Sources */,
 				C3E052321E8C138200181914 /* TutorialLastPageViewController.swift in Sources */,

@@ -11,7 +11,8 @@ def common_pods_for_target
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
     pod 'Firebase/Messaging'
-    pod 'Firebase/Storage' 
+    pod 'Firebase/Storage'
+    pod 'Firebase/Analytics'
     
     # Crashlytics
     pod 'Fabric'

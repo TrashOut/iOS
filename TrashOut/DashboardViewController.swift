@@ -431,6 +431,7 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
     
     @IBAction func goToSupportUsPage() {
         UIApplication.shared.open(Link.supportUs.url)
+        FirebaseAnalytics.log(.supportUsFromDashboard)
     }
 
     // MARK: - Networking

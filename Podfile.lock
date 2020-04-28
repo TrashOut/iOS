@@ -33,6 +33,8 @@ PODS:
     - FBSDKShareKit/Share (= 5.15.1)
   - FBSDKShareKit/Share (5.15.1):
     - FBSDKCoreKit (~> 5.0)
+  - Firebase/Analytics (6.21.0):
+    - Firebase/Core
   - Firebase/Auth (6.21.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.5.1)
@@ -148,6 +150,7 @@ DEPENDENCIES:
   - FacebookLogin
   - FacebookShare
   - FBSDKCoreKit
+  - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Messaging
@@ -228,6 +231,6 @@ SPEC CHECKSUMS:
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
 
-PODFILE CHECKSUM: b9c28da3e5e8bf48a5bf9f78cb346a4608139439
+PODFILE CHECKSUM: 84fd78aeae30781286f6a99b2ef517d8113df992
 
 COCOAPODS: 1.8.4

@@ -94,10 +94,12 @@ class InfoViewController: ViewController {
     
     @IBAction func showFAQ() {
         UIApplication.shared.open(Link.frequentlyAskedQuestions.url)
+        FirebaseAnalytics.log(.showFAQ)
     }
     
     @IBAction func showSupportUsPage() {
         UIApplication.shared.open(Link.supportUs.url)
+        FirebaseAnalytics.log(.supportUsFromInfo)
     }
 
     @IBAction func showTermsAndConditions(_ sender: Any) {

@@ -144,13 +144,9 @@ class Trash: JsonDecodable, Cachable {
     var events: [Event] = []
     var updateNeeded: Bool = false
 
-    // https://admin.trashout.ngo/trash-management/detail/{trash_id}
 	var sharingUrl: String {
-		guard let url = url else { return "http://admin.trashout.ngo/" }
-		if URL(string: url) == nil {
-			return "http://admin.trashout.ngo/"
-		}
-		return url
+        let url = self.url.flatMap(URL.init) ?? Link.dump(id: id).url
+        return url.absoluteString
 	}
 
     // MARK: - Lifecycle

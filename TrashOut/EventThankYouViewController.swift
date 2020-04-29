@@ -37,6 +37,7 @@ class EventThankYouViewController: UIViewController {
     @IBOutlet var lblClaimTop: UILabel!
     @IBOutlet var lblClaimBotton: UILabel!
     @IBOutlet var btnShare: UIButton!
+    @IBOutlet var btnDetail: UIButton!
     
     var event: Event?
     
@@ -49,6 +50,8 @@ class EventThankYouViewController: UIViewController {
         lblClaimBotton.text = "event.create.thankYou.sentence3".localized
         btnShare.setTitle("event.create.thankYou.shareTitle".localized.uppercased(with: .current), for: .normal)
         btnShare.theme()
+        btnDetail.setTitle("event.create.thankYou.detail\n".localized.uppercased(with: .current), for: .normal)
+        btnDetail.theme()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -64,5 +67,12 @@ class EventThankYouViewController: UIViewController {
         let vc = UIActivityViewController(activityItems: [url], applicationActivities: [])
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func detailButtonTapped() {
+        guard let id = event?.id else { return }
+        let detailVC = storyboard!.instantiateViewController(withIdentifier: "EventDetailViewController") as! EventDetailViewController
+        detailVC.id = id
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

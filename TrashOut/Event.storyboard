@@ -1346,10 +1346,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eT-lJ-KR1">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="609"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="673.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThankYouBottom" translatesAutoresizingMaskIntoConstraints="NO" id="gY4-q2-xaD">
-                                                <rect key="frame" x="0.0" y="227" width="320" height="382"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThankYouBottom" translatesAutoresizingMaskIntoConstraints="NO" id="gY4-q2-xaD">
+                                                <rect key="frame" x="0.0" y="291.5" width="320" height="382"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="gY4-q2-xaD" secondAttribute="height" multiplier="160:191" id="sCm-pM-3hK"/>
                                                 </constraints>
@@ -1362,14 +1362,17 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxd-p5-O4s">
-                                                <rect key="frame" x="32" y="160" width="256" height="21.5"/>
+                                                <rect key="frame" x="32" y="160" width="256" height="20"/>
                                                 <fontDescription key="fontDescription" name="Capriola-Regular" family="Capriola" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrS-Qn-SFn">
-                                                <rect key="frame" x="48" y="201.5" width="224" height="30"/>
+                                                <rect key="frame" x="48" y="200" width="224" height="40"/>
                                                 <color key="backgroundColor" red="0.45882352939999999" green="0.79607843140000001" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="LMb-7k-oIb"/>
+                                                </constraints>
                                                 <state key="normal" title="SHARE">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -1378,24 +1381,38 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cao-2a-Ujh">
-                                                <rect key="frame" x="32" y="251.5" width="256" height="20.5"/>
+                                                <rect key="frame" x="32" y="316" width="256" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGz-gh-RBx">
+                                                <rect key="frame" x="48" y="256" width="224" height="40"/>
+                                                <color key="backgroundColor" red="0.45882352939999999" green="0.79607843140000001" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="SEE EVENT">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="detailButtonTapped" destination="nUS-1F-MvZ" eventType="touchUpInside" id="i41-Zg-9Sp"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Kxd-p5-O4s" firstAttribute="centerX" secondItem="5eT-lJ-KR1" secondAttribute="centerX" id="3WD-in-Dow"/>
+                                            <constraint firstItem="pGz-gh-RBx" firstAttribute="top" secondItem="BrS-Qn-SFn" secondAttribute="bottom" constant="16" id="6pa-6L-U1r"/>
                                             <constraint firstItem="cao-2a-Ujh" firstAttribute="centerX" secondItem="5eT-lJ-KR1" secondAttribute="centerX" id="FFr-pq-0nP"/>
+                                            <constraint firstItem="cao-2a-Ujh" firstAttribute="top" secondItem="pGz-gh-RBx" secondAttribute="bottom" constant="20" id="GBK-rC-yrL"/>
                                             <constraint firstItem="Kxd-p5-O4s" firstAttribute="width" secondItem="5eT-lJ-KR1" secondAttribute="width" multiplier="0.8" id="HqN-yU-1RY"/>
-                                            <constraint firstItem="cao-2a-Ujh" firstAttribute="top" secondItem="BrS-Qn-SFn" secondAttribute="bottom" constant="20" id="LXT-dN-sVe"/>
                                             <constraint firstAttribute="bottom" secondItem="gY4-q2-xaD" secondAttribute="bottom" id="Veo-r3-MY6"/>
                                             <constraint firstItem="BrS-Qn-SFn" firstAttribute="top" secondItem="Kxd-p5-O4s" secondAttribute="bottom" constant="20" id="XTl-uR-2mV"/>
                                             <constraint firstItem="BrS-Qn-SFn" firstAttribute="width" secondItem="5eT-lJ-KR1" secondAttribute="width" multiplier="0.7" id="YP6-N1-EEV"/>
+                                            <constraint firstItem="pGz-gh-RBx" firstAttribute="leading" secondItem="BrS-Qn-SFn" secondAttribute="leading" id="dTj-yS-WIE"/>
                                             <constraint firstItem="gY4-q2-xaD" firstAttribute="leading" secondItem="5eT-lJ-KR1" secondAttribute="leading" id="efB-4z-NPx"/>
                                             <constraint firstItem="BrS-Qn-SFn" firstAttribute="centerX" secondItem="5eT-lJ-KR1" secondAttribute="centerX" id="g4f-j4-oJH"/>
                                             <constraint firstAttribute="trailing" secondItem="gY4-q2-xaD" secondAttribute="trailing" id="mgn-UZ-j9u"/>
+                                            <constraint firstItem="pGz-gh-RBx" firstAttribute="height" secondItem="BrS-Qn-SFn" secondAttribute="height" id="mic-Hj-e6l"/>
+                                            <constraint firstItem="pGz-gh-RBx" firstAttribute="trailing" secondItem="BrS-Qn-SFn" secondAttribute="trailing" id="nKI-sc-kmR"/>
                                             <constraint firstItem="PMN-yy-YgA" firstAttribute="centerX" secondItem="5eT-lJ-KR1" secondAttribute="centerX" id="pmm-Zo-nFU"/>
                                             <constraint firstItem="Kxd-p5-O4s" firstAttribute="top" secondItem="PMN-yy-YgA" secondAttribute="bottom" constant="20" id="qGh-XW-cDW"/>
                                             <constraint firstItem="gY4-q2-xaD" firstAttribute="top" secondItem="cao-2a-Ujh" secondAttribute="bottom" constant="-45" id="toB-TS-XOx"/>
@@ -1424,6 +1441,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <size key="freeformSize" width="320" height="1200"/>
                     <connections>
+                        <outlet property="btnDetail" destination="pGz-gh-RBx" id="bPw-6m-cKr"/>
                         <outlet property="btnShare" destination="BrS-Qn-SFn" id="5TS-ya-Osh"/>
                         <outlet property="lblClaimBotton" destination="cao-2a-Ujh" id="iqQ-de-h1W"/>
                         <outlet property="lblClaimTop" destination="Kxd-p5-O4s" id="Oi2-pr-hPB"/>

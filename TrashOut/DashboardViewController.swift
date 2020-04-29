@@ -812,11 +812,11 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
     // MARK: Notifications handling
     
     func registerForNotifcations() {
-        NotificationCenter.default.addObserver(self, selector: #selector(DashboardViewController.catchNotification), name: .userJoindedEvent, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(DashboardViewController.catchNotification), name: .userUpdatedTrash, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(DashboardViewController.catchNotification), name: .userCreatedTrash, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(DashboardViewController.catchNotification), name: .userLoggedIn, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(DashboardViewController.catchNotification), name: .userLoggedOut, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(catchNotification(notification:)), name: .userJoindedEvent, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(catchNotification(notification:)), name: .userUpdatedTrash, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(catchNotification(notification:)), name: .userCreatedTrash, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(catchNotification(notification:)), name: .userLoggedIn, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(catchNotification(notification:)), name: .userLoggedOut, object: nil)
     }
     
     @objc func catchNotification(notification:Notification) -> Void {

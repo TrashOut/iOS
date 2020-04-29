@@ -956,10 +956,10 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
     // MARK: Notifications handling
     
     func registerForNotifcations() {
-        NotificationCenter.default.addObserver(self, selector: #selector(DashboardViewController.catchNotification), name: .userJoindedEvent, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(catchNotification(notification:)), name: .userJoindedEvent, object: nil)
     }
     
-    func catchNotification(notification:Notification) -> Void {
+    @objc func catchNotification(notification:Notification) -> Void {
         self.loadData()
     }
     

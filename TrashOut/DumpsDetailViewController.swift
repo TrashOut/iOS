@@ -540,6 +540,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
 			}
             vc.trashId = trash.id
             let navController = UINavigationController(rootViewController: vc)
+            navController.modalPresentationStyle = .fullScreen
             present(navController, animated: true, completion: nil)
         } else {
             show(message: "event.create.loginMessage".localized,  okActionTitle: "global.login".localized ,okAction: { [unowned self] (alertAction) in

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0F682E6E245887F600DD135F /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F682E6D245887F600DD135F /* FirebaseAnalytics.swift */; };
 		0F682E6F245887F600DD135F /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F682E6D245887F600DD135F /* FirebaseAnalytics.swift */; };
+		0F77D26B24594B3A006141E6 /* EventThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F77D26A24594B3A006141E6 /* EventThankYouViewController.swift */; };
+		0F77D26C24594B43006141E6 /* EventThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F77D26A24594B3A006141E6 /* EventThankYouViewController.swift */; };
 		0F9A2147245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		0F9A2148245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		15B167678E5B118BE26F023C /* Pods_TrashOutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B508F54028E3BAAC67A7D92F /* Pods_TrashOutUITests.framework */; };
@@ -340,6 +342,7 @@
 
 /* Begin PBXFileReference section */
 		0F682E6D245887F600DD135F /* FirebaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalytics.swift; sourceTree = "<group>"; };
+		0F77D26A24594B3A006141E6 /* EventThankYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventThankYouViewController.swift; sourceTree = "<group>"; };
 		0F9A2146245745FE005A8F27 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		0FD8FA952449A0D50064240A /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA982449A1F90064240A /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -617,6 +620,7 @@
 				FCE79BE11DE44E6700D3E9B6 /* EventDumpsViewController.swift */,
 				FCE79BE31DE4505600D3E9B6 /* EventDateViewController.swift */,
 				FCED66B01DF1694A0009D4ED /* EventDetailViewController.swift */,
+				0F77D26A24594B3A006141E6 /* EventThankYouViewController.swift */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -1675,6 +1679,7 @@
 				8E2A1B1A202236E800C1AC70 /* EventNewViewController.swift in Sources */,
 				8E2A1B1B202236E800C1AC70 /* TrashHunterModel.swift in Sources */,
 				CF6DE9C0212ECBA500610F41 /* BackgroundTimer.swift in Sources */,
+				0F77D26C24594B43006141E6 /* EventThankYouViewController.swift in Sources */,
 				8E2A1B1C202236E800C1AC70 /* ClusteringManager.swift in Sources */,
 				8E2A1B1D202236E800C1AC70 /* ProfileEditViewController.swift in Sources */,
 				8E2A1B1E202236E800C1AC70 /* TutorialViewController.swift in Sources */,
@@ -1813,6 +1818,7 @@
 				FC3E0E711DDE73A0006F1D31 /* EventNewViewController.swift in Sources */,
 				C3E90C2E1E436A24002FDC2D /* TrashHunterModel.swift in Sources */,
 				C374778E1DBA094B005AC532 /* ClusteringManager.swift in Sources */,
+				0F77D26B24594B3A006141E6 /* EventThankYouViewController.swift in Sources */,
 				C32F8D571DEC80120009A5C4 /* ProfileEditViewController.swift in Sources */,
 				C3711D9A1E8C07A900A84B3A /* TutorialViewController.swift in Sources */,
 				C3A6176E1DB8E53E0092BF32 /* DumpsMapManager.swift in Sources */,

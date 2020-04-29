@@ -111,7 +111,7 @@ extension Networking {
 	
 	- Note: doesnt returns event nor trash
     */
-    func createEvent(_ name: String, gps: Coordinates, description: String, start: String, duration: Int, bring: String, have: String, contact: Contact, trashPointsId: [Int]?, collectionPointIds: [Int], callback: @escaping (Trash?, Error?) -> ()) {
+    func createEvent(_ name: String, gps: Coordinates, description: String, start: String, duration: Int, bring: String, have: String, contact: Contact, trashPointsId: [Int]?, collectionPointIds: [Int], callback: @escaping (Event?, Error?) -> ()) {
         guard Networking.isConnectedToInternet else {
             callback(nil, NetworkingError.noInternetConnection)
             return

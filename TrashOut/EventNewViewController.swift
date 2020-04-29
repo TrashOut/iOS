@@ -295,19 +295,18 @@ class EventNewViewController: ViewController, UITextViewDelegate {
         if (have == nil ) { have = "" }
         
 		Networking.instance.createEvent(name, gps: gps, description: descript, start: start, duration: duration, bring: bring, have: have, contact: contact, trashPointsId: trashIds, collectionPointIds: collectionPointIds) { [weak self] (event, error) in
+            guard let self = self else { return }
 			guard error == nil else {
-				print(error?.localizedDescription as Any)
-				self?.show(message: (error?.localizedDescription)!)
+				print(error!.localizedDescription)
+				self.show(message: error!.localizedDescription)
 				LoadingView.hide()
 				return
 			}
-			self?.onEventCreated?()
-			let alert = UIAlertController(title: nil, message: "event.create.saved".localized, preferredStyle: .alert)
-			let ok = UIAlertAction.init(title: "global.ok".localized, style: .default) { [weak self] (alertAction) in
-				self?.close()
-			}
-			alert.addAction(ok)
-			self?.present(alert, animated: true, completion: nil)
+			self.onEventCreated?()
+            let thankYouVC = self.storyboard!.instantiateViewController(withIdentifier: "EventThankYouViewController") as! EventThankYouViewController
+            thankYouVC.event = event
+            thankYouVC.dismissHandler = { [weak self] in self?.close() }
+            self.navigationController?.pushViewController(thankYouVC, animated: true)
 		}
     }
 

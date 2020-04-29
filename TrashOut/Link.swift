@@ -39,6 +39,8 @@ enum Link {
     case frequentlyAskedQuestions
     case supportUs
     case adminHome
+    case dump(id: Int)
+    case event(id: Int)
     case addJunkyard
     case editJunkyard(id: Int)
     case sendEmail(to: String)
@@ -61,6 +63,10 @@ enum Link {
             #else
                 urlString = "https://admin.trashout.ngo"
             #endif
+        case .dump(let id):
+            return Link.adminHome.url.appendingPathComponent("/trash-management/detail/\(id)")
+        case .event(let id):
+            return Link.adminHome.url.appendingPathComponent("/events/detail/\(id)")
         case .addJunkyard:
             return Link.adminHome.url.appendingPathComponent("/collection-points/list")
         case .editJunkyard(let id):

@@ -17,12 +17,9 @@ class ReportThankYouViewController: ViewController {
     @IBOutlet var lblClaimBotton: UILabel!
     @IBOutlet var btnShare: UIButton!
     
-    var trash: Trash? {
-        didSet {
-        }
-    }
+    var trash: Trash?
     
-    var dismissHandler:(()->Void)!
+    var dismissHandler: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +32,15 @@ class ReportThankYouViewController: ViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if (self.dismissHandler != nil) && self.isMovingFromParent {
-            dismissHandler()
+        if isMovingFromParent {
+            dismissHandler?()
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    // MARK: - Share
-
     @IBAction func shareButtonTapped() {
         guard let id = trash?.id else { return }
-        let message = "https://admin.trashout.ngo/trash-management/detail/" + String(id)
-        let vc = UIActivityViewController(activityItems: [message], applicationActivities: [])
+        let url = Link.dump(id: id).url
+        let vc = UIActivityViewController(activityItems: [url], applicationActivities: [])
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true, completion: nil)
     }

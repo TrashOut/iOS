@@ -354,7 +354,7 @@
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+420 123 456 789" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b96-8e-sZt">
-                                                                                <rect key="frame" x="40" y="10" width="143.5" height="20.5"/>
+                                                                                <rect key="frame" x="40" y="10" width="309" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -363,11 +363,12 @@
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <gestureRecognizers/>
                                                                         <constraints>
+                                                                            <constraint firstAttribute="trailing" secondItem="b96-8e-sZt" secondAttribute="trailing" constant="10" id="LNs-gq-ipB"/>
                                                                             <constraint firstItem="ECN-6R-Npb" firstAttribute="centerY" secondItem="pFv-bK-SH2" secondAttribute="centerY" id="MH9-lI-OiB"/>
                                                                             <constraint firstItem="ECN-6R-Npb" firstAttribute="leading" secondItem="pFv-bK-SH2" secondAttribute="leading" constant="10" id="ap8-aR-a8u"/>
+                                                                            <constraint firstItem="b96-8e-sZt" firstAttribute="centerY" secondItem="pFv-bK-SH2" secondAttribute="centerY" id="fYz-bw-znm"/>
                                                                             <constraint firstAttribute="height" constant="40" id="s57-VY-CW3"/>
                                                                             <constraint firstItem="b96-8e-sZt" firstAttribute="leading" secondItem="pFv-bK-SH2" secondAttribute="leading" constant="40" id="tnL-Lq-Uzp"/>
-                                                                            <constraint firstItem="b96-8e-sZt" firstAttribute="centerY" secondItem="pFv-bK-SH2" secondAttribute="centerY" id="uzN-jd-v1N"/>
                                                                         </constraints>
                                                                         <connections>
                                                                             <outletCollection property="gestureRecognizers" destination="CtU-oz-6Wg" appends="YES" id="rQg-oT-drM"/>
@@ -384,7 +385,7 @@
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="holesovice@collection-points.cz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9KY-6u-LAv">
-                                                                                <rect key="frame" x="40" y="10" width="248" height="20.5"/>
+                                                                                <rect key="frame" x="40" y="10" width="309" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -396,6 +397,7 @@
                                                                             <constraint firstItem="IUN-oc-j0s" firstAttribute="leading" secondItem="ba2-Q8-7Gk" secondAttribute="leading" constant="10" id="5qE-hX-KQY"/>
                                                                             <constraint firstItem="IUN-oc-j0s" firstAttribute="centerY" secondItem="ba2-Q8-7Gk" secondAttribute="centerY" id="7f2-b3-Isn"/>
                                                                             <constraint firstItem="9KY-6u-LAv" firstAttribute="centerY" secondItem="ba2-Q8-7Gk" secondAttribute="centerY" id="GSa-sX-OUq"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="9KY-6u-LAv" secondAttribute="trailing" constant="10" id="HjJ-sm-wSP"/>
                                                                             <constraint firstItem="9KY-6u-LAv" firstAttribute="leading" secondItem="ba2-Q8-7Gk" secondAttribute="leading" constant="40" id="Mjr-Sf-oN1"/>
                                                                             <constraint firstAttribute="height" constant="40" id="b7J-Ij-cPY"/>
                                                                         </constraints>
@@ -415,7 +417,7 @@
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://holesovice.cz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ3-d6-yq5">
-                                                                                <rect key="frame" x="40" y="10" width="159" height="20.5"/>
+                                                                                <rect key="frame" x="40" y="10" width="309" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -426,6 +428,7 @@
                                                                         <constraints>
                                                                             <constraint firstItem="rZ3-d6-yq5" firstAttribute="centerY" secondItem="XaV-x5-CCj" secondAttribute="centerY" id="Bdc-eo-9p5"/>
                                                                             <constraint firstItem="rZ3-d6-yq5" firstAttribute="leading" secondItem="XaV-x5-CCj" secondAttribute="leading" constant="40" id="DTA-jF-DDx"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="rZ3-d6-yq5" secondAttribute="trailing" constant="10" id="N8E-0T-ry2"/>
                                                                             <constraint firstItem="DxN-xt-hM8" firstAttribute="leading" secondItem="XaV-x5-CCj" secondAttribute="leading" constant="10" id="XsC-v7-Bid"/>
                                                                             <constraint firstItem="DxN-xt-hM8" firstAttribute="centerY" secondItem="XaV-x5-CCj" secondAttribute="centerY" id="lc1-L3-GlN"/>
                                                                             <constraint firstAttribute="height" constant="40" id="lnM-KH-SKa"/>

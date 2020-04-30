@@ -184,6 +184,16 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.backgroundColor = .white
+        label.textColor = Theme.current.color.green
+        label.font = Theme.current.font.boldText
+        label.text = section == 0 ? "home.nearestRecyclingPoints".localized : "collectionPoint.other".localized
+        label.textAlignment = .center
+        return label
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell: JunkyardTableViewCell
@@ -226,16 +236,6 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "JunkyardsDetailViewController") as? JunkyardsDetViewController else { return }
         vc.junkyard = junkyard
         navigationController?.pushViewController(vc, animated: true)
-    }
-
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        guard let header = view as? UITableViewHeaderFooterView else { return }
-
-		header.textLabel?.text = section == 0 ? "home.nearestRecyclingPoints".localized : "collectionPoint.other".localized
-        header.textLabel?.textColor = Theme.current.color.green
-        header.textLabel?.font = Theme.current.font.boldText
-        header.textLabel?.textAlignment = .center
-        header.backgroundView?.backgroundColor = .white
     }
 
     @IBAction func addJunkyard() {

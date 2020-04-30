@@ -1241,7 +1241,7 @@
 "info.supportUs" = "Podporiť projekt";
 
 /*Fuzzy*/
-"home.recycling_point_edit_redirect" = "Zberné miesto je zatiaľ možné upravovať len z webovej aplikácie, do ktorej sa prihlásite cez webový prehliada";
+"home.recycling_point_edit_redirect" = "Zberné miesto je zatiaľ možné upravovať len z webovej aplikácie, do ktorej sa prihlásite cez webový prehliadač";
 "collectionPoint.email_is_missing" = "Pridať emailovú adresu";
 "collectionPoint.phone_is_missing" = "Pridať telefónne číslo";
 "collectionPoint.web_is_missing" = "Pridať webovú adresu";

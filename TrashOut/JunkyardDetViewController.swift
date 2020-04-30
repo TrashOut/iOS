@@ -319,7 +319,11 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
     
     @IBAction func editJunkyard() {
         let url = Link.editJunkyard(id: junkyard.id).url
-        show(title: "home.recycling_point_edit_title".localized, message: "home.recycling_point_edit_redirect".localized, okAction: { _ in
+        show(title: "home.recycling_point_edit_title".localized,
+             message: "home.recycling_point_edit_redirect".localized,
+             okActionTitle: "home.recycling_point_edit_go_to_web".localized,
+             cancelActionTitle: "home.recycling_point_edit_do_later\n".localized,
+             okAction: { _ in
             UIApplication.shared.open(url)
             FirebaseAnalytics.log(.editJunkyard)
         })

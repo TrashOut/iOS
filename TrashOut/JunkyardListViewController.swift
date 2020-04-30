@@ -239,7 +239,11 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
     }
 
     @IBAction func addJunkyard() {
-        show(title: "home.recycling_point_add_new_tittle".localized, message: "home.recycling_point_add_new_redirect".localized, okAction: { _ in
+        show(title: "home.recycling_point_add_new_tittle".localized,
+             message: "home.recycling_point_add_new_redirect".localized,
+             okActionTitle: "home.recycling_point_add_new_go_to_web".localized,
+             cancelActionTitle: "home.recycling_point_add_new_do_later".localized,
+             okAction: { _ in
             UIApplication.shared.open(Link.addJunkyard.url)
             FirebaseAnalytics.log(.addJunkyard)
         })

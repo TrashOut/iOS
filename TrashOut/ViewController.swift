@@ -117,25 +117,18 @@ class ViewController: UIViewController {
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
     }
-
-    /**
-     Show alert dialog with message and cancel button
-     
-     - Warning: avoid using this method
-     */
-    func show(title: String? = nil, message:String , okAction: ((UIAlertAction) -> Swift.Void)? = nil, cancelAction: ((UIAlertAction) -> Swift.Void)? = nil ) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let ok = UIAlertAction.init(title: "global.yes".localized, style: .default, handler: okAction)
-        let cancel = UIAlertAction.init(title: "global.cancel".localized, style: .cancel, handler: cancelAction)
-        alert.addAction(ok)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
-    }
     
-    func show(title: String? = nil, message:String , okActionTitle: String ,okAction: ((UIAlertAction) -> Swift.Void)? = nil, cancelAction: ((UIAlertAction) -> Swift.Void)? = nil ) {
+    func show(
+        title: String? = nil,
+        message: String,
+        okActionTitle: String? = nil,
+        cancelActionTitle: String? = nil,
+        okAction: ((UIAlertAction) -> Swift.Void)? = nil,
+        cancelAction: ((UIAlertAction) -> Swift.Void)? = nil ) {
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let ok = UIAlertAction.init(title: okActionTitle, style: .default, handler: okAction)
-        let cancel = UIAlertAction.init(title: "global.cancel".localized, style: .cancel, handler: cancelAction)
+        let ok = UIAlertAction.init(title: okActionTitle ?? "global.yes".localized, style: .default, handler: okAction)
+        let cancel = UIAlertAction.init(title: cancelActionTitle ?? "global.cancel".localized, style: .cancel, handler: cancelAction)
         alert.addAction(ok)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)

@@ -78,6 +78,9 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var lPhoneTitle: UILabel?
     @IBOutlet weak var lPhoneValue: UILabel?
     
+    @IBOutlet weak var vWeHave: UIView?
+    @IBOutlet weak var vWeNeed: UIView?
+    
     var showJoinButton: Bool = false
     var id: Int!
     //var reportTime: String!
@@ -239,11 +242,19 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
     }
 
     fileprivate func setWeHaveView() {
-        lblGlovesBags.text = event?.have ?? " "
+        guard let text = event?.have?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty else {
+            vWeHave?.removeFromSuperview()
+            return
+        }
+        lblGlovesBags.text = text
     }
 
     fileprivate func setPleaseBringView() {
-        lblShovelGoodMood.text = event?.bring ?? " "
+        guard let text = event?.bring?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty else {
+            vWeNeed?.removeFromSuperview()
+            return
+        }
+        lblShovelGoodMood.text = text
     }
 
     @IBAction func joinEvent(_ sender: Any) {

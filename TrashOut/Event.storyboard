@@ -1227,6 +1227,8 @@
                         <outlet property="tvAddress" destination="HHd-L4-uBE" id="Dtc-ow-Rzp"/>
                         <outlet property="tvCoordinates" destination="A5s-Yw-HC4" id="HIw-CJ-knv"/>
                         <outlet property="tvDumpsToClean" destination="ex3-Rc-ZNP" id="YpL-yD-vbc"/>
+                        <outlet property="vWeHave" destination="two-DJ-tio" id="B6b-dw-f45"/>
+                        <outlet property="vWeNeed" destination="tzg-wr-e5q" id="PYk-ix-JuN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMy-gm-WZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1346,10 +1348,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eT-lJ-KR1">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="673.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="675"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThankYouBottom" translatesAutoresizingMaskIntoConstraints="NO" id="gY4-q2-xaD">
-                                                <rect key="frame" x="0.0" y="291.5" width="320" height="382"/>
+                                                <rect key="frame" x="0.0" y="293" width="320" height="382"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="gY4-q2-xaD" secondAttribute="height" multiplier="160:191" id="sCm-pM-3hK"/>
                                                 </constraints>
@@ -1362,13 +1364,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxd-p5-O4s">
-                                                <rect key="frame" x="32" y="160" width="256" height="20"/>
+                                                <rect key="frame" x="32" y="160" width="256" height="21.5"/>
                                                 <fontDescription key="fontDescription" name="Capriola-Regular" family="Capriola" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrS-Qn-SFn">
-                                                <rect key="frame" x="48" y="200" width="224" height="40"/>
+                                                <rect key="frame" x="48" y="201.5" width="224" height="40"/>
                                                 <color key="backgroundColor" red="0.45882352939999999" green="0.79607843140000001" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="LMb-7k-oIb"/>
@@ -1381,13 +1383,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cao-2a-Ujh">
-                                                <rect key="frame" x="32" y="316" width="256" height="20.5"/>
+                                                <rect key="frame" x="32" y="317.5" width="256" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGz-gh-RBx">
-                                                <rect key="frame" x="48" y="256" width="224" height="40"/>
+                                                <rect key="frame" x="48" y="257.5" width="224" height="40"/>
                                                 <color key="backgroundColor" red="0.45882352939999999" green="0.79607843140000001" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="SEE EVENT">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

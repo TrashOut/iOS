@@ -44,6 +44,10 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
 		super.viewDidLoad()
         
         self.delegate = self
+        
+        for vc in viewControllers ?? [] {
+            vc.tabBarItem.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 11, weight: .medium)], for: .normal)
+        }
 
 		var lvcs = super.viewControllers
 		lvcs?.remove(at: 5)

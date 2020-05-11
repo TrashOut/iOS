@@ -762,16 +762,10 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     fileprivate func showAddressAndCoorinates(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         lblAddress.text = ""
         lblCoordinates.text = "\(String(format:"%.6f", latitude)), \(String(format:"%.6f", longitude))"
-
-        LocationManager.manager.resolveName(for: CLLocation.init(latitude: latitude, longitude: longitude)) { [weak self] (name) in
-			guard let name = name else { return }
-            let locality = name.locality != nil ? name.locality! + ", " : ""
-            let administrativeArea = name.administrativeArea != nil ? name.administrativeArea! + ", " : ""
-            let country = name.country ?? ""
-
-            self?.lblAddress.text = locality + administrativeArea + country
-            self?.lblAddress.adjustsFontSizeToFitWidth = true
-        }
+        let gps = GPS()
+        gps.lat = latitude
+        gps.long = longitude
+        setAddress(gps: gps, label: lblAddress)
     }
 
     /**

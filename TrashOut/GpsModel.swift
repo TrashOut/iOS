@@ -106,7 +106,6 @@ class GPS: JsonDecodable {
 
         return dict
     }
-
 }
 
 

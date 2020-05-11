@@ -148,25 +148,15 @@ class EventLocationViewController: ViewController, MKMapViewDelegate {
 				}
 
 				locationDelegate?.writeLocationBack(value: annotation.coordinate)
-
-
-                if let zip = name.subThoroughfare, let street = name.thoroughfare {
-					adressDelegate?.writeCityAndStreetBack(value: street + " " + zip)
-                    annotation.subtitle = street + " " + zip
-                } else if name.subThoroughfare == nil, let street = name.thoroughfare {
-					adressDelegate?.writeCityAndStreetBack(value: street)
-                    annotation.subtitle = street
-                } else if let subLocality = name.subLocality {
-					adressDelegate?.writeCityAndStreetBack(value: subLocality)
-					annotation.subtitle = subLocality
-                } else if let locality = name.locality {
-					adressDelegate?.writeCityAndStreetBack(value: locality)
-                    annotation.subtitle = locality
-                } else if let country = name.country {
-					adressDelegate?.writeCityAndStreetBack(value: country)
-                    annotation.subtitle = country
+                if let address = name.formattedAddressLines?.joined(separator: ", ") {
+                    adressDelegate?.writeCityAndStreetBack(value: address)
                 } else {
-					adressDelegate?.writeCityAndStreetBack(value: "event.noAddressFound".localized)
+                    adressDelegate?.writeCityAndStreetBack(value: "event.noAddressFound".localized)
+                }
+                
+                if let shortName = name.shortName {
+                    annotation.subtitle = shortName
+                } else {
                     annotation.subtitle = "event.noAddressFound".localized
                 }
             }

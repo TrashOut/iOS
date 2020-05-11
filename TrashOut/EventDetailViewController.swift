@@ -224,7 +224,7 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
         // Address and coordinates labels
         let coords = CLLocationCoordinate2DMake(gps.lat, gps.long)
         showEventOnMap(coords: coords)
-        setAddress(gps:gps, input: &tvAddress.text)
+        setAddress(gps: gps, textView: tvAddress)
         tvCoordinates.text = GpsFormatter.instance.string(fromLat: gps.lat, lng: gps.long)
     }
 

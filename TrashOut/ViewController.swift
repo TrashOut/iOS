@@ -144,54 +144,28 @@ class ViewController: UIViewController {
         label.text = DistanceRounding.shared.localizedDistance(meteres: distanceInM)
     }
     
-    func setAddress(gps: GPS, input: inout String?) {
-        input = "global.noAddress".localized
-        if let zip = gps.zip, let street = gps.street, let country = gps.country {
-            input = "\(zip) " + street + ", " + country
-        } else if gps.zip == nil, let street = gps.street, let country = gps.country {
-            input = street + ", " + country
-        } else {
-            input = gps.locality
-        }
-    }
-    
-    
     /**
-     Set the most accurate address
-     */
-    func setAddress(gps: GPS, label: UILabel) {
-        label.text = "global.noAddress".localized
-        if let zip = gps.zip, let street = gps.street, let country = gps.country {
-            label.text = "\(zip) " + street + ", " + country
-        } else if gps.zip == nil, let street = gps.street, let country = gps.country {
-            label.text = street + ", " + country
+    Formats address from GPS object or by reverse-geocoding location coordinates.
+    */
+    func setAddress(gps: GPS, completion: @escaping (String) -> ()) {
+        if let address = gps.address {
+            completion(address)
         } else {
-            label.text = gps.locality
+            completion(" ")
+            LocationManager.manager.resolveName(for: CLLocation(latitude: gps.lat, longitude: gps.long)) { placemark in
+                let address = placemark?.formattedAddressLines?.joined(separator: ", ")
+                DispatchQueue.main.async {
+                    completion(address ?? "global.noAddress".localized)
+                }
+            }
         }
-        
-        /*
-        if let zip = gps.zip, let street = gps.street {
-            label.text =  label.text! + "\(zip) " + street
-        } else if gps.zip == nil, let street = gps.street {
-            label.text = label.text! + street
-        } else if let subLocality = gps.subLocality {
-            label.text = subLocality
-        } else if let locality = gps.locality {
-            label.text = label.text! + locality
-        } else if let aa3 = gps.aa3 {
-            label.text = aa3
-        } else if let aa2 = gps.aa2 {
-            label.text = aa2
-        } else if let aa1 = gps.aa1 {
-            label.text = aa1
-        } else if let country = gps.country {
-            label.text = label.text! + country
-        } else if let continent = gps.continent {
-            label.text = continent
-        } else {
-            label.text = "No address"
-        }
-        */
     }
     
+    func setAddress(gps: GPS, label: UILabel) {
+        setAddress(gps: gps) { [weak label] in label?.text = $0 }
+    }
+    
+    func setAddress(gps: GPS, textView: UITextView) {
+        setAddress(gps: gps) { [weak textView] in textView?.text = $0 }
+    }
 }

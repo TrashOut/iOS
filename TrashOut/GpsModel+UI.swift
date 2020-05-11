@@ -57,4 +57,14 @@ extension GPS {
 			return "global.noAddress".localized
 		}
 	}
+    
+    var address: String? {
+        let components: [String] = [
+            street ?? "",
+            subLocality ?? "",
+            locality ?? "",
+            country ?? ""
+        ].filter { !$0.isEmpty }
+        return !components.isEmpty ? components.joined(separator: ", ") : nil
+    }
 }

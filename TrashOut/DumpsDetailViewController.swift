@@ -396,28 +396,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
     */
     fileprivate func setAddressOfTrash() {
         guard let gps = trash?.gps else { return }
-
-        if let zip = gps.zip, let street = gps.street {
-            tvRemainAddress.text = "\(zip) " + street
-        } else if gps.zip == nil, let street = gps.street {
-            tvRemainAddress.text = street
-        } else if let subLocality = gps.subLocality {
-            tvRemainAddress.text = subLocality
-        } else if let locality = gps.locality {
-            tvRemainAddress.text = locality
-        } else if let aa3 = gps.aa3 {
-            tvRemainAddress.text = aa3
-        } else if let aa2 = gps.aa2 {
-            tvRemainAddress.text = aa2
-        } else if let aa1 = gps.aa1 {
-            tvRemainAddress.text = aa1
-        } else if let country = gps.country {
-            tvRemainAddress.text = country
-        } else if let continent = gps.continent {
-            tvRemainAddress.text = continent
-        } else {
-            tvRemainAddress.text = "global.noAddress".localized
-        }
+        setAddress(gps: gps, textView: tvRemainAddress)
     }
 
     /**

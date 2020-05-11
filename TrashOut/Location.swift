@@ -309,3 +309,28 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 	}
 
 }
+
+extension CLPlacemark {
+    
+    var formattedAddressLines: [String]? {
+        self.addressDictionary?["FormattedAddressLines"] as? [String]
+    }
+    
+    var shortName: String? {
+        if let street = self.thoroughfare, let number = self.subThoroughfare {
+            return "\(street) \(number)"
+        }
+        let components: [String?] = [
+            self.name,
+            self.thoroughfare,
+            self.subLocality,
+            self.locality,
+            self.subAdministrativeArea,
+            self.administrativeArea,
+            self.country,
+            self.inlandWater,
+            self.ocean
+        ]
+        return components.compactMap { $0 }.first { !$0.isEmpty }
+    }
+}

@@ -114,7 +114,7 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
     }
 
     func setJunkyardAddress() {
-        setAddress(gps: junkyard.gps!, input: &txvJunkyardAddress.text)
+        setAddress(gps: junkyard.gps!, textView: txvJunkyardAddress)
     }
     
 	func setJunkyardName() {

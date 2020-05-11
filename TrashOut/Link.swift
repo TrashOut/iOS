@@ -68,7 +68,7 @@ enum Link {
         case .event(let id):
             return Link.adminHome.url.appendingPathComponent("/events/detail/\(id)")
         case .addJunkyard:
-            return Link.adminHome.url.appendingPathComponent("/collection-points/list")
+            return Link.adminHome.url.appendingPathComponent("/collection-points/create")
         case .editJunkyard(let id):
             return Link.adminHome.url.appendingPathComponent("/collection-points/update/\(id)")
         case .sendEmail(let to):

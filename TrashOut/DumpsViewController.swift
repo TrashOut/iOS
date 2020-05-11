@@ -45,6 +45,10 @@ class DumpsViewController: ViewController {
 		loadMap()
         segmentControl.setTitle("global.map".localized, forSegmentAt: 0)
         segmentControl.setTitle("global.list".localized, forSegmentAt: 1)
+        segmentControl.sizeToFit()
+        var frame = segmentControl.frame
+        frame.size.width = max(frame.size.width, 120)
+        segmentControl.frame = frame
         segmentControl.layer.cornerRadius = segmentControl.bounds.height / 2
         segmentControl.layer.masksToBounds = true
         segmentControl.layer.borderColor = UIColor.white.cgColor

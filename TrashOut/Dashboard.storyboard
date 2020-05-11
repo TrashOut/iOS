@@ -924,10 +924,10 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yq4-nG-9zf">
-                                                        <rect key="frame" x="112.5" y="172" width="150" height="40"/>
+                                                        <rect key="frame" x="97.5" y="172" width="180" height="40"/>
                                                         <color key="backgroundColor" red="0.45882352939999999" green="0.79607843140000001" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="J9K-4i-TTo"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="J9K-4i-TTo"/>
                                                             <constraint firstAttribute="height" constant="40" placeholder="YES" id="Pse-qV-EJW"/>
                                                         </constraints>
                                                         <state key="normal" title="MORE">
@@ -962,11 +962,8 @@
                                                 <rect key="frame" x="0.0" y="2045.5" width="375" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvd-KI-UoR">
-                                                        <rect key="frame" x="112.5" y="8" width="150" height="40"/>
+                                                        <rect key="frame" x="97.5" y="8" width="180" height="40"/>
                                                         <color key="backgroundColor" red="0.45882352941176469" green="0.79607843137254897" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="O69-mL-NqE"/>
-                                                        </constraints>
                                                         <state key="normal" title="SUPPORT US">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -984,6 +981,7 @@
                                             </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="mvd-KI-UoR" firstAttribute="height" secondItem="Yq4-nG-9zf" secondAttribute="height" id="X6N-4d-Q25"/>
                                             <constraint firstItem="mvd-KI-UoR" firstAttribute="width" secondItem="Yq4-nG-9zf" secondAttribute="width" id="hVs-jU-qD2"/>
                                         </constraints>
                                     </stackView>

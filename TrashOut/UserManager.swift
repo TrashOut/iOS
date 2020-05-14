@@ -127,11 +127,11 @@ class UserManager {
 				return
 			}
             
+			let headers: HTTPHeaders = ["X-Token": token]
             #if DEBUG
-                print("HEADERS: \(token)")
+                print("HEADERS: \(headers)")
             #endif
             
-			let headers: HTTPHeaders = ["X-Token": token]
 			callback(headers)
 		}
     }

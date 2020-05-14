@@ -191,6 +191,8 @@ class EventNewViewController: ViewController, UITextViewDelegate {
         tvEquipmentAttendees.textColor = Theme.current.color.lightGray
         tvEquipmentWe.text = "event.whatWeHaveFull".localized
         tvEquipmentWe.textColor = Theme.current.color.lightGray
+        tvEmail.text = "global.email".localized
+        tvEmail.textColor = Theme.current.color.lightGray
         tvPhone.text = "global.phone".localized
         tvPhone.textColor = Theme.current.color.lightGray
 
@@ -219,15 +221,10 @@ class EventNewViewController: ViewController, UITextViewDelegate {
 			if let userEmail = user.email {
 				email = userEmail
 				tvEmail.text = userEmail
-			} else {
-				email = "global.email".localized
-				tvEmail.text = email
 			}
 			if let userPhone = user.phone {
 				phone = userPhone
 				tvPhone.text = userPhone
-			} else {
-				tvPhone.text = "global.phone".localized
 			}
 		}
 
@@ -380,6 +377,8 @@ class EventNewViewController: ViewController, UITextViewDelegate {
         case 3:
             have = textView.text
         case 4:
+            email = textView.text
+        case 5:
             phone = textView.text
         default:
             break

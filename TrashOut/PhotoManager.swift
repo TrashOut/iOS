@@ -45,7 +45,7 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
 	var store: LocalImage.StoreType = .temp
 
 	func checkCameraPermissions (vc: UIViewController, callback: @escaping (Error?) -> ()) {
-		let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video)))
+		let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
 		switch cameraAuthorizationStatus {
 		case .denied, .restricted:
 			let error = NSError.init(domain: "cz.trashout.TrashOut", code: 300, userInfo: [
@@ -76,7 +76,7 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
             if UIImagePickerController.isSourceTypeAvailable(source) {
                 picker.sourceType = source
                 picker.mediaTypes = [kUTTypeImage as String]
-                picker.allowsEditing = false
+                picker.allowsEditing = true
                 picker.delegate = self
                 vc.present(picker, animated: animated)
             } else {
@@ -123,11 +123,19 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
 	}
 
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-// Local variable inserted by Swift 4.2 migrator.
-let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
-
-        guard let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else { return }
-        let resizedImage = resizeImageToFormat(image)
+        guard
+            let originalImage = info[.originalImage] as? UIImage,
+            let cropRect = info[.cropRect] as? CGRect,
+            let croppedImage = cropImage(originalImage, to: cropRect)
+            else {
+                picker.dismiss(animated: self.animated) {
+                    let error = NSError(domain: "cz.trashout.TrashOut", code: 0, userInfo: [NSLocalizedDescriptionKey: "No photo taken".localized])
+                    self.failure?(error)
+                }
+                return
+        }
+        
+        let resizedImage = resizeImageToFormat(croppedImage)
 		let localImage = LocalImage()
 		localImage.store = .temp
 		localImage.image = resizedImage
@@ -137,6 +145,28 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
 			self.success?(localImage)
 		}
 	}
+    
+    func cropImage(_ image: UIImage, to rect: CGRect) -> UIImage? {
+        // remove black bands
+        var cropRect = rect
+        if cropRect.origin.x < 0 {
+            cropRect.size.width += cropRect.origin.x
+            cropRect.origin.x = 0
+        }
+        if cropRect.origin.y < 0 {
+            cropRect.size.height += cropRect.origin.y
+            cropRect.origin.y = 0
+        }
+        cropRect.origin.x = min(cropRect.origin.x, image.size.width - 1)
+        cropRect.origin.y = min(cropRect.origin.y, image.size.height - 1)
+        cropRect.size.width = min(cropRect.size.width, image.size.width - cropRect.origin.x)
+        cropRect.size.height = min(cropRect.size.height, image.size.height - cropRect.origin.y)
+        
+        UIGraphicsBeginImageContextWithOptions(cropRect.size, false, 1)
+        defer { UIGraphicsEndImageContext() }
+        image.draw(at: CGPoint(x: -cropRect.origin.x, y: -cropRect.origin.y))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
     
     func resizeImageToFormat(_ image: UIImage) -> UIImage {
         var ratio = CGFloat(1.0)
@@ -148,19 +178,4 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         let newSize = CGSize(width: image.size.width * ratio, height: image.size.height * ratio)
         return image.resizeImage(targetSize: newSize)
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromAVMediaType(_ input: AVMediaType) -> String {
-	return input.rawValue
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
-	return input.rawValue
 }

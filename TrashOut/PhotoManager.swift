@@ -82,7 +82,7 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
             } else {
                 let ac = UIAlertController(title: "global.noCameraSupport".localized, message: nil, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "global.ok".localized, style: .cancel) { (_) in
-                    
+                    vc.dismiss(animated: true)
                 })
                 vc.present(ac, animated: true, completion: nil)
             }
@@ -98,11 +98,13 @@ class PhotoManager: NSObject, UINavigationControllerDelegate, UIImagePickerContr
 		self.checkCameraPermissions(vc: vc) { [weak self] (error) in
 			if error != nil {
 				if let vc = vc as? ViewController {
-					vc.showWithSettings(message: "Allow access to camera in settings.".localized)
+                    vc.showWithSettings(message: "Allow access to camera in settings.".localized) {
+                        vc.dismiss(animated: true)
+                    }
 				} else {
 					let ac = UIAlertController(title: "Allow access to camera in settings.".localized, message: nil, preferredStyle: .alert)
 					ac.addAction(UIAlertAction(title: "global.ok".localized, style: .cancel) { (_) in
-
+                        vc.dismiss(animated: true)
 					})
 					vc.present(ac, animated: true, completion: nil)
 				}

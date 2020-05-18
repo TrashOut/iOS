@@ -106,13 +106,14 @@ class ViewController: UIViewController {
      
     - Warning: avoid using this method
     */
-    func showWithSettings(message: String) {
+    func showWithSettings(message: String, completion: (() -> Void)? = nil) {
         let alert = UIAlertController(title: nil, message: message.localized, preferredStyle: .alert)
         let settings = UIAlertAction.init(title: "global.settings".localized, style: .default) { (alertAction) in
             guard let appSettings = URL(string: UIApplication.openSettingsURLString) else { return }
             UIApplication.shared.open(appSettings)
+            completion?()
         }
-        let ok = UIAlertAction.init(title: "global.ok".localized, style: .default, handler: nil)
+        let ok = UIAlertAction.init(title: "global.ok".localized, style: .default, handler: { _ in completion?() })
         alert.addAction(settings)
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)

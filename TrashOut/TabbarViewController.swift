@@ -71,6 +71,13 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
         
         if signIn {
             self.selectedIndex = 4
+            DispatchQueue.main.async { [weak self] in
+                guard let nvc = self?.selectedViewController as? UINavigationController,
+                    let lsvc = nvc.topViewController as? LoginSignupViewController,
+                    let control = lsvc.segmentControl else { return }
+                control.selectedSegmentIndex = 1
+                lsvc.segmentValueChanged()
+            }
         }
 	}
     

@@ -54,63 +54,48 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 	*/
 	open var defaultLocation: CLLocation = CLLocation.init(latitude: 0, longitude: 0) // Center of universe?
 
-    var locationTimestamp: Date?
-
-	/// Needs refresh after 5 minutes by default
-	///
 	/// Just marks flag, no timer is set
-	open var refreshInterval: TimeInterval = 5*60
+    open var refreshInterval: TimeInterval = 60
 	open var locationNeedsRefresh: Bool {
-		get {
-			guard let lastTimestamp = locationTimestamp else { return true }
-			return lastTimestamp.addingTimeInterval(60*10) < Date()
-		}
+        (lastFetchedLocation?.timestamp ?? Date.distantPast) < Date().addingTimeInterval(-refreshInterval)
 	}
 
 	/**
 	Current user location last fetched, or use default location if not determined
 	*/
 	open var currentLocation: CLLocation {
-		get {
-			if let location = lastFethedLocation {
-				return location
-			} else {
-				return defaultLocation
-			}
-		}
-		set (newValue) {
-			self.lastFethedLocation = newValue
-			self.locationTimestamp = newValue.timestamp
-		}
+		get { lastFetchedLocation ?? defaultLocation }
+		set { lastFetchedLocation = newValue }
 	}
 
 	/**
 	Any location was already received (location was set any time in past)
 	*/
 	open var fetchedAnyLocation: Bool {
-		return locationTimestamp != nil
+		lastFetchedLocation != nil
 	}
 
 	/**
 	Reload current user location if needed, callback is alwayes called
 	*/
-	open func refreshCurrentLocationIfNeeded(_ callback: @escaping (CLLocation) -> Void) {
-		if locationNeedsRefresh {
-			//self.processCallback()
-			self.callback = callback
-			self.startManagerForLocationUpdates()
+	open func refreshCurrentLocationIfNeeded(desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyHundredMeters, _ callback: @escaping (CLLocation) -> Void) {
+        if locationNeedsRefresh || (lastFetchedLocation?.horizontalAccuracy ?? .infinity) > desiredAccuracy {
+            refreshCurrentLocation(desiredAccuracy: desiredAccuracy, callback)
 		} else {
-			callback(self.currentLocation)
+            let location = currentLocation
+            DispatchQueue.main.async {
+                callback(location)
+            }
 		}
 	}
 
 	/**
 	Reload current user location, callback is alwayes called
 	*/
-	open func refreshCurrentLocation(_ callback: @escaping (CLLocation) -> Void) {
-		//self.processCallback()
+    open func refreshCurrentLocation(desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyHundredMeters, _ callback: @escaping (CLLocation) -> Void) {
+        self.desiredAccuracy = desiredAccuracy
 		self.callback = callback
-		self.startManagerForLocationUpdates()
+		startManagerForLocationUpdates()
 	}
 
 	/**
@@ -156,54 +141,58 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 				callback(nil)
 				return
 			}
-
-            // mark.country
-            // mark.administrativeArea
-            // mark.locality
-            // mark.name
-
-            callback(mark)
+            DispatchQueue.main.async {
+                callback(mark)
+            }
         }
     }
 
 	// MARK: - CoreLocation processing
 
 	/// CoreLocation manager for location updates
-	fileprivate let locationManager: CLLocationManager = CLLocationManager()
+	private let locationManager: CLLocationManager = CLLocationManager()
 	/// Callback for granting permissions to use location
-	fileprivate var authorizationBlock: ((_ status: CLAuthorizationStatus) -> Void)?
+	private var authorizationBlock: ((_ status: CLAuthorizationStatus) -> Void)?
 	/// Last resolved location
-	fileprivate var lastFethedLocation: CLLocation?
+	private var lastFetchedLocation: CLLocation?
 	/// If there was error resolving location, there it is
-	fileprivate var lastError: NSError?
-	/// Accuracy needed for resolving location
-	fileprivate var desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyThreeKilometers
+	private var lastError: NSError?
 	/// Callback for refresh method to be called after location is defined
-	fileprivate var callback: ((CLLocation)->Void)?
+	private var callback: ((CLLocation)->Void)?
+    /// Accuracy desired by caller
+    private var desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyBest
+    /// Start time of location refresh
+    private var locationRefreshStartTime = Date.distantPast
 
-	fileprivate override init() {
+	private override init() {
 		super.init()
 		locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.activityType = .other
+        locationManager.pausesLocationUpdatesAutomatically = false
 	}
 
 	/**
 	Do the callback when location was found (or not)
 	*/
-	fileprivate func processCallback() {
+	private func processCallback() {
 		if let callback = self.callback {
 			self.callback = nil
-			callback(currentLocation)
+            let location = currentLocation
+            DispatchQueue.main.async {
+                callback(location)
+            }
 		}
 	}
 
 	/**
 	Start to listen for location changes
 	*/
-	fileprivate func startManagerForLocationUpdates() {
+	private func startManagerForLocationUpdates() {
 		self.processLocationUsageAuthorization( { [weak self] in
-            
-        self?.locationManager.startUpdatingLocation()
-
+            self?.locationRefreshStartTime = Date()
+            self?.locationManager.startUpdatingLocation()
         }, failure: { [weak self] in
             self?.processCallback()
         })
@@ -212,7 +201,7 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 	/**
 	Request authorization to use location
 	*/
-	fileprivate func processLocationUsageAuthorization(_ success: @escaping () -> Void, failure: @escaping () -> Void) {
+	private func processLocationUsageAuthorization(_ success: @escaping () -> Void, failure: @escaping () -> Void) {
 		// set location manager params according to the best presition of all requests
 		if CLLocationManager.authorizationStatus() == .notDetermined {
 			// check which perms should ask according to the plist config
@@ -220,7 +209,7 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
             // NSLocationWhenInUseUsageDescription
             // NSLocationAlwaysUsageDescription
 			if (Bundle.main.object(forInfoDictionaryKey: "NSLocationAlwaysAndWhenInUseUsageDescription") != nil) {
-                self.requestAlwaysAuthorization({ (status) in
+                requestAlwaysAuthorization({ (status) in
                     if status == .authorizedAlways {
                         success()
                     } else {
@@ -228,7 +217,7 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
                     }
                 })
 			} else if (Bundle.main.object(forInfoDictionaryKey: "NSLocationWhenInUseUsageDescription") != nil) {
-                self.requestWhenInUseAuthorization({ (status) in
+                requestWhenInUseAuthorization({ (status) in
                     if status == .authorizedWhenInUse {
                         success()
                     } else {
@@ -249,9 +238,9 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 
 	- parameter block: blok Instance of AuthorizationBlock
 	*/
-	fileprivate func requestWhenInUseAuthorization(_ block: @escaping (_ status: CLAuthorizationStatus) -> Void) {
-		self.authorizationBlock = block
-		self.locationManager.requestWhenInUseAuthorization()
+	private func requestWhenInUseAuthorization(_ block: @escaping (_ status: CLAuthorizationStatus) -> Void) {
+		authorizationBlock = block
+		locationManager.requestWhenInUseAuthorization()
 	}
 
 	/**
@@ -259,9 +248,9 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 
 	- parameter block: blok Instance of AuthorizationBlock
 	*/
-	fileprivate func requestAlwaysAuthorization(_ block: @escaping (_ status: CLAuthorizationStatus) -> Void) {
-		self.authorizationBlock = block
-		self.locationManager.requestAlwaysAuthorization()
+	private func requestAlwaysAuthorization(_ block: @escaping (_ status: CLAuthorizationStatus) -> Void) {
+		authorizationBlock = block
+		locationManager.requestAlwaysAuthorization()
 	}
 
 	/**
@@ -271,9 +260,7 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 	- parameter status:  CLAuthorizationStatus status
 	*/
 	open func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-		if let block: (_ status: CLAuthorizationStatus) -> Void = self.authorizationBlock {
-			block(status)
-		}
+        authorizationBlock?(status)
 	}
 
 	/**
@@ -283,8 +270,7 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 	- parameter error:   instance of NSError
 	*/
 	open func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-		self.lastError = error as NSError?
-
+		lastError = error as NSError?
 		print(error.localizedDescription)
 	}
 
@@ -295,19 +281,13 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 	- parameter locations: array of CLLocation
 	*/
 	open func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-		// Get first location element
-		let location = locations.last
-
-		lastFethedLocation = location
-		locationTimestamp = location?.timestamp
-
-		if let l = location , l.horizontalAccuracy <= self.desiredAccuracy {
-			self.processCallback()
-			self.locationManager.stopUpdatingLocation()
-		}
+        guard let location = locations.last else { return }
+        lastFetchedLocation = location
+        if location.horizontalAccuracy <= desiredAccuracy || location.timestamp.timeIntervalSince(locationRefreshStartTime) > 2 {
+            processCallback()
+            locationManager.stopUpdatingLocation()
+        }
 	}
-
 }
 
 extension CLPlacemark {

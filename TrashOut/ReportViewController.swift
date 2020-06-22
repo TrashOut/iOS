@@ -276,9 +276,9 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
         setAccessibilityView()
         setStatusView()
     
-        LocationManager.manager.refreshCurrentLocation({ [weak self](_) in
+        LocationManager.manager.refreshCurrentLocation(desiredAccuracy: 30) { [weak self] _ in
             self?.setLocationView()
-        })
+        }
     }
 
 	override func viewDidLayoutSubviews() {

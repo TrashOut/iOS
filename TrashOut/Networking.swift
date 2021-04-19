@@ -34,7 +34,6 @@ import Foundation
 import Alamofire
 import Cache
 import FirebaseAnalytics
-
 /**
 Create object from json dictionary
 

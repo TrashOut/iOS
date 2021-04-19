@@ -33,8 +33,9 @@
 
 import Foundation
 import UIKit
-import Firebase
 import CoreLocation
+import Firebase
+import FirebaseAnalytics
 
 /**
 Abstract class for controllers
@@ -59,8 +60,9 @@ class ViewController: UIViewController {
 		if screenName.hasSuffix("ViewController") {
 			screenName = screenName.replacingOccurrences(of: "ViewController", with: "")
 		}
+
         Analytics.logEvent("open_\(screenName)", parameters: analyticsData)
-		navigationItem.title = title        
+		navigationItem.title = title
 	}
 
 	/**

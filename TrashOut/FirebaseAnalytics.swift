@@ -30,7 +30,7 @@
   * See the GNU General Public License for more details: <https://www.gnu.org/licenses/>.
  */
 
-import Firebase
+import FirebaseAnalytics
 
 class FirebaseAnalytics {
     

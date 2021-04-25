@@ -574,6 +574,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16F650D62635500E0044A64D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C351E5AB1DBF53D8004BF32F /* test-data */,
+				C3A3B2781DA7B5180099D1C2 /* Helpers */,
+				8E660CBB1F989108002B8A76 /* Config */,
+				C37994A11DACDE5000CE5E3F /* Firebase */,
+				C3014DB81DAE2DC200FD7CFE /* Theme.swift */,
+				C3A3B24B1DA7A6E00099D1C2 /* Info-Prod.plist */,
+				C32788B11DC0C00700B6F4A9 /* Info-Stage.plist */,
+				C3A3B23F1DA7A6E00099D1C2 /* AppDelegate.swift */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		16F650D72635501C0044A64D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C32788B41DC0C61A00B6F4A9 /* .tailor.yml */,
+				C3DDE0121DA7C89300CB088E /* Docs */,
+				C3014DCC1DAE5E3F00FD7CFE /* Localizable.strings */,
+				FC5FA3091DEC7BF90000C711 /* Assets.xcassets */,
+				16F650D8263550280044A64D /* Fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		16F650D8263550280044A64D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8E6C69791FFE294100B99CA8 /* Capriola-Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		16F650DD263550700044A64D /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				C3014DCE1DAE5EF000FD7CFE /* Main.storyboard */,
+				C37880DC1DB0F56A00BFDD2A /* Dashboard.storyboard */,
+				C37880E41DB0F93100BFDD2A /* Report.storyboard */,
+				C3DCAE8E1E435E5600A6AF0F /* TrashHunter.storyboard */,
+				C32F8D5E1DED8F840009A5C4 /* Login.storyboard */,
+				C34F3F451DB0F37000F69348 /* Dumps.storyboard */,
+				FC3E0E6E1DDE7307006F1D31 /* Event.storyboard */,
+				C37880DE1DB0F5F500BFDD2A /* News.storyboard */,
+				C37880E01DB0F65D00BFDD2A /* Junkyards.storyboard */,
+				C37880E21DB0F6A600BFDD2A /* Profile.storyboard */,
+				C348802A1DF57BB700C2E83E /* SplashScreen.storyboard */,
+				C3711D961E8C072E00A84B3A /* Tutorial.storyboard */,
+				8E30EBC8202B5B0900C8BD06 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		16F650DE2635512F0044A64D /* UserManager */ = {
+			isa = PBXGroup;
+			children = (
+				C32F8D5A1DED8E9B0009A5C4 /* UserManager.swift */,
+				C37519FA1E38C482001F61AB /* UserManager+Facebook.swift */,
+			);
+			name = UserManager;
+			sourceTree = "<group>";
+		};
 		5338D9FB65DEA8A8794DA0EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,10 +731,10 @@
 		C30044361DAFC94C00709DDC /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				16F650DE2635512F0044A64D /* UserManager */,
+				C3A3B2721DA7AC7D0099D1C2 /* Networking */,
 				CF3DDE2820D1070400A93A87 /* Notifications */,
 				C30044371DAFC96200709DDC /* Location.swift */,
-				C32F8D5A1DED8E9B0009A5C4 /* UserManager.swift */,
-				C37519FA1E38C482001F61AB /* UserManager+Facebook.swift */,
 				C3E90C2F1E4376A3002FDC2D /* TrashHunter.swift */,
 				C30CEB6C1E54A3000045E7F9 /* Articles.swift */,
 				C3874BE11E55BD1700C94719 /* Statistics.swift */,
@@ -770,37 +834,12 @@
 			isa = PBXGroup;
 			children = (
 				FCAB5E021E2FE82C004C7249 /* TrashOut.entitlements */,
-				C351E5AB1DBF53D8004BF32F /* test-data */,
+				16F650D62635500E0044A64D /* Application */,
 				C30044361DAFC94C00709DDC /* Manager */,
-				8E660CBB1F989108002B8A76 /* Config */,
-				C3DDE0121DA7C89300CB088E /* Docs */,
-				C3A3B2781DA7B5180099D1C2 /* Helpers */,
 				C3A3B2751DA7AEC10099D1C2 /* Model */,
-				C37994A11DACDE5000CE5E3F /* Firebase */,
-				C3A3B2721DA7AC7D0099D1C2 /* Networking */,
-				C3B428751DAE7E8B0027DDFA /* Views */,
 				C3A3B26D1DA7ABF30099D1C2 /* Controllers */,
-				C3A3B23F1DA7A6E00099D1C2 /* AppDelegate.swift */,
-				C3014DB81DAE2DC200FD7CFE /* Theme.swift */,
-				C3014DCE1DAE5EF000FD7CFE /* Main.storyboard */,
-				C37880DC1DB0F56A00BFDD2A /* Dashboard.storyboard */,
-				C37880E41DB0F93100BFDD2A /* Report.storyboard */,
-				C3DCAE8E1E435E5600A6AF0F /* TrashHunter.storyboard */,
-				C32F8D5E1DED8F840009A5C4 /* Login.storyboard */,
-				C34F3F451DB0F37000F69348 /* Dumps.storyboard */,
-				FC3E0E6E1DDE7307006F1D31 /* Event.storyboard */,
-				C37880DE1DB0F5F500BFDD2A /* News.storyboard */,
-				C37880E01DB0F65D00BFDD2A /* Junkyards.storyboard */,
-				C37880E21DB0F6A600BFDD2A /* Profile.storyboard */,
-				C348802A1DF57BB700C2E83E /* SplashScreen.storyboard */,
-				C3711D961E8C072E00A84B3A /* Tutorial.storyboard */,
-				8E30EBC8202B5B0900C8BD06 /* LaunchScreen.storyboard */,
-				FC5FA3091DEC7BF90000C711 /* Assets.xcassets */,
-				C3A3B24B1DA7A6E00099D1C2 /* Info-Prod.plist */,
-				C32788B11DC0C00700B6F4A9 /* Info-Stage.plist */,
-				C3014DCC1DAE5E3F00FD7CFE /* Localizable.strings */,
-				C32788B41DC0C61A00B6F4A9 /* .tailor.yml */,
-				8E6C69791FFE294100B99CA8 /* Capriola-Regular.ttf */,
+				C3B428751DAE7E8B0027DDFA /* Views */,
+				16F650D72635501C0044A64D /* Resources */,
 			);
 			path = TrashOut;
 			sourceTree = "<group>";
@@ -951,6 +990,7 @@
 		C3B428751DAE7E8B0027DDFA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				16F650DD263550700044A64D /* Storyboard */,
 				C3C07E3F1E4C939900B102D1 /* ClockCountdownView.swift */,
 				C3B428761DAE7E9C0027DDFA /* Card.swift */,
 				C32F8D541DEC67F90009A5C4 /* Button.swift */,

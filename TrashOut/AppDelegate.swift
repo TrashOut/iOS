@@ -44,11 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	// MARK: - App Delegate
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let file = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
-        let opt = FirebaseOptions.init(contentsOfFile: file!)
-        FirebaseApp.configure(options: opt!)
+        FirebaseApp.configure()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
 		Theme.current.setupAppearance()
 		FirebaseLocalization().update()
         TrashFilter.clearCachedFilter()
@@ -184,6 +181,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: - Unique ID
 extension AppDelegate {
+
     func generateUniqueId() {
         guard let uuid = UIDevice.current.identifierForVendor?.uuidString else { fatalError("Unabled to load UUID.") }
         print(uuid)
@@ -192,10 +190,12 @@ extension AppDelegate {
            UniqueIdentifier.identifier = uuid
         }
     }
+
 }
 
 // MARK: - Notifications and messaging
 extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
+
     func registerNotifications(application: UIApplication) {
         // Register for User Notifications
         if #available(iOS 10.0, *) {
@@ -216,18 +216,20 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
         application.registerForRemoteNotifications()
     }
     
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print("FCM token: \(fcmToken)")
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print("FCM token: \(fcmToken ?? "⚠️ NOT GENERATED")")
         
         NotificationsManager.registerUser(tokenFCM: fcmToken) { (error) in
-            
             if let error = error { print(error.localizedDescription) }
         }
     }
+
 }
 
 // MARK: - Navigation
+
 extension AppDelegate {
+
     fileprivate var tabBarController: TabbarViewController? {
         let rootViewController = self.window?.rootViewController as? UINavigationController
         let tabBarController = rootViewController?.viewControllers.filter { $0 is TabbarViewController }.first as? TabbarViewController
@@ -245,4 +247,5 @@ extension AppDelegate {
     fileprivate func showNewsAfterReceiveNotification(id: Int?) {
         NotificationsManager.showNewsAfterReceiveNotification(tabBarController: tabBarController, id: id)
     }
+
 }

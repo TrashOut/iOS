@@ -14,6 +14,16 @@
 		0F9A2147245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		0F9A2148245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		15B167678E5B118BE26F023C /* Pods_TrashOutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B508F54028E3BAAC67A7D92F /* Pods_TrashOutUITests.framework */; };
+		16ED546D263B2AAA000E848A /* KeychainItemClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED5468263B2AA9000E848A /* KeychainItemClass.swift */; };
+		16ED546E263B2AAA000E848A /* KeychainItemClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED5468263B2AA9000E848A /* KeychainItemClass.swift */; };
+		16ED546F263B2AAA000E848A /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED5469263B2AA9000E848A /* KeychainItem.swift */; };
+		16ED5470263B2AAA000E848A /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED5469263B2AA9000E848A /* KeychainItem.swift */; };
+		16ED5471263B2AAA000E848A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED546A263B2AA9000E848A /* Keychain.swift */; };
+		16ED5472263B2AAA000E848A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED546A263B2AA9000E848A /* Keychain.swift */; };
+		16ED5473263B2AAA000E848A /* KeychainProtocolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED546B263B2AA9000E848A /* KeychainProtocolType.swift */; };
+		16ED5474263B2AAA000E848A /* KeychainProtocolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED546B263B2AA9000E848A /* KeychainProtocolType.swift */; };
+		16ED5475263B2AAA000E848A /* KeychainItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED546C263B2AAA000E848A /* KeychainItemFactory.swift */; };
+		16ED5476263B2AAA000E848A /* KeychainItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED546C263B2AAA000E848A /* KeychainItemFactory.swift */; };
 		7BB372C5200BDA40F6523B16 /* Pods_TrashOutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B055D53FC81752DE09176A10 /* Pods_TrashOutTests.framework */; };
 		7C609B9E87EB2C59F7889D21 /* Pods_TrashOut_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BE89D255DBD8E6187978B7 /* Pods_TrashOut_Prod.framework */; };
 		8CD79D811F96274700C937AB /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD79D801F96274700C937AB /* View.swift */; };
@@ -347,6 +357,11 @@
 		0FD8FA952449A0D50064240A /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA982449A1F90064240A /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA992449A2F80064240A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		16ED5468263B2AA9000E848A /* KeychainItemClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemClass.swift; sourceTree = "<group>"; };
+		16ED5469263B2AA9000E848A /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
+		16ED546A263B2AA9000E848A /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		16ED546B263B2AA9000E848A /* KeychainProtocolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainProtocolType.swift; sourceTree = "<group>"; };
+		16ED546C263B2AAA000E848A /* KeychainItemFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemFactory.swift; sourceTree = "<group>"; };
 		5044628649835A8788D38635 /* Pods-TrashOut-Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.release.xcconfig"; sourceTree = "<group>"; };
 		5FAF8A347663A4F7A25D57D4 /* Pods-TrashOut-Stage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Stage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Stage/Pods-TrashOut-Stage.debug.xcconfig"; sourceTree = "<group>"; };
 		62209777A1B899EEBC59A7BA /* Pods-TrashOut-Prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.debug.xcconfig"; sourceTree = "<group>"; };
@@ -574,9 +589,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1649EB82263B29E900B5EC72 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				16ED546A263B2AA9000E848A /* Keychain.swift */,
+				16ED5469263B2AA9000E848A /* KeychainItem.swift */,
+				16ED5468263B2AA9000E848A /* KeychainItemClass.swift */,
+				16ED546C263B2AAA000E848A /* KeychainItemFactory.swift */,
+				16ED546B263B2AA9000E848A /* KeychainProtocolType.swift */,
+			);
+			name = Keychain;
+			sourceTree = "<group>";
+		};
 		16F650D62635500E0044A64D /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				1649EB82263B29E900B5EC72 /* Keychain */,
 				C351E5AB1DBF53D8004BF32F /* test-data */,
 				C3A3B2781DA7B5180099D1C2 /* Helpers */,
 				8E660CBB1F989108002B8A76 /* Config */,
@@ -1319,7 +1347,6 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -1347,7 +1374,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -1436,7 +1462,6 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -1464,7 +1489,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -1524,7 +1548,6 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -1552,7 +1575,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -1669,7 +1691,6 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -1697,7 +1718,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -1750,6 +1770,7 @@
 				8E2A1AFA202236E800C1AC70 /* DateFormatter.swift in Sources */,
 				8E2A1AFB202236E800C1AC70 /* NoDataView.swift in Sources */,
 				8E2A1AFC202236E800C1AC70 /* StatisticViewController.swift in Sources */,
+				16ED5472263B2AAA000E848A /* Keychain.swift in Sources */,
 				CFBC999620C6D399009E5D7F /* NotificationsNetworking.swift in Sources */,
 				8E2A1AFD202236E800C1AC70 /* GpsModel+UI.swift in Sources */,
 				8E2A1AFE202236E800C1AC70 /* Image.swift in Sources */,
@@ -1767,6 +1788,7 @@
 				8E2A1B0A202236E800C1AC70 /* DumpsMapViewController.swift in Sources */,
 				8E2A1B0B202236E800C1AC70 /* ViewController.swift in Sources */,
 				8E2A1B0C202236E800C1AC70 /* NotificationName.swift in Sources */,
+				16ED5476263B2AAA000E848A /* KeychainItemFactory.swift in Sources */,
 				8E2A1B0D202236E800C1AC70 /* GpsFormatter.swift in Sources */,
 				0F9A2148245745FE005A8F27 /* Link.swift in Sources */,
 				8E2A1B0E202236E800C1AC70 /* CachableModel.swift in Sources */,
@@ -1786,6 +1808,7 @@
 				CF6DE9C0212ECBA500610F41 /* BackgroundTimer.swift in Sources */,
 				0F77D26C24594B43006141E6 /* EventThankYouViewController.swift in Sources */,
 				8E2A1B1C202236E800C1AC70 /* ClusteringManager.swift in Sources */,
+				16ED546E263B2AAA000E848A /* KeychainItemClass.swift in Sources */,
 				8E2A1B1D202236E800C1AC70 /* ProfileEditViewController.swift in Sources */,
 				8E2A1B1E202236E800C1AC70 /* TutorialViewController.swift in Sources */,
 				8E2A1B1F202236E800C1AC70 /* DumpsMapManager.swift in Sources */,
@@ -1817,6 +1840,7 @@
 				8E2A1B37202236E800C1AC70 /* FirebaseImages.swift in Sources */,
 				8E2A1B38202236E800C1AC70 /* SplashScreenViewController.swift in Sources */,
 				8E2A1B39202236E800C1AC70 /* ICSPullToRefresh.swift in Sources */,
+				16ED5470263B2AAA000E848A /* KeychainItem.swift in Sources */,
 				8E2A1B3A202236E800C1AC70 /* EnumCollection.swift in Sources */,
 				8E2A1B3B202236E800C1AC70 /* ActivityListViewController.swift in Sources */,
 				8E2A1B3C202236E800C1AC70 /* MapAnnotation.swift in Sources */,
@@ -1866,6 +1890,7 @@
 				8E2A1B66202236E800C1AC70 /* EventManager.swift in Sources */,
 				8E2A1B67202236E800C1AC70 /* JunkyardModel.swift in Sources */,
 				8E2A1B68202236E800C1AC70 /* JunkyardDetViewController.swift in Sources */,
+				16ED5474263B2AAA000E848A /* KeychainProtocolType.swift in Sources */,
 				8E2A1B69202236E800C1AC70 /* DashboardActivityViewController.swift in Sources */,
 				8E2A1B6A202236E800C1AC70 /* DashboardViewController+Events.swift in Sources */,
 			);
@@ -1889,6 +1914,7 @@
 				C30044351DAF872400709DDC /* DateFormatter.swift in Sources */,
 				C37883231E5B2902007888B8 /* NoDataView.swift in Sources */,
 				FCD73A031DF6EEC900E7EF7D /* StatisticViewController.swift in Sources */,
+				16ED5471263B2AAA000E848A /* Keychain.swift in Sources */,
 				C3315BA21E520208004C652A /* GpsModel+UI.swift in Sources */,
 				8E37D2B21FC72808001E61D5 /* Image.swift in Sources */,
 				C3A3B27C1DA7B7440099D1C2 /* UserNetworking.swift in Sources */,
@@ -1906,6 +1932,7 @@
 				C3A3B26F1DA7AC1E0099D1C2 /* ViewController.swift in Sources */,
 				8E2747B720036FA900934D62 /* NotificationName.swift in Sources */,
 				C37579291E423F66002EA629 /* GpsFormatter.swift in Sources */,
+				16ED5475263B2AAA000E848A /* KeychainItemFactory.swift in Sources */,
 				C37994A51DACFFD600CE5E3F /* CachableModel.swift in Sources */,
 				0F9A2147245745FE005A8F27 /* Link.swift in Sources */,
 				CFBC999320C6D2B5009E5D7F /* UniqueIdentifier.swift in Sources */,
@@ -1925,6 +1952,7 @@
 				C374778E1DBA094B005AC532 /* ClusteringManager.swift in Sources */,
 				0F77D26B24594B3A006141E6 /* EventThankYouViewController.swift in Sources */,
 				C32F8D571DEC80120009A5C4 /* ProfileEditViewController.swift in Sources */,
+				16ED546D263B2AAA000E848A /* KeychainItemClass.swift in Sources */,
 				C3711D9A1E8C07A900A84B3A /* TutorialViewController.swift in Sources */,
 				C3A6176E1DB8E53E0092BF32 /* DumpsMapManager.swift in Sources */,
 				8CD79D811F96274700C937AB /* View.swift in Sources */,
@@ -1956,6 +1984,7 @@
 				C348802D1DF57BE000C2E83E /* SplashScreenViewController.swift in Sources */,
 				8EC88ABE1FD6BB4400498FCA /* ICSPullToRefresh.swift in Sources */,
 				C37519FD1E38D333001F61AB /* EnumCollection.swift in Sources */,
+				16ED546F263B2AAA000E848A /* KeychainItem.swift in Sources */,
 				C37579251E423A69002EA629 /* ActivityListViewController.swift in Sources */,
 				C3A617741DB900710092BF32 /* MapAnnotation.swift in Sources */,
 				C3DDE0161DAB82A200CB088E /* DumpsViewController.swift in Sources */,
@@ -2005,6 +2034,7 @@
 				C3F0F90F1E5B3C5E0024DCDD /* EventManager.swift in Sources */,
 				FC48ED461DCB7C98008E7EB1 /* JunkyardModel.swift in Sources */,
 				FC3E0E6D1DDE01BE006F1D31 /* JunkyardDetViewController.swift in Sources */,
+				16ED5473263B2AAA000E848A /* KeychainProtocolType.swift in Sources */,
 				C3E226721E54741E00780D63 /* DashboardActivityViewController.swift in Sources */,
 				C374ACA81E856E280034E46B /* DashboardViewController+Events.swift in Sources */,
 			);

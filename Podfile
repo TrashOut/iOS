@@ -25,7 +25,6 @@ def common_pods_for_target
     pod 'SwiftDate', '6.1.0'
     
     pod 'Charts', '3.4.0'
-    pod 'Keychain'
 end
 
 target 'TrashOut-Prod' do

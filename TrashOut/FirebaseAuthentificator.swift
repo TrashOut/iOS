@@ -98,6 +98,12 @@ class FirebaseAuthentificator {
         }
     }
 
+    func loginWithApple(credential: AuthCredential, callback: @escaping (AuthDataResult?, Error?) -> ()) {
+        Auth.auth().signIn(with: credential) { authResult, error in
+            callback(authResult, error)
+        }
+    }
+
     func logout() {
         let firebaseAuth = Auth.auth()
         do {
@@ -129,6 +135,18 @@ class FirebaseAuthentificator {
 			}
 		}
 	}
+
+    func linkUser(appleAuthResult: AuthDataResult, callback: @escaping (String?, Error?) -> ()) {
+        if let user = Auth.auth().currentUser {
+            self.token { (token, error) in
+                if let credential = appleAuthResult.credential {
+                    user.link(with: credential) { (user, error) in
+                        callback(user?.user.uid, error)
+                    }
+                }
+            }
+        }
+    }
     
     func sendVerificationEmail(callback: @escaping (Error?) -> ()) {
         if let user = Auth.auth().currentUser {

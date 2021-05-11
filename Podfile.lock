@@ -128,7 +128,6 @@ PODS:
   - GoogleUtilities/UserDefaults (7.3.1):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.5.0)
-  - Keychain (0.3.1)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -152,7 +151,6 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - Firebase/Messaging
   - Firebase/Storage
-  - Keychain
   - SwiftDate (= 6.1.0)
 
 SPEC REPOS:
@@ -181,7 +179,6 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
-    - Keychain
     - nanopb
     - PromisesObjC
     - SwiftDate
@@ -211,11 +208,10 @@ SPEC CHECKSUMS:
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
   GoogleUtilities: e1d9ed4e544fc32a93e00e721400cbc3f377200d
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
-  Keychain: ef812eafcf6593fe4409b07cfecc00b95fb373ed
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
 
-PODFILE CHECKSUM: 710f166baa22a1889505b8785e137589a3fc90a5
+PODFILE CHECKSUM: 85b343cf9b217343a336d0c9b9bc846c2fdd4e18
 
 COCOAPODS: 1.10.1

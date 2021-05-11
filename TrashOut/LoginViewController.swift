@@ -32,7 +32,6 @@
 
 import Foundation
 import UIKit
-// import FBSDKLoginKit
 import Firebase
 import AuthenticationServices
 
@@ -61,6 +60,12 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 
         setupView()
         setupAppleLoginButton()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        UserManager.instance.delegate = self
     }
 
 }
@@ -157,7 +162,7 @@ extension LoginViewController {
 
     private func setupAppleLoginButton() {
         if #available(iOS 13.0, *) {
-            let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+            let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
             (authorizationButton as UIControl).cornerRadius = 20
             authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
             authorizationButton.translatesAutoresizingMaskIntoConstraints = false
@@ -168,7 +173,7 @@ extension LoginViewController {
     }
 
     @objc private func handleAuthorizationAppleIDButtonPress() {
-        print("Login button pressed")
+        UserManager.instance.loginWithApple(self)
     }
 
     private func setupView() {
@@ -279,13 +284,37 @@ extension LoginViewController {
 
 }
 
+extension LoginViewController: UserManagerDelegate {
+
+    func userManagerSignWithApple(error: Error?) {
+        guard error == nil else {
+            print(error?.localizedDescription as Any)
+            if case NetworkingError.noInternetConnection = error! {
+                show(error: NetworkingError.custom("global.internet.offline".localized))
+            } else {
+                show(error: error!)
+            }
+            return
+        }
+        guard let user = UserManager.instance.user else { return }
+        print("Successful logged as \(user.email ?? "no email")")
+        postLogin()
+
+        // Register notifications.
+        NotificationsManager.unregisterUser { error in
+            NotificationsManager.registerNotifications()
+        }
+    }
+
+}
+
 // Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+private func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
     guard let input = input else { return nil }
     return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }
 
 // Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+private func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
     return input.rawValue
 }

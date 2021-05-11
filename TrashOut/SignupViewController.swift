@@ -33,6 +33,7 @@
 import Foundation
 import UIKit
 import Firebase
+import AuthenticationServices
 
 class SignupViewController: ViewController, UITextFieldDelegate {
 
@@ -51,6 +52,8 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 
     @IBOutlet weak var sTermsAndConditions: UISwitch?
     @IBOutlet weak var tvTermsAndConditions: UITextView?
+
+    @IBOutlet weak var signUpButtonStackView: UIStackView!
     
 	var selectedRow: FormRow?
     var dict : [String : AnyObject]!
@@ -58,34 +61,15 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		lblOr.text = "global.or".localized
-		frName.textField.placeholder = "user.firstName".localized
-		frSurname.textField.placeholder = "user.lastName".localized
-		frEmail.textField.placeholder = "global.email".localized
-		frPassword.textField.placeholder = "global.password".localized
-		frPasswordCheck.textField.placeholder = "user.reEnterPassword".localized
-		btnFacebook.setTitle("global.facebookLogin".localized.uppercased(with: Locale.current), for: .normal)
-		frPasswordCheck.hideSeperator()
-		frName.textField.delegate = self
-		frSurname.textField.delegate = self
-		frEmail.textField.delegate = self
-		frPassword.textField.delegate = self
-		frPasswordCheck.textField.delegate = self
-		frPassword.textField.isSecureTextEntry = true
-		frPasswordCheck.textField.isSecureTextEntry = true
-		frEmail.textField.keyboardType = .emailAddress
-        btnLogin.setTitle("global.register".localized.uppercased(), for: .normal)
-		btnLogin.theme()
-		btnFacebook.theme()
-		btnFacebook.backgroundColor = UIColor.theme.facebook
-        tvTermsAndConditions?.attributedText = self.createTermsAndCoditionsAttributedString()
-        tvTermsAndConditions?.delegate = self
-        sTermsAndConditions?.addTarget(self, action: #selector(switchValueDidChanged(_:)), for: .valueChanged)
-        sTermsAndConditions?.isOn = false
-        
-        setEnabled(false, view: self.btnLogin, animated: false)
-        setEnabled(false, view: self.btnFacebook, animated: false)
+        setupView()
+        setupAppleLoginButton()
 	}
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        UserManager.instance.delegate = self
+    }
 
 	/**
 	Validate form for errors
@@ -262,13 +246,43 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 }
 
 
-// MARK: - Setup UI
+// MARK: - Privates
 
 extension SignupViewController {
+
+    private func setupView() {
+        lblOr.text = "global.or".localized
+        frName.textField.placeholder = "user.firstName".localized
+        frSurname.textField.placeholder = "user.lastName".localized
+        frEmail.textField.placeholder = "global.email".localized
+        frPassword.textField.placeholder = "global.password".localized
+        frPasswordCheck.textField.placeholder = "user.reEnterPassword".localized
+        btnFacebook.setTitle("global.facebookLogin".localized.uppercased(with: Locale.current), for: .normal)
+        frPasswordCheck.hideSeperator()
+        frName.textField.delegate = self
+        frSurname.textField.delegate = self
+        frEmail.textField.delegate = self
+        frPassword.textField.delegate = self
+        frPasswordCheck.textField.delegate = self
+        frPassword.textField.isSecureTextEntry = true
+        frPasswordCheck.textField.isSecureTextEntry = true
+        frEmail.textField.keyboardType = .emailAddress
+        btnLogin.setTitle("global.register".localized.uppercased(), for: .normal)
+        btnLogin.theme()
+        btnFacebook.theme()
+        btnFacebook.backgroundColor = UIColor.theme.facebook
+        tvTermsAndConditions?.attributedText = self.createTermsAndCoditionsAttributedString()
+        tvTermsAndConditions?.delegate = self
+        sTermsAndConditions?.addTarget(self, action: #selector(switchValueDidChanged(_:)), for: .valueChanged)
+        sTermsAndConditions?.isOn = false
+
+        setEnabled(false, view: self.btnLogin, animated: false)
+        setEnabled(false, view: self.btnFacebook, animated: false)
+    }
     
     /// Create attributed string for terms and conditions.
     
-    fileprivate func createTermsAndCoditionsAttributedString() -> NSAttributedString? {
+    private func createTermsAndCoditionsAttributedString() -> NSAttributedString? {
         let privacyPolicyUrl = Link.privacyPolicy.url
         let termsAndCondUrl = Link.termsAndConditions.url
         
@@ -313,13 +327,30 @@ extension SignupViewController {
     ///   - view: View.
     ///   - animated: Animated.
     
-    fileprivate func setEnabled(_ enabled: Bool, view: UIControl, animated: Bool) {
+    private func setEnabled(_ enabled: Bool, view: UIControl, animated: Bool) {
         UIView.transition(with: view, duration: animated ? 0.25 : 0.0, options: .transitionCrossDissolve, animations: {
             view.alpha = enabled ? 1.0 : 0.5
         }, completion: { completed in
             view.isEnabled = enabled
         })
     }
+
+    private func setupAppleLoginButton() {
+        if #available(iOS 13.0, *) {
+            let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
+            (authorizationButton as UIControl).cornerRadius = 20
+            authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
+            authorizationButton.translatesAutoresizingMaskIntoConstraints = false
+            authorizationButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+
+            self.signUpButtonStackView.addArrangedSubview(authorizationButton)
+        }
+    }
+
+    @objc private func handleAuthorizationAppleIDButtonPress() {
+        UserManager.instance.loginWithApple(self)
+    }
+
 }
 
 
@@ -333,6 +364,12 @@ extension SignupViewController {
     @objc func switchValueDidChanged(_ sender: UISwitch) {
         self.setEnabled(sender.isOn, view: btnFacebook, animated: true)
         self.setEnabled(sender.isOn, view: btnLogin, animated: true)
+
+        if #available(iOS 13.0, *) {
+            if let appleLoginButton = signUpButtonStackView.arrangedSubviews.last as? ASAuthorizationAppleIDButton {
+                self.setEnabled(sender.isOn, view: appleLoginButton, animated: true)
+            }
+        }
     }
 }
 
@@ -340,7 +377,35 @@ extension SignupViewController {
 // MARK: - Text view delegate
 
 extension SignupViewController: UITextViewDelegate {
+
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         return true
     }
+
+}
+
+extension SignupViewController: UserManagerDelegate {
+
+    func userManagerSignWithApple(error: Error?) {
+        guard error == nil else {
+            print(error?.localizedDescription as Any)
+
+            if case NetworkingError.noInternetConnection = error! {
+                show(error: NetworkingError.custom("global.internet.offline".localized))
+            } else {
+                show(error: error!)
+            }
+
+            return
+        }
+        guard let user = UserManager.instance.user else { return }
+        print("Successful logged as \(user.email ?? "no email")")
+        postSignUp()
+
+        // Register notifications.
+        NotificationsManager.unregisterUser { error in
+            NotificationsManager.registerNotifications()
+        }
+    }
+
 }

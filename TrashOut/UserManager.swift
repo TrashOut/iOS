@@ -43,18 +43,25 @@ fileprivate func firLog(_ message: String) {
     NSLog("FIR INFO: \(message)")
 }
 
+protocol UserManagerDelegate: AnyObject {
+    func userManagerSignWithApple(error: Error?)
+}
+
 class UserManager {
 
 	static let instance = UserManager()
 	let firAuth = FirebaseAuthentificator.init()
 
 	var user: User?
+    var appleLoginManager = AppleLoginManager()
 
 	var isAnonymous: Bool {
 		get {
 			return firAuth.isAnonymous
 		}
 	}
+
+    weak var delegate: UserManagerDelegate?
 
     // User cant be logged anonymously, then: isLoggedIn = false
     internal var isLoggedIn: Bool = false {

@@ -14,6 +14,10 @@
 		0F9A2147245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		0F9A2148245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		15B167678E5B118BE26F023C /* Pods_TrashOutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B508F54028E3BAAC67A7D92F /* Pods_TrashOutUITests.framework */; };
+		161F4C662646C5B000ED8AB8 /* UserManager+AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */; };
+		161F4C672646C5B000ED8AB8 /* UserManager+AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */; };
+		16E0EDAC2648628800B9AF2F /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */; };
+		16E0EDAD2648628800B9AF2F /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */; };
 		16ED546D263B2AAA000E848A /* KeychainItemClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED5468263B2AA9000E848A /* KeychainItemClass.swift */; };
 		16ED546E263B2AAA000E848A /* KeychainItemClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED5468263B2AA9000E848A /* KeychainItemClass.swift */; };
 		16ED546F263B2AAA000E848A /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED5469263B2AA9000E848A /* KeychainItem.swift */; };
@@ -357,6 +361,8 @@
 		0FD8FA952449A0D50064240A /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA982449A1F90064240A /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA992449A2F80064240A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserManager+AppleLogin.swift"; sourceTree = "<group>"; };
+		16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		16ED5468263B2AA9000E848A /* KeychainItemClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemClass.swift; sourceTree = "<group>"; };
 		16ED5469263B2AA9000E848A /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
 		16ED546A263B2AA9000E848A /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
@@ -662,6 +668,7 @@
 			children = (
 				C32F8D5A1DED8E9B0009A5C4 /* UserManager.swift */,
 				C37519FA1E38C482001F61AB /* UserManager+Facebook.swift */,
+				161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */,
 			);
 			name = UserManager;
 			sourceTree = "<group>";
@@ -768,6 +775,7 @@
 				C3874BE11E55BD1700C94719 /* Statistics.swift */,
 				C3F0F90E1E5B3C5E0024DCDD /* EventManager.swift */,
 				C38960CC1E5C8FD600EA6D87 /* PhotoManager.swift */,
+				16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -1770,6 +1778,7 @@
 				8E2A1AFA202236E800C1AC70 /* DateFormatter.swift in Sources */,
 				8E2A1AFB202236E800C1AC70 /* NoDataView.swift in Sources */,
 				8E2A1AFC202236E800C1AC70 /* StatisticViewController.swift in Sources */,
+				16E0EDAD2648628800B9AF2F /* AppleLoginManager.swift in Sources */,
 				16ED5472263B2AAA000E848A /* Keychain.swift in Sources */,
 				CFBC999620C6D399009E5D7F /* NotificationsNetworking.swift in Sources */,
 				8E2A1AFD202236E800C1AC70 /* GpsModel+UI.swift in Sources */,
@@ -1881,6 +1890,7 @@
 				8E2A1B5D202236E800C1AC70 /* Label.swift in Sources */,
 				8E2A1B5E202236E800C1AC70 /* Date.swift in Sources */,
 				8E2A1B5F202236E800C1AC70 /* TutorialLastPageViewController.swift in Sources */,
+				161F4C672646C5B000ED8AB8 /* UserManager+AppleLogin.swift in Sources */,
 				8E2A1B60202236E800C1AC70 /* Networking.swift in Sources */,
 				8E2A1B61202236E800C1AC70 /* AreaNetworking.swift in Sources */,
 				8E2A1B62202236E800C1AC70 /* Theme.swift in Sources */,
@@ -1914,6 +1924,7 @@
 				C30044351DAF872400709DDC /* DateFormatter.swift in Sources */,
 				C37883231E5B2902007888B8 /* NoDataView.swift in Sources */,
 				FCD73A031DF6EEC900E7EF7D /* StatisticViewController.swift in Sources */,
+				16E0EDAC2648628800B9AF2F /* AppleLoginManager.swift in Sources */,
 				16ED5471263B2AAA000E848A /* Keychain.swift in Sources */,
 				C3315BA21E520208004C652A /* GpsModel+UI.swift in Sources */,
 				8E37D2B21FC72808001E61D5 /* Image.swift in Sources */,
@@ -2025,6 +2036,7 @@
 				8E1D037E1FC5CBFC007BD218 /* Label.swift in Sources */,
 				FC384A741DDCD0EF0073E955 /* Date.swift in Sources */,
 				C3E052321E8C138200181914 /* TutorialLastPageViewController.swift in Sources */,
+				161F4C662646C5B000ED8AB8 /* UserManager+AppleLogin.swift in Sources */,
 				C3A3B2741DA7AC8F0099D1C2 /* Networking.swift in Sources */,
 				C373F43A1E57313100050F7B /* AreaNetworking.swift in Sources */,
 				C3014DB91DAE2DC200FD7CFE /* Theme.swift in Sources */,

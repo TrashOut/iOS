@@ -155,50 +155,49 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cm0-ZE-cpd">
-                                        <rect key="frame" x="0.0" y="566" width="375" height="140"/>
+                                        <rect key="frame" x="0.0" y="566" width="375" height="154"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgi-ZJ-STW">
-                                                <rect key="frame" x="12" y="68" width="351" height="16"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8i-aD-KqK">
-                                                <rect key="frame" x="12" y="92" width="351" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="oUC-cH-pfC"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <state key="normal" title="SIGNUP WITH FACEBOOK"/>
-                                                <connections>
-                                                    <action selector="facebook" destination="W8a-tH-p6J" eventType="touchUpInside" id="rni-St-HNO"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwk-Ly-1OQ">
-                                                <rect key="frame" x="12" y="20" width="351" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="z2d-7h-kPS"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <state key="normal" title="SIGNUP"/>
-                                                <connections>
-                                                    <action selector="signup" destination="W8a-tH-p6J" eventType="touchUpInside" id="3U5-eX-VAz"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PWR-2i-w3V">
+                                                <rect key="frame" x="12" y="20" width="351" height="114"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwk-Ly-1OQ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="351" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="z2d-7h-kPS"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="SIGNUP"/>
+                                                        <connections>
+                                                            <action selector="signup" destination="W8a-tH-p6J" eventType="touchUpInside" id="3U5-eX-VAz"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgi-ZJ-STW">
+                                                        <rect key="frame" x="0.0" y="48" width="351" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8i-aD-KqK">
+                                                        <rect key="frame" x="0.0" y="74" width="351" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="oUC-cH-pfC"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="SIGNUP WITH FACEBOOK"/>
+                                                        <connections>
+                                                            <action selector="facebook" destination="W8a-tH-p6J" eventType="touchUpInside" id="rni-St-HNO"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="y8i-aD-KqK" firstAttribute="bottom" secondItem="Cm0-ZE-cpd" secondAttribute="bottomMargin" id="1bn-iR-ETG"/>
-                                            <constraint firstItem="Kgi-ZJ-STW" firstAttribute="trailing" secondItem="y8i-aD-KqK" secondAttribute="trailing" id="7hr-bk-buJ"/>
-                                            <constraint firstItem="cwk-Ly-1OQ" firstAttribute="centerX" secondItem="Cm0-ZE-cpd" secondAttribute="centerX" id="Bc1-mz-GC7"/>
-                                            <constraint firstItem="cwk-Ly-1OQ" firstAttribute="top" secondItem="Cm0-ZE-cpd" secondAttribute="top" constant="20" id="D2m-Bw-aYE"/>
-                                            <constraint firstItem="cwk-Ly-1OQ" firstAttribute="trailing" secondItem="Kgi-ZJ-STW" secondAttribute="trailing" id="RiY-WM-t3h"/>
-                                            <constraint firstItem="y8i-aD-KqK" firstAttribute="top" secondItem="Kgi-ZJ-STW" secondAttribute="bottom" constant="8" symbolic="YES" id="Xsb-Hz-E4L"/>
-                                            <constraint firstItem="cwk-Ly-1OQ" firstAttribute="leading" secondItem="Cm0-ZE-cpd" secondAttribute="leading" constant="12" id="ZCJ-zD-9hr"/>
-                                            <constraint firstItem="cwk-Ly-1OQ" firstAttribute="leading" secondItem="Kgi-ZJ-STW" secondAttribute="leading" id="gJc-e6-xjN"/>
-                                            <constraint firstAttribute="height" constant="140" id="hi2-q1-cu8"/>
-                                            <constraint firstItem="Kgi-ZJ-STW" firstAttribute="leading" secondItem="y8i-aD-KqK" secondAttribute="leading" id="iiE-cy-vYL"/>
-                                            <constraint firstItem="Kgi-ZJ-STW" firstAttribute="top" secondItem="cwk-Ly-1OQ" secondAttribute="bottom" constant="8" symbolic="YES" id="yuC-cz-I4i"/>
+                                            <constraint firstItem="PWR-2i-w3V" firstAttribute="leading" secondItem="Cm0-ZE-cpd" secondAttribute="leading" constant="12" id="8eZ-XY-QBX"/>
+                                            <constraint firstAttribute="bottom" secondItem="PWR-2i-w3V" secondAttribute="bottom" constant="20" id="c0A-Ch-yN0"/>
+                                            <constraint firstItem="PWR-2i-w3V" firstAttribute="top" secondItem="Cm0-ZE-cpd" secondAttribute="top" constant="20" id="fUG-zk-A06"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="140" id="hi2-q1-cu8"/>
+                                            <constraint firstAttribute="trailing" secondItem="PWR-2i-w3V" secondAttribute="trailing" constant="12" id="tSo-dN-L0b"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozc-Ei-Eyy">
@@ -276,6 +275,7 @@
                         <outlet property="lblOr" destination="Kgi-ZJ-STW" id="Oxc-zU-YUv"/>
                         <outlet property="sTermsAndConditions" destination="Ksp-IH-5Tj" id="LqW-4k-RdH"/>
                         <outlet property="scrollView" destination="fhW-Qx-Oac" id="uIV-KW-fEX"/>
+                        <outlet property="signUpButtonStackView" destination="PWR-2i-w3V" id="ZZ5-4h-ryz"/>
                         <outlet property="tvTermsAndConditions" destination="g3i-hK-An6" id="duf-YY-fxi"/>
                     </connections>
                 </viewController>

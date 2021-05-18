@@ -1246,3 +1246,4 @@
 "organization.dumpsReported" = "Jelentések";
 "organization.dumpsUpdated" = "Frissítések";
 "organization.dumpsCleaned" = "Megtiszított területek";
+"global.register.terms" = "A regisztrációval Ön elfogadja a Felhasználási feltételek és adatvédelmi irányelveket. ";

@@ -14,6 +14,7 @@
 		0F9A2147245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		0F9A2148245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		15B167678E5B118BE26F023C /* Pods_TrashOutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B508F54028E3BAAC67A7D92F /* Pods_TrashOutUITests.framework */; };
+		1611447F26542C0100B6C168 /* NSAtrributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611447E26542C0100B6C168 /* NSAtrributedString+.swift */; };
 		161F4C662646C5B000ED8AB8 /* UserManager+AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */; };
 		161F4C672646C5B000ED8AB8 /* UserManager+AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */; };
 		16E0EDAC2648628800B9AF2F /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */; };
@@ -361,6 +362,7 @@
 		0FD8FA952449A0D50064240A /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA982449A1F90064240A /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA992449A2F80064240A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1611447E26542C0100B6C168 /* NSAtrributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAtrributedString+.swift"; sourceTree = "<group>"; };
 		161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserManager+AppleLogin.swift"; sourceTree = "<group>"; };
 		16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		16ED5468263B2AA9000E848A /* KeychainItemClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemClass.swift; sourceTree = "<group>"; };
@@ -595,6 +597,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1611447D26542BF500B6C168 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1611447E26542C0100B6C168 /* NSAtrributedString+.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		1649EB82263B29E900B5EC72 /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +620,7 @@
 		16F650D62635500E0044A64D /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				1611447D26542BF500B6C168 /* Extensions */,
 				1649EB82263B29E900B5EC72 /* Keychain */,
 				C351E5AB1DBF53D8004BF32F /* test-data */,
 				C3A3B2781DA7B5180099D1C2 /* Helpers */,
@@ -2003,6 +2014,7 @@
 				CF3DDE2A20D1079F00A93A87 /* NotificationData.swift in Sources */,
 				FC3E0E751DDEF288006F1D31 /* EventSearchTableController.swift in Sources */,
 				FCD73A011DF6E93C00E7EF7D /* InfoViewController.swift in Sources */,
+				1611447F26542C0100B6C168 /* NSAtrributedString+.swift in Sources */,
 				C3A617721DB8F1CC0092BF32 /* TrashMapAnnotation.swift in Sources */,
 				C32F8D531DEC4D430009A5C4 /* NewsDetailViewController.swift in Sources */,
 				C30044331DAF84E400709DDC /* TrashUpdateModel.swift in Sources */,

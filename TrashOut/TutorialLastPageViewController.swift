@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AuthenticationServices
 
 class TutorialLastPageViewController: ViewController {
 
@@ -18,6 +19,8 @@ class TutorialLastPageViewController: ViewController {
 	@IBOutlet var btnSignin: UIButton!
 	@IBOutlet var btnFacebook: UIButton!
 	@IBOutlet var lblProcess: UILabel!
+    @IBOutlet weak var buttonStackView: UIStackView!
+
 
 	var page: TutorialPage?
 	var index: Int = 0
@@ -25,25 +28,9 @@ class TutorialLastPageViewController: ViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		ivImage.image = page?.image
-		lblTitle.text = page?.title
-		lblText.text = page?.content
 
-		btnSignin.setTitle("tutorial.register".localized, for: .normal)
-		btnFacebook.setTitle("global.facebookLogin".localized, for: .normal)
-		lblProcess.attributedText = NSAttributedString.init(string: "tutorial.signup.withoutSignIn".localized, attributes: convertToOptionalNSAttributedStringKeyDictionary([
-			convertFromNSAttributedStringKey(NSAttributedString.Key.underlineStyle): NSUnderlineStyle.single.rawValue
-		]))
-
-		btnSignin.layer.cornerRadius = 35 / 2
-		btnSignin.layer.masksToBounds = true
-		btnSignin.backgroundColor = UIColor.theme.button
-		btnSignin.setTitleColor(UIColor.white, for: UIControl.State())
-
-		btnFacebook.layer.cornerRadius = 35 / 2
-		btnFacebook.layer.masksToBounds = true
-		btnFacebook.backgroundColor = UIColor.theme.facebook
-		btnFacebook.setTitleColor(UIColor.white, for: UIControl.State())
+        setupAppleLoginButton()
+        setupView()
 	}
 
 	@IBAction func signIn() {
@@ -141,13 +128,87 @@ class TutorialLastPageViewController: ViewController {
 
 }
 
+// MARK: - Private
+
+extension TutorialLastPageViewController {
+
+    private func setupAppleLoginButton() {
+        if #available(iOS 13.0, *) {
+            let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
+            (authorizationButton as UIControl).cornerRadius = 20
+            authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
+            authorizationButton.translatesAutoresizingMaskIntoConstraints = false
+            authorizationButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+
+            self.buttonStackView.insertArrangedSubview(authorizationButton, at: buttonStackView.arrangedSubviews.count - 2)
+        }
+    }
+
+    @objc private func handleAuthorizationAppleIDButtonPress() {
+        UserManager.instance.loginWithApple(self)
+    }
+
+    private func setupView() {
+        ivImage.image = page?.image
+        lblTitle.text = page?.title
+        lblText.text = page?.content
+
+        btnSignin.setTitle("tutorial.register".localized, for: .normal)
+        btnFacebook.setTitle("global.facebookLogin".localized, for: .normal)
+        lblProcess.attributedText = NSAttributedString.init(string: "tutorial.signup.withoutSignIn".localized, attributes: convertToOptionalNSAttributedStringKeyDictionary([
+            convertFromNSAttributedStringKey(NSAttributedString.Key.underlineStyle): NSUnderlineStyle.single.rawValue
+        ]))
+
+        btnSignin.layer.cornerRadius = 35 / 2
+        btnSignin.layer.masksToBounds = true
+        btnSignin.backgroundColor = UIColor.theme.button
+        btnSignin.setTitleColor(UIColor.white, for: UIControl.State())
+
+        btnFacebook.layer.cornerRadius = 35 / 2
+        btnFacebook.layer.masksToBounds = true
+        btnFacebook.backgroundColor = UIColor.theme.facebook
+        btnFacebook.setTitleColor(UIColor.white, for: UIControl.State())
+
+        UserManager.instance.delegate = self
+    }
+
+}
+
+extension TutorialLastPageViewController: UserManagerDelegate {
+
+    func userManagerSignWithApple(error: Error?) {
+        guard error == nil else {
+            print(error?.localizedDescription as Any)
+            show(error: error!)
+            return
+        }
+
+        guard let user = UserManager.instance.user else { return }
+        print("Successful logged as \(user.email ?? "no email")")
+
+        askPermissions { [weak self] in
+            guard let main = self?.main() else { return }
+            self?.changeRoot(viewController: main)
+        }
+
+        // Register notifications.
+        NotificationsManager.registerNotifications()
+    }
+
+}
+
+
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+
 	guard let input = input else { return nil }
 	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+
 }
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+
 	return input.rawValue
+
 }

@@ -48,9 +48,11 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 	@IBOutlet var btnLogin: UIButton!
 	@IBOutlet var btnFacebook: UIButton!
 
-	@IBOutlet var lblOr: UILabel!
+    @IBOutlet weak var policyLinkButton: UIButton!
+    @IBOutlet weak var termsLinkButton: UIButton!
 
-    @IBOutlet weak var sTermsAndConditions: UISwitch?
+
+	@IBOutlet var lblOr: UILabel!
     @IBOutlet weak var tvTermsAndConditions: UITextView?
 
     @IBOutlet weak var signUpButtonStackView: UIStackView!
@@ -61,8 +63,8 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-        setupView()
         setupAppleLoginButton()
+        setupView()
 	}
 
     override func viewDidAppear(_ animated: Bool) {
@@ -187,6 +189,14 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 		}
     }
 
+    @IBAction func termsButtonPressed(_ sender: Any) {
+        UIApplication.shared.open(Link.termsAndConditions.url)
+    }
+    
+    @IBAction func policyButtonPressed(_ sender: Any) {
+        UIApplication.shared.open(Link.privacyPolicy.url)
+    }
+    
 	func textFieldDidBeginEditing(_ textField: UITextField) {
 		if textField == frName.textField {
 			self.selectedRow = frName
@@ -271,69 +281,14 @@ extension SignupViewController {
         btnLogin.theme()
         btnFacebook.theme()
         btnFacebook.backgroundColor = UIColor.theme.facebook
-        tvTermsAndConditions?.attributedText = self.createTermsAndCoditionsAttributedString()
-        tvTermsAndConditions?.delegate = self
-        sTermsAndConditions?.addTarget(self, action: #selector(switchValueDidChanged(_:)), for: .valueChanged)
-        sTermsAndConditions?.isOn = false
-
-        setEnabled(false, view: self.btnLogin, animated: false)
-        setEnabled(false, view: self.btnFacebook, animated: false)
+        tvTermsAndConditions?.text = "global.register.terms".localized
+        termsLinkButton.setTitle("global.signUp.acceptRegister.terms".localized, for: .normal)
+        policyLinkButton.setTitle("global.signUp.acceptRegister.privatePolicy".localized, for: .normal)
+        termsLinkButton.setTitleColor(UIColor.theme.green, for: .normal)
+        policyLinkButton.setTitleColor(UIColor.theme.green, for: .normal)
     }
     
     /// Create attributed string for terms and conditions.
-    
-    private func createTermsAndCoditionsAttributedString() -> NSAttributedString? {
-        let privacyPolicyUrl = Link.privacyPolicy.url
-        let termsAndCondUrl = Link.termsAndConditions.url
-        
-        // Create attributed link string
-        let createAttributedStringWithLink = { (string: String, url: URL) -> NSAttributedString in
-            let attributedString = NSMutableAttributedString(string: string)
-            let range = NSRange(location: 0, length: string.count)
-            attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: range)
-            attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
-            
-            return attributedString
-        }
-        
-        // Localized strings
-        let startSentenceAttributedString = NSAttributedString(string: "global.signUp.acceptRegister.startSentense".localized)
-        let privacyPolicyAttributedString = createAttributedStringWithLink("global.signUp.acceptRegister.privatePolicy".localized, privacyPolicyUrl)
-        let andAttributedString           = NSAttributedString(string: "global.signUp.acceptRegister.and".localized)
-        let termsAndCondAttributedString  = createAttributedStringWithLink("global.signUp.acceptRegister.terms".localized, termsAndCondUrl)
-        let spaceAttributedString         = NSAttributedString(string: " ")
-        let endSentencesAttributedString  = NSAttributedString(string: ".")
-        
-        // Merged string
-        let mergedAttributedString = NSMutableAttributedString()
-        mergedAttributedString.append(startSentenceAttributedString)
-        mergedAttributedString.append(spaceAttributedString)
-        mergedAttributedString.append(privacyPolicyAttributedString)
-        mergedAttributedString.append(spaceAttributedString)
-        mergedAttributedString.append(andAttributedString)
-        mergedAttributedString.append(spaceAttributedString)
-        mergedAttributedString.append(termsAndCondAttributedString)
-        mergedAttributedString.append(endSentencesAttributedString)
-        mergedAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 15.0), range: NSRange(location: 0, length: mergedAttributedString.string.count))
-        
-        return mergedAttributedString
-    }
-    
-    
-    /// Set enabled for UIControl.
-    ///
-    /// - Parameters:
-    ///   - enabled: Is enabled.
-    ///   - view: View.
-    ///   - animated: Animated.
-    
-    private func setEnabled(_ enabled: Bool, view: UIControl, animated: Bool) {
-        UIView.transition(with: view, duration: animated ? 0.25 : 0.0, options: .transitionCrossDissolve, animations: {
-            view.alpha = enabled ? 1.0 : 0.5
-        }, completion: { completed in
-            view.isEnabled = enabled
-        })
-    }
 
     private func setupAppleLoginButton() {
         if #available(iOS 13.0, *) {
@@ -349,37 +304,6 @@ extension SignupViewController {
 
     @objc private func handleAuthorizationAppleIDButtonPress() {
         UserManager.instance.loginWithApple(self)
-    }
-
-}
-
-
-// MARK: - Actions
-extension SignupViewController {
-    
-    /// Switch did changed handler.
-    ///
-    /// - Parameter sender: Sender.
-    
-    @objc func switchValueDidChanged(_ sender: UISwitch) {
-        self.setEnabled(sender.isOn, view: btnFacebook, animated: true)
-        self.setEnabled(sender.isOn, view: btnLogin, animated: true)
-
-        if #available(iOS 13.0, *) {
-            if let appleLoginButton = signUpButtonStackView.arrangedSubviews.last as? ASAuthorizationAppleIDButton {
-                self.setEnabled(sender.isOn, view: appleLoginButton, animated: true)
-            }
-        }
-    }
-}
-
-
-// MARK: - Text view delegate
-
-extension SignupViewController: UITextViewDelegate {
-
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        return true
     }
 
 }

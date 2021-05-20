@@ -21,6 +21,10 @@ class TutorialLastPageViewController: ViewController {
 	@IBOutlet var lblProcess: UILabel!
     @IBOutlet weak var buttonStackView: UIStackView!
 
+    @IBOutlet weak var policyLinkButton: UIButton!
+    @IBOutlet weak var termsLinkButton: UIButton!
+    @IBOutlet weak var tvTermsAndConditions: UITextView?
+
 
 	var page: TutorialPage?
 	var index: Int = 0
@@ -126,6 +130,14 @@ class TutorialLastPageViewController: ViewController {
 		}
 	}
 
+    @IBAction func termsButtonPressed(_ sender: Any) {
+        UIApplication.shared.open(Link.termsAndConditions.url)
+    }
+
+    @IBAction func policyButtonPressed(_ sender: Any) {
+        UIApplication.shared.open(Link.privacyPolicy.url)
+    }
+
 }
 
 // MARK: - Private
@@ -168,6 +180,14 @@ extension TutorialLastPageViewController {
         btnFacebook.layer.masksToBounds = true
         btnFacebook.backgroundColor = UIColor.theme.facebook
         btnFacebook.setTitleColor(UIColor.white, for: UIControl.State())
+
+        termsLinkButton.setTitle("global.signUp.acceptRegister.terms".localized, for: .normal)
+        policyLinkButton.setTitle("global.signUp.acceptRegister.privatePolicy".localized, for: .normal)
+
+        termsLinkButton.tintColor = UIColor.theme.green
+        policyLinkButton.tintColor = UIColor.theme.green
+        termsLinkButton.setTitleColor(UIColor.theme.green, for: .normal)
+        policyLinkButton.setTitleColor(UIColor.theme.green, for: .normal)
 
         UserManager.instance.delegate = self
     }

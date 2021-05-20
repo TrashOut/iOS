@@ -284,6 +284,9 @@ extension SignupViewController {
         tvTermsAndConditions?.text = "global.register.terms".localized
         termsLinkButton.setTitle("global.signUp.acceptRegister.terms".localized, for: .normal)
         policyLinkButton.setTitle("global.signUp.acceptRegister.privatePolicy".localized, for: .normal)
+
+        termsLinkButton.tintColor = UIColor.theme.green
+        policyLinkButton.tintColor = UIColor.theme.green
         termsLinkButton.setTitleColor(UIColor.theme.green, for: .normal)
         policyLinkButton.setTitleColor(UIColor.theme.green, for: .normal)
     }

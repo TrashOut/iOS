@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -156,7 +157,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tPv-wu-GuO">
-                                        <rect key="frame" x="0.0" y="473" width="375" height="269.5"/>
+                                        <rect key="frame" x="0.0" y="473" width="375" height="267.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cm0-ZE-cpd">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="154"/>
@@ -205,10 +206,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozc-Ei-Eyy">
-                                                <rect key="frame" x="0.0" y="154" width="375" height="115.5"/>
+                                                <rect key="frame" x="0.0" y="154" width="375" height="113.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="KGu-yZ-TLC">
-                                                        <rect key="frame" x="16" y="8" width="343" height="99.5"/>
+                                                        <rect key="frame" x="16" y="8" width="343" height="97.5"/>
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="When you register or use this app, you agree with our Privacy Policy and Terms and Conditions" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3i-hK-An6">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333.5" height="49.5"/>
@@ -216,30 +217,38 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Bpj-zu-nRz">
-                                                                <rect key="frame" x="0.0" y="49.5" width="105" height="50"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Bpj-zu-nRz">
+                                                                <rect key="frame" x="0.0" y="49.5" width="64.5" height="48"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="An0-zV-Fiv">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="50"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsK-ab-X1f">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="63.5" height="24"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                         <color key="tintColor" systemColor="systemGreenColor"/>
                                                                         <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                                        <state key="normal" title="Terms">
-                                                                            <color key="titleColor" systemColor="systemGreenColor"/>
-                                                                        </state>
-                                                                        <connections>
-                                                                            <action selector="termsButtonPressed:" destination="W8a-tH-p6J" eventType="touchUpInside" id="leJ-YT-4C6"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsK-ab-X1f">
-                                                                        <rect key="frame" x="64" y="0.0" width="41" height="50"/>
-                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                                                        <inset key="imageEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                         <state key="normal" title="Policy">
                                                                             <color key="titleColor" systemColor="systemGreenColor"/>
+                                                                            <imageReference key="image" image="link.circle" catalog="system" symbolScale="small"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="policyButtonPressed:" destination="W8a-tH-p6J" eventType="touchUpInside" id="Ibb-oR-ruK"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="An0-zV-Fiv">
+                                                                        <rect key="frame" x="0.0" y="24" width="64.5" height="24"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="24" id="Hp9-7Y-e1g"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                                                        <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                        <inset key="imageEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                        <state key="normal" title="Terms">
+                                                                            <color key="titleColor" systemColor="systemGreenColor"/>
+                                                                            <imageReference key="image" image="link.circle" catalog="system" symbolScale="small" renderingMode="template"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="termsButtonPressed:" destination="W8a-tH-p6J" eventType="touchUpInside" id="leJ-YT-4C6"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -477,6 +486,7 @@
     <resources>
         <image name="Logo" width="311" height="69"/>
         <image name="Profile" width="18.5" height="19.5"/>
+        <image name="link.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

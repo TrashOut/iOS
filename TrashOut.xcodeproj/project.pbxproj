@@ -364,6 +364,8 @@
 		0FD8FA992449A2F80064240A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1611447E26542C0100B6C168 /* NSAtrributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAtrributedString+.swift"; sourceTree = "<group>"; };
 		161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserManager+AppleLogin.swift"; sourceTree = "<group>"; };
+		16B9B3232656B6D0002978C4 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		16B9B3242656B83B002978C4 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		16ED5468263B2AA9000E848A /* KeychainItemClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemClass.swift; sourceTree = "<group>"; };
 		16ED5469263B2AA9000E848A /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
@@ -1250,6 +1252,8 @@
 				hu,
 				pt,
 				fr,
+				ro,
+				uk,
 			);
 			mainGroup = C3A3B2331DA7A6E00099D1C2;
 			productRefGroup = C3A3B23D1DA7A6E00099D1C2 /* Products */;
@@ -2111,6 +2115,8 @@
 				0FD8FA952449A0D50064240A /* hu */,
 				0FD8FA982449A1F90064240A /* pt */,
 				0FD8FA992449A2F80064240A /* fr */,
+				16B9B3232656B6D0002978C4 /* ro */,
+				16B9B3242656B83B002978C4 /* uk */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

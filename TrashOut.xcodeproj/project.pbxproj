@@ -2341,7 +2341,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 133;
+				CURRENT_PROJECT_VERSION = 134;
 				DEVELOPMENT_TEAM = 86URP76MUB;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2365,7 +2365,7 @@
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Trashout/Info-Prod.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 4.6.2;
+				MARKETING_VERSION = 4.6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = PSP4M9F8L7.me.trashout.mobile.titanium;
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "";
@@ -2550,7 +2550,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 133;
+				CURRENT_PROJECT_VERSION = 134;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 86URP76MUB;
 				ENABLE_BITCODE = YES;
@@ -2575,7 +2575,7 @@
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Trashout/Info-Prod.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 4.6.2;
+				MARKETING_VERSION = 4.6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = PSP4M9F8L7.me.trashout.mobile.titanium;
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "";
@@ -2598,7 +2598,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 133;
+				CURRENT_PROJECT_VERSION = 134;
 				DEVELOPMENT_TEAM = 86URP76MUB;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2622,7 +2622,7 @@
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Trashout/Info-Prod.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 4.6.2;
+				MARKETING_VERSION = 4.6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = PSP4M9F8L7.me.trashout.mobile.titanium;
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "";

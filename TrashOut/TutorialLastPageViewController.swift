@@ -164,6 +164,7 @@ extension TutorialLastPageViewController {
         ivImage.image = page?.image
         lblTitle.text = page?.title
         lblText.text = page?.content
+        tvTermsAndConditions?.text = "global.register.terms".localized
 
         btnSignin.setTitle("tutorial.register".localized, for: .normal)
         btnFacebook.setTitle("global.facebookLogin".localized, for: .normal)

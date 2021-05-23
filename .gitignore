@@ -57,6 +57,8 @@ Carthage/Build
 
 fastlane/report.xml
 fastlane/screenshots
+fastlane/Appfile
+fastlane/README.md
 
 #Code Injection
 #

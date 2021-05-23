@@ -692,7 +692,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
 
             let accuracy = Int(LocationManager.manager.currentLocation.horizontalAccuracy)
             if accuracy > 100 {
-                locationAccuracyView.isHidden = false
+//                locationAccuracyView.isHidden = false // Accuracy view visibility not show even if accuracy is not good during dump creation.
                 lblAccuracy.text = "\(Int(accuracy)) m"
             } else {
                 cnAccuracyViewHeight.constant = 76

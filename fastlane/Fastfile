@@ -1,0 +1,38 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+app_dsym_destination  = "../TrashOut.ipa"
+app_ipa_destination   = "../TrashOut.app.dSYM.zip"
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    #sync_code_signing
+    changelog = prompt(text: "Changelog: ")
+    increment_build_number(
+      build_number: latest_testflight_build_number + 1,
+      xcodeproj: "TrashOut.xcodeproj"
+    ) 
+    build_app(workspace: "TrashOut.xcworkspace", scheme: "TrashOut", xcargs: "-allowProvisioningUpdates")
+    upload_to_testflight(changelog: changelog)
+  end
+
+  after_all do |lane|
+    File.delete(app_dsym_destination)
+    File.delete(app_ipa_destination)
+  end
+end

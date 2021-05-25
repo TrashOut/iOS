@@ -151,6 +151,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     @IBOutlet var btnGlass: UIButton!
 
     @IBOutlet var tvAdditionalInformation: UITextView!
+    @IBOutlet weak var editLocationButton: UIButton!
 
     var trash: Trash?
     var cleaned: Bool?
@@ -184,101 +185,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     override func viewDidLoad() {
 		super.viewDidLoad()
 
-        title = "trash.create.title".localized
-        navigationController?.isNavigationBarHidden = false
-
-        // If user took a photo, show it, otherwise show view with info to take picture
-		if photos.count > 0 {
-			cvPhoto.reloadData()
-			takeAnotherPhotoView.isHidden = false
-		} else {
-			takeFirstPhotoView.isHidden = false
-		}
-
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-
-		let backButton = UIBarButtonItem.init(title: "global.cancel".localized, style: .plain, target: self, action: #selector(close))
-		navigationItem.leftBarButtonItem = backButton
-        let sendButton = UIBarButtonItem(title: "global.create.send".localized, style: .plain, target: self, action: #selector(sendReport))
-        navigationItem.rightBarButtonItem = sendButton
-
-        cnByCarSeparatorHeight.preciseConstant = 1
-        cnInCaveSeparatorHeight.preciseConstant = 1
-        cnUnderWaterSeparatorHeight.preciseConstant = 1
-        cnStatusSeparatorHeight.preciseConstant = 1
-
-        btnAddPhoto.setTitle("trash.create.addPhoto".localized.uppercased(with: Locale.current), for: .normal)
-        btnAddPhoto.theme()
-        btnTakeAnotherPhoto.setTitle("trash.create.takeAnotherPhoto".localized.uppercased(with: Locale.current), for: .normal)
-        btnTakeAnotherPhoto.theme()
-
-        if trash == nil {
-            lblPhotoInfoTitle.text = "trash.create.takeAtLeastOnePhoto".localized
-        } else {
-            lblPhotoInfoTitle.text = "trash.create.takeAtLeastOnePhoto".localized
-        }
-        lblPhotoInfoSubtitle.text = "trash.create.ofIllegalDump".localized
-        lblPhotoInfoSubtitle.textColor = Theme.current.color.lightGray
-        lblSizeOfTrash.text = "trash.trashSize".localized
-        lblSizeOfTrash.textColor = Theme.current.color.green
-        lblFitsABag.text = "trash.size.bag".localized
-        lblFitsAWheelbarrow.text = "trash.size.wheelbarrow".localized
-        lblCarNeeded.text = "trash.size.carNeeded".localized
-        lblTypeOfTrash.text = "trash.trashType".localized
-        lblTypeOfTrash.textColor = Theme.current.color.green
-        lblDomestic.text = "trash.types.domestic".localized
-        lblAutomotive.text = "trash.types.automotive".localized
-        lblConstruction.text = "trash.types.construction".localized
-        lblPlastic.text = "trash.types.plastic".localized
-        lblElectronic.text = "trash.types.electronic".localized
-        lblOrganic.text = "trash.types.organic".localized
-        lblMetal.text = "trash.types.metal".localized
-        lblLiquid.text = "trash.types.liquid".localized
-        lblDangerous.text = "trash.types.dangerous".localized
-        lblDeadAnimals.text = "trash.types.deadAnimals".localized
-        lblGlass.text = "trash.types.glass".localized
-        lblAccessibility.text = "trash.accessibility".localized
-        lblAccessibility.textColor = Theme.current.color.green
-        lblByCar.text = "trash.accessibility.byCar".localized
-        lblInCave.text = "trash.accessibility.inCave".localized
-        lblUnderWater.text = "trash.accessibility.underWater".localized
-        lblNotForGeneralCleanup.text = "trash.accessibility.notForGeneralCleanup".localized
-        lblStatus.text = "global.status".localized
-        lblStatus.textColor = Theme.current.color.green
-        lblCleaned.text = "trash.status.cleaned".localized
-        lblICleanedIt.text = "trash.cleanedByMe".localized
-        lblLocation.text = "trash.gpsLocation".localized
-        lblLocation.textColor = Theme.current.color.green
-        lblLocationAccuracy.text = "trash.accuracyOfLocation".localized
-        lblTryingBetterLocation.text = "trash.edit.betterLocation".localized
-        lblTryingBetterLocation.textColor = Theme.current.color.lightGray
-        lblCoordinates.textColor = Theme.current.color.lightGray
-        lblAdditionalInformation.text = "trash.note".localized
-        lblAdditionalInformation.textColor = Theme.current.color.green
-        lblSendAnonymously.text = "trash.sendAnonymously".localized
-
-        tvAdditionalInformation.text = "trash.create.additionalInfo.hint".localized
-        tvAdditionalInformation.textColor = Theme.current.color.lightGray
-
-        for separator in vDescSeparator {
-            separator.backgroundColor = UIColor.theme.separatorLine
-        }
-
-        // Initial setup
-        trashStatus = ""
-        trashTypes = []
-        trashSize = nil
-
-        setSizeOfTrashView()
-        setTypesOfTrashView()
-        setAccessibilityView()
-        setStatusView()
-    
-        LocationManager.manager.refreshCurrentLocation(calibrationTime: 2) { [weak self] _ in
-            self?.setLocationView()
-        }
+       setupView()
     }
 
 	override func viewDidLayoutSubviews() {
@@ -310,7 +217,6 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     Report a dump or update one
     */
     @objc func sendReport() {
-        
         //show(message: "trash.create.validation.notFilledRequiredFileds".localized)
         if trash != nil && photos.isEmpty {
             show(message: "trash.create.takeAtLeastOnePhoto".localized)
@@ -413,362 +319,6 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
 	}
 
     /**
-    User creates a dump report
-    */
-    fileprivate func createTrash(completion: @escaping ()->(), failure: @escaping (Error)->()) {
-        
-        accessibility = DumpsAccessibility.init(byCar: byCar, inCave: inCave, underWater: underWater, notForGeneralCleanup: notForGeneralCleanup)
-		for i in 0..<photosURL.count {
-            let image = DumpsImages.init(thumbDownloadUrl: thumbsURL[i], thumbStorageLocation: thumbsStorage[i] ,fullDownloadUrl: photosURL[i], storageLocation: photosStorage[i])
-			images.append(image)
-		}
-        
-        Networking.instance.createTrash(images, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: anonymous, userId: (UserManager.instance.user?.id)!, accessibility: accessibility) { [weak self] (trash, error) in
-            guard error == nil else {
-                print(error?.localizedDescription as Any)
-				failure(error!)
-                return
-            }
-			completion()
-            self?.openThankYouViewController(trash: trash)
-            /*
-            let alert = UIAlertController(title: nil, message: "trash.create.successfullyReported".localized, preferredStyle: .alert)
-            let ok = UIAlertAction.init(title: "global.ok".localized, style: .default) { [weak self] (alertAction) in
-                self?.close()
-            }
-            alert.addAction(ok)
-            self?.present(alert, animated: true, completion: nil)
-            */
-        }
-    }
-
-    /**
-    User updates a dump
-    */
-    fileprivate func updateTrash(completion: @escaping ()->(), failure: @escaping (Error)->()) {
-        
-        accessibility = DumpsAccessibility.init(byCar: byCar, inCave: inCave, underWater: underWater, notForGeneralCleanup: notForGeneralCleanup)
-        if !photosURL.isEmpty {
-            for i in 0..<photosURL.count {
-                let image = DumpsImages.init(thumbDownloadUrl: thumbsURL[i], thumbStorageLocation: thumbsStorage[i] ,fullDownloadUrl: photosURL[i], storageLocation: photosStorage[i])
-                images.append(image)
-            }
-        }
-        guard let trashId = trash?.id else {
-			let error = NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [NSLocalizedDescriptionKey: "global.validation.unknownError".localized])
-			failure(error)
-			return
-		}
-
-        Networking.instance.updateTrash(trashId, images: images, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: anonymous, userId: (UserManager.instance.user?.id)!, accessibility: accessibility, status: trashStatus, cleanedByMe: cleanedByMe) { [weak self] (trash, error) in
-            guard error == nil else {
-                print(error?.localizedDescription as Any)
-				failure(error!)
-                return
-            }
-			completion()
-            let alert = UIAlertController(title: nil, message: "trash.create.successfullyUpdated".localized, preferredStyle: .alert)
-            let ok = UIAlertAction.init(title: "global.ok".localized, style: .default) { [weak self] (alertAction) in
-                self?.close()
-            }
-            alert.addAction(ok)
-            self?.present(alert, animated: true, completion: nil)
-        }
-    }
-
-    /**
-    Set rounded button with light gray border
-    */
-    fileprivate func setRoundedButtonWithBorder(button: UIButton) {
-        button.layer.cornerRadius = 0.5 * button.bounds.height
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.lightGray.cgColor
-    }
-
-    @IBAction func addPhoto(_ sender: UIButton) {
-		photoManager.takePhoto(vc: self, source: .camera, success: { [weak self] (image) in
-			self?.photos.append(image)
-			self?.cvPhoto.reloadData()
-			if let cnt = self?.photos.count {
-				let ip = IndexPath.init(item: cnt - 1, section: 0)
-				self?.cvPhoto.scrollToItem(at: ip, at: UICollectionView.ScrollPosition.left, animated: true)
-			}
-			self?.takeFirstPhotoView.isHidden = true
-			self?.takeAnotherPhotoView.isHidden = false
-		}) { (_) in
-			// no action
-		}
-    }
-
-    /**
-    Set Size of Trash part of UI
-    */
-    fileprivate func setSizeOfTrashView() {
-        if cleaned == true {
-            sizeOfTrashView.isHidden = true
-
-            guard let size = trash?.size else { return }
-            downloadedSizeOfTrash(trash: size)
-        } else {
-            guard let size = trash?.size else { return }
-            downloadedSizeOfTrash(trash: size)
-        }
-    }
-
-    /**
-    Color downloaded size of trash
-    */
-    fileprivate func downloadedSizeOfTrash(trash: Trash.Size) {
-        for button in btnsSizeOfTrash {
-            switch trash {
-            case .bag:
-                if button.tag == 0 {
-                    setSizeOfTrash(sender: button, selectedImage: "BagClear", chosenSize: "bag")
-                }
-            case .wheelbarrow:
-                if button.tag == 1 {
-                    setSizeOfTrash(sender: button, selectedImage: "WheelbarrowClear", chosenSize: "wheelbarrow")
-                }
-            case .car:
-                if button.tag == 2 {
-                    setSizeOfTrash(sender: button, selectedImage: "CarClear", chosenSize: "car")
-                }
-            }
-        }
-    }
-
-    /**
-    Set Types of Trash part of UI
-    */
-    fileprivate func setTypesOfTrashView() {
-        if cleaned == true {
-            typesOfTrashView.isHidden = true
-
-            guard let types = trash?.types else { return }
-            downloadedTypesOfTrash(trash: types)
-        } else {
-            guard let types = trash?.types else { return }
-            downloadedTypesOfTrash(trash: types)
-        }
-    }
-
-    /**
-    Color downloaded types of trash
-    */
-    fileprivate func downloadedTypesOfTrash(trash: [Trash.TrashType]) {
-        if trash.count > 0 {
-            for i in 0...trash.count - 1 {
-                if trash[i].rawValue == "domestic" {
-                    setTypesOfTrash(sender: btnDomestic, selectedImage: "DomesticClear", color: Theme.current.color.domestic, chosenType: "domestic")
-                } else if trash[i].rawValue == "automotive" {
-                    setTypesOfTrash(sender: btnAutomotive, selectedImage: "AutomotiveClear", color: Theme.current.color.automotive, chosenType: "automotive")
-                } else if trash[i].rawValue == "construction" {
-                    setTypesOfTrash(sender: btnConstruction, selectedImage: "ConstructionClear", color: Theme.current.color.construction, chosenType: "construction")
-                } else if trash[i].rawValue == "plastic" {
-                    setTypesOfTrash(sender: btnPlastic, selectedImage: "PlasticClear", color: Theme.current.color.plastic, chosenType: "plastic")
-                } else if trash[i].rawValue == "electronic" {
-                    setTypesOfTrash(sender: btnElectronic, selectedImage: "ElectronicClear", color: Theme.current.color.electronic, chosenType: "electronic")
-                } else if trash[i].rawValue == "organic" {
-                    setTypesOfTrash(sender: btnOrganic, selectedImage: "OrganicClear", color: Theme.current.color.organic, chosenType: "organic")
-                } else if trash[i].rawValue == "metal" {
-                    setTypesOfTrash(sender: btnMetal, selectedImage: "MetalClear", color: Theme.current.color.metal, chosenType: "metal")
-                } else if trash[i].rawValue == "liquid" {
-                    setTypesOfTrash(sender: btnLiquid, selectedImage: "LiquidClear", color: Theme.current.color.liquid, chosenType: "liquid")
-                } else if trash[i].rawValue == "dangerous" {
-                    setTypesOfTrash(sender: btnDangerous, selectedImage: "DangerousClear", color: Theme.current.color.dangerous, chosenType: "dangerous")
-                } else if trash[i].rawValue == "glass" {
-                    setTypesOfTrash(sender: btnGlass, selectedImage: "GlassClear", color: Theme.current.color.glass, chosenType: "glass")
-                }
-                else {
-                    setTypesOfTrash(sender: btnDeadAnimals, selectedImage: "AnimalsClear", color: Theme.current.color.deadAnimals, chosenType: "deadAnimals")
-                }
-            }
-        }
-    }
-
-    /**
-    Set Accessibility part of UI
-    */
-    fileprivate func setAccessibilityView() {
-        if trash != nil && cleaned == false {
-            downloadedAccessibility(defaultValue: trash?.accessibility?.byCar, sw: swByCar)
-            byCar = (trash?.accessibility?.byCar)!
-            downloadedAccessibility(defaultValue: trash?.accessibility?.inCave, sw: swInCave)
-            inCave = (trash?.accessibility?.inCave)!
-            downloadedAccessibility(defaultValue: trash?.accessibility?.underWater, sw: swUnderWater)
-            underWater = (trash?.accessibility?.underWater)!
-            downloadedAccessibility(defaultValue: trash?.accessibility?.notForGeneralCleanup, sw: swNotForGeneralCleanup)
-            notForGeneralCleanup = (trash?.accessibility?.notForGeneralCleanup)!
-        } else if cleaned == true {
-            accessibilityView.isHidden = true
-            byCar = (trash?.accessibility?.byCar)!
-            inCave = (trash?.accessibility?.inCave)!
-            underWater = (trash?.accessibility?.underWater)!
-            notForGeneralCleanup = (trash?.accessibility?.notForGeneralCleanup)!
-        }
-    }
-    
-    fileprivate func showTrashOnMap(coords: CLLocationCoordinate2D) {
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coords
-        
-        map.addAnnotation(annotation)
-        let span = MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        let region = MKCoordinateRegion.init(center: coords, span: span)
-        map.setRegion(region, animated: true)
-    }
-
-    /**
-    If accessibility is true, set its switch on
-    */
-    fileprivate func downloadedAccessibility(defaultValue: Bool?, sw: UISwitch) {
-        guard let value = defaultValue else { return }
-        if value {
-            sw.setOn(true, animated: true)
-        }
-    }
-
-    @IBAction func byCar(_ sender: UISwitch) {
-        if sender.isOn {
-            byCar = true
-        } else {
-            byCar = false
-        }
-    }
-
-    @IBAction func inCave(_ sender: UISwitch) {
-        if sender.isOn {
-            inCave = true
-        } else {
-            inCave = false
-        }
-    }
-
-    @IBAction func underWater(_ sender: UISwitch) {
-        if sender.isOn {
-            underWater = true
-        } else {
-            underWater = false
-        }
-    }
-
-    @IBAction func notForGeneralCleanup(_ sender: UISwitch) {
-        if sender.isOn {
-            notForGeneralCleanup = true
-        } else {
-            notForGeneralCleanup = false
-        }
-    }
-
-    /**
-    Set Status part of UI
-    */
-    fileprivate func setStatusView() {
-        if cleaned == true {
-            statusView.isHidden = false
-            trashStatus = "cleaned"
-			swStillHere.isEnabled = false
-			
-        } else if cleaned == false {
-            trashStatus = "stillHere"
-        }
-    }
-
-    @IBAction func cleanedByMe(_ sender: UISwitch) {
-        if sender.isOn {
-            cleanedByMe = true
-        } else {
-            cleanedByMe = false
-        }
-    }
-    
-    /**
-    Set Location part of UI
-    */
-    fileprivate func setLocationView() {
-        // If user wants to report new dump, the trash is nill. Otherwise user is updating existing trash.
-        if trash == nil {
-            locationAddressView.isHidden = false
-
-            let accuracy = Int(LocationManager.manager.currentLocation.horizontalAccuracy)
-            if accuracy > 100 {
-//                locationAccuracyView.isHidden = false // Accuracy view visibility not show even if accuracy is not good during dump creation.
-                lblAccuracy.text = "\(Int(accuracy)) m"
-            } else {
-                cnAccuracyViewHeight.constant = 76
-                cnAddressTop.constant = 0
-            }
-
-            let coords = LocationManager.manager.currentLocation.coordinate
-
-            gps = Coordinates.init(lat: coords.latitude, long: coords.longitude, accuracy: accuracy, source: "gps")
-
-            showAddressAndCoorinates(latitude: coords.latitude, longitude: coords.longitude)
-        } else {
-            cnAccuracyViewHeight.constant = 76
-
-            let accuracy = Int(LocationManager.manager.currentLocation.horizontalAccuracy)
-            if accuracy > 100 {
-                locationAccuracyView.isHidden = false
-                lblAccuracy.text = "\(Int(accuracy)) m"
-            } else {
-                if let trashGps = trash?.gps {
-                    let trashLocation = CLLocation.init(latitude: trashGps.lat, longitude: trashGps.long)
-                    let distance = LocationManager.manager.currentLocation.distance(from: trashLocation)
-                    let distanceInM = Int(round(distance))
-
-                    if distanceInM > 100 {
-						lblAccuracy.text = DistanceRounding.shared.localizedDistance(meteres: distanceInM)
-//                        if distanceInM < 501 {
-//                            lblAccuracy.text = "∼\(DistanceRounding.roundDistance(distance: distanceInM))m away".localized
-//                        } else {
-//                            if DistanceRounding.roundDistance(distance: distanceInM) > 10000 {
-//                                lblAccuracy.text = "> 10km away".localized
-//                            } else {
-//                                lblAccuracy.text = "∼\(DistanceRounding.roundDistance(distance: distanceInM))km away".localized
-//                            }
-//                        }
-                        locationAccuracyView.isHidden = false
-                        lblLocationAccuracy.text = "trash.dumpsDistance".localized
-                        lblTryingBetterLocation.text = "trash.edit.getCloser".localized
-                        lblAccuracy.adjustsFontSizeToFitWidth = true
-                        
-                        
-                    } else {
-                        locationView.isHidden = true
-                    }
-
-                    var source = ""
-                    if Reachability.isConnectedToCellularNetwork() {
-                        source = "network"
-                    } else if Reachability.isConnectedToNetwork() {
-                        source = "wifi"
-                    } else {
-                        source = "gps"
-                    }
-
-                    gps = Coordinates.init(lat: trashGps.lat, long: trashGps.long, accuracy: accuracy, source: source)
-                }
-            }
-        }
-        
-        let coords = CLLocationCoordinate2DMake(gps.lat, gps.long)
-        showTrashOnMap(coords: coords)
-    }
-
-    /**
-    Show address and coordinates
-    */
-    fileprivate func showAddressAndCoorinates(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        lblAddress.text = ""
-        lblCoordinates.text = "\(String(format:"%.6f", latitude)), \(String(format:"%.6f", longitude))"
-        let gps = GPS()
-        gps.lat = latitude
-        gps.long = longitude
-        setAddress(gps: gps, label: lblAddress)
-    }
-
-    /**
     Move keyboard for text view below the text itself
     */
     @objc func adjustForKeyboard(notification: Notification) {
@@ -824,87 +374,6 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
         return true
     }
 
-    @IBAction func chooseSizeOfTrash(_ sender: UIButton) {
-        switch sender.tag {
-        case 0:
-            setSizeOfTrash(sender: sender, selectedImage: "BagClear", chosenSize: "bag")
-        case 1:
-            setSizeOfTrash(sender: sender, selectedImage: "WheelbarrowClear", chosenSize: "wheelbarrow")
-        case 2:
-            setSizeOfTrash(sender: sender, selectedImage: "CarClear", chosenSize: "car")
-        default: break
-        }
-    }
-
-    /**
-    Set size of trash, color chosen size and disable other buttons
-    */
-    fileprivate func setSizeOfTrash(sender: UIButton, selectedImage: String, chosenSize: String) {
-        for btn in btnsSizeOfTrash {
-            btn.backgroundColor = .clear
-            btn.isEnabled = true
-        }
-        trashSize = chosenSize
-        sender.setImage(UIImage(named: selectedImage), for: .disabled)
-        sender.backgroundColor = Theme.current.color.green
-        sender.clipsToBounds = true
-        sender.isEnabled = false
-    }
-
-    @IBAction func chooseTypesOfTrash(_ sender: UIButton) {
-        switch sender.tag {
-        case 0:
-            setTypesOfTrash(sender: sender, selectedImage: "DomesticClear", color: Theme.current.color.domestic, chosenType: "domestic")
-        case 1:
-            setTypesOfTrash(sender: sender, selectedImage: "AutomotiveClear", color: Theme.current.color.automotive, chosenType: "automotive")
-        case 2:
-            setTypesOfTrash(sender: sender, selectedImage: "ConstructionClear", color: Theme.current.color.construction, chosenType: "construction")
-        case 3:
-            setTypesOfTrash(sender: sender, selectedImage: "PlasticClear", color: Theme.current.color.plastic, chosenType: "plastic")
-        case 4:
-            setTypesOfTrash(sender: sender, selectedImage: "ElectronicClear", color: Theme.current.color.electronic, chosenType: "electronic")
-        case 5:
-            setTypesOfTrash(sender: sender, selectedImage: "OrganicClear", color: Theme.current.color.organic, chosenType: "organic")
-        case 6:
-            setTypesOfTrash(sender: sender, selectedImage: "MetalClear", color: Theme.current.color.metal, chosenType: "metal")
-        case 7:
-            setTypesOfTrash(sender: sender, selectedImage: "LiquidClear", color: Theme.current.color.liquid, chosenType: "liquid")
-        case 8:
-            setTypesOfTrash(sender: sender, selectedImage: "DangerousClear", color: Theme.current.color.dangerous, chosenType: "dangerous")
-        case 9:
-            setTypesOfTrash(sender: sender, selectedImage: "AnimalsClear", color: Theme.current.color.deadAnimals, chosenType: "deadAnimals")
-        case 10:
-            setTypesOfTrash(sender: sender, selectedImage: "GlassClear", color: Theme.current.color.glass, chosenType: "glass")
-            
-        default: break
-        }
-    }
-
-    /**
-    Set types of trash, color chosen size and disable other buttons
-    */
-    fileprivate func setTypesOfTrash(sender: UIButton, selectedImage: String, color: UIColor, chosenType: String) {
-        if sender.isSelected == false {
-            trashTypes.append(chosenType)
-            sender.setImage(UIImage(named: selectedImage), for: .selected)
-            sender.backgroundColor = color
-            sender.clipsToBounds = true
-            sender.isSelected = true
-        } else {
-            trashTypes = trashTypes.filter { $0 != chosenType }
-            sender.backgroundColor = .clear
-            sender.isSelected = false
-        }
-    }
-
-    @IBAction func sendAnonymously(_ sender: UISwitch) {
-        if sender.isOn {
-            anonymous = true
-        } else {
-            anonymous = false
-        }
-    }
-
     // MARK: - Collection view
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -939,8 +408,570 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
                 }
             }
         }
+
+        if
+            let navigation = segue.destination as? UINavigationController,
+            let controller = navigation.viewControllers.first as? UpdateLocationViewController
+        {
+            controller.delegate = self
+        }
     }
     
+}
+
+// MARK: - IBActions
+
+extension ReportViewController {
+
+    @IBAction func chooseSizeOfTrash(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            setSizeOfTrash(sender: sender, selectedImage: "BagClear", chosenSize: "bag")
+        case 1:
+            setSizeOfTrash(sender: sender, selectedImage: "WheelbarrowClear", chosenSize: "wheelbarrow")
+        case 2:
+            setSizeOfTrash(sender: sender, selectedImage: "CarClear", chosenSize: "car")
+        default: break
+        }
+    }
+
+    @IBAction func chooseTypesOfTrash(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            setTypesOfTrash(sender: sender, selectedImage: "DomesticClear", color: Theme.current.color.domestic, chosenType: "domestic")
+        case 1:
+            setTypesOfTrash(sender: sender, selectedImage: "AutomotiveClear", color: Theme.current.color.automotive, chosenType: "automotive")
+        case 2:
+            setTypesOfTrash(sender: sender, selectedImage: "ConstructionClear", color: Theme.current.color.construction, chosenType: "construction")
+        case 3:
+            setTypesOfTrash(sender: sender, selectedImage: "PlasticClear", color: Theme.current.color.plastic, chosenType: "plastic")
+        case 4:
+            setTypesOfTrash(sender: sender, selectedImage: "ElectronicClear", color: Theme.current.color.electronic, chosenType: "electronic")
+        case 5:
+            setTypesOfTrash(sender: sender, selectedImage: "OrganicClear", color: Theme.current.color.organic, chosenType: "organic")
+        case 6:
+            setTypesOfTrash(sender: sender, selectedImage: "MetalClear", color: Theme.current.color.metal, chosenType: "metal")
+        case 7:
+            setTypesOfTrash(sender: sender, selectedImage: "LiquidClear", color: Theme.current.color.liquid, chosenType: "liquid")
+        case 8:
+            setTypesOfTrash(sender: sender, selectedImage: "DangerousClear", color: Theme.current.color.dangerous, chosenType: "dangerous")
+        case 9:
+            setTypesOfTrash(sender: sender, selectedImage: "AnimalsClear", color: Theme.current.color.deadAnimals, chosenType: "deadAnimals")
+        case 10:
+            setTypesOfTrash(sender: sender, selectedImage: "GlassClear", color: Theme.current.color.glass, chosenType: "glass")
+
+        default: break
+        }
+    }
+
+    @IBAction func sendAnonymously(_ sender: UISwitch) {
+        if sender.isOn {
+            anonymous = true
+        } else {
+            anonymous = false
+        }
+    }
+
+    @IBAction func addPhoto(_ sender: UIButton) {
+        photoManager.takePhoto(vc: self, source: .camera, success: { [weak self] (image) in
+            self?.photos.append(image)
+            self?.cvPhoto.reloadData()
+            if let cnt = self?.photos.count {
+                let ip = IndexPath.init(item: cnt - 1, section: 0)
+                self?.cvPhoto.scrollToItem(at: ip, at: UICollectionView.ScrollPosition.left, animated: true)
+            }
+            self?.takeFirstPhotoView.isHidden = true
+            self?.takeAnotherPhotoView.isHidden = false
+        }) { (_) in
+            // no action
+        }
+    }
+
+    @IBAction func editLocationButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: String(describing: UpdateLocationViewController.self), sender: nil)
+    }
+
+    @IBAction func byCar(_ sender: UISwitch) {
+        if sender.isOn {
+            byCar = true
+        } else {
+            byCar = false
+        }
+    }
+
+    @IBAction func inCave(_ sender: UISwitch) {
+        if sender.isOn {
+            inCave = true
+        } else {
+            inCave = false
+        }
+    }
+
+    @IBAction func underWater(_ sender: UISwitch) {
+        if sender.isOn {
+            underWater = true
+        } else {
+            underWater = false
+        }
+    }
+
+    @IBAction func notForGeneralCleanup(_ sender: UISwitch) {
+        if sender.isOn {
+            notForGeneralCleanup = true
+        } else {
+            notForGeneralCleanup = false
+        }
+    }
+
+    @IBAction func cleanedByMe(_ sender: UISwitch) {
+        if sender.isOn {
+            cleanedByMe = true
+        } else {
+            cleanedByMe = false
+        }
+    }
+
+}
+
+// MARK: - Private
+
+extension ReportViewController {
+
+
+    private func setupView() {
+        title = "trash.create.title".localized
+        navigationController?.isNavigationBarHidden = false
+
+        // If user took a photo, show it, otherwise show view with info to take picture
+        if photos.count > 0 {
+            cvPhoto.reloadData()
+            takeAnotherPhotoView.isHidden = false
+        } else {
+            takeFirstPhotoView.isHidden = false
+        }
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+
+        let backButton = UIBarButtonItem.init(title: "global.cancel".localized, style: .plain, target: self, action: #selector(close))
+        navigationItem.leftBarButtonItem = backButton
+        let sendButton = UIBarButtonItem(title: "global.create.send".localized, style: .plain, target: self, action: #selector(sendReport))
+        navigationItem.rightBarButtonItem = sendButton
+
+        cnByCarSeparatorHeight.preciseConstant = 1
+        cnInCaveSeparatorHeight.preciseConstant = 1
+        cnUnderWaterSeparatorHeight.preciseConstant = 1
+        cnStatusSeparatorHeight.preciseConstant = 1
+
+        btnAddPhoto.setTitle("trash.create.addPhoto".localized.uppercased(with: Locale.current), for: .normal)
+        btnAddPhoto.theme()
+        btnTakeAnotherPhoto.setTitle("trash.create.takeAnotherPhoto".localized.uppercased(with: Locale.current), for: .normal)
+        btnTakeAnotherPhoto.theme()
+
+        if trash == nil {
+            lblPhotoInfoTitle.text = "trash.create.takeAtLeastOnePhoto".localized
+        } else {
+            lblPhotoInfoTitle.text = "trash.create.takeAtLeastOnePhoto".localized
+        }
+        lblPhotoInfoSubtitle.text = "trash.create.ofIllegalDump".localized
+        lblPhotoInfoSubtitle.textColor = Theme.current.color.lightGray
+        lblSizeOfTrash.text = "trash.trashSize".localized
+        lblSizeOfTrash.textColor = Theme.current.color.green
+        lblFitsABag.text = "trash.size.bag".localized
+        lblFitsAWheelbarrow.text = "trash.size.wheelbarrow".localized
+        lblCarNeeded.text = "trash.size.carNeeded".localized
+        lblTypeOfTrash.text = "trash.trashType".localized
+        lblTypeOfTrash.textColor = Theme.current.color.green
+        lblDomestic.text = "trash.types.domestic".localized
+        lblAutomotive.text = "trash.types.automotive".localized
+        lblConstruction.text = "trash.types.construction".localized
+        lblPlastic.text = "trash.types.plastic".localized
+        lblElectronic.text = "trash.types.electronic".localized
+        lblOrganic.text = "trash.types.organic".localized
+        lblMetal.text = "trash.types.metal".localized
+        lblLiquid.text = "trash.types.liquid".localized
+        lblDangerous.text = "trash.types.dangerous".localized
+        lblDeadAnimals.text = "trash.types.deadAnimals".localized
+        lblGlass.text = "trash.types.glass".localized
+        lblAccessibility.text = "trash.accessibility".localized
+        lblAccessibility.textColor = Theme.current.color.green
+        lblByCar.text = "trash.accessibility.byCar".localized
+        lblInCave.text = "trash.accessibility.inCave".localized
+        lblUnderWater.text = "trash.accessibility.underWater".localized
+        lblNotForGeneralCleanup.text = "trash.accessibility.notForGeneralCleanup".localized
+        lblStatus.text = "global.status".localized
+        lblStatus.textColor = Theme.current.color.green
+        lblCleaned.text = "trash.status.cleaned".localized
+        lblICleanedIt.text = "trash.cleanedByMe".localized
+        lblLocation.text = "trash.gpsLocation".localized
+        lblLocation.textColor = Theme.current.color.green
+        lblLocationAccuracy.text = "trash.accuracyOfLocation".localized
+        lblTryingBetterLocation.text = "trash.edit.betterLocation".localized
+        lblTryingBetterLocation.textColor = Theme.current.color.lightGray
+        lblCoordinates.textColor = Theme.current.color.lightGray
+        lblAdditionalInformation.text = "trash.note".localized
+        lblAdditionalInformation.textColor = Theme.current.color.green
+        lblSendAnonymously.text = "trash.sendAnonymously".localized
+
+        tvAdditionalInformation.text = "trash.create.additionalInfo.hint".localized
+        tvAdditionalInformation.textColor = Theme.current.color.lightGray
+
+        for separator in vDescSeparator {
+            separator.backgroundColor = UIColor.theme.separatorLine
+        }
+
+        // Initial setup
+        trashStatus = ""
+        trashTypes = []
+        trashSize = nil
+
+        setSizeOfTrashView()
+        setTypesOfTrashView()
+        setAccessibilityView()
+        setStatusView()
+
+        LocationManager.manager.refreshCurrentLocation(calibrationTime: 2) { [weak self] _ in
+            self?.setLocationView()
+        }
+
+        editLocationButton.backgroundColor = UIColor.theme.green
+        editLocationButton.isHidden = trash != nil
+    }
+
+    /**
+    Set types of trash, color chosen size and disable other buttons
+    */
+    private func setTypesOfTrash(sender: UIButton, selectedImage: String, color: UIColor, chosenType: String) {
+        if sender.isSelected == false {
+            trashTypes.append(chosenType)
+            sender.setImage(UIImage(named: selectedImage), for: .selected)
+            sender.backgroundColor = color
+            sender.clipsToBounds = true
+            sender.isSelected = true
+        } else {
+            trashTypes = trashTypes.filter { $0 != chosenType }
+            sender.backgroundColor = .clear
+            sender.isSelected = false
+        }
+    }
+
+    /**
+    Set size of trash, color chosen size and disable other buttons
+    */
+    private func setSizeOfTrash(sender: UIButton, selectedImage: String, chosenSize: String) {
+        for btn in btnsSizeOfTrash {
+            btn.backgroundColor = .clear
+            btn.isEnabled = true
+        }
+        trashSize = chosenSize
+        sender.setImage(UIImage(named: selectedImage), for: .disabled)
+        sender.backgroundColor = Theme.current.color.green
+        sender.clipsToBounds = true
+        sender.isEnabled = false
+    }
+
+    /**
+    Set Size of Trash part of UI
+    */
+    private func setSizeOfTrashView() {
+        if cleaned == true {
+            sizeOfTrashView.isHidden = true
+
+            guard let size = trash?.size else { return }
+            downloadedSizeOfTrash(trash: size)
+        } else {
+            guard let size = trash?.size else { return }
+            downloadedSizeOfTrash(trash: size)
+        }
+    }
+
+    /**
+    Color downloaded size of trash
+    */
+    private func downloadedSizeOfTrash(trash: Trash.Size) {
+        for button in btnsSizeOfTrash {
+            switch trash {
+            case .bag:
+                if button.tag == 0 {
+                    setSizeOfTrash(sender: button, selectedImage: "BagClear", chosenSize: "bag")
+                }
+            case .wheelbarrow:
+                if button.tag == 1 {
+                    setSizeOfTrash(sender: button, selectedImage: "WheelbarrowClear", chosenSize: "wheelbarrow")
+                }
+            case .car:
+                if button.tag == 2 {
+                    setSizeOfTrash(sender: button, selectedImage: "CarClear", chosenSize: "car")
+                }
+            }
+        }
+    }
+
+    /**
+    Set Types of Trash part of UI
+    */
+    private func setTypesOfTrashView() {
+        if cleaned == true {
+            typesOfTrashView.isHidden = true
+
+            guard let types = trash?.types else { return }
+            downloadedTypesOfTrash(trash: types)
+        } else {
+            guard let types = trash?.types else { return }
+            downloadedTypesOfTrash(trash: types)
+        }
+    }
+
+    /**
+    Color downloaded types of trash
+    */
+    fileprivate func downloadedTypesOfTrash(trash: [Trash.TrashType]) {
+        if trash.count > 0 {
+            for i in 0...trash.count - 1 {
+                if trash[i].rawValue == "domestic" {
+                    setTypesOfTrash(sender: btnDomestic, selectedImage: "DomesticClear", color: Theme.current.color.domestic, chosenType: "domestic")
+                } else if trash[i].rawValue == "automotive" {
+                    setTypesOfTrash(sender: btnAutomotive, selectedImage: "AutomotiveClear", color: Theme.current.color.automotive, chosenType: "automotive")
+                } else if trash[i].rawValue == "construction" {
+                    setTypesOfTrash(sender: btnConstruction, selectedImage: "ConstructionClear", color: Theme.current.color.construction, chosenType: "construction")
+                } else if trash[i].rawValue == "plastic" {
+                    setTypesOfTrash(sender: btnPlastic, selectedImage: "PlasticClear", color: Theme.current.color.plastic, chosenType: "plastic")
+                } else if trash[i].rawValue == "electronic" {
+                    setTypesOfTrash(sender: btnElectronic, selectedImage: "ElectronicClear", color: Theme.current.color.electronic, chosenType: "electronic")
+                } else if trash[i].rawValue == "organic" {
+                    setTypesOfTrash(sender: btnOrganic, selectedImage: "OrganicClear", color: Theme.current.color.organic, chosenType: "organic")
+                } else if trash[i].rawValue == "metal" {
+                    setTypesOfTrash(sender: btnMetal, selectedImage: "MetalClear", color: Theme.current.color.metal, chosenType: "metal")
+                } else if trash[i].rawValue == "liquid" {
+                    setTypesOfTrash(sender: btnLiquid, selectedImage: "LiquidClear", color: Theme.current.color.liquid, chosenType: "liquid")
+                } else if trash[i].rawValue == "dangerous" {
+                    setTypesOfTrash(sender: btnDangerous, selectedImage: "DangerousClear", color: Theme.current.color.dangerous, chosenType: "dangerous")
+                } else if trash[i].rawValue == "glass" {
+                    setTypesOfTrash(sender: btnGlass, selectedImage: "GlassClear", color: Theme.current.color.glass, chosenType: "glass")
+                }
+                else {
+                    setTypesOfTrash(sender: btnDeadAnimals, selectedImage: "AnimalsClear", color: Theme.current.color.deadAnimals, chosenType: "deadAnimals")
+                }
+            }
+        }
+    }
+
+    /**
+    Set Accessibility part of UI
+    */
+    private func setAccessibilityView() {
+        if trash != nil && cleaned == false {
+            downloadedAccessibility(defaultValue: trash?.accessibility?.byCar, sw: swByCar)
+            byCar = (trash?.accessibility?.byCar)!
+            downloadedAccessibility(defaultValue: trash?.accessibility?.inCave, sw: swInCave)
+            inCave = (trash?.accessibility?.inCave)!
+            downloadedAccessibility(defaultValue: trash?.accessibility?.underWater, sw: swUnderWater)
+            underWater = (trash?.accessibility?.underWater)!
+            downloadedAccessibility(defaultValue: trash?.accessibility?.notForGeneralCleanup, sw: swNotForGeneralCleanup)
+            notForGeneralCleanup = (trash?.accessibility?.notForGeneralCleanup)!
+        } else if cleaned == true {
+            accessibilityView.isHidden = true
+            byCar = (trash?.accessibility?.byCar)!
+            inCave = (trash?.accessibility?.inCave)!
+            underWater = (trash?.accessibility?.underWater)!
+            notForGeneralCleanup = (trash?.accessibility?.notForGeneralCleanup)!
+        }
+    }
+
+    private func showTrashOnMap(coords: CLLocationCoordinate2D) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coords
+
+        map.addAnnotation(annotation)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion.init(center: coords, span: span)
+        map.setRegion(region, animated: true)
+    }
+
+    /**
+    If accessibility is true, set its switch on
+    */
+    private func downloadedAccessibility(defaultValue: Bool?, sw: UISwitch) {
+        guard let value = defaultValue else { return }
+        if value {
+            sw.setOn(true, animated: true)
+        }
+    }
+
+    /**
+    User creates a dump report
+    */
+    private func createTrash(completion: @escaping ()->(), failure: @escaping (Error)->()) {
+
+        accessibility = DumpsAccessibility.init(byCar: byCar, inCave: inCave, underWater: underWater, notForGeneralCleanup: notForGeneralCleanup)
+        for i in 0..<photosURL.count {
+            let image = DumpsImages.init(thumbDownloadUrl: thumbsURL[i], thumbStorageLocation: thumbsStorage[i] ,fullDownloadUrl: photosURL[i], storageLocation: photosStorage[i])
+            images.append(image)
+        }
+
+        Networking.instance.createTrash(images, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: anonymous, userId: (UserManager.instance.user?.id)!, accessibility: accessibility) { [weak self] (trash, error) in
+            guard error == nil else {
+                print(error?.localizedDescription as Any)
+                failure(error!)
+                return
+            }
+            completion()
+            self?.openThankYouViewController(trash: trash)
+            /*
+            let alert = UIAlertController(title: nil, message: "trash.create.successfullyReported".localized, preferredStyle: .alert)
+            let ok = UIAlertAction.init(title: "global.ok".localized, style: .default) { [weak self] (alertAction) in
+                self?.close()
+            }
+            alert.addAction(ok)
+            self?.present(alert, animated: true, completion: nil)
+            */
+        }
+    }
+
+    /**
+    User updates a dump
+    */
+    private func updateTrash(completion: @escaping ()->(), failure: @escaping (Error)->()) {
+
+        accessibility = DumpsAccessibility.init(byCar: byCar, inCave: inCave, underWater: underWater, notForGeneralCleanup: notForGeneralCleanup)
+        if !photosURL.isEmpty {
+            for i in 0..<photosURL.count {
+                let image = DumpsImages.init(thumbDownloadUrl: thumbsURL[i], thumbStorageLocation: thumbsStorage[i] ,fullDownloadUrl: photosURL[i], storageLocation: photosStorage[i])
+                images.append(image)
+            }
+        }
+        guard let trashId = trash?.id else {
+            let error = NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [NSLocalizedDescriptionKey: "global.validation.unknownError".localized])
+            failure(error)
+            return
+        }
+
+        Networking.instance.updateTrash(trashId, images: images, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: anonymous, userId: (UserManager.instance.user?.id)!, accessibility: accessibility, status: trashStatus, cleanedByMe: cleanedByMe) { [weak self] (trash, error) in
+            guard error == nil else {
+                print(error?.localizedDescription as Any)
+                failure(error!)
+                return
+            }
+            completion()
+            let alert = UIAlertController(title: nil, message: "trash.create.successfullyUpdated".localized, preferredStyle: .alert)
+            let ok = UIAlertAction.init(title: "global.ok".localized, style: .default) { [weak self] (alertAction) in
+                self?.close()
+            }
+            alert.addAction(ok)
+            self?.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    /**
+    Set rounded button with light gray border
+    */
+    private func setRoundedButtonWithBorder(button: UIButton) {
+        button.layer.cornerRadius = 0.5 * button.bounds.height
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.lightGray.cgColor
+    }
+
+    /**
+    Set Status part of UI
+    */
+    private func setStatusView() {
+        if cleaned == true {
+            statusView.isHidden = false
+            trashStatus = "cleaned"
+            swStillHere.isEnabled = false
+
+        } else if cleaned == false {
+            trashStatus = "stillHere"
+        }
+    }
+
+    /**
+    Set Location part of UI
+    */
+    private func setLocationView() {
+        // If user wants to report new dump, the trash is nill. Otherwise user is updating existing trash.
+        if trash == nil {
+            locationAddressView.isHidden = false
+
+            let accuracy = Int(LocationManager.manager.currentLocation.horizontalAccuracy)
+            if accuracy > 100 {
+//                locationAccuracyView.isHidden = false // Accuracy view visibility not show even if accuracy is not good during dump creation.
+                lblAccuracy.text = "\(Int(accuracy)) m"
+            } else {
+                cnAccuracyViewHeight.constant = 76
+                cnAddressTop.constant = 0
+            }
+
+            let coords = LocationManager.manager.currentLocation.coordinate
+
+            gps = Coordinates.init(lat: coords.latitude, long: coords.longitude, accuracy: accuracy, source: "gps")
+
+            showAddressAndCoorinates(latitude: coords.latitude, longitude: coords.longitude)
+        } else {
+            cnAccuracyViewHeight.constant = 76
+
+            let accuracy = Int(LocationManager.manager.currentLocation.horizontalAccuracy)
+            if accuracy > 100 {
+                locationAccuracyView.isHidden = false
+                lblAccuracy.text = "\(Int(accuracy)) m"
+            } else {
+                if let trashGps = trash?.gps {
+                    let trashLocation = CLLocation.init(latitude: trashGps.lat, longitude: trashGps.long)
+                    let distance = LocationManager.manager.currentLocation.distance(from: trashLocation)
+                    let distanceInM = Int(round(distance))
+
+                    if distanceInM > 100 {
+                        lblAccuracy.text = DistanceRounding.shared.localizedDistance(meteres: distanceInM)
+//                        if distanceInM < 501 {
+//                            lblAccuracy.text = "∼\(DistanceRounding.roundDistance(distance: distanceInM))m away".localized
+//                        } else {
+//                            if DistanceRounding.roundDistance(distance: distanceInM) > 10000 {
+//                                lblAccuracy.text = "> 10km away".localized
+//                            } else {
+//                                lblAccuracy.text = "∼\(DistanceRounding.roundDistance(distance: distanceInM))km away".localized
+//                            }
+//                        }
+                        locationAccuracyView.isHidden = false
+                        lblLocationAccuracy.text = "trash.dumpsDistance".localized
+                        lblTryingBetterLocation.text = "trash.edit.getCloser".localized
+                        lblAccuracy.adjustsFontSizeToFitWidth = true
+
+
+                    } else {
+                        locationView.isHidden = true
+                    }
+
+                    var source = ""
+                    if Reachability.isConnectedToCellularNetwork() {
+                        source = "network"
+                    } else if Reachability.isConnectedToNetwork() {
+                        source = "wifi"
+                    } else {
+                        source = "gps"
+                    }
+
+                    gps = Coordinates.init(lat: trashGps.lat, long: trashGps.long, accuracy: accuracy, source: source)
+                }
+            }
+        }
+
+        let coords = CLLocationCoordinate2DMake(gps.lat, gps.long)
+        showTrashOnMap(coords: coords)
+    }
+
+    /**
+    Show address and coordinates
+    */
+    private func showAddressAndCoorinates(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        lblAddress.text = ""
+        lblCoordinates.text = "\(String(format:"%.6f", latitude)), \(String(format:"%.6f", longitude))"
+        let gps = GPS()
+        gps.lat = latitude
+        gps.long = longitude
+        setAddress(gps: gps, label: lblAddress)
+    }
+
 }
 
 class TakePhotoCollectionViewCell: UICollectionViewCell {
@@ -979,4 +1010,15 @@ class DumpsImages: NSObject {
         self.fullDownloadUrl = fullDownloadUrl
         self.storageLocation = storageLocation
     }
+}
+
+// MARK: - Update Location Controller Delegate
+
+extension ReportViewController: UpdateLocationViewControllerDelegate {
+
+    func updateLocationDidSelect(_ controller: UpdateLocationViewController, coordinates: CLLocationCoordinate2D) {
+        showTrashOnMap(coords: coordinates)
+        showAddressAndCoorinates(latitude: coordinates.latitude, longitude: coordinates.longitude)
+    }
+
 }

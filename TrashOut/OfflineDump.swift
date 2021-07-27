@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct OfflineDump: Codable {
+struct OfflineDump: Codable, Equatable {
 
     let imagesData: [Data]
     let gps: Coordinates

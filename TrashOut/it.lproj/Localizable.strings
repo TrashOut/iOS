@@ -1285,3 +1285,7 @@
 "organization.dumpsUpdated" = "aggiornamenti";
 "organization.dumpsCleaned" = "Discariche pulite";
 "global.register.terms" = "Iscrivendosi si accettano i nostri Termini e Condizioni e l'Informativa sulla Privacy. ";
+
+"trash.create.thankYou.offline" = "Sembra che ora sei offline. Quando ti connetti nuovamente a Internet, apri l'applicazione e il rapporto verrà caricato.";
+"trash.create.notification.title" = "I rapporti sul cestino sono stati caricati con successo ";
+"trash.create.notification.text" = "L'upload dei rapporti spazzatura che hai creato in modalità offline è andato a buon fine. Grazie";

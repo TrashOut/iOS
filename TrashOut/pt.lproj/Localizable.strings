@@ -1247,3 +1247,7 @@
 "organization.dumpsUpdated" = "Atualizações";
 "organization.dumpsCleaned" = "Despejos limpos";
 "global.register.terms" = "Ao inscrever-se, você concorda com nossos Termos e Condições & Política de Privacidade. ";
+
+"trash.create.thankYou.offline" = "Parece que agora você está offline. Quando você se conectar à internet novamente, abra o aplicativo e o relatório será carregado.";
+"trash.create.notification.title" = "Os relatórios do lixo foram carregados com sucesso ";
+"trash.create.notification.text" = "O upload de relatórios de lixo que você criou no modo offline foi bem sucedido. Obrigado";

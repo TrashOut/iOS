@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,8 +15,18 @@
 		0F9A2148245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		15B167678E5B118BE26F023C /* Pods_TrashOutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B508F54028E3BAAC67A7D92F /* Pods_TrashOutUITests.framework */; };
 		1611447F26542C0100B6C168 /* NSAtrributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611447E26542C0100B6C168 /* NSAtrributedString+.swift */; };
+		161EE7B926AEAD6600B9808B /* OfflineDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE7B826AEAD6600B9808B /* OfflineDump.swift */; };
+		161EE7BA26AEAD6600B9808B /* OfflineDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE7B826AEAD6600B9808B /* OfflineDump.swift */; };
 		161F4C662646C5B000ED8AB8 /* UserManager+AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */; };
 		161F4C672646C5B000ED8AB8 /* UserManager+AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */; };
+		1674991F26C1796C00488B37 /* FirebaseCrashlytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674991E26C1796C00488B37 /* FirebaseCrashlytics.swift */; };
+		1674992026C1796C00488B37 /* FirebaseCrashlytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674991E26C1796C00488B37 /* FirebaseCrashlytics.swift */; };
+		16899F9D26AFDD6900C25B03 /* OfflineDumpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16899F9C26AFDD6900C25B03 /* OfflineDumpManager.swift */; };
+		16899F9F26AFDD7900C25B03 /* OfflineDumpManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16899F9E26AFDD7900C25B03 /* OfflineDumpManagerType.swift */; };
+		16BC7E4F26B04BDE0082A764 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16BC7E4E26B04BDE0082A764 /* PromiseKit */; };
+		16D4B0E826AF34B1001CDFC2 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D4B0E726AF34B1001CDFC2 /* UIViewController+.swift */; };
+		16D810FC269F5A8A00B84508 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D810FB269F5A8A00B84508 /* CacheManager.swift */; };
+		16D810FD269F5A8A00B84508 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D810FB269F5A8A00B84508 /* CacheManager.swift */; };
 		16E0EDAC2648628800B9AF2F /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */; };
 		16E0EDAD2648628800B9AF2F /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */; };
 		16E1605F265D673C00CDCBE2 /* UpdateLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E1605E265D673C00CDCBE2 /* UpdateLocationViewController.swift */; };
@@ -365,9 +375,15 @@
 		0FD8FA982449A1F90064240A /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA992449A2F80064240A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1611447E26542C0100B6C168 /* NSAtrributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAtrributedString+.swift"; sourceTree = "<group>"; };
+		161EE7B826AEAD6600B9808B /* OfflineDump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDump.swift; sourceTree = "<group>"; };
 		161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserManager+AppleLogin.swift"; sourceTree = "<group>"; };
+		1674991E26C1796C00488B37 /* FirebaseCrashlytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCrashlytics.swift; sourceTree = "<group>"; };
+		16899F9C26AFDD6900C25B03 /* OfflineDumpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDumpManager.swift; sourceTree = "<group>"; };
+		16899F9E26AFDD7900C25B03 /* OfflineDumpManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDumpManagerType.swift; sourceTree = "<group>"; };
 		16B9B3232656B6D0002978C4 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		16B9B3242656B83B002978C4 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		16D4B0E726AF34B1001CDFC2 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		16D810FB269F5A8A00B84508 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		16E1605E265D673C00CDCBE2 /* UpdateLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationViewController.swift; sourceTree = "<group>"; };
 		16ED5468263B2AA9000E848A /* KeychainItemClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemClass.swift; sourceTree = "<group>"; };
@@ -580,6 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C609B9E87EB2C59F7889D21 /* Pods_TrashOut_Prod.framework in Frameworks */,
+				16BC7E4F26B04BDE0082A764 /* PromiseKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +623,7 @@
 			isa = PBXGroup;
 			children = (
 				1611447E26542C0100B6C168 /* NSAtrributedString+.swift */,
+				16D4B0E726AF34B1001CDFC2 /* UIViewController+.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -620,6 +638,23 @@
 				16ED546B263B2AA9000E848A /* KeychainProtocolType.swift */,
 			);
 			name = Keychain;
+			sourceTree = "<group>";
+		};
+		16899F9B26AFDD5400C25B03 /* OfflineDumpManager */ = {
+			isa = PBXGroup;
+			children = (
+				16899F9C26AFDD6900C25B03 /* OfflineDumpManager.swift */,
+				16899F9E26AFDD7900C25B03 /* OfflineDumpManagerType.swift */,
+			);
+			name = OfflineDumpManager;
+			sourceTree = "<group>";
+		};
+		16D810FA269F5A7700B84508 /* CacheManager */ = {
+			isa = PBXGroup;
+			children = (
+				16D810FB269F5A8A00B84508 /* CacheManager.swift */,
+			);
+			name = CacheManager;
 			sourceTree = "<group>";
 		};
 		16E1605D265D672700CDCBE2 /* UpdateLocation */ = {
@@ -790,6 +825,8 @@
 		C30044361DAFC94C00709DDC /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				16899F9B26AFDD5400C25B03 /* OfflineDumpManager */,
+				16D810FA269F5A7700B84508 /* CacheManager */,
 				16F650DE2635512F0044A64D /* UserManager */,
 				C3A3B2721DA7AC7D0099D1C2 /* Networking */,
 				CF3DDE2820D1070400A93A87 /* Notifications */,
@@ -853,6 +890,7 @@
 				C37994A21DACDE7300CE5E3F /* FirebaseAuthentificator.swift */,
 				C34F3F431DB0DEF100F69348 /* FirebaseImages.swift */,
 				0F682E6D245887F600DD135F /* FirebaseAnalytics.swift */,
+				1674991E26C1796C00488B37 /* FirebaseCrashlytics.swift */,
 			);
 			name = Firebase;
 			sourceTree = "<group>";
@@ -989,6 +1027,7 @@
 				C37579261E423B8A002EA629 /* ActivityModel.swift */,
 				C3E90C2D1E436A24002FDC2D /* TrashHunterModel.swift */,
 				C3711D9B1E8C0E7100A84B3A /* TutorialModel.swift */,
+				161EE7B826AEAD6600B9808B /* OfflineDump.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1158,6 +1197,9 @@
 			dependencies = (
 			);
 			name = "TrashOut-Prod";
+			packageProductDependencies = (
+				16BC7E4E26B04BDE0082A764 /* PromiseKit */,
+			);
 			productName = Trashout;
 			productReference = C3A3B23C1DA7A6E00099D1C2 /* TrashOut.app */;
 			productType = "com.apple.product-type.application";
@@ -1268,6 +1310,9 @@
 				uk,
 			);
 			mainGroup = C3A3B2331DA7A6E00099D1C2;
+			packageReferences = (
+				16BC7E4D26B04BDE0082A764 /* XCRemoteSwiftPackageReference "PromiseKit" */,
+			);
 			productRefGroup = C3A3B23D1DA7A6E00099D1C2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1804,6 +1849,7 @@
 				8E2A1AF9202236E800C1AC70 /* CircleImageView.swift in Sources */,
 				8E2A1AFA202236E800C1AC70 /* DateFormatter.swift in Sources */,
 				8E2A1AFB202236E800C1AC70 /* NoDataView.swift in Sources */,
+				16D810FD269F5A8A00B84508 /* CacheManager.swift in Sources */,
 				8E2A1AFC202236E800C1AC70 /* StatisticViewController.swift in Sources */,
 				16E0EDAD2648628800B9AF2F /* AppleLoginManager.swift in Sources */,
 				16ED5472263B2AAA000E848A /* Keychain.swift in Sources */,
@@ -1884,6 +1930,7 @@
 				8E2A1B3D202236E800C1AC70 /* DumpsViewController.swift in Sources */,
 				CF3DDE2B20D1288B00A93A87 /* NotificationData.swift in Sources */,
 				8E2A1B3E202236E800C1AC70 /* TutorialModel.swift in Sources */,
+				1674992026C1796C00488B37 /* FirebaseCrashlytics.swift in Sources */,
 				8E2A1B3F202236E800C1AC70 /* EventSearchTableController.swift in Sources */,
 				8E2A1B40202236E800C1AC70 /* InfoViewController.swift in Sources */,
 				8E2A1B41202236E800C1AC70 /* TrashMapAnnotation.swift in Sources */,
@@ -1895,6 +1942,7 @@
 				8E2A1B47202236E800C1AC70 /* NewsNetworking.swift in Sources */,
 				8E2A1B48202236E800C1AC70 /* DumpsImageViewController.swift in Sources */,
 				8E2A1B49202236E800C1AC70 /* ReportCameraViewController.swift in Sources */,
+				161EE7BA26AEAD6600B9808B /* OfflineDump.swift in Sources */,
 				8E2A1B4A202236E800C1AC70 /* Articles.swift in Sources */,
 				8E2A1B4B202236E800C1AC70 /* SignupViewController.swift in Sources */,
 				8E2A1B4C202236E800C1AC70 /* JunkyardFiltViewController.swift in Sources */,
@@ -1943,6 +1991,7 @@
 				CF110A3E212C2933008D2643 /* BackgroundTimer.swift in Sources */,
 				C3751A011E38E13C001F61AB /* TrashTypeButton.swift in Sources */,
 				FC5FA3081DE9D1610000C711 /* AccessibilityModel.swift in Sources */,
+				161EE7B926AEAD6600B9808B /* OfflineDump.swift in Sources */,
 				FC5FA30C1DEC7C060000C711 /* EventLocationViewController.swift in Sources */,
 				8EA3795D1FCECFE0008925B5 /* ReportThankYouViewController.swift in Sources */,
 				C3014DBD1DAE333200FD7CFE /* JunkyardListViewController.swift in Sources */,
@@ -1952,6 +2001,7 @@
 				FC8EC06E1DF8AA66005556C0 /* CircleImageView.swift in Sources */,
 				C30044351DAF872400709DDC /* DateFormatter.swift in Sources */,
 				C37883231E5B2902007888B8 /* NoDataView.swift in Sources */,
+				1674991F26C1796C00488B37 /* FirebaseCrashlytics.swift in Sources */,
 				FCD73A031DF6EEC900E7EF7D /* StatisticViewController.swift in Sources */,
 				16E0EDAC2648628800B9AF2F /* AppleLoginManager.swift in Sources */,
 				16ED5471263B2AAA000E848A /* Keychain.swift in Sources */,
@@ -1984,7 +2034,9 @@
 				C3E90C301E4376A3002FDC2D /* TrashHunter.swift in Sources */,
 				C3DCAE921E4360B600A6AF0F /* TrashHunterStartViewController.swift in Sources */,
 				FC63DFB91E01BFC400B7FCB2 /* CoordinatesModel.swift in Sources */,
+				16D810FC269F5A8A00B84508 /* CacheManager.swift in Sources */,
 				C3D5FB651DABAB2900DBD573 /* GpsModel.swift in Sources */,
+				16899F9F26AFDD7900C25B03 /* OfflineDumpManagerType.swift in Sources */,
 				C3A617701DB8F1BF0092BF32 /* ClusterMapAnnotation.swift in Sources */,
 				C3FF4FAA1E533F35005D5530 /* HorizontalSeparator.swift in Sources */,
 				FC3E0E711DDE73A0006F1D31 /* EventNewViewController.swift in Sources */,
@@ -2036,6 +2088,7 @@
 				C3A617721DB8F1CC0092BF32 /* TrashMapAnnotation.swift in Sources */,
 				C32F8D531DEC4D430009A5C4 /* NewsDetailViewController.swift in Sources */,
 				C30044331DAF84E400709DDC /* TrashUpdateModel.swift in Sources */,
+				16899F9D26AFDD6900C25B03 /* OfflineDumpManager.swift in Sources */,
 				C3874BE21E55BD1700C94719 /* Statistics.swift in Sources */,
 				FCED66B51DF182E40009D4ED /* EventNetworking.swift in Sources */,
 				C3DDE01F1DAB91B000CB088E /* TrashModel.swift in Sources */,
@@ -2058,6 +2111,7 @@
 				C32F8D5D1DED8F3A0009A5C4 /* TabbarViewController.swift in Sources */,
 				C3014DBB1DAE326500FD7CFE /* NewsViewController.swift in Sources */,
 				C3CA1F4D1E44BFE600787380 /* TrashHunterListViewController.swift in Sources */,
+				16D4B0E826AF34B1001CDFC2 /* UIViewController+.swift in Sources */,
 				C32F8D691DED9A060009A5C4 /* FormRow.swift in Sources */,
 				8E8E91BB1FD6F1820034AC69 /* TrashUpdateModel+UI.swift in Sources */,
 				FCE49AD01DFA96EF00D616D5 /* DumpsFilterViewController.swift in Sources */,
@@ -2180,14 +2234,18 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Trashout/Info-Stage.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 4.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "PSP4M9F8L7.me.trashout.mobile.titanium-Stage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = STAGE;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -2225,14 +2283,18 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Trashout/Info-Stage.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 4.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "PSP4M9F8L7.me.trashout.mobile.titanium-Stage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = STAGE;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Hockeyapp;
@@ -2270,14 +2332,18 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Trashout/Info-Stage.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 4.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "PSP4M9F8L7.me.trashout.mobile.titanium-Stage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = STAGE;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -2378,14 +2444,19 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Trashout/Info-Prod.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 4.6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = PSP4M9F8L7.me.trashout.mobile.titanium;
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
 			};
@@ -2402,7 +2473,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TrashoutTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.lithio.trashout.TrashoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2424,7 +2499,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TrashoutUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cz.lithio.trashout.TrashoutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2547,8 +2626,9 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_INCLUDE_PATHS = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2588,14 +2668,19 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Trashout/Info-Prod.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 4.6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = PSP4M9F8L7.me.trashout.mobile.titanium;
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
 			};
@@ -2635,14 +2720,19 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Trashout/Info-Prod.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 4.6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = PSP4M9F8L7.me.trashout.mobile.titanium;
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
 			};
@@ -2659,7 +2749,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TrashoutTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.lithio.trashout.TrashoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2682,7 +2776,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TrashoutTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.lithio.trashout.TrashoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2704,7 +2802,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TrashoutUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cz.lithio.trashout.TrashoutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2726,7 +2828,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TrashoutUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cz.lithio.trashout.TrashoutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2792,6 +2898,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		16BC7E4D26B04BDE0082A764 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.15.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		16BC7E4E26B04BDE0082A764 /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16BC7E4D26B04BDE0082A764 /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C3A3B2341DA7A6E00099D1C2 /* Project object */;
 }

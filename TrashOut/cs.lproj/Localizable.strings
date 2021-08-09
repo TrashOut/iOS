@@ -1297,3 +1297,7 @@
 "organization.dumpsUpdated" = "Počet aktualizací";
 "organization.dumpsCleaned" = "Vyčištěné skládky";
 "global.register.terms" = "Registrací souhlasíte s našimi smluvními podmínkami a zásadami ochrany osobních údajů.";
+
+"trash.create.thankYou.offline" = "Zdá se, že jste nyní offline. Když se znovu připojíte k internetu, otevřete aplikaci a hlášení se nahraje.";
+"trash.create.notification.title" = "Hlášení skládek byly úspěšně nahrány";
+"trash.create.notification.text" = "Nahrávání hlášení skládek vytvořených v offline režimu bylo úspěšné. Děkujeme";

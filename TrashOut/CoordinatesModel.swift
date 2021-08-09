@@ -33,7 +33,7 @@
 import Foundation
 import MapKit
 
-class Coordinates: NSObject {
+class Coordinates: NSObject, Codable {
     var lat: CLLocationDegrees
     var long: CLLocationDegrees
     var accuracy: Int

@@ -213,6 +213,8 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
 		navigationController?.dismiss(animated: true, completion: nil)
 	}
 
+    // MARK: - Send Report
+
     /**
     Report a dump or update one
     */
@@ -240,6 +242,12 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
 				LoadingView.hide()
 			}
             if photos.count > 0 {
+                accessibility = DumpsAccessibility.init(byCar: byCar, inCave: inCave, underWater: underWater, notForGeneralCleanup: notForGeneralCleanup)
+
+                guard Reachability.isConnectedToNetwork() else {
+                    cacheOfflineDump() // In case the internet is not available, dump is going to be cached offline for later upload, when user connected into network
+                    return
+                }
 				var uploads: [Async.Block] = []
 
 				for photo in photos {
@@ -282,6 +290,8 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
 			}
         }
     }
+
+    // MARK: - Image Upload
 
     func uploadImage(photoName: String, data: Data, thumbnailData:Data,  completion: @escaping ()->(), failure: @escaping (Error)->()) {
         FirebaseImages.instance.uploadImage(photoName, data: data, thumbnailData: thumbnailData) { [weak self] (thumbnailUrl, thumbnailStorage , imageUrl, imageStorage, error) in            
@@ -799,12 +809,12 @@ extension ReportViewController {
         }
     }
 
+    // MARK: - Create Trash
+
     /**
     User creates a dump report
     */
     private func createTrash(completion: @escaping ()->(), failure: @escaping (Error)->()) {
-
-        accessibility = DumpsAccessibility.init(byCar: byCar, inCave: inCave, underWater: underWater, notForGeneralCleanup: notForGeneralCleanup)
         for i in 0..<photosURL.count {
             let image = DumpsImages.init(thumbDownloadUrl: thumbsURL[i], thumbStorageLocation: thumbsStorage[i] ,fullDownloadUrl: photosURL[i], storageLocation: photosStorage[i])
             images.append(image)
@@ -972,6 +982,25 @@ extension ReportViewController {
         setAddress(gps: gps, label: lblAddress)
     }
 
+    // MARK: - Offline Handler
+
+    private func cacheOfflineDump() {
+        LoadingView.hide()
+
+        let uploadedImages = photos
+            .map { $0.image?.jpegData(compressionQuality: 1.0) } // Convert Into Data
+            .compactMap { $0 } // Filter nil values
+
+        let offlineDump = OfflineDump(imagesData: uploadedImages, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: anonymous, userId: UserManager.instance.user?.id ?? -1, accessibility: accessibility)
+
+        CacheManager.shared.offlineDumps.append(offlineDump)
+
+        // TODO: OFFLINE - Change text
+        presentSimpleAlert(title: "global.validation.warning".localized, message: "trash.create.thankYou.offline".localized, completion: { [weak self] in
+            self?.close()
+        })
+    }
+
 }
 
 class TakePhotoCollectionViewCell: UICollectionViewCell {
@@ -984,7 +1013,8 @@ class TakePhotoCollectionViewCell: UICollectionViewCell {
 
 }
 
-class DumpsAccessibility: NSObject {
+class DumpsAccessibility: NSObject, Codable {
+
     var byCar: Bool
     var inCave: Bool
     var underWater: Bool
@@ -996,9 +1026,11 @@ class DumpsAccessibility: NSObject {
         self.underWater = underWater
         self.notForGeneralCleanup = notForGeneralCleanup
     }
+
 }
 
 class DumpsImages: NSObject {
+
     var fullDownloadUrl: String
     var storageLocation: String
     var thumbDownloadUrl: String
@@ -1010,6 +1042,7 @@ class DumpsImages: NSObject {
         self.fullDownloadUrl = fullDownloadUrl
         self.storageLocation = storageLocation
     }
+
 }
 
 // MARK: - Update Location Controller Delegate

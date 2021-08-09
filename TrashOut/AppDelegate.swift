@@ -38,6 +38,8 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    private let offlineDumpManager: OfflineDumpManagerType = OfflineDumpManager()
     
 	var window: UIWindow?
     
@@ -84,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func applicationDidBecomeActive(_ application: UIApplication) {
+        handleOfflineDumps()
 	}
 
 	func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
@@ -194,6 +197,7 @@ extension AppDelegate {
 }
 
 // MARK: - Notifications and messaging
+
 extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
 
     func registerNotifications(application: UIApplication) {
@@ -246,6 +250,19 @@ extension AppDelegate {
     
     fileprivate func showNewsAfterReceiveNotification(id: Int?) {
         NotificationsManager.showNewsAfterReceiveNotification(tabBarController: tabBarController, id: id)
+    }
+
+}
+
+extension AppDelegate {
+
+    /// Check offline dumps cache and upload when user is online
+    private func handleOfflineDumps() {
+        offlineDumpManager.uploadCachedOfflineDumps { [weak self] didUploadOfflineDumps in
+            if didUploadOfflineDumps { // Called in case offline dumps was cached and successfuly uploaded
+                self?.window?.rootViewController?.presentSimpleAlert(title: "trash.create.notification.title".localized, message: "trash.create.notification.text".localized)
+            }
+        }
     }
 
 }

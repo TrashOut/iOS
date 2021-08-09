@@ -75,6 +75,7 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
     @IBOutlet var lblCleaningEvent: [UILabel]!
     @IBOutlet var lblCleaningEventInfo: UILabel!
     @IBOutlet var lblReportToMunicipality: UILabel!
+    @IBOutlet var lblDumpId: UILabel!
     @IBOutlet var lblReportToMunicipalityInfo: UILabel!
     @IBOutlet var lblSpam: UILabel!
     @IBOutlet var lblSpamInfo: UILabel!
@@ -135,12 +136,16 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
             analyticsData = ["trash_id": trashId as NSObject]
         }
 
+        self.lblDumpId.isHidden = id == nil
+        self.lblDumpId.text = "ID: \(id ?? 0)"
+
         let share = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareDump))
         navigationItem.rightBarButtonItem = share
 
         cnInformationSeparatorHeight.preciseConstant = 1
         cnInformationSeparatorHeight2.preciseConstant = 1
 
+        lblDumpId.textColor = Theme.current.color.lightGray
         lblCurrentStatusDate.textColor = Theme.current.color.lightGray
         lblUpdateThisDumpsite.text = "trash.message.updateThisTrash".localized
         lblUpdateThisDumpsiteInfo.text = "trash.create.TakeSomePictures".localized

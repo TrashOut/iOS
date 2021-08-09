@@ -1275,3 +1275,7 @@
 "organization.dumpsUpdated" = "Aktualizácie";
 "organization.dumpsCleaned" = "Vyčistené skládky";
 "global.register.terms" = "Registráciou súhlasíte s našimi zmluvnými podmienkami a zásadami ochrany osobných údajov.";
+
+"trash.create.thankYou.offline" = "Zdá sa, že ste offline. Vaše hlásenia sa nahrajú, keď sa najbližšie pripojíte k internetu a otvoríte aplikáciu TrashOut.";
+"trash.create.notification.title" = "Hlásenia skládok boli úspešne nahrané";
+"trash.create.notification.text" = "Nahrávanie hlásení skládok vytvorených v offline režime bolo úspešné. Ďakujeme";

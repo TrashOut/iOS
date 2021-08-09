@@ -1323,3 +1323,7 @@
 "global.language.romanian" = "Română";
 "global.register.terms" = "Prin înscriere, sunteți de acord cu Termenii și condițiile noastre și cu Politica de confidențialitate. ";
 "trash.create.thankYou.offline" = "Se pare că sunteți offline. Nu vă faceți griji! Acest raport va fi încărcat automat mai târziu, de îndată ce telefonul dvs. va fi din nou online.";
+
+"trash.create.thankYou.offline" = "Se pare că sunteți acum offline. Când vă conectați din nou la internet, deschideți aplicația și raportul va fi încărcat.";
+"trash.create.notification.title" = "Rapoartele de gunoi au fost încărcate cu succes ";
+"trash.create.notification.text" = "Încărcarea rapoartelor privind gunoiul pe care le-ați creat în modul offline a avut succes. Vă mulțumim";

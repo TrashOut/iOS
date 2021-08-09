@@ -985,18 +985,20 @@ extension ReportViewController {
     // MARK: - Offline Handler
 
     private func cacheOfflineDump() {
+        LoadingView.hide()
+
         let uploadedImages = photos
             .map { $0.image?.jpegData(compressionQuality: 1.0) } // Convert Into Data
             .compactMap { $0 } // Filter nil values
 
         let offlineDump = OfflineDump(imagesData: uploadedImages, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: anonymous, userId: UserManager.instance.user?.id ?? -1, accessibility: accessibility)
 
-        // TODO: Offline Cache + Message
-
         CacheManager.shared.offlineDumps.append(offlineDump)
 
         // TODO: OFFLINE - Change text
-        presentSimpleAlert(title: "Dump saved offline", message: "Your internet connection is off, or is poor. Dump is saved localy and when internet connection is active, it will upload")
+        presentSimpleAlert(title: "global.validation.warning".localized, message: "trash.create.thankYou.offline".localized, completion: { [weak self] in
+            self?.close()
+        })
     }
 
 }

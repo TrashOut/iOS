@@ -1247,3 +1247,7 @@
 "organization.dumpsUpdated" = "Frissítések";
 "organization.dumpsCleaned" = "Megtiszított területek";
 "global.register.terms" = "A regisztrációval Ön elfogadja a Felhasználási feltételek és adatvédelmi irányelveket. ";
+
+"trash.create.thankYou.offline" = "Úgy tűnik, most már offline állapotban van. Amikor újra csatlakozik az internethez, nyissa meg az alkalmazást, és a jelentés feltöltésre kerül.";
+"trash.create.notification.title" = "A szemétjelentések sikeresen feltöltésre kerültek ";
+"trash.create.notification.text" = "Az offline módban létrehozott szemétjelentések feltöltése sikeres volt. Köszönöm.";

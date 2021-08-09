@@ -19,6 +19,8 @@
 		161EE7BA26AEAD6600B9808B /* OfflineDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE7B826AEAD6600B9808B /* OfflineDump.swift */; };
 		161F4C662646C5B000ED8AB8 /* UserManager+AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */; };
 		161F4C672646C5B000ED8AB8 /* UserManager+AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */; };
+		1674991F26C1796C00488B37 /* FirebaseCrashlytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674991E26C1796C00488B37 /* FirebaseCrashlytics.swift */; };
+		1674992026C1796C00488B37 /* FirebaseCrashlytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674991E26C1796C00488B37 /* FirebaseCrashlytics.swift */; };
 		16899F9D26AFDD6900C25B03 /* OfflineDumpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16899F9C26AFDD6900C25B03 /* OfflineDumpManager.swift */; };
 		16899F9F26AFDD7900C25B03 /* OfflineDumpManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16899F9E26AFDD7900C25B03 /* OfflineDumpManagerType.swift */; };
 		16BC7E4F26B04BDE0082A764 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16BC7E4E26B04BDE0082A764 /* PromiseKit */; };
@@ -375,6 +377,7 @@
 		1611447E26542C0100B6C168 /* NSAtrributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAtrributedString+.swift"; sourceTree = "<group>"; };
 		161EE7B826AEAD6600B9808B /* OfflineDump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDump.swift; sourceTree = "<group>"; };
 		161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserManager+AppleLogin.swift"; sourceTree = "<group>"; };
+		1674991E26C1796C00488B37 /* FirebaseCrashlytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCrashlytics.swift; sourceTree = "<group>"; };
 		16899F9C26AFDD6900C25B03 /* OfflineDumpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDumpManager.swift; sourceTree = "<group>"; };
 		16899F9E26AFDD7900C25B03 /* OfflineDumpManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDumpManagerType.swift; sourceTree = "<group>"; };
 		16B9B3232656B6D0002978C4 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -887,6 +890,7 @@
 				C37994A21DACDE7300CE5E3F /* FirebaseAuthentificator.swift */,
 				C34F3F431DB0DEF100F69348 /* FirebaseImages.swift */,
 				0F682E6D245887F600DD135F /* FirebaseAnalytics.swift */,
+				1674991E26C1796C00488B37 /* FirebaseCrashlytics.swift */,
 			);
 			name = Firebase;
 			sourceTree = "<group>";
@@ -1926,6 +1930,7 @@
 				8E2A1B3D202236E800C1AC70 /* DumpsViewController.swift in Sources */,
 				CF3DDE2B20D1288B00A93A87 /* NotificationData.swift in Sources */,
 				8E2A1B3E202236E800C1AC70 /* TutorialModel.swift in Sources */,
+				1674992026C1796C00488B37 /* FirebaseCrashlytics.swift in Sources */,
 				8E2A1B3F202236E800C1AC70 /* EventSearchTableController.swift in Sources */,
 				8E2A1B40202236E800C1AC70 /* InfoViewController.swift in Sources */,
 				8E2A1B41202236E800C1AC70 /* TrashMapAnnotation.swift in Sources */,
@@ -1996,6 +2001,7 @@
 				FC8EC06E1DF8AA66005556C0 /* CircleImageView.swift in Sources */,
 				C30044351DAF872400709DDC /* DateFormatter.swift in Sources */,
 				C37883231E5B2902007888B8 /* NoDataView.swift in Sources */,
+				1674991F26C1796C00488B37 /* FirebaseCrashlytics.swift in Sources */,
 				FCD73A031DF6EEC900E7EF7D /* StatisticViewController.swift in Sources */,
 				16E0EDAC2648628800B9AF2F /* AppleLoginManager.swift in Sources */,
 				16ED5471263B2AAA000E848A /* Keychain.swift in Sources */,

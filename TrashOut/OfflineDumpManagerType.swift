@@ -8,8 +8,8 @@
 
 import Foundation
 
-protocol OfflineDumpManagerType: AnyObject {
-    var didUploadOfflineDump: VoidClosure? { get set }
+typealias BoolClosure = (Bool) -> Void
 
-    func uploadOfflineDumps()
+protocol OfflineDumpManagerType: AnyObject {
+    func uploadCachedOfflineDumps(completion: BoolClosure?)
 }

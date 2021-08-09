@@ -1285,3 +1285,7 @@
 "organization.dumpsUpdated" = "Aktualisierung";
 "organization.dumpsCleaned" = "Dumps gereinigt";
 "global.register.terms" = "Mit der Anmeldung erklären Sie sich mit unseren Allgemeinen Geschäftsbedingungen und der Datenschutzrichtlinie einverstanden.";
+
+"trash.create.thankYou.offline" = "Sie scheinen jetzt offline zu sein. Wenn Sie sich wieder mit dem Internet verbinden, öffnen Sie die Anwendung und der Bericht wird hochgeladen.";
+"trash.create.notification.title" = "Papierkorbberichte wurden erfolgreich hochgeladen ";
+"trash.create.notification.text" = "Der Upload von Müllberichten, die Sie im Offline-Modus erstellt haben, war erfolgreich. Dankeschön";

@@ -11,8 +11,11 @@ import PromiseKit
 
 class OfflineDumpManager {
 
+    enum C {
+        static let offlineUploadErrorMessage = "Error with uploading offline dump"
+    }
+
     private var successfullUploadedDumps = [OfflineDump]()
-    var didUploadOfflineDump: VoidClosure?
 
 }
 
@@ -20,10 +23,18 @@ class OfflineDumpManager {
 
 extension OfflineDumpManager: OfflineDumpManagerType {
 
-    func uploadOfflineDumps() {
+    /// Send offline reports from cache into servers
+    ///
+    /// Upload process will start immediately after internet connection is esthablished and cache contains dump at least with one item.
+    ///
+    /// - Parameter completion: Result completion handler
+    func uploadCachedOfflineDumps(completion: BoolClosure? = nil) {
         self.successfullUploadedDumps.removeAll()
         let dumps = CacheManager.shared.offlineDumps
-        guard Reachability.isConnectedToNetwork(), dumps.count > 0 else { return } // In case internet connection is not established, nothing happend
+        guard Reachability.isConnectedToNetwork(), dumps.count > 0 else {
+            completion?(false)
+            return
+        } // In case internet connection is not established, nothing happend
 
         let uploadRequestPromises: [Promise<Void>] = dumps.map { dump in
             let uploadImagesChain = dump.localImages
@@ -35,14 +46,11 @@ extension OfflineDumpManager: OfflineDumpManagerType {
         }
 
         when(fulfilled: uploadRequestPromises)
-            .done { [weak self] in
-                self?.didUploadOfflineDump?()
-            }
-            .ensure { [weak self] in
-                self?.updateCache()
-            }
+            .done { completion?(true) }
+            .ensure { [weak self] in self?.updateCache() }
             .catch { error in
-                // TODO: Track fails
+                FirebaseCrashlytics.track(customMessage: "\(C.offlineUploadErrorMessage) ERROR: \(error.localizedDescription)")
+                completion?(false)
             }
     }
 

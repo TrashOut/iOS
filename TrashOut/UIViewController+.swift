@@ -20,10 +20,10 @@ extension UIViewController {
     ///   - completion: Called after alert dismiss
     func presentSimpleAlert(title: String?, message: String?, style: UIAlertController.Style = .alert, completion: VoidClosure? = nil) {
         let controller = UIAlertController(title: title, message: message, preferredStyle: style)
-        let action = UIAlertAction(title: "global.close".localized, style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "global.close".localized, style: .cancel, handler: { _ in completion?() })
         controller.addAction(action)
 
-        present(controller, animated: true, completion: completion)
+        present(controller, animated: true, completion: nil)
     }
 
 }

@@ -384,12 +384,6 @@ class DashboardViewController: ViewController, UITableViewDataSource, UITableVie
 	Add new dump
 	*/
 	@IBAction func addNewDump(_ sender: Any) {
-        guard Reachability.isConnectedToNetwork() else {
-            self.show(error: NetworkingError.noInternetConnection)
-            
-            return
-        }
-        
 		let storyboard = UIStoryboard.init(name: "Report", bundle: Bundle.main)
 		let vc = storyboard.instantiateViewController(withIdentifier: "Report")
 		present(vc, animated: true, completion: nil)

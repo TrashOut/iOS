@@ -133,4 +133,3 @@ class TrashUpdate: JsonDecodable {
     }
 
 }
-

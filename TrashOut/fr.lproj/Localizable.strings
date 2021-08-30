@@ -1261,3 +1261,4 @@
 "trash.create.thankYou.offline" = "Il semble que vous êtes maintenant hors ligne. Lorsque vous vous connectez à nouveau à Internet, ouvrez l'application et le rapport sera téléchargé.";
 "trash.create.notification.title" = "Les rapports sur les déchets ont été téléchargés avec succès ";
 "trash.create.notification.text" = "Le téléchargement des rapports sur les déchets que vous avez créés en mode hors ligne a réussi. Nous vous remercions";
+"trash.reportAs" = "Rapporter comme";

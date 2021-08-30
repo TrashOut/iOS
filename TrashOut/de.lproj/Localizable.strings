@@ -1289,3 +1289,4 @@
 "trash.create.thankYou.offline" = "Sie scheinen jetzt offline zu sein. Wenn Sie sich wieder mit dem Internet verbinden, öffnen Sie die Anwendung und der Bericht wird hochgeladen.";
 "trash.create.notification.title" = "Papierkorbberichte wurden erfolgreich hochgeladen ";
 "trash.create.notification.text" = "Der Upload von Müllberichten, die Sie im Offline-Modus erstellt haben, war erfolgreich. Dankeschön";
+"trash.reportAs" = "Bericht als";

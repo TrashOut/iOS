@@ -29,12 +29,10 @@ final class ContentPickerView: ReusableNibView {
 
         let cardLook: Bool
         let title: String
-        let items: [String]
 
-        init(cardLook: Bool = true, title: String, items: [String]) {
+        init(cardLook: Bool = true, title: String) {
             self.cardLook = cardLook
             self.title = title
-            self.items = items
         }
 
     }
@@ -55,14 +53,10 @@ final class ContentPickerView: ReusableNibView {
 
     // MARK: - Lifecycle
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-
-
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        valueTextfield.isUserInteractionEnabled = false
     }
 
     // MARK: - Setup
@@ -70,14 +64,21 @@ final class ContentPickerView: ReusableNibView {
     func setup(_ model: Model) {
         self.model = model
 
-        self.items = model.items
         titleLabel.text = model.title
+        valueTextfield.font = Theme.Font().boldTitle
 
         if model.cardLook {
             wrapperView.asCard()
         }
+    }
 
-        setupDataPickerInputView(items: model.items)
+    func add(items: [String]) {
+        self.items = items
+
+        setupDataPickerInputView(items: items)
+        valueTextfield.isUserInteractionEnabled = items.count > 1
+
+        valueTextfield.text = items.first
     }
 
 }
@@ -103,6 +104,8 @@ extension ContentPickerView: ContentPickerDelegate {
 
     func contentPickerDidSelect(_ view: UIView, row: Int, value: String) {
         delegate?.contentPickerDidSelect(self, row: row, value: value)
+
+        valueTextfield.text = items[row]
     }
 
     func contentPickerDonePressed(_ view: UIView) {

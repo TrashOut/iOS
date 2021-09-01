@@ -52,8 +52,18 @@ class TrashUpdate: JsonDecodable {
         case updated
         case cleaned
     }
+
+    static func create(from date: String?, usingId id: Int?) -> AnyObject {
+        let update = TrashUpdate()
+        if let dateString = date {
+            update.updateTime = DateFormatter.utc.date(from: dateString) ?? DateFormatter.zulu.date(from: dateString)
+        }
+        update.status = .stillHere
+        return update
+    }
     
     // MARK: - Properties
+
 	var id: Int = 0
 	var updateTime: Date?
     var note: String?
@@ -65,6 +75,7 @@ class TrashUpdate: JsonDecodable {
     var images: [Image] = []
     var user: User?
     var accessibility: Accessibility?
+    var organization: Organization?
 
     // MARK: - Lifecycle
 
@@ -94,42 +105,49 @@ class TrashUpdate: JsonDecodable {
         if let userInfo = json["userInfo"] as? [String: AnyObject] {
             update.user = User.create(from: userInfo, usingId: nil) as? User
         }
+
+        if let organization = json["organization"] as? [String: AnyObject] {
+            update.parseChanges(change: organization)
+        }
+
 		return update
 	}
 
-	func parseChanges(change: [String: AnyObject]) {
-		if let status = change["status"] as? String {
-			self.status = Trash.Status(rawValue: status)
-		}
-		if let size = change["size"] as? String {
-			self.size = Trash.Size(rawValue: size)
-		}
-		if let note = change["note"] as? String {
-			self.note = note
-		}
-		if let types = change["types"] as? [String] {
-			self.types = types.map{ Trash.TrashType(rawValue: $0) ?? .undefined }
-		}
-		if let image = change["images"] as? [[String: AnyObject]] {
-			for im in image {
-				self.images.append(Image.create(from: im, usingId: nil) as! Image)
-			}
-		}
-		if let accessibility = change["accessibility"] as? [String: AnyObject] {
-			self.accessibility = Accessibility.create(from: accessibility, usingId: nil) as? Accessibility
-		}
-		if let anonymous = change["anonymous"] as? Bool {
-			self.anonymous = anonymous
-		}
-	}
+}
 
-    static func create(from date: String?, usingId id: Int?) -> AnyObject {
-        let update = TrashUpdate()
-        if let dateString = date {
-            update.updateTime = DateFormatter.utc.date(from: dateString) ?? DateFormatter.zulu.date(from: dateString)
+// MARK: - Private
+
+extension TrashUpdate {
+
+    private func parseChanges(change: [String: AnyObject]) {
+        if let status = change["status"] as? String {
+            self.status = Trash.Status(rawValue: status)
         }
-		update.status = .stillHere
-        return update
+        if let size = change["size"] as? String {
+            self.size = Trash.Size(rawValue: size)
+        }
+        if let note = change["note"] as? String {
+            self.note = note
+        }
+        if let types = change["types"] as? [String] {
+            self.types = types.map{ Trash.TrashType(rawValue: $0) ?? .undefined }
+        }
+        if let image = change["images"] as? [[String: AnyObject]] {
+            for im in image {
+                self.images.append(Image.create(from: im, usingId: nil) as! Image)
+            }
+        }
+        if let accessibility = change["accessibility"] as? [String: AnyObject] {
+            self.accessibility = Accessibility.create(from: accessibility, usingId: nil) as? Accessibility
+        }
+        if let anonymous = change["anonymous"] as? Bool {
+            self.anonymous = anonymous
+        }
+
+        if let organization = change["organization"] as? [String: AnyObject] {
+            self.organization = Organization.create(from: organization, usingId: nil) as? Organization
+        }
+
     }
 
 }

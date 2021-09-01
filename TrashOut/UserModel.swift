@@ -45,12 +45,12 @@ class User: JsonDecodable, Cachable {
 
         case anonymous
         case personal(name: String)
-        case organisation(organisation: Organization)
+        case organization(organisation: Organization)
 
         var title: String {
             switch self {
             case .anonymous: return "trash.anonymous".localized
-            case .organisation(organisation: let organisation): return organisation.name
+            case .organization(organisation: let organisation): return organisation.name
             case .personal(name: let name): return name
             }
         }
@@ -59,6 +59,15 @@ class User: JsonDecodable, Cachable {
             switch self {
             case .anonymous: return true
             default: return false
+            }
+        }
+
+        var organization: Organization? {
+            switch self {
+            case .anonymous, .personal:
+                return nil
+            case .organization(organisation: let organization):
+                return organization
             }
         }
 
@@ -176,6 +185,10 @@ class User: JsonDecodable, Cachable {
         return dict
     }
 
+    func searchOrganization(by organizationId: Int) -> Organization? {
+        return organizations.filter { $0.id == organizationId }.first
+    }
+
 }
 
 // MARK: - Computed Properties
@@ -232,7 +245,7 @@ extension User {
         result.append(.anonymous)
 
         let relevantOrganisations = organizations.filter { ($0.organizationRoleId ?? "") == "1" }
-        result.append(contentsOf: relevantOrganisations.map { .organisation(organisation: $0) })
+        result.append(contentsOf: relevantOrganisations.map { .organization(organisation: $0) })
 
         return result
     }

@@ -827,7 +827,7 @@ extension ReportViewController {
             images.append(image)
         }
 
-        Networking.instance.createTrash(images, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: selectedType.isAnonymous, userId: (UserManager.instance.user?.id)!, accessibility: accessibility) { [weak self] (trash, error) in
+        Networking.instance.createTrash(images, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: selectedType.isAnonymous, userId: (UserManager.instance.user?.id)!, accessibility: accessibility, organizationId: selectedType.organization?.id) { [weak self] (trash, error) in
             guard error == nil else {
                 print(error?.localizedDescription as Any)
                 failure(error!)
@@ -864,7 +864,7 @@ extension ReportViewController {
             return
         }
 
-        Networking.instance.updateTrash(trashId, images: images, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: selectedType.isAnonymous, userId: (UserManager.instance.user?.id)!, accessibility: accessibility, status: trashStatus, cleanedByMe: cleanedByMe) { [weak self] (trash, error) in
+        Networking.instance.updateTrash(trashId, images: images, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: selectedType.isAnonymous, userId: (UserManager.instance.user?.id)!, accessibility: accessibility, status: trashStatus, cleanedByMe: cleanedByMe, organizationId: selectedType.organization?.id) { [weak self] (trash, error) in
             guard error == nil else {
                 print(error?.localizedDescription as Any)
                 failure(error!)
@@ -998,7 +998,7 @@ extension ReportViewController {
             .map { $0.image?.jpegData(compressionQuality: 1.0) } // Convert Into Data
             .compactMap { $0 } // Filter nil values
 
-        let offlineDump = OfflineDump(imagesData: uploadedImages, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: selectedType.isAnonymous, userId: UserManager.instance.user?.id ?? -1, accessibility: accessibility)
+        let offlineDump = OfflineDump(imagesData: uploadedImages, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: selectedType.isAnonymous, userId: UserManager.instance.user?.id ?? -1, accessibility: accessibility, organizationId: selectedType.organization?.id)
 
         CacheManager.shared.offlineDumps.append(offlineDump)
 

@@ -177,6 +177,7 @@ class Trash: JsonDecodable, Cachable {
         if let typesValues = json["types"] as? [String] {
             types = typesValues.map { TrashType.init(rawValue: $0) ?? .undefined }
         }
+
         note = json["note"] as? String
         userId = json["userId"] as? Int
         anonymous = json["anonymous"] as? Bool ?? false

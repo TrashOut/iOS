@@ -41,7 +41,6 @@ class Organization: JsonDecodable, Cachable {
 	var name: String = ""
     var organizationRoleId: String?
 
-
 	init(){}
 
 	func dictionary() -> [String : AnyObject] {

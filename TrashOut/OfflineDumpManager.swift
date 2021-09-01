@@ -70,7 +70,7 @@ extension OfflineDumpManager {
 
     private func upload(dump: OfflineDump, images: [DumpsImages]) -> Promise<Void> {
         return Promise { seal in
-            Networking.instance.createTrash(images, gps: dump.gps, size: dump.size, type: dump.type, note: dump.note, anonymous: dump.anonymous, userId: (UserManager.instance.user?.id)!, accessibility: dump.accessibility) { [weak self] (trash, error) in
+            Networking.instance.createTrash(images, gps: dump.gps, size: dump.size, type: dump.type, note: dump.note, anonymous: dump.anonymous, userId: (UserManager.instance.user?.id)!, accessibility: dump.accessibility, organizationId: dump.organizationId) { [weak self] (trash, error) in
                 guard let error = error else {
                     self?.successfullUploadedDumps.append(dump)
                     seal.fulfill(())

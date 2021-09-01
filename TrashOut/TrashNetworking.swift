@@ -305,7 +305,7 @@ extension Networking {
     /*
     User creates trash
     */
-    func createTrash(_ images: [DumpsImages], gps: Coordinates, size: String, type: [String], note: String?, anonymous: Bool, userId: Int, accessibility: DumpsAccessibility, callback: @escaping (Trash?, Error?) -> ()) {
+    func createTrash(_ images: [DumpsImages], gps: Coordinates, size: String, type: [String], note: String?, anonymous: Bool, userId: Int, accessibility: DumpsAccessibility, organizationId: Int?, callback: @escaping (Trash?, Error?) -> ()) {
         
         guard Networking.isConnectedToInternet else {
             callback(nil, NetworkingError.noInternetConnection)
@@ -326,6 +326,7 @@ extension Networking {
         params["anonymous"] = anonymous
         params["userId"] = userId
         params["accessibility"] = ["byCar": accessibility.byCar, "inCave": accessibility.inCave, "underWater": accessibility.underWater, "notForGeneralCleanup": accessibility.notForGeneralCleanup]
+        params["organizationId"] = organizationId
 
 		UserManager.instance.tokenHeader { [unowned self] tokenHeader in
 			Alamofire.request("\(self.apiBaseUrl)/trash/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
@@ -337,7 +338,7 @@ extension Networking {
     /*
     User updates trash
     */
-    func updateTrash(_ trashId: Int, images: [DumpsImages], gps: Coordinates, size: String, type: [String], note: String?, anonymous: Bool, userId: Int, accessibility: DumpsAccessibility, status: String, cleanedByMe: Bool, callback: @escaping (Trash?, Error?) -> ()) {
+    func updateTrash(_ trashId: Int, images: [DumpsImages], gps: Coordinates, size: String, type: [String], note: String?, anonymous: Bool, userId: Int, accessibility: DumpsAccessibility, status: String, cleanedByMe: Bool, organizationId: Int?, callback: @escaping (Trash?, Error?) -> ()) {
         guard Networking.isConnectedToInternet else {
             callback(nil, NetworkingError.noInternetConnection)
             return
@@ -358,6 +359,8 @@ extension Networking {
         params["accessibility"] = ["byCar": accessibility.byCar, "inCave": accessibility.inCave, "underWater": accessibility.underWater, "notForGeneralCleanup": accessibility.notForGeneralCleanup]
         params["status"] = status
         params["cleanedByMe"] = cleanedByMe
+        params["organizationId"] = organizationId
+
 		UserManager.instance.tokenHeader { [unowned self] tokenHeader in
 			Alamofire.request("\(self.apiBaseUrl)/trash/\(trashId)", method: .put, parameters: params, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON { [weak self] (response) in
 				self?.callbackHandler(response: response, callback: callback)

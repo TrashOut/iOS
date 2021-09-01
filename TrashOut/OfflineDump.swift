@@ -18,6 +18,7 @@ struct OfflineDump: Codable, Equatable {
     let anonymous: Bool
     let userId: Int
     let accessibility: DumpsAccessibility
+    let organizationId: Int?
 
     var localImages: [LocalImage] {
         return imagesData

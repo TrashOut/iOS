@@ -41,11 +41,11 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
         NotificationCenter.default.removeObserver(self)
     }
 
-//    @IBOutlet var loadingView: UIView! {
-//        didSet {
-//            loadingView.isHidden = true
-//        }
-//    }
+    //    @IBOutlet var loadingView: UIView! {
+    //        didSet {
+    //            loadingView.isHidden = true
+    //        }
+    //    }
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var takeFirstPhotoView: UIView! {
         didSet {
@@ -77,7 +77,7 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
         }
     }
 
-//    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    //    @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     @IBOutlet var vDescSeparator: [UIView]!
 
@@ -98,7 +98,6 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     @IBOutlet var swNotForGeneralCleanup: UISwitch!
     @IBOutlet var swStillHere: UISwitch!
     @IBOutlet var swICleanedIt: UISwitch!
-    @IBOutlet var swSendAnonymously: UISwitch!
 
     @IBOutlet var lblPhotoInfoTitle: UILabel!
     @IBOutlet var lblPhotoInfoSubtitle: UILabel!
@@ -133,7 +132,6 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     @IBOutlet var lblAddress: UILabel!
     @IBOutlet var lblCoordinates: UILabel!
     @IBOutlet var lblAdditionalInformation: UILabel!
-    @IBOutlet var lblSendAnonymously: UILabel!
 
     @IBOutlet var btnAddPhoto: UIButton!
     @IBOutlet var btnTakeAnotherPhoto: UIButton!
@@ -149,6 +147,8 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     @IBOutlet var btnDangerous: UIButton!
     @IBOutlet var btnDeadAnimals: UIButton!
     @IBOutlet var btnGlass: UIButton!
+    @IBOutlet weak var reportAsContentPickerView: ContentPickerView!
+
 
     @IBOutlet var tvAdditionalInformation: UITextView!
     @IBOutlet weak var editLocationButton: UIButton!
@@ -156,12 +156,12 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     var trash: Trash?
     var cleaned: Bool?
 
-	var photos: [LocalImage] = []
+    var photos: [LocalImage] = []
     // var photo: String?
     // var uploadData = [Data]()
     // var photosNames = [String]()
 
-	var photoManager: PhotoManager = PhotoManager()
+    var photoManager: PhotoManager = PhotoManager()
 
     // fileprivate var photos = [String]()
     fileprivate var thumbsURL = [String]()
@@ -170,7 +170,6 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     fileprivate var photosStorage = [String]()
     fileprivate var gps: Coordinates!
     fileprivate var note: String!
-    fileprivate var anonymous = false
     fileprivate var cleanedByMe = false
     fileprivate var byCar = false
     fileprivate var inCave = false
@@ -181,43 +180,47 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     fileprivate var trashTypes: [String]!
     fileprivate var trashSize: String!
     fileprivate var trashStatus: String!
+    private var selectedType: User.ReportAsType = .anonymous
+    private var reportAsTypes = [User.ReportAsType]()
 
     override func viewDidLoad() {
-		super.viewDidLoad()
+        super.viewDidLoad()
 
-       setupView()
+        setupView()
+        setupReportAsContentPickerView()
     }
 
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		setRoundedButtonWithBorder(button: btnsSizeOfTrash[0])
-		setRoundedButtonWithBorder(button: btnsSizeOfTrash[1])
-		setRoundedButtonWithBorder(button: btnsSizeOfTrash[2])
-		setRoundedButtonWithBorder(button: btnDomestic)
-		setRoundedButtonWithBorder(button: btnAutomotive)
-		setRoundedButtonWithBorder(button: btnConstruction)
-		setRoundedButtonWithBorder(button: btnPlastic)
-		setRoundedButtonWithBorder(button: btnElectronic)
-		setRoundedButtonWithBorder(button: btnOrganic)
-		setRoundedButtonWithBorder(button: btnMetal)
-		setRoundedButtonWithBorder(button: btnLiquid)
-		setRoundedButtonWithBorder(button: btnDangerous)
-		setRoundedButtonWithBorder(button: btnDeadAnimals)
-        setRoundedButtonWithBorder(button: btnGlass)
-	}
-    
-	// MARK: - Actions
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
 
-	@objc func close() {
+        setRoundedButtonWithBorder(button: btnsSizeOfTrash[0])
+        setRoundedButtonWithBorder(button: btnsSizeOfTrash[1])
+        setRoundedButtonWithBorder(button: btnsSizeOfTrash[2])
+        setRoundedButtonWithBorder(button: btnDomestic)
+        setRoundedButtonWithBorder(button: btnAutomotive)
+        setRoundedButtonWithBorder(button: btnConstruction)
+        setRoundedButtonWithBorder(button: btnPlastic)
+        setRoundedButtonWithBorder(button: btnElectronic)
+        setRoundedButtonWithBorder(button: btnOrganic)
+        setRoundedButtonWithBorder(button: btnMetal)
+        setRoundedButtonWithBorder(button: btnLiquid)
+        setRoundedButtonWithBorder(button: btnDangerous)
+        setRoundedButtonWithBorder(button: btnDeadAnimals)
+        setRoundedButtonWithBorder(button: btnGlass)
+    }
+    
+    // MARK: - Actions
+
+    @objc func close() {
         LoadingView.hide()
-		navigationController?.dismiss(animated: true, completion: nil)
-	}
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
 
     // MARK: - Send Report
 
     /**
-    Report a dump or update one
-    */
+     Report a dump or update one
+     */
     @objc func sendReport() {
         //show(message: "trash.create.validation.notFilledRequiredFileds".localized)
         if trash != nil && photos.isEmpty {
@@ -236,11 +239,11 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
             let window = self.view.window
             LoadingView.show(on: window!, style: .transparent)
 
-			let failed: () -> () = { [weak self] in
-				//self?.show(message: "trash.create.uploadPhotoError".localized)
-				self?.show(message: "global.fetchError".localized)
-				LoadingView.hide()
-			}
+            let failed: () -> () = { [weak self] in
+                //self?.show(message: "trash.create.uploadPhotoError".localized)
+                self?.show(message: "global.fetchError".localized)
+                LoadingView.hide()
+            }
             if photos.count > 0 {
                 accessibility = DumpsAccessibility.init(byCar: byCar, inCave: inCave, underWater: underWater, notForGeneralCleanup: notForGeneralCleanup)
 
@@ -248,46 +251,46 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
                     cacheOfflineDump() // In case the internet is not available, dump is going to be cached offline for later upload, when user connected into network
                     return
                 }
-				var uploads: [Async.Block] = []
+                var uploads: [Async.Block] = []
 
-				for photo in photos {
-					uploads.append({ [weak self] (completion, failure) in
+                for photo in photos {
+                    uploads.append({ [weak self] (completion, failure) in
                         
-						guard let photoName = photo.uid, let data = photo.jpegData, let thumbnailData = photo.thumbnailJpegData else {
-							let error = NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [NSLocalizedDescriptionKey: "global.validation.unknownError".localized])
-							failure(error)
-								return
-						}
-						self?.uploadImage(photoName: photoName, data: data, thumbnailData: thumbnailData, completion: completion, failure: failure)
-					})
-				}
-				uploads.append({ [weak self] (completion, failure) in
+                        guard let photoName = photo.uid, let data = photo.jpegData, let thumbnailData = photo.thumbnailJpegData else {
+                            let error = NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [NSLocalizedDescriptionKey: "global.validation.unknownError".localized])
+                            failure(error)
+                            return
+                        }
+                        self?.uploadImage(photoName: photoName, data: data, thumbnailData: thumbnailData, completion: completion, failure: failure)
+                    })
+                }
+                uploads.append({ [weak self] (completion, failure) in
                     
-					if self?.cleaned != nil {
-						if self?.cleaned == true {
-							self?.updateTrash(completion: completion, failure: failure)
-						} else  {
-							self?.updateTrash(completion: completion, failure: failure)
-						}
-					} else {
-						self?.createTrash(completion: completion, failure: failure)
-					}
-				})
-				uploads.append({ [weak self] (completion, failure) in
+                    if self?.cleaned != nil {
+                        if self?.cleaned == true {
+                            self?.updateTrash(completion: completion, failure: failure)
+                        } else  {
+                            self?.updateTrash(completion: completion, failure: failure)
+                        }
+                    } else {
+                        self?.createTrash(completion: completion, failure: failure)
+                    }
+                })
+                uploads.append({ [weak self] (completion, failure) in
                     
                     if self?.cleaned != nil {
                         NotificationCenter.default.post(name: .userUpdatedTrash, object: nil)
                     } else {
                         NotificationCenter.default.post(name: .userCreatedTrash, object: nil)
                     }
-					LoadingView.hide()
-				})
-				Async.waterfall(uploads, failure: { (error) in
-					failed()
-				})
-			} else {
-				failed()
-			}
+                    LoadingView.hide()
+                })
+                Async.waterfall(uploads, failure: { (error) in
+                    failed()
+                })
+            } else {
+                failed()
+            }
         }
     }
 
@@ -295,11 +298,11 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
 
     func uploadImage(photoName: String, data: Data, thumbnailData:Data,  completion: @escaping ()->(), failure: @escaping (Error)->()) {
         FirebaseImages.instance.uploadImage(photoName, data: data, thumbnailData: thumbnailData) { [weak self] (thumbnailUrl, thumbnailStorage , imageUrl, imageStorage, error) in            
-			guard error == nil else {
-				print(error?.localizedDescription as Any)
-				failure(error!)
-				return
-			}
+            guard error == nil else {
+                print(error?.localizedDescription as Any)
+                failure(error!)
+                return
+            }
             guard thumbnailUrl != nil else {
                 let error = NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [NSLocalizedDescriptionKey: "global.validation.unknownError".localized])
                 failure(error)
@@ -310,27 +313,27 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
                 failure(error)
                 return
             }
-			guard imageUrl != nil else {
-				let error = NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [NSLocalizedDescriptionKey: "global.validation.unknownError".localized])
-				failure(error)
-				return
-			}
-			guard let imageStorage = imageStorage else {
-				let error = NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [NSLocalizedDescriptionKey: "global.validation.unknownError".localized])
-				failure(error)
-				return
-			}
+            guard imageUrl != nil else {
+                let error = NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [NSLocalizedDescriptionKey: "global.validation.unknownError".localized])
+                failure(error)
+                return
+            }
+            guard let imageStorage = imageStorage else {
+                let error = NSError.init(domain: "cz.trashout.TrashOut", code: 500, userInfo: [NSLocalizedDescriptionKey: "global.validation.unknownError".localized])
+                failure(error)
+                return
+            }
             self?.thumbsURL.append(thumbnailUrl!)
             self?.thumbsStorage.append(thumbnailStorage)
-			self?.photosURL.append(imageUrl!)
-			self?.photosStorage.append(imageStorage)
-			completion()
-		}
-	}
+            self?.photosURL.append(imageUrl!)
+            self?.photosStorage.append(imageStorage)
+            completion()
+        }
+    }
 
     /**
-    Move keyboard for text view below the text itself
-    */
+     Move keyboard for text view below the text itself
+     */
     @objc func adjustForKeyboard(notification: Notification) {
         let userInfo = notification.userInfo!
 
@@ -350,15 +353,15 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     }
 
     /**
-    Save the text entered by user to text view
-    */
+     Save the text entered by user to text view
+     */
     func textViewDidChange(_ textView: UITextView) {
         note = textView.text
     }
 
     /**
-    When user starts edit text view, delete placeholder
-    */
+     When user starts edit text view, delete placeholder
+     */
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "trash.create.additionalInfo.hint".localized {
             textView.text = nil
@@ -366,8 +369,8 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     }
 
     /**
-    When user ends edit text view, put placeholder back
-    */
+     When user ends edit text view, put placeholder back
+     */
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "trash.create.additionalInfo.hint".localized
@@ -375,8 +378,8 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
     }
 
     /**
-    Hides keyboard when user touches Done button
-    */
+     Hides keyboard when user touches Done button
+     */
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             textView.resignFirstResponder()
@@ -474,14 +477,6 @@ extension ReportViewController {
         }
     }
 
-    @IBAction func sendAnonymously(_ sender: UISwitch) {
-        if sender.isOn {
-            anonymous = true
-        } else {
-            anonymous = false
-        }
-    }
-
     @IBAction func addPhoto(_ sender: UIButton) {
         photoManager.takePhoto(vc: self, source: .camera, success: { [weak self] (image) in
             self?.photos.append(image)
@@ -547,6 +542,17 @@ extension ReportViewController {
 
 extension ReportViewController {
 
+    private func setupReportAsContentPickerView() {
+        guard let user = UserManager.instance.user else {
+            reportAsContentPickerView.isHidden = true
+            return
+        }
+
+        self.reportAsTypes = user.reportTypes
+
+        reportAsContentPickerView.setup(.init(title: "trash.reportAs".localized))
+        reportAsContentPickerView.add(items: user.reportTypes.map { $0.title })
+    }
 
     private func setupView() {
         title = "trash.create.title".localized
@@ -622,7 +628,6 @@ extension ReportViewController {
         lblCoordinates.textColor = Theme.current.color.lightGray
         lblAdditionalInformation.text = "trash.note".localized
         lblAdditionalInformation.textColor = Theme.current.color.green
-        lblSendAnonymously.text = "trash.sendAnonymously".localized
 
         tvAdditionalInformation.text = "trash.create.additionalInfo.hint".localized
         tvAdditionalInformation.textColor = Theme.current.color.lightGray
@@ -650,8 +655,8 @@ extension ReportViewController {
     }
 
     /**
-    Set types of trash, color chosen size and disable other buttons
-    */
+     Set types of trash, color chosen size and disable other buttons
+     */
     private func setTypesOfTrash(sender: UIButton, selectedImage: String, color: UIColor, chosenType: String) {
         if sender.isSelected == false {
             trashTypes.append(chosenType)
@@ -667,8 +672,8 @@ extension ReportViewController {
     }
 
     /**
-    Set size of trash, color chosen size and disable other buttons
-    */
+     Set size of trash, color chosen size and disable other buttons
+     */
     private func setSizeOfTrash(sender: UIButton, selectedImage: String, chosenSize: String) {
         for btn in btnsSizeOfTrash {
             btn.backgroundColor = .clear
@@ -682,8 +687,8 @@ extension ReportViewController {
     }
 
     /**
-    Set Size of Trash part of UI
-    */
+     Set Size of Trash part of UI
+     */
     private func setSizeOfTrashView() {
         if cleaned == true {
             sizeOfTrashView.isHidden = true
@@ -697,8 +702,8 @@ extension ReportViewController {
     }
 
     /**
-    Color downloaded size of trash
-    */
+     Color downloaded size of trash
+     */
     private func downloadedSizeOfTrash(trash: Trash.Size) {
         for button in btnsSizeOfTrash {
             switch trash {
@@ -719,8 +724,8 @@ extension ReportViewController {
     }
 
     /**
-    Set Types of Trash part of UI
-    */
+     Set Types of Trash part of UI
+     */
     private func setTypesOfTrashView() {
         if cleaned == true {
             typesOfTrashView.isHidden = true
@@ -734,8 +739,8 @@ extension ReportViewController {
     }
 
     /**
-    Color downloaded types of trash
-    */
+     Color downloaded types of trash
+     */
     fileprivate func downloadedTypesOfTrash(trash: [Trash.TrashType]) {
         if trash.count > 0 {
             for i in 0...trash.count - 1 {
@@ -768,8 +773,8 @@ extension ReportViewController {
     }
 
     /**
-    Set Accessibility part of UI
-    */
+     Set Accessibility part of UI
+     */
     private func setAccessibilityView() {
         if trash != nil && cleaned == false {
             downloadedAccessibility(defaultValue: trash?.accessibility?.byCar, sw: swByCar)
@@ -790,6 +795,8 @@ extension ReportViewController {
     }
 
     private func showTrashOnMap(coords: CLLocationCoordinate2D) {
+        self.map.removeAnnotations(map.annotations)
+
         let annotation = MKPointAnnotation()
         annotation.coordinate = coords
 
@@ -800,8 +807,8 @@ extension ReportViewController {
     }
 
     /**
-    If accessibility is true, set its switch on
-    */
+     If accessibility is true, set its switch on
+     */
     private func downloadedAccessibility(defaultValue: Bool?, sw: UISwitch) {
         guard let value = defaultValue else { return }
         if value {
@@ -812,15 +819,15 @@ extension ReportViewController {
     // MARK: - Create Trash
 
     /**
-    User creates a dump report
-    */
+     User creates a dump report
+     */
     private func createTrash(completion: @escaping ()->(), failure: @escaping (Error)->()) {
         for i in 0..<photosURL.count {
             let image = DumpsImages.init(thumbDownloadUrl: thumbsURL[i], thumbStorageLocation: thumbsStorage[i] ,fullDownloadUrl: photosURL[i], storageLocation: photosStorage[i])
             images.append(image)
         }
 
-        Networking.instance.createTrash(images, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: anonymous, userId: (UserManager.instance.user?.id)!, accessibility: accessibility) { [weak self] (trash, error) in
+        Networking.instance.createTrash(images, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: selectedType.isAnonymous, userId: (UserManager.instance.user?.id)!, accessibility: accessibility, organizationId: selectedType.organization?.id) { [weak self] (trash, error) in
             guard error == nil else {
                 print(error?.localizedDescription as Any)
                 failure(error!)
@@ -829,19 +836,19 @@ extension ReportViewController {
             completion()
             self?.openThankYouViewController(trash: trash)
             /*
-            let alert = UIAlertController(title: nil, message: "trash.create.successfullyReported".localized, preferredStyle: .alert)
-            let ok = UIAlertAction.init(title: "global.ok".localized, style: .default) { [weak self] (alertAction) in
-                self?.close()
-            }
-            alert.addAction(ok)
-            self?.present(alert, animated: true, completion: nil)
-            */
+             let alert = UIAlertController(title: nil, message: "trash.create.successfullyReported".localized, preferredStyle: .alert)
+             let ok = UIAlertAction.init(title: "global.ok".localized, style: .default) { [weak self] (alertAction) in
+             self?.close()
+             }
+             alert.addAction(ok)
+             self?.present(alert, animated: true, completion: nil)
+             */
         }
     }
 
     /**
-    User updates a dump
-    */
+     User updates a dump
+     */
     private func updateTrash(completion: @escaping ()->(), failure: @escaping (Error)->()) {
 
         accessibility = DumpsAccessibility.init(byCar: byCar, inCave: inCave, underWater: underWater, notForGeneralCleanup: notForGeneralCleanup)
@@ -857,7 +864,7 @@ extension ReportViewController {
             return
         }
 
-        Networking.instance.updateTrash(trashId, images: images, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: anonymous, userId: (UserManager.instance.user?.id)!, accessibility: accessibility, status: trashStatus, cleanedByMe: cleanedByMe) { [weak self] (trash, error) in
+        Networking.instance.updateTrash(trashId, images: images, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: selectedType.isAnonymous, userId: (UserManager.instance.user?.id)!, accessibility: accessibility, status: trashStatus, cleanedByMe: cleanedByMe, organizationId: selectedType.organization?.id) { [weak self] (trash, error) in
             guard error == nil else {
                 print(error?.localizedDescription as Any)
                 failure(error!)
@@ -874,8 +881,8 @@ extension ReportViewController {
     }
 
     /**
-    Set rounded button with light gray border
-    */
+     Set rounded button with light gray border
+     */
     private func setRoundedButtonWithBorder(button: UIButton) {
         button.layer.cornerRadius = 0.5 * button.bounds.height
         button.layer.borderWidth = 2
@@ -883,8 +890,8 @@ extension ReportViewController {
     }
 
     /**
-    Set Status part of UI
-    */
+     Set Status part of UI
+     */
     private func setStatusView() {
         if cleaned == true {
             statusView.isHidden = false
@@ -897,8 +904,8 @@ extension ReportViewController {
     }
 
     /**
-    Set Location part of UI
-    */
+     Set Location part of UI
+     */
     private func setLocationView() {
         // If user wants to report new dump, the trash is nill. Otherwise user is updating existing trash.
         if trash == nil {
@@ -906,7 +913,7 @@ extension ReportViewController {
 
             let accuracy = Int(LocationManager.manager.currentLocation.horizontalAccuracy)
             if accuracy > 100 {
-//                locationAccuracyView.isHidden = false // Accuracy view visibility not show even if accuracy is not good during dump creation.
+                //                locationAccuracyView.isHidden = false // Accuracy view visibility not show even if accuracy is not good during dump creation.
                 lblAccuracy.text = "\(Int(accuracy)) m"
             } else {
                 cnAccuracyViewHeight.constant = 76
@@ -933,15 +940,15 @@ extension ReportViewController {
 
                     if distanceInM > 100 {
                         lblAccuracy.text = DistanceRounding.shared.localizedDistance(meteres: distanceInM)
-//                        if distanceInM < 501 {
-//                            lblAccuracy.text = "∼\(DistanceRounding.roundDistance(distance: distanceInM))m away".localized
-//                        } else {
-//                            if DistanceRounding.roundDistance(distance: distanceInM) > 10000 {
-//                                lblAccuracy.text = "> 10km away".localized
-//                            } else {
-//                                lblAccuracy.text = "∼\(DistanceRounding.roundDistance(distance: distanceInM))km away".localized
-//                            }
-//                        }
+                        //                        if distanceInM < 501 {
+                        //                            lblAccuracy.text = "∼\(DistanceRounding.roundDistance(distance: distanceInM))m away".localized
+                        //                        } else {
+                        //                            if DistanceRounding.roundDistance(distance: distanceInM) > 10000 {
+                        //                                lblAccuracy.text = "> 10km away".localized
+                        //                            } else {
+                        //                                lblAccuracy.text = "∼\(DistanceRounding.roundDistance(distance: distanceInM))km away".localized
+                        //                            }
+                        //                        }
                         locationAccuracyView.isHidden = false
                         lblLocationAccuracy.text = "trash.dumpsDistance".localized
                         lblTryingBetterLocation.text = "trash.edit.getCloser".localized
@@ -971,8 +978,8 @@ extension ReportViewController {
     }
 
     /**
-    Show address and coordinates
-    */
+     Show address and coordinates
+     */
     private func showAddressAndCoorinates(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         lblAddress.text = ""
         lblCoordinates.text = "\(String(format:"%.6f", latitude)), \(String(format:"%.6f", longitude))"
@@ -991,7 +998,7 @@ extension ReportViewController {
             .map { $0.image?.jpegData(compressionQuality: 1.0) } // Convert Into Data
             .compactMap { $0 } // Filter nil values
 
-        let offlineDump = OfflineDump(imagesData: uploadedImages, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: anonymous, userId: UserManager.instance.user?.id ?? -1, accessibility: accessibility)
+        let offlineDump = OfflineDump(imagesData: uploadedImages, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: selectedType.isAnonymous, userId: UserManager.instance.user?.id ?? -1, accessibility: accessibility, organizationId: selectedType.organization?.id)
 
         CacheManager.shared.offlineDumps.append(offlineDump)
 

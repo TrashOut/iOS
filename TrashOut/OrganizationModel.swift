@@ -39,7 +39,7 @@ class Organization: JsonDecodable, Cachable {
 
 	var id: Int = 0
 	var name: String = ""
-
+    var organizationRoleId: String?
 
 	init(){}
 
@@ -48,6 +48,7 @@ class Organization: JsonDecodable, Cachable {
 
 		dict["id"] = id as AnyObject?
 		dict["name"] = name as AnyObject?
+        dict["organizationRoleId"] = organizationRoleId as AnyObject
 
 		return dict
 	}
@@ -56,6 +57,7 @@ class Organization: JsonDecodable, Cachable {
 		let o = Organization()
 		o.id = json["id"] as? Int ?? id ?? 0
 		o.name = json["name"] as? String ?? ""
+        o.organizationRoleId = json["organizationRoleId"] as? String
 
 		return o
 	}

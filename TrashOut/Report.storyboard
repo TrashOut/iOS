@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="reR-dD-RQO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19158" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="reR-dD-RQO">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19141"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1065,45 +1065,26 @@
                                                     <constraint firstItem="wdU-eD-H8H" firstAttribute="bottom" secondItem="9fX-SQ-bIh" secondAttribute="bottomMargin" id="zQm-nv-wMx"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgP-Bv-s7N">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlv-SV-wqX">
                                                 <rect key="frame" x="0.0" y="1949" width="375" height="66"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LW3-3Y-hqu" customClass="Card" customModule="TrashOut" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMz-6A-Ndh" customClass="ContentPickerView" customModule="TrashOut" customModuleProvider="target">
                                                         <rect key="frame" x="8" y="8" width="359" height="46"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send anonymously" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ek-vd-CfD">
-                                                                <rect key="frame" x="8" y="10" width="343" height="27"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pUs-m0-xjd">
-                                                                <rect key="frame" x="302" y="8" width="51" height="31"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <connections>
-                                                                    <action selector="sendAnonymously:" destination="aw9-mF-Ywe" eventType="valueChanged" id="qpV-6d-nix"/>
-                                                                </connections>
-                                                            </switch>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstItem="5ek-vd-CfD" firstAttribute="top" secondItem="LW3-3Y-hqu" secondAttribute="top" constant="10" id="9Wc-D0-6O5"/>
-                                                            <constraint firstItem="5ek-vd-CfD" firstAttribute="centerY" secondItem="pUs-m0-xjd" secondAttribute="centerY" id="OdD-BO-A5X"/>
-                                                            <constraint firstItem="pUs-m0-xjd" firstAttribute="trailing" secondItem="LW3-3Y-hqu" secondAttribute="trailingMargin" id="c4V-1x-h1n"/>
-                                                            <constraint firstItem="pUs-m0-xjd" firstAttribute="top" secondItem="LW3-3Y-hqu" secondAttribute="topMargin" id="d19-cd-sLX"/>
-                                                            <constraint firstItem="5ek-vd-CfD" firstAttribute="leading" secondItem="LW3-3Y-hqu" secondAttribute="leadingMargin" id="kFw-es-Xjh"/>
-                                                            <constraint firstItem="pUs-m0-xjd" firstAttribute="trailing" secondItem="5ek-vd-CfD" secondAttribute="trailing" id="nAk-wa-fXc"/>
-                                                        </constraints>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="LW3-3Y-hqu" firstAttribute="top" secondItem="XgP-Bv-s7N" secondAttribute="top" priority="999" constant="8" id="120-nT-Bf4"/>
-                                                    <constraint firstAttribute="height" priority="999" constant="66" id="GVU-RM-cGH"/>
-                                                    <constraint firstItem="LW3-3Y-hqu" firstAttribute="trailing" secondItem="XgP-Bv-s7N" secondAttribute="trailingMargin" id="RoD-Qh-uDk"/>
-                                                    <constraint firstItem="LW3-3Y-hqu" firstAttribute="leading" secondItem="XgP-Bv-s7N" secondAttribute="leadingMargin" id="UOt-KE-Knd"/>
-                                                    <constraint firstAttribute="bottom" secondItem="LW3-3Y-hqu" secondAttribute="bottom" constant="12" id="zgw-5W-YqG"/>
+                                                    <constraint firstItem="yMz-6A-Ndh" firstAttribute="trailing" secondItem="vlv-SV-wqX" secondAttribute="trailingMargin" id="48L-G1-ymd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="yMz-6A-Ndh" secondAttribute="bottom" constant="12" id="IIB-Rm-QSJ"/>
+                                                    <constraint firstItem="yMz-6A-Ndh" firstAttribute="leading" secondItem="vlv-SV-wqX" secondAttribute="leadingMargin" id="eYy-iE-3Bf"/>
+                                                    <constraint firstItem="yMz-6A-Ndh" firstAttribute="top" secondItem="vlv-SV-wqX" secondAttribute="top" priority="999" constant="8" id="vBD-dR-AE3"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="66" id="vff-bn-tHK"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -1187,7 +1168,6 @@
                         <outlet property="lblPhotoInfoSubtitle" destination="Aqc-BB-yBD" id="DyY-vx-eLE"/>
                         <outlet property="lblPhotoInfoTitle" destination="3k0-yE-0Gd" id="yL5-W3-7Jx"/>
                         <outlet property="lblPlastic" destination="miI-d2-aQN" id="UFH-bW-R3r"/>
-                        <outlet property="lblSendAnonymously" destination="5ek-vd-CfD" id="U1E-9e-8Nj"/>
                         <outlet property="lblSizeOfTrash" destination="DnQ-ka-HFy" id="0yd-Dg-CjU"/>
                         <outlet property="lblStatus" destination="A0t-Iu-qcX" id="kFp-Zx-dHU"/>
                         <outlet property="lblTryingBetterLocation" destination="NGG-88-B0J" id="FdR-fT-1eY"/>
@@ -1197,6 +1177,7 @@
                         <outlet property="locationAddressView" destination="e73-F8-F1q" id="vhz-HF-bgD"/>
                         <outlet property="locationView" destination="CAo-OU-8Ii" id="m6B-9N-MiZ"/>
                         <outlet property="map" destination="lta-kl-Cfs" id="Fc3-af-bYe"/>
+                        <outlet property="reportAsContentPickerView" destination="yMz-6A-Ndh" id="X7H-bX-2et"/>
                         <outlet property="scrollView" destination="R3X-x5-gFG" id="8dX-pK-qjV"/>
                         <outlet property="sizeOfTrashView" destination="YqV-R3-5bI" id="gcW-Oj-qIR"/>
                         <outlet property="statusView" destination="j26-Kb-cHu" id="aOm-j0-G5n"/>
@@ -1204,7 +1185,6 @@
                         <outlet property="swICleanedIt" destination="Rjt-15-miN" id="pKe-TG-ozp"/>
                         <outlet property="swInCave" destination="OqV-Va-kbM" id="FGJ-82-gxg"/>
                         <outlet property="swNotForGeneralCleanup" destination="Av3-OQ-1jH" id="X58-Tk-t5L"/>
-                        <outlet property="swSendAnonymously" destination="pUs-m0-xjd" id="9Sf-lX-Cc7"/>
                         <outlet property="swStillHere" destination="xZI-gE-1fY" id="UM3-Zs-PYC"/>
                         <outlet property="swUnderWater" destination="NyY-NL-ckW" id="Hgn-FX-h1b"/>
                         <outlet property="takeAnotherPhotoView" destination="Kvw-k3-7BN" id="Nrb-QG-OSF"/>

@@ -35,6 +35,53 @@ import Cache
 
 class User: JsonDecodable, Cachable {
 
+    struct Stats {
+        var reported: Int = 0
+        var updated: Int = 0
+        var cleaned: Int = 0
+    }
+
+    enum ReportAsType {
+
+        case anonymous
+        case personal(name: String)
+        case organization(organisation: Organization)
+
+        var title: String {
+            switch self {
+            case .anonymous: return "trash.anonymous".localized
+            case .organization(organisation: let organisation): return organisation.name
+            case .personal(name: let name): return name
+            }
+        }
+
+        var isAnonymous: Bool {
+            switch self {
+            case .anonymous: return true
+            default: return false
+            }
+        }
+
+        var organization: Organization? {
+            switch self {
+            case .anonymous, .personal:
+                return nil
+            case .organization(organisation: let organization):
+                return organization
+            }
+        }
+
+    }
+
+    static func create(from json: [String: AnyObject], usingId id: Int? = nil) -> AnyObject {
+        // Create new entity
+        let user = User()
+        user.parse(json: json)
+        //let resolvedId: Int? = id ?? json["id"] as? Int
+        //user.id = resolvedId ?? 0
+        return user
+    }
+
     // MARK: - Properties
 
     var id: Int = 0
@@ -55,27 +102,6 @@ class User: JsonDecodable, Cachable {
 
     var badges: [Badge] = []
     var areas: [Area] = []
-
-	var level: Int {
-		guard let points = points else { return 0 }
-		var a: Int = 0
-		var b: Int = 1
-		var c: Int = 0
-		var index: Int = -1
-		repeat {
-			c = a + b
-			a = b
-			b = c
-			index += 1
-		} while (c <= (points/10))
-		return index
-	}
-
-    struct Stats {
-        var reported: Int = 0
-        var updated: Int = 0
-        var cleaned: Int = 0
-    }
 
     // MARK: - Lifecycle
 
@@ -120,15 +146,6 @@ class User: JsonDecodable, Cachable {
 		self.organizations <== json["organizations"]
     }
 
-    static func create(from json: [String: AnyObject], usingId id: Int? = nil) -> AnyObject {
-        // Create new entity
-        let user = User()
-        user.parse(json: json)
-        //let resolvedId: Int? = id ?? json["id"] as? Int
-        //user.id = resolvedId ?? 0
-        return user
-    }
-
     func dictionary() -> [String: AnyObject] {
         var dict: [String: AnyObject] = [:]
         dict["firstName"] = firstName as AnyObject?
@@ -168,6 +185,16 @@ class User: JsonDecodable, Cachable {
         return dict
     }
 
+    func searchOrganization(by organizationId: Int) -> Organization? {
+        return organizations.filter { $0.id == organizationId }.first
+    }
+
+}
+
+// MARK: - Computed Properties
+
+extension User {
+
     var displayName: String {
         if let fn = firstName, let ln = lastName {
             return "\(fn) \(ln)"
@@ -180,13 +207,49 @@ class User: JsonDecodable, Cachable {
         }
         return "trash.anonymous".localized
     }
-    
+
     var displayFirstName: String {
         if let fn = firstName {
             return fn
         }
         return "trash.anonymous".localized
     }
+
+    var level: Int {
+        guard let points = points else { return 0 }
+        var a: Int = 0
+        var b: Int = 1
+        var c: Int = 0
+        var index: Int = -1
+        repeat {
+            c = a + b
+            a = b
+            b = c
+            index += 1
+        } while (c <= (points/10))
+        return index
+    }
+
+    var fullName: String {
+        guard firstName != nil && lastName != nil else { return "" }
+
+        return (firstName ?? "") + " " + (lastName ?? "")
+    }
+
+    var reportTypes: [ReportAsType] {
+        var result = [ReportAsType]()
+
+        if !fullName.isEmpty {
+            result.append(.personal(name: fullName))
+        }
+        result.append(.anonymous)
+
+        let relevantOrganisations = organizations.filter { ($0.organizationRoleId ?? "") == "1" }
+        result.append(contentsOf: relevantOrganisations.map { .organization(organisation: $0) })
+
+        return result
+    }
+
 }
 
 class Badge: JsonDecodable, Cachable {

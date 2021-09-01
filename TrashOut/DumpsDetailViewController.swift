@@ -739,7 +739,9 @@ class DumpsDetailViewController: ViewController, UITableViewDataSource, UITableV
 			cell.lblHistoryStatusDate.text = "global.unknow".localized
 		}
 
-		if let user = update.user, update.anonymous == false {
+        if let organization = update.organization, !update.anonymous {
+            cell.lblHistoryUser.text = organization.name
+        } else if let user = update.user, update.anonymous == false {
 			cell.lblHistoryUser.text = user.displayName // anonymous fallback
 		} else {
 			cell.lblHistoryUser.text = "trash.anonymous".localized
@@ -979,6 +981,7 @@ class HistoryTableViewCell: UITableViewCell {
 }
 
 extension HistoryTableViewCell {
+
     func setCollectionViewDataSourceDelegate<D: UICollectionViewDataSource & UICollectionViewDelegate>(_ dataSourceDelegate: D, forRow row: Int) {
 
         collectionView.delegate = dataSourceDelegate

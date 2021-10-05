@@ -552,6 +552,7 @@ extension ReportViewController {
 
         reportAsContentPickerView.setup(.init(title: "trash.reportAs".localized))
         reportAsContentPickerView.add(items: user.reportTypes.map { $0.title })
+        reportAsContentPickerView.delegate = self
     }
 
     private func setupView() {
@@ -1059,6 +1060,14 @@ extension ReportViewController: UpdateLocationViewControllerDelegate {
     func updateLocationDidSelect(_ controller: UpdateLocationViewController, coordinates: CLLocationCoordinate2D) {
         showTrashOnMap(coords: coordinates)
         showAddressAndCoorinates(latitude: coordinates.latitude, longitude: coordinates.longitude)
+    }
+
+}
+
+extension ReportViewController: ContentPickerDelegate {
+
+    func contentPickerDidSelect(_ view: UIView, row: Int, value: String) {
+        selectedType = reportAsTypes[row]
     }
 
 }

@@ -35,27 +35,27 @@ import UIKit
 
 open class Theme {
 
-	public static var current = Theme()
+    public static var current = Theme()
 
-	open var color: Color = Color()
-	open var font: Font = Font()
+    open var color: Color = Color()
+    open var font: Font = Font()
 
-	public init() {}
+    public init() {}
 
-	// MARK: - Theme definitions
+    // MARK: - Theme definitions
 
-	open class Color {
-		public init() {}
+    open class Color {
+        public init() {}
 
-		open var navBar: UIColor = UIColor.init(rgba: "#8CC947")
-		open var navBarText: UIColor = .white
-		open var tabBar: UIColor = .white
-		open var tabBarSelected: UIColor = UIColor.init(rgba: "#8CC947")
-		open var separatorLine: UIColor = UIColor.init(rgba: "#dadada")
+        open var navBar: UIColor = UIColor.init(rgba: "#8CC947")
+        open var navBarText: UIColor = .white
+        open var tabBar: UIColor = .white
+        open var tabBarSelected: UIColor = UIColor.init(rgba: "#8CC947")
+        open var separatorLine: UIColor = UIColor.init(rgba: "#dadada")
         open var green: UIColor = UIColor.init(rgba: "#8CC947")
         open var red: UIColor = UIColor.init(rgba: "#DE371C")
         open var orange: UIColor = UIColor.init(rgba: "#EA6B2D")
-		open var yellow: UIColor = UIColor.init(rgba: "#FFDC00")
+        open var yellow: UIColor = UIColor.init(rgba: "#FFDC00")
         open var lightGray: UIColor = .lightGray
         open var dimGray: UIColor = UIColor.init(rgba: "#8E8E8E")
         open var leadBlack: UIColor = UIColor.init(rgba: "#212121")
@@ -71,101 +71,121 @@ open class Theme {
         open var deadAnimals: UIColor = UIColor.init(rgba: "#C2660B")
         open var glass: UIColor = UIColor.init(rgba: "#0c874e")
 
-		open var button: UIColor = UIColor.init(rgba: "#8BC34A")
-		open var facebook: UIColor = UIColor.init(rgba: "#36549c")
-	}
+        open var button: UIColor = UIColor.init(rgba: "#8BC34A")
+        open var facebook: UIColor = UIColor.init(rgba: "#36549c")
+    }
 
-	open class Font {
-		public init() {}
+    open class Font {
+        public init() {}
 
         open var boldTitle: UIFont = .boldSystemFont(ofSize: 22)
-		open var title: UIFont = .systemFont(ofSize: 22)
+        open var title: UIFont = .systemFont(ofSize: 22)
         open var boldText: UIFont = .boldSystemFont(ofSize: 17)
-		open var text: UIFont = .systemFont(ofSize: 17)
-		open var subtext: UIFont = .systemFont(ofSize: 13)
-	}
+        open var text: UIFont = .systemFont(ofSize: 17)
+        open var subtext: UIFont = .systemFont(ofSize: 13)
+    }
 
-	// MARK: - Appearance
+    // MARK: - Appearance
 
-	open func setupAppearance() {
+    open func setupAppearance() {
         UINavigationBar.appearance().barStyle = UIBarStyle.black // Removes hairline at the top of the bar
-		UINavigationBar.appearance().barTintColor = color.navBar
-		UINavigationBar.appearance().tintColor = color.navBarText
-		UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: color.navBarText]
-        UINavigationBar.appearance().shadow = true
+        UINavigationBar.appearance().barTintColor = color.navBar
+        UINavigationBar.appearance().tintColor = color.navBarText
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: color.navBarText]
         UITabBar.appearance().alpha = 1
         UITabBar.appearance().isOpaque = true
         UITabBar.appearance().shadowImage = UIImage() // Removes hairline at the top of the bar
         UITabBar.appearance().backgroundImage = UIImage.from(color: .white)// Removes hairline at the top of the bar
         UITabBar.appearance().barTintColor = color.tabBar
-		UITabBar.appearance().tintColor = color.tabBarSelected
-        UITabBar.appearance().shadow = true
+        UITabBar.appearance().tintColor = color.tabBarSelected
+
+
+        if #available(iOS 15.0, *) {
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithOpaqueBackground()
+            tabBarAppearance.backgroundColor = .white
+            tabBarAppearance.shadowImage = UIImage()
+            tabBarAppearance.backgroundImage = UIImage.from(color: .white)
+
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithOpaqueBackground()
+            navigationBarAppearance.backgroundColor = color.navBar
+            navigationBarAppearance.titleTextAttributes = [.foregroundColor: color.navBarText]
+            navigationBarAppearance.shadowImage = UIImage()
+            navigationBarAppearance.shadowColor = .clear
+
+            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        }
     }
 
 }
 
 public extension UIFont {
     
-	static var theme: Theme.Font {
-		return Theme.current.font
-	}
+    static var theme: Theme.Font {
+        return Theme.current.font
+    }
 }
 
 /*
-Inspired by https://github.com/yeahdongcn/UIColor-Hex-Swift
-*/
+ Inspired by https://github.com/yeahdongcn/UIColor-Hex-Swift
+ */
 public extension UIColor {
 
-	static var theme: Theme.Color {
-		return Theme.current.color
-	}
+    static var theme: Theme.Color {
+        return Theme.current.color
+    }
 
-	/**
-	Create color using rgb(a) string.
+    /**
+     Create color using rgb(a) string.
 
-	Starts with #, number of characters after '#' should be either 3, 4, 6 or 8
-	*/
-	convenience init(rgba: String) {
-		var red: CGFloat = 0.0
-		var green: CGFloat = 0.0
-		var blue: CGFloat = 0.0
-		var alpha: CGFloat = 1.0
+     Starts with #, number of characters after '#' should be either 3, 4, 6 or 8
+     */
+    convenience init(rgba: String) {
+        var red: CGFloat = 0.0
+        var green: CGFloat = 0.0
+        var blue: CGFloat = 0.0
+        var alpha: CGFloat = 1.0
 
-		if rgba.hasPrefix("#") {
-			let index   = rgba.index(rgba.startIndex, offsetBy: 1)
+        if rgba.hasPrefix("#") {
+            let index   = rgba.index(rgba.startIndex, offsetBy: 1)
             let hex     = String(rgba[index...])
-			let scanner = Scanner(string: hex)
-			var hexValue: CUnsignedLongLong = 0
-			if scanner.scanHexInt64(&hexValue) {
-				switch hex.count {
-				case 3:
-					red   = CGFloat((hexValue & 0xF00) >> 8)       / 15.0
-					green = CGFloat((hexValue & 0x0F0) >> 4)       / 15.0
-					blue  = CGFloat(hexValue & 0x00F)              / 15.0
-				case 4:
-					red   = CGFloat((hexValue & 0xF000) >> 12)     / 15.0
-					green = CGFloat((hexValue & 0x0F00) >> 8)      / 15.0
-					blue  = CGFloat((hexValue & 0x00F0) >> 4)      / 15.0
-					alpha = CGFloat(hexValue & 0x000F)             / 15.0
-				case 6:
-					red   = CGFloat((hexValue & 0xFF0000) >> 16)   / 255.0
-					green = CGFloat((hexValue & 0x00FF00) >> 8)    / 255.0
-					blue  = CGFloat(hexValue & 0x0000FF)           / 255.0
-				case 8:
-					red   = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
-					green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
-					blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
-					alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
-				default:
-					print("Invalid RGB string, number of characters after '#' should be either 3, 4, 6 or 8")
-				}
-			} else {
-				print("Scan hex error")
-			}
-		} else {
-			print("Invalid RGB string, missing '#' as prefix")
-		}
-		self.init(red: red, green: green, blue: blue, alpha: alpha)
-	}
+            let scanner = Scanner(string: hex)
+            var hexValue: CUnsignedLongLong = 0
+            if scanner.scanHexInt64(&hexValue) {
+                switch hex.count {
+                case 3:
+                    red   = CGFloat((hexValue & 0xF00) >> 8)       / 15.0
+                    green = CGFloat((hexValue & 0x0F0) >> 4)       / 15.0
+                    blue  = CGFloat(hexValue & 0x00F)              / 15.0
+                case 4:
+                    red   = CGFloat((hexValue & 0xF000) >> 12)     / 15.0
+                    green = CGFloat((hexValue & 0x0F00) >> 8)      / 15.0
+                    blue  = CGFloat((hexValue & 0x00F0) >> 4)      / 15.0
+                    alpha = CGFloat(hexValue & 0x000F)             / 15.0
+                case 6:
+                    red   = CGFloat((hexValue & 0xFF0000) >> 16)   / 255.0
+                    green = CGFloat((hexValue & 0x00FF00) >> 8)    / 255.0
+                    blue  = CGFloat(hexValue & 0x0000FF)           / 255.0
+                case 8:
+                    red   = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
+                    green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
+                    blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
+                    alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
+                default:
+                    print("Invalid RGB string, number of characters after '#' should be either 3, 4, 6 or 8")
+                }
+            } else {
+                print("Scan hex error")
+            }
+        } else {
+            print("Invalid RGB string, missing '#' as prefix")
+        }
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
+    }
 
 }

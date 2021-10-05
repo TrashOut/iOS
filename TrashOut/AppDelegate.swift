@@ -48,7 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-		Theme.current.setupAppearance()
 		FirebaseLocalization().update()
         TrashFilter.clearCachedFilter()
 		acceptInvalidSSLCerts()
@@ -64,7 +63,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             NotificationsManager.AppOpen.shared.mode = .normal
         }
-        
+
+
+        Theme.current.setupAppearance()
+
 		return true
 	}
     

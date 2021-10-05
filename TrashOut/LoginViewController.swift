@@ -240,7 +240,7 @@ extension LoginViewController {
         return hasError == false
     }
 
-    private func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == frEmail.textField {
             self.selectedRow = frEmail
             UIView.animate(withDuration: 0.35, animations: {
@@ -255,7 +255,7 @@ extension LoginViewController {
         }
     }
 
-    private func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
 
         if let text = textField.text, text.count > 0 {

@@ -263,9 +263,7 @@ extension NotificationsManager {
     ///   - tabBarController: Tab bar controller.
     ///   - id: ID.
     static func showNewsAfterReceiveNotification(tabBarController: TabbarViewController?, id: Int?) {
-        if let visibleController = ((UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController as? UINavigationController)?.visibleViewController {
-            visibleController.dismiss(animated: true, completion: nil)
-        }
+        dismissVisibleController()
         
         tabBarController?.openDashboard { nc in
             let storyboard = UIStoryboard.init(name: "News", bundle: Bundle.main)
@@ -274,4 +272,25 @@ extension NotificationsManager {
             nc.pushViewController(vc, animated: true)
         }
     }
+
+    static func showDumpThankYouMessage(tabBarController: TabbarViewController?, trash: Trash) {
+        dismissVisibleController()
+
+        tabBarController?.openDashboard(refresh: false) { nc in
+            // TODO: Open Thank you Controller
+        }
+    }
+
+}
+
+// MARK: - Privates
+
+extension NotificationsManager {
+
+    private static func dismissVisibleController() {
+        if let visibleController = ((UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController as? UINavigationController)?.visibleViewController {
+            visibleController.dismiss(animated: true, completion: nil)
+        }
+    }
+
 }

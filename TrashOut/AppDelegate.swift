@@ -39,18 +39,24 @@ import UserNotifications
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    private let offlineDumpManager: OfflineDumpManagerType = OfflineDumpManager()
-    
-	var window: UIWindow?
-    
-	// MARK: - App Delegate
+    var window: UIWindow?
 
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    private let offlineDumpManager: OfflineDumpManagerType = OfflineDumpManager()
+
+    private var tabBarController: TabbarViewController? {
+        let rootViewController = self.window?.rootViewController as? UINavigationController
+        let tabBarController = rootViewController?.viewControllers.filter { $0 is TabbarViewController }.first as? TabbarViewController
+        return tabBarController
+    }
+    
+    // MARK: - App Delegate
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-		FirebaseLocalization().update()
+        FirebaseLocalization().update()
         TrashFilter.clearCachedFilter()
-		acceptInvalidSSLCerts()
+        acceptInvalidSSLCerts()
         
         generateUniqueId()
         
@@ -67,40 +73,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Theme.current.setupAppearance()
 
-		return true
-	}
+        return true
+    }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return ApplicationDelegate.shared.application(app, open: url, options: options)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-		TrashHunter.hunter?.appWillResignActive(application)
+        TrashHunter.hunter?.appWillResignActive(application)
     }
 
-	func applicationDidEnterBackground(_ application: UIApplication) {
-		// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-		// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-	}
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
 
-	func applicationWillEnterForeground(_ application: UIApplication) {
-		// Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-	}
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    }
 
-	func applicationDidBecomeActive(_ application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         handleOfflineDumps()
-	}
+    }
 
-	func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-		TrashHunter.hunter?.application(application, didReceive: notification)
-	}
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        TrashHunter.hunter?.application(application, didReceive: notification)
+    }
 
-	func applicationWillTerminate(_ application: UIApplication) {
-		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-	}
-	func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-		TrashHunter.hunter?.application(application, didRegister: notificationSettings)
-	}
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        TrashHunter.hunter?.application(application, didRegister: notificationSettings)
+    }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         print("USER INFO: \(userInfo)")
@@ -140,51 +146,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    /*
-	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-		// print out token to device console
-		NSLog("Registered for notifications with token: '\(deviceToken)'")
-	}
-    */
-
-    /*
-	func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-		// print out error to device console
-		NSLog("Failed to register for notifications due to error \(error.localizedDescription)")
-	}
-    */
- 
-	func acceptInvalidSSLCerts() {
-		let manager = Alamofire.SessionManager.default
-		print("trying to accept invalid certs")
-		
-		manager.delegate.sessionDidReceiveChallenge = { session, challenge in
-			var disposition: URLSession.AuthChallengeDisposition = .performDefaultHandling
-			var credential: URLCredential?
-			
-			print("received challenge")
-			
-			if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-				disposition = URLSession.AuthChallengeDisposition.useCredential
-				credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
-			} else {
-				if challenge.previousFailureCount > 0 {
-					disposition = .cancelAuthenticationChallenge
-				} else {
-					credential = manager.session.configuration.urlCredentialStorage?.defaultCredential(for: challenge.protectionSpace)
-					
-					if credential != nil {
-						disposition = .useCredential
-					}
-				}
-			}
-			 
-			return (disposition, credential)
-		}
-	}
 }
 
 // MARK: - Unique ID
+
 extension AppDelegate {
 
     func generateUniqueId() {
@@ -192,7 +157,7 @@ extension AppDelegate {
         print(uuid)
         
         if UniqueIdentifier.identifier == nil {
-           UniqueIdentifier.identifier = uuid
+            UniqueIdentifier.identifier = uuid
         }
     }
 
@@ -215,7 +180,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
                 completionHandler: {_, _ in })
         } else {
             let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
+            UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
         
@@ -235,35 +200,64 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
 // MARK: - Navigation
 
 extension AppDelegate {
-
-    fileprivate var tabBarController: TabbarViewController? {
-        let rootViewController = self.window?.rootViewController as? UINavigationController
-        let tabBarController = rootViewController?.viewControllers.filter { $0 is TabbarViewController }.first as? TabbarViewController
-        return tabBarController
-    }
     
-    fileprivate func showDumpsAfterReceiveNotification(id: Int?) {
+    private func showDumpsAfterReceiveNotification(id: Int?) {
         NotificationsManager.showDumpsAfterReceiveNotification(tabBarController: tabBarController, id: id)
     }
     
-    fileprivate func showEventAfterReceiveNotification(id: Int?) {
+    private func showEventAfterReceiveNotification(id: Int?) {
         NotificationsManager.showEventAfterReceiveNotification(tabBarController: tabBarController, id: id)
     }
     
-    fileprivate func showNewsAfterReceiveNotification(id: Int?) {
+    private func showNewsAfterReceiveNotification(id: Int?) {
         NotificationsManager.showNewsAfterReceiveNotification(tabBarController: tabBarController, id: id)
     }
 
+    private func showThankYouViewAfterOfflineDumpUpload(trash: Trash) {
+        NotificationsManager.showDumpThankYouMessage(tabBarController: tabBarController, trash: trash)
+    }
+
 }
+
+// MARK: - Private
 
 extension AppDelegate {
 
     /// Check offline dumps cache and upload when user is online
     private func handleOfflineDumps() {
-        offlineDumpManager.uploadCachedOfflineDumps { [weak self] didUploadOfflineDumps in
-            if didUploadOfflineDumps { // Called in case offline dumps was cached and successfuly uploaded
-                self?.window?.rootViewController?.presentSimpleAlert(title: "trash.create.notification.title".localized, message: "trash.create.notification.text".localized)
+        offlineDumpManager.uploadCachedOfflineDumps { [weak self] trash in
+            if let trash = trash {
+                self?.showThankYouViewAfterOfflineDumpUpload(trash: trash)
             }
+        }
+    }
+
+    private func acceptInvalidSSLCerts() {
+        let manager = Alamofire.SessionManager.default
+        print("trying to accept invalid certs")
+
+        manager.delegate.sessionDidReceiveChallenge = { session, challenge in
+            var disposition: URLSession.AuthChallengeDisposition = .performDefaultHandling
+            var credential: URLCredential?
+
+            print("received challenge")
+
+            if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+                disposition = URLSession.AuthChallengeDisposition.useCredential
+                credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
+            } else {
+                if challenge.previousFailureCount > 0 {
+                    disposition = .cancelAuthenticationChallenge
+                } else {
+                    credential = manager.session.configuration.urlCredentialStorage?.defaultCredential(for: challenge.protectionSpace)
+
+                    if credential != nil {
+                        disposition = .useCredential
+                    }
+                }
+            }
+
+            return (disposition, credential)
         }
     }
 

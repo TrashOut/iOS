@@ -9,10 +9,12 @@
 import Foundation
 
 extension Notification.Name {
+
     static let userCreatedTrash = Notification.Name("userCreatedTrash")
     static let userUpdatedTrash = Notification.Name("userUpdatedTrash")
     static let userJoindedEvent = Notification.Name("userJoindedEvent")
     static let userLoggedIn = Notification.Name("userLoggedIn")
     static let userLoggedOut = Notification.Name("userLoggedOut")
     static let receiveUserNotification = Notification.Name("kReceiveUserNotification")
+
 }

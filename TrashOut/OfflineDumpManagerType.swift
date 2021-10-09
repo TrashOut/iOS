@@ -8,8 +8,8 @@
 
 import Foundation
 
-typealias BoolClosure = (Bool) -> Void
+typealias TrashOptionalClosure = (Trash?) -> Void
 
 protocol OfflineDumpManagerType: AnyObject {
-    func uploadCachedOfflineDumps(completion: BoolClosure?)
+    func uploadCachedOfflineDumps(completion: TrashOptionalClosure?)
 }

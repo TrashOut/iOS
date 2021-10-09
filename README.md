@@ -1,2 +1,2 @@
-# iOS
-An iOS TrashOut app
+# Trash Out iOS
+

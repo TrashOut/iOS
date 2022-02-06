@@ -39,11 +39,13 @@ Wrapper for photo taking to adjust loading time for camera (display black waitin
 */
 class ReportCameraViewController: ViewController {
 
+    private enum C {
+        static let SAMPLE_IMAGE_NAME = "demo_dump"
+    }
+
     var trash: Trash?
     var cleaned: Bool?
-
 	var takenPhoto: LocalImage?
-
 	var photoManager: PhotoManager = PhotoManager()
 
     override func viewDidLoad() {
@@ -52,9 +54,15 @@ class ReportCameraViewController: ViewController {
         navigationController?.isNavigationBarHidden = true
 
 		LoadingView.show(on: self.view, style: .transparent)
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { [weak self] in
 			LoadingView.hide()
-			self.activateCamera()
+
+            AppEnvironment.execute(task: {
+                self?.mockPhoto()
+            }, for: [.alpha, .beta]) {
+                self?.activateCamera()
+            }
 		}
 
     }
@@ -62,7 +70,7 @@ class ReportCameraViewController: ViewController {
     /**
     Activate camera if its available
     */
-    fileprivate func activateCamera() {
+    private func activateCamera() {
         photoManager.takePhoto(vc: self, animated: false, source: .camera, success: { [weak self] (image) in
 			self?.takenPhoto = image
 			self?.goToReportViewController()
@@ -72,8 +80,12 @@ class ReportCameraViewController: ViewController {
 
     }
 
+    private func mockPhoto() {
+        takenPhoto = LocalImage.generateSample(from: C.SAMPLE_IMAGE_NAME)
+        goToReportViewController()
+    }
 
-    fileprivate func goToReportViewController() {
+    private func goToReportViewController() {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "ReportViewController") as? ReportViewController else { return }
 		if let photo = takenPhoto {
         	vc.photos = [photo]

@@ -156,3 +156,19 @@ class Video: JsonDecodable {
 	}
 
 }
+
+extension LocalImage {
+
+    static func generateSample(from imgName: String) -> LocalImage? {
+        guard let image = UIImage(named: imgName) else { return nil }
+
+        let localImage = LocalImage()
+
+        localImage.uid = UUID().uuidString
+        localImage.image = image
+        localImage.store = .temp
+
+        return localImage
+    }
+
+}

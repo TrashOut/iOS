@@ -37,7 +37,7 @@ import CoreLocation
 import MessageUI
 import EventKit
 
-class DumpsDetailViewController: ViewController, MFMailComposeViewControllerDelegate {
+class DumpsDetailViewController: ViewController {
 
     let eventManager = EventManager()
 
@@ -45,6 +45,7 @@ class DumpsDetailViewController: ViewController, MFMailComposeViewControllerDele
 
     @IBOutlet var map: MKMapView!
 
+    @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet var loadingView: UIView!
     @IBOutlet var additionalInformationView: UIView!
     @IBOutlet var noCleaningEventView: UIView!
@@ -141,13 +142,21 @@ extension DumpsDetailViewController {
         super.viewDidLoad()
 
         setupView()
+        setupRefreshControl()
+
         registerForNotifcations()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         tabBarController?.tabBar.isHidden = false
-        loadData()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        reloadData()
     }
 
     override func viewDidLayoutSubviews() {
@@ -436,6 +445,22 @@ extension DumpsDetailViewController: MKMapViewDelegate {
 
 extension DumpsDetailViewController {
 
+    func registerForNotifcations() {
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionUserJoinedEvent), name: .userJoindedEvent, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionUserUpdatedTrash), name: .userUpdatedTrash, object: nil)
+    }
+
+    private func unregisterFromNotifcations() {
+        NotificationCenter.default.removeObserver(self, name: .userJoindedEvent, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .userUpdatedTrash, object: nil)
+    }
+
+    private func setupRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
+        contentScrollView.refreshControl = refreshControl
+    }
+
     private func setupView() {
         title = "trash.detail.dump.mobileHeader".localized
 
@@ -518,31 +543,7 @@ extension DumpsDetailViewController {
 
     // Networking
 
-    private func loadData() {
-        LoadingView.show(on: self.view, style: .white)
-
-        Networking.instance.trash(id!) { [weak self] (trash, error) in
-            if let error = error {
-                print(error.localizedDescription as Any)
-
-                if case NetworkingError.noInternetConnection = error {
-                    self?.show(message: "global.internet.error.offline".localized) {
-                        _ = self?.navigationController?.popViewController(animated: true)
-                    }
-                } else {
-                    self?.show(message: "global.fetchError".localized) {
-                        _ = self?.navigationController?.popViewController(animated: true)
-                    }
-                }
-            } else {
-                LoadingView.hide()
-                guard let newTrash = trash else { return }
-                self?.trash = newTrash
-            }
-        }
-    }
-
-    private func reloadData(isLoadingViewActive: Bool = true) {
+    private func reloadData(isLoadingViewActive: Bool = true, completion: VoidClosure? = nil) {
         if isLoadingViewActive {
             LoadingView.show(on: self.view, style: .white)
         }
@@ -565,6 +566,8 @@ extension DumpsDetailViewController {
                 guard let newTrash = trash else { return }
                 self?.trash = newTrash
             }
+
+            completion?()
         }
     }
 
@@ -798,7 +801,18 @@ extension DumpsDetailViewController {
 
 }
 
+// MARK: - OBJC
+
 extension DumpsDetailViewController {
+
+    @objc func refreshContent() {
+        reloadData(isLoadingViewActive: false) { [weak self] in
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self?.contentScrollView.refreshControl?.endRefreshing()
+            }
+        }
+    }
 
     /**
     Share dumps link with friends
@@ -829,16 +843,12 @@ extension DumpsDetailViewController {
         }
     }
 
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        dismiss(animated: true, completion: nil)
-    }
-
     /**
     Add cleaning event to calendar
     */
     @objc func joinEvent(_ sender: UIButton) {
-		guard let event = trash?.events[sender.tag] else { return }
-		eventManager.joinEvent(event, controller: self) { [weak self, weak event] (error) in
+        guard let event = trash?.events[sender.tag] else { return }
+        eventManager.joinEvent(event, controller: self) { [weak self, weak event] (error) in
             DispatchQueue.main.async {
                 if let error = error as NSError? {
                     if error.code == 300 {
@@ -852,7 +862,7 @@ extension DumpsDetailViewController {
                     //sender.isHidden = true
                 }
             }
-		}
+        }
     }
 
     /**
@@ -867,22 +877,26 @@ extension DumpsDetailViewController {
         //vc.btnJoin.isHidden
         //vc.reportTime = setReportOrUpdateTimeInfo(rowCount: nil)
         //let navController = UINavigationController(rootViewController: vc)
-		self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
         //present(navController, animated: true, completion: nil)
     }
-    
-    // MARK: Notifications handling
-    
-    func registerForNotifcations() {
-        NotificationCenter.default.addObserver(self, selector: #selector(catchNotification(notification:)), name: .userJoindedEvent, object: nil)
+
+    @objc func subscriptionUserJoinedEvent() {
+        reloadData()
     }
-    
-    @objc func catchNotification(notification:Notification) -> Void {
-        self.loadData()
+
+    @objc func subscriptionUserUpdatedTrash() {
+        reloadData(isLoadingViewActive: false, completion: nil)
     }
-    
-    func unregisterFromNotifcations() {
-        NotificationCenter.default.removeObserver(self, name: .userJoindedEvent, object: nil)
+
+}
+
+// MARK: - Mail Compose Delegate
+
+extension DumpsDetailViewController: MFMailComposeViewControllerDelegate {
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: nil)
     }
 
 }

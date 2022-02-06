@@ -31,10 +31,6 @@ target 'TrashOut-Prod' do
     common_pods_for_target
 end
 
-target 'TrashOut-Stage' do
-    common_pods_for_target
-end
-
 target 'TrashOutTests' do
     common_pods_for_target
 end

@@ -11,6 +11,9 @@
 		0F77D26B24594B3A006141E6 /* EventThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F77D26A24594B3A006141E6 /* EventThankYouViewController.swift */; };
 		0F9A2147245745FE005A8F27 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A2146245745FE005A8F27 /* Link.swift */; };
 		137E181786AD018D2DD7E6A7 /* Pods_TrashOutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F15070971DDEA76217DD816 /* Pods_TrashOutUITests.framework */; };
+		160F8FD927D538DD009B9FD3 /* WithSatelliteMapTypeSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160F8FD827D538DD009B9FD3 /* WithSatelliteMapTypeSwitch.swift */; };
+		160F8FDE27D53CC9009B9FD3 /* MapSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160F8FDC27D53CC9009B9FD3 /* MapSwitchView.swift */; };
+		160F8FDF27D53CC9009B9FD3 /* MapSwitchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 160F8FDD27D53CC9009B9FD3 /* MapSwitchView.xib */; };
 		1611447F26542C0100B6C168 /* NSAtrributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611447E26542C0100B6C168 /* NSAtrributedString+.swift */; };
 		161A9D9226DCFC4B00BBD478 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161A9D9126DCFC4B00BBD478 /* UIView+.swift */; };
 		161EE7B926AEAD6600B9808B /* OfflineDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161EE7B826AEAD6600B9808B /* OfflineDump.swift */; };
@@ -222,6 +225,9 @@
 		0FD8FA952449A0D50064240A /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA982449A1F90064240A /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8FA992449A2F80064240A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		160F8FD827D538DD009B9FD3 /* WithSatelliteMapTypeSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithSatelliteMapTypeSwitch.swift; sourceTree = "<group>"; };
+		160F8FDC27D53CC9009B9FD3 /* MapSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSwitchView.swift; sourceTree = "<group>"; };
+		160F8FDD27D53CC9009B9FD3 /* MapSwitchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapSwitchView.xib; sourceTree = "<group>"; };
 		1611447E26542C0100B6C168 /* NSAtrributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAtrributedString+.swift"; sourceTree = "<group>"; };
 		161A9D9126DCFC4B00BBD478 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		161EE7B826AEAD6600B9808B /* OfflineDump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDump.swift; sourceTree = "<group>"; };
@@ -483,6 +489,24 @@
 				8F5493EC2C7ADC1E515F0288 /* Pods-TrashOutUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		160F8FD727D53435009B9FD3 /* MapViewSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				160F8FDB27D53C9C009B9FD3 /* MapSwitch */,
+				160F8FD827D538DD009B9FD3 /* WithSatelliteMapTypeSwitch.swift */,
+			);
+			name = MapViewSwitch;
+			sourceTree = "<group>";
+		};
+		160F8FDB27D53C9C009B9FD3 /* MapSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				160F8FDC27D53CC9009B9FD3 /* MapSwitchView.swift */,
+				160F8FDD27D53CC9009B9FD3 /* MapSwitchView.xib */,
+			);
+			name = MapSwitch;
 			sourceTree = "<group>";
 		};
 		1611447D26542BF500B6C168 /* Extensions */ = {
@@ -989,6 +1013,7 @@
 		C3B428751DAE7E8B0027DDFA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				160F8FD727D53435009B9FD3 /* MapViewSwitch */,
 				16908C1426DBCFBE00F5FA28 /* Components */,
 				16F650DD263550700044A64D /* Storyboard */,
 				C3C07E3F1E4C939900B102D1 /* ClockCountdownView.swift */,
@@ -1218,6 +1243,7 @@
 				C32F8D671DED97EC0009A5C4 /* FormRow.xib in Resources */,
 				16908C1A26DBCFD600F5FA28 /* ContentPickerTableViewCell.xib in Resources */,
 				C37880DF1DB0F5F500BFDD2A /* News.storyboard in Resources */,
+				160F8FDF27D53CC9009B9FD3 /* MapSwitchView.xib in Resources */,
 				8ED46CCB2022128A0084F62F /* Info-Prod.plist in Resources */,
 				8E6C697A1FFE294200B99CA8 /* Capriola-Regular.ttf in Resources */,
 				16908C2026DBCFD600F5FA28 /* ContentPickerView.xib in Resources */,
@@ -1563,6 +1589,7 @@
 				FC5FA30C1DEC7C060000C711 /* EventLocationViewController.swift in Sources */,
 				8EA3795D1FCECFE0008925B5 /* ReportThankYouViewController.swift in Sources */,
 				C3014DBD1DAE333200FD7CFE /* JunkyardListViewController.swift in Sources */,
+				160F8FD927D538DD009B9FD3 /* WithSatelliteMapTypeSwitch.swift in Sources */,
 				C3FF4FA81E533B0B005D5530 /* LoadingView.swift in Sources */,
 				C37994A31DACDE7300CE5E3F /* FirebaseAuthentificator.swift in Sources */,
 				C3014DBF1DAE33F100FD7CFE /* ProfileViewController.swift in Sources */,
@@ -1572,6 +1599,7 @@
 				1674991F26C1796C00488B37 /* FirebaseCrashlytics.swift in Sources */,
 				FCD73A031DF6EEC900E7EF7D /* StatisticViewController.swift in Sources */,
 				16E0EDAC2648628800B9AF2F /* AppleLoginManager.swift in Sources */,
+				160F8FDE27D53CC9009B9FD3 /* MapSwitchView.swift in Sources */,
 				16ED5471263B2AAA000E848A /* Keychain.swift in Sources */,
 				16271C1227AFE5EF00492C65 /* HistoryTableViewCell.swift in Sources */,
 				C3315BA21E520208004C652A /* GpsModel+UI.swift in Sources */,

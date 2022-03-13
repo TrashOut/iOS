@@ -37,7 +37,7 @@ import CoreLocation
 import MessageUI
 import EventKit
 
-class DumpsDetailViewController: ViewController {
+class DumpsDetailViewController: ViewController, WithSatelliteMapTypeSwitch {
 
     let eventManager = EventManager()
 
@@ -143,7 +143,8 @@ extension DumpsDetailViewController {
 
         setupView()
         setupRefreshControl()
-
+        presentSwitcher()
+        
         registerForNotifcations()
     }
 

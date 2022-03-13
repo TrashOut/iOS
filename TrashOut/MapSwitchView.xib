@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapSwitchView" customModule="TrashOut" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonWrapperView" destination="sf6-PI-JTi" id="Pj1-Tl-t1S"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="396" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="7lA-Tn-a74">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                    <subviews>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sf6-PI-JTi">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-a1-LLo">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="map.fill" catalog="system"/>
+                                    <connections>
+                                        <action selector="standartButtonPressed:" destination="-1" eventType="touchUpInside" id="UTW-pu-l2o"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="LWG-3i-hLy"/>
+                                <constraint firstItem="a9D-a1-LLo" firstAttribute="top" secondItem="sf6-PI-JTi" secondAttribute="top" id="Sxa-3N-yeH"/>
+                                <constraint firstAttribute="trailing" secondItem="a9D-a1-LLo" secondAttribute="trailing" id="TQz-Kx-7gP"/>
+                                <constraint firstAttribute="bottom" secondItem="a9D-a1-LLo" secondAttribute="bottom" id="ZxU-TY-2rF"/>
+                                <constraint firstItem="a9D-a1-LLo" firstAttribute="leading" secondItem="sf6-PI-JTi" secondAttribute="leading" id="bKS-mG-lOc"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="xTE-41-NPg"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="7lA-Tn-a74" secondAttribute="bottom" id="Dzx-O8-Nf0"/>
+                <constraint firstItem="7lA-Tn-a74" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zlj-r0-Tnj"/>
+                <constraint firstItem="7lA-Tn-a74" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jSr-hC-5Lo"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="124.6376811594203" y="48.883928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

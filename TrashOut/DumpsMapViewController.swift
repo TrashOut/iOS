@@ -38,7 +38,7 @@ protocol SendDataForMapFilter {
     func sendDataForMapFilter(status: [String], update: Bool, size: String, type: [String], timeTo: String, timeFrom: String)
 }
 
-class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDelegate {
+class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDelegate, WithSatelliteMapTypeSwitch {
 
 	// MARK: - Local data types
 
@@ -134,6 +134,8 @@ class DumpsMapViewController: ViewController, MKMapViewDelegate, TrashFilterDele
         setMapButton(image: "Location", button: btnLocation)
         
          self.setCurrentLocation(animated: false)
+
+        presentSwitcher()
 	}
 
     override func viewDidLayoutSubviews() {

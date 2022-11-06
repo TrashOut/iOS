@@ -95,7 +95,7 @@ class StatisticViewController: ViewController,
 
         pieChartView.isUserInteractionEnabled = false
         pieChartView.legend.enabled = false
-        pieChartView.chartDescription?.enabled = false
+        pieChartView.chartDescription.enabled = false
     }
 
     func setupChart() {
@@ -112,7 +112,7 @@ class StatisticViewController: ViewController,
             entries.append(entry)
         }
 
-        let dataset = PieChartDataSet.init(entries: entries, label: nil)
+        let dataset = PieChartDataSet.init(entries: entries, label: "")
         dataset.colors = types.map { $0.color }
 
         let data = PieChartData.init(dataSets: [dataset])
@@ -180,7 +180,7 @@ class StatisticsTableViewCell: UITableViewCell {
 
 }
 
-extension NumberFormatter: IValueFormatter {
+extension NumberFormatter: ValueFormatter {
 
     public func stringForValue(_ value: Double,
                                entry _: ChartDataEntry,

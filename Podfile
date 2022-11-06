@@ -1,5 +1,5 @@
 
-platform :ios, '10.0'
+platform :ios, '12.0'
 use_frameworks!
 
 def common_pods_for_target
@@ -24,7 +24,7 @@ def common_pods_for_target
     pod 'Cache', '5.2.0'
     pod 'SwiftDate', '6.1.0'
     
-    pod 'Charts', '3.4.0'
+    pod 'Charts', '4.1.0'
 end
 
 target 'TrashOut-Prod' do

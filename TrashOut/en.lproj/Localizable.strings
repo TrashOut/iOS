@@ -1429,3 +1429,4 @@
 "trash.create.notification.title" = "Trash reports were successfully uploaded";
 "trash.create.notification.text" = "The upload of trash reports you created in the offline mode was successful. Thank you";
 "trash.reportAs" = "Report as";
+"button.delete_profile" = "Delete Profile";

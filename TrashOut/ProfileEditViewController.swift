@@ -70,6 +70,9 @@ class ProfileEditViewController: ViewController,
 	@IBOutlet var lblOther: UILabel!
 	@IBOutlet var tvOther: UITableView!
 
+    @IBOutlet weak var removeAccountButton: UIButton!
+
+
 	var user: User? {
 		didSet {
 			guard let user = user else { return }
@@ -144,6 +147,9 @@ class ProfileEditViewController: ViewController,
 		btnPhoto.backgroundColor = UIColor.theme.button
 		btnPhoto.layer.cornerRadius = 39/2
 		btnPhoto.layer.masksToBounds = true
+        removeAccountButton.theme()
+        removeAccountButton.backgroundColor = .red
+        removeAccountButton.setTitle("button.delete_profile".localized, for: .normal)
 
         let backButton = UIBarButtonItem.init(title: "global.cancel".localized, style: .plain, target: self, action: #selector(close))
         navigationItem.leftBarButtonItem = backButton
@@ -160,6 +166,11 @@ class ProfileEditViewController: ViewController,
             tfEmail.isUserInteractionEnabled = true
         }
 	}
+
+    @IBAction func onRemoveAccount(_ sender: Any) {
+        UIApplication.shared.open(Link.deleteProfile.url)
+    }
+
 
 	func fillData(user: User) {
 		self.receiveNotifications = user.newsletter

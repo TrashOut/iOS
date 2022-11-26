@@ -1328,3 +1328,4 @@
 "trash.create.notification.title" = "Rapoartele de gunoi au fost încărcate cu succes ";
 "trash.create.notification.text" = "Încărcarea rapoartelor privind gunoiul pe care le-ați creat în modul offline a avut succes. Vă mulțumim";
 "trash.reportAs" = "Raportați ca";
+"button.delete_profile" = "Delete Profile";

@@ -1262,3 +1262,4 @@
 "trash.create.notification.title" = "Les rapports sur les déchets ont été téléchargés avec succès ";
 "trash.create.notification.text" = "Le téléchargement des rapports sur les déchets que vous avez créés en mode hors ligne a réussi. Nous vous remercions";
 "trash.reportAs" = "Rapporter comme";
+"button.delete_profile" = "Delete Profile";

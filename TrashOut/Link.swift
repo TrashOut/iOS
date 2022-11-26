@@ -45,6 +45,7 @@ enum Link {
     case editJunkyard(id: Int)
     case sendEmail(to: String)
     case call(phone: String)
+    case deleteProfile
     
     var url: URL {
         let urlString: String
@@ -75,6 +76,8 @@ enum Link {
             urlString = "mailto:\(to)"
         case .call(let phone):
             urlString = "telprompt://\(phone)"
+        case .deleteProfile:
+            urlString = "https://admin.trashout.ngo/my-profile/edit/"
         }
         return URL(string: urlString)!
     }

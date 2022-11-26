@@ -1302,3 +1302,4 @@
 "trash.create.notification.title" = "Звіти про кошик успішно завантажено ";
 "trash.create.notification.text" = "Завантаження звітів про смітник, створених вами в автономному режимі, пройшло успішно. Дякую";
 "trash.reportAs" = "Повідомте як";
+"button.delete_profile" = "Delete Profile";

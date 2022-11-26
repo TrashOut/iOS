@@ -1290,3 +1290,4 @@
 "trash.create.notification.title" = "Papierkorbberichte wurden erfolgreich hochgeladen ";
 "trash.create.notification.text" = "Der Upload von Müllberichten, die Sie im Offline-Modus erstellt haben, war erfolgreich. Dankeschön";
 "trash.reportAs" = "Bericht als";
+"button.delete_profile" = "Delete Profile";

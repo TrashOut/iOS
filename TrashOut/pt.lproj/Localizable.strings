@@ -1252,3 +1252,4 @@
 "trash.create.notification.title" = "Os relatórios do lixo foram carregados com sucesso ";
 "trash.create.notification.text" = "O upload de relatórios de lixo que você criou no modo offline foi bem sucedido. Obrigado";
 "trash.reportAs" = "Relatar como";
+"button.delete_profile" = "Delete Profile";

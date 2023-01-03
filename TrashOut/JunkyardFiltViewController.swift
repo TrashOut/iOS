@@ -46,7 +46,7 @@ class JunkyardFiltViewController: ViewController, UIPickerViewDelegate, UIPicker
         didSet {
             ShowFilterDataDelegate?.showFilterData(value: junkyards)
             if junkyards.isEmpty {
-                show(message: "global.filter.noResult".localized)
+                showInfo(message: "global.filter.noResult".localized)
             } else {
                 SendDataForJunkyardFilterDelegate?.sendDataForJunkyardFilter(size: size?.rawValue ?? "all", type: filterTypes)
                 navigationController?.dismiss(animated: true, completion: nil)
@@ -125,7 +125,7 @@ class JunkyardFiltViewController: ViewController, UIPickerViewDelegate, UIPicker
 			LoadingView.hide()
             guard error == nil else {
                 print(error?.localizedDescription as Any)
-                self?.show(message: "Can not load data, please try it again later")
+                self?.showInfo(message: "Can not load data, please try it again later")
                 return
             }
             guard let newJunkyards = junkyards else { return }

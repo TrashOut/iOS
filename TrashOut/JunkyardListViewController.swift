@@ -139,7 +139,7 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
                     if case NetworkingError.noInternetConnection = error! {
                         self?.show(error: NetworkingError.custom("global.internet.offline".localized))
                     } else {
-                        self?.show(message: "global.fetchError".localized)
+                        self?.showInfo(message: "global.fetchError".localized)
                     }
                     
                 }
@@ -154,7 +154,7 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
                         if case NetworkingError.noInternetConnection = error! {
                             self?.show(error: NetworkingError.custom("global.internet.offline".localized))
                         } else {
-                            self?.show(message: "global.filter.noResult".localized)
+                            self?.showInfo(message: "global.filter.noResult".localized)
                         }
                     }
                 }

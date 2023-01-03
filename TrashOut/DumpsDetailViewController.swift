@@ -240,7 +240,7 @@ extension DumpsDetailViewController {
             controller.navigationBar.tintColor = UIColor.white
             present(controller, animated: true, completion: nil)
         } else {
-            show(message: "global.sendEmail.error".localized)
+            showInfo(message: "global.sendEmail.error".localized)
         }
     }
 
@@ -250,10 +250,10 @@ extension DumpsDetailViewController {
             Networking.instance.reportSpam((self?.trash?.activityId)!, userId: (UserManager.instance.user?.id)!) { [weak self] (trash, error) in
                 guard error == nil else {
                     print(error?.localizedDescription as Any)
-                    self?.show(message: (error?.localizedDescription)!)
+                    self?.showInfo(message: (error?.localizedDescription)!)
                     return
                 }
-                self?.show(message: "trash.messageWasReceived".localized)
+                self?.showInfo(message: "trash.messageWasReceived".localized)
             }
         }
         let ok = UIAlertAction.init(title: "global.cancel".localized, style: .cancel, handler: nil)
@@ -554,11 +554,11 @@ extension DumpsDetailViewController {
                 print(error.localizedDescription as Any)
 
                 if case NetworkingError.noInternetConnection = error {
-                    self?.show(message: "global.internet.error.offline".localized) {
+                    self?.showInfo(message: "global.internet.error.offline".localized) {
                         _ = self?.navigationController?.popViewController(animated: true)
                     }
                 } else {
-                    self?.show(message: "global.fetchError".localized) {
+                    self?.showInfo(message: "global.fetchError".localized) {
                         _ = self?.navigationController?.popViewController(animated: true)
                     }
                 }
@@ -840,7 +840,7 @@ extension DumpsDetailViewController {
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else {
-            show(message: "trash.detail.missingPhoto".localized)
+            showInfo(message: "trash.detail.missingPhoto".localized)
         }
     }
 
@@ -855,7 +855,7 @@ extension DumpsDetailViewController {
                     if error.code == 300 {
                         self?.showWithSettings(message: error.localizedDescription)
                     } else {
-                        self?.show(message: error.localizedDescription)
+                        self?.showInfo(message: error.localizedDescription)
                     }
                     event?.showJoinButton = true
                 } else {

@@ -31,13 +31,9 @@ struct AppleLoginCredentials {
 
 // MARK: - Interface
 
-protocol AppleLoginManagerDelegate: class {
+protocol AppleLoginManagerDelegate: AnyObject {
 
     func appleLoginDidSignIn(credential: OAuthCredential)
-
-    @available(iOS 13.0, *)
-    func appleLoginDidReceivedError(_ error: ASAuthorizationError, callback: ErrorCaseCallback?)
-
 }
 
 class AppleLoginManager: NSObject {
@@ -156,14 +152,6 @@ extension AppleLoginManager: ASAuthorizationControllerDelegate {
             delegate?.appleLoginDidSignIn(credential: credential)
         }
     }
-
-    @available(iOS 13.0, *)
-    public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        if let error = error as? ASAuthorizationError {
-            delegate?.appleLoginDidReceivedError(error, callback: callback)
-        }
-    }
-
 }
 
 // MARK: - ASAuthorizationControllerPresentationContextProviding

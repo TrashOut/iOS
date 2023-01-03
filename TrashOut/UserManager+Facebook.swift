@@ -38,7 +38,9 @@ extension UserManager {
         }
         
         let loginManager = LoginManager()
-        loginManager.logIn(permissions: [ .publicProfile, .email ], viewController: controller) { loginResult in
+        loginManager.logIn(permissions: [ .publicProfile, .email ], viewController: controller) { [weak self] loginResult in
+            guard let `self` = self else { return }
+
             switch loginResult {
             case .failed(let error):
                 print("fb login \(error)")
@@ -54,9 +56,15 @@ extension UserManager {
                 }
        
                 if (self.isAnonymous && self.user != nil) {
-                    self.linkUserWithFacebook(facebookAccessToken: accessToken.tokenString, callback: callback)
+                    self.linkUserWithFacebook(
+                        facebookAccessToken: accessToken?.tokenString ?? "",
+                        callback: callback
+                    )
                 } else {
-                    self.loginIntoFirebaseWithFacebook(action:.direct, facebookAccessToken: accessToken.tokenString, callback: callback)
+                    self.loginIntoFirebaseWithFacebook(
+                        action:.direct, facebookAccessToken: accessToken?.tokenString ?? "",
+                        callback: callback
+                    )
                 }
             }
         }

@@ -222,26 +222,26 @@ class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewD
      Report a dump or update one
      */
     @objc func sendReport() {
-        //show(message: "trash.create.validation.notFilledRequiredFileds".localized)
+        //showInfo(message: "trash.create.validation.notFilledRequiredFileds".localized)
         if trash != nil && photos.isEmpty {
-            show(message: "trash.create.takeAtLeastOnePhoto".localized)
+            showInfo(message: "trash.create.takeAtLeastOnePhoto".localized)
         } else if trash == nil && photos.count < 1 {
-            show(message: "trash.create.takeAtLeastOnePhoto".localized)
+            showInfo(message: "trash.create.takeAtLeastOnePhoto".localized)
         } else if trash != nil && !locationAccuracyView.isHidden {
-            show(message: "trash.edit.youAreMoreThan100FromDump".localized)
+            showInfo(message: "trash.edit.youAreMoreThan100FromDump".localized)
         } else if trash == nil && !locationAccuracyView.isHidden {
-            show(message: "trash.edit.badAccurancy".localized)
+            showInfo(message: "trash.edit.badAccurancy".localized)
         } else if trash == nil && trashSize == nil {
-            show(message: "trash.validation.sizeRequired".localized)
+            showInfo(message: "trash.validation.sizeRequired".localized)
         } else if trash == nil && trashTypes.count == 0 {
-            show(message: "trash.validation.typeRequired".localized)
+            showInfo(message: "trash.validation.typeRequired".localized)
         } else {
             let window = self.view.window
             LoadingView.show(on: window!, style: .transparent)
 
             let failed: () -> () = { [weak self] in
-                //self?.show(message: "trash.create.uploadPhotoError".localized)
-                self?.show(message: "global.fetchError".localized)
+                //self?.showInfo(message: "trash.create.uploadPhotoError".localized)
+                self?.showInfo(message: "global.fetchError".localized)
                 LoadingView.hide()
             }
             if photos.count > 0 {

@@ -128,7 +128,7 @@ extension LoginViewController {
                 return
             }
             let m = String(format: "profile.resetPasswordInfoToMail".localized, email)
-            self?.show(message: m)
+            self?.showInfo(message: m)
         }
     }
 

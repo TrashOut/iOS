@@ -268,7 +268,7 @@ class EventNewViewController: ViewController, UITextViewDelegate {
 			let phone = phone,
 			let gps = gps,
 			!trashIds.isEmpty else {
-            show(message: "trash.create.validation.notFilledRequiredFileds".localized) { [unowned self] in
+            showInfo(message: "trash.create.validation.notFilledRequiredFileds".localized) { [unowned self] in
                 if (self.name == nil || self.name!.isEmpty == true) { self.tvEventName.requiredHighlightTextField() }
                 if (self.descript == nil || self.descript!.isEmpty == true) { self.tvDescription.requiredHighlightTextField() }
                 //if (self.bring == nil || self.bring!.isEmpty == true) { self.tvEquipmentAttendees.requiredHighlightTextField() }
@@ -295,7 +295,7 @@ class EventNewViewController: ViewController, UITextViewDelegate {
             guard let self = self else { return }
 			guard error == nil else {
 				print(error!.localizedDescription)
-				self.show(message: error!.localizedDescription)
+				self.showInfo(message: error!.localizedDescription)
 				LoadingView.hide()
 				return
 			}
@@ -330,7 +330,7 @@ class EventNewViewController: ViewController, UITextViewDelegate {
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else {
-            show(message: "event.create.validation.setStartFirst".localized)
+            showInfo(message: "event.create.validation.setStartFirst".localized)
         }
     }
 
@@ -470,7 +470,7 @@ class EventNewViewController: ViewController, UITextViewDelegate {
 
             navigationController?.pushViewController(vc, animated: true)
         } else {
-            show(message: "event.create.validation.setMeetingPointFirst".localized)
+            showInfo(message: "event.create.validation.setMeetingPointFirst".localized)
         }
     }
 

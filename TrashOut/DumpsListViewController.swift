@@ -170,7 +170,7 @@ class DumpsListViewController: ViewController, UITableViewDataSource, UITableVie
 				self?.isLastPage = true
 				if self?.trashes.count == 0 {
                     DispatchQueue.main.async {
-                        self?.show(message: "global.filter.noResult".localized)
+                        self?.showInfo(message: "global.filter.noResult".localized)
                     }
 				}
 			}

@@ -119,7 +119,7 @@ extension DashboardViewController {
                     if nsError.code == 300 {
                         self?.showWithSettings(message: nsError.localizedDescription)
                     } else {
-                        self?.show(message: nsError.localizedDescription)
+                        self?.showInfo(message: nsError.localizedDescription)
                     }
                     event?.showJoinButton = true
                 } else {

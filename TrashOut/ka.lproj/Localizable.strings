@@ -1301,3 +1301,4 @@
 "trash.create.notification.text" = "თქვენს მიერ ატვირთული რეპორტები წარმატებით აისახა, მადლობა ";
 "trash.offline.checking" = "მოწმდება ოფლაინ რეპორტების სტატუსი";
 "user.widget.trashMapInit" = "დააჭირეთ, რომ იხილოთ რუკა";
+"button.delete_profile" = "Delete Profile";

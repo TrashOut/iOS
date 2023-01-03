@@ -1290,3 +1290,4 @@
 "trash.create.notification.title" = "I rapporti sul cestino sono stati caricati con successo ";
 "trash.create.notification.text" = "L'upload dei rapporti spazzatura che hai creato in modalità offline è andato a buon fine. Grazie";
 "trash.reportAs" = "Segnala come";
+"button.delete_profile" = "Delete Profile";

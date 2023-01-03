@@ -1274,3 +1274,4 @@
 "trash.create.notification.title" = "Los informes de la basura se han cargado con éxito ";
 "trash.create.notification.text" = "La carga de los informes de basura que creaste en el modo sin conexión fue exitosa. Gracias";
 "trash.reportAs" = "Reporta como";
+"button.delete_profile" = "Delete Profile";

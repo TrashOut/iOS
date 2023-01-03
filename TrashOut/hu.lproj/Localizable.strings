@@ -1252,3 +1252,4 @@
 "trash.create.notification.title" = "A szemétjelentések sikeresen feltöltésre kerültek ";
 "trash.create.notification.text" = "Az offline módban létrehozott szemétjelentések feltöltése sikeres volt. Köszönöm.";
 "trash.reportAs" = "Jelentés mint";
+"button.delete_profile" = "Delete Profile";

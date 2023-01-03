@@ -1264,3 +1264,4 @@
 "trash.create.notification.title" = "Отчеты о мусоре были успешно загружены ";
 "trash.create.notification.text" = "Загрузка мусорных отчетов, созданных вами в автономном режиме, прошла успешно. Спасибо";
 "trash.reportAs" = "Сообщить как";
+"button.delete_profile" = "Delete Profile";

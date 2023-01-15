@@ -1864,7 +1864,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 145;
+				CURRENT_PROJECT_VERSION = 147;
 				DEVELOPMENT_TEAM = 86URP76MUB;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1893,7 +1893,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.6.6;
+				MARKETING_VERSION = 4.6.7;
 				PRODUCT_BUNDLE_IDENTIFIER = PSP4M9F8L7.me.trashout.mobile.titanium;
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "";
@@ -2096,7 +2096,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 145;
+				CURRENT_PROJECT_VERSION = 147;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 86URP76MUB;
 				ENABLE_BITCODE = NO;
@@ -2126,7 +2126,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.6.6;
+				MARKETING_VERSION = 4.6.7;
 				PRODUCT_BUNDLE_IDENTIFIER = PSP4M9F8L7.me.trashout.mobile.titanium;
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "";
@@ -2149,7 +2149,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 145;
+				CURRENT_PROJECT_VERSION = 147;
 				DEVELOPMENT_TEAM = 86URP76MUB;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -2178,7 +2178,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.6.6;
+				MARKETING_VERSION = 4.6.7;
 				PRODUCT_BUNDLE_IDENTIFIER = PSP4M9F8L7.me.trashout.mobile.titanium;
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "";

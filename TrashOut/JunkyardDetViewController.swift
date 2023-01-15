@@ -267,7 +267,7 @@ class JunkyardsDetViewController: ViewController, MFMailComposeViewControllerDel
                     if let error = error {
                         self?.show(error: error)
                     } else {
-                        self?.show(message: "collectionPoint.markedAsSpam.success.thanksMobile".localized)
+                        self?.showInfo(message: "collectionPoint.markedAsSpam.success.thanksMobile".localized)
                     }
                 }
             }

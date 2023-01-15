@@ -15,12 +15,6 @@ def common_pods_for_target
     pod 'Firebase/Crashlytics'
     pod 'Firebase/Analytics'
     
-    # Facebook SDK
-    pod 'FBSDKCoreKit'
-    pod 'FacebookCore'
-    pod 'FacebookLogin'
-    pod 'FacebookShare'
-    
     pod 'Cache', '5.2.0'
     pod 'SwiftDate', '6.1.0'
     

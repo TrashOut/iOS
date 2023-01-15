@@ -168,7 +168,7 @@ class ProfileEditViewController: ViewController,
 	}
 
     @IBAction func onRemoveAccount(_ sender: Any) {
-        UIApplication.shared.open(Link.deleteProfile.url)
+        displayConfirmDialog()
     }
 
 
@@ -205,7 +205,7 @@ class ProfileEditViewController: ViewController,
             FirebaseImages.instance.uploadImage(image) { [weak self] (thumbnailUrl, thumbnailStorage, imageUrl, imageStorage, error) in
                 guard error == nil else {
                     print(error?.localizedDescription as Any)
-                    self?.show(message: "profile.uploadFotoError".localized)
+                    self?.showInfo(message: "profile.uploadFotoError".localized)
 					LoadingView.hide()
                     return
                 }
@@ -264,16 +264,16 @@ class ProfileEditViewController: ViewController,
         if (updateEmailId == true) {
             UserManager.instance.firAuth.updateUserEmail(email: user.email ?? "") { [unowned self] (error) in
                 guard error == nil else {
-                    self.show(message: "profile.edit.error".localized)
+                    self.showInfo(message: "profile.edit.error".localized)
                     return
                 }
                 Networking.instance.updateUser(user: user, id: userId, uid: uid, organizations: self.organizations, areas: self.areas, image: self.profileImage) { [weak self] (id, error) in
                     LoadingView.hide()
                     guard error == nil else {
-                        self?.show(message: "global.register.identityError".localized)
+                        self?.showInfo(message: "global.register.identityError".localized)
                         return
                     }
-                    self?.show(message: "profile.edit.success".localized) { [weak self] (alertAction) in
+                    self?.showInfo(message: "profile.edit.success".localized) { [weak self] in
                         self?.logout()
                     }
                 }
@@ -282,10 +282,10 @@ class ProfileEditViewController: ViewController,
             Networking.instance.updateUser(user: user, id: userId, uid: uid, organizations: organizations, areas: areas, image: profileImage) { [weak self] (id, error) in
                 LoadingView.hide()
                 guard error == nil else {
-                    self?.show(message: "profile.edit.error".localized)
+                    self?.showInfo(message: "profile.edit.error".localized)
                     return
                 }
-                self?.show(message: "profile.edit.success".localized) { [weak self] (alertAction) in
+                self?.showInfo(message: "profile.edit.success".localized) { [weak self] in
                     self?.close()
                 }
             }
@@ -467,6 +467,27 @@ class ProfileEditViewController: ViewController,
     
     }
 
+}
+
+// MARK: - Private
+
+extension ProfileEditViewController {
+
+    private func displayConfirmDialog() {
+        show(
+            title: "profile.removeAccount".localized,
+            message: "Are you sure to remove your user account?", // TODO: localised string
+            okAction: deactivateAccount
+        )
+    }
+
+    private func deactivateAccount(action: UIAlertAction) {
+        guard let userId = user?.uid else { return }
+
+        Networking.instance.removeUser(userId: userId) { [weak self] _ in
+            self?.logout()
+        }
+    }
 }
 
 class ProfileImage: NSObject {

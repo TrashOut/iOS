@@ -82,7 +82,7 @@ class EventDumpsViewController: ViewController, MKMapViewDelegate {
         Networking.instance.trashes(position: coords, status: trashStatus, size: nil, type: nil, timeTo: nil, timeFrom: nil, limit: 100, page: page) { [weak self] (trashes, error) in
             guard error == nil else {
                 print(error?.localizedDescription as Any)
-                self?.show(message: "global.fetchError".localized)
+                self?.showInfo(message: "global.fetchError".localized)
                 self?.loadingView.isHidden = true
                 self?.activityIndicator.stopAnimating()
                 return

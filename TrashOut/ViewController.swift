@@ -94,7 +94,7 @@ class ViewController: UIViewController {
 
 	- Warning: avoid using this method
 	*/
-	func show(message: String, completion: (() -> ())? = nil) {
+	func showInfo(message: String, completion: (() -> ())? = nil) {
 		let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
 		let ok = UIAlertAction.init(title: "global.ok".localized, style: .default, handler: { _ in
 			completion?()

@@ -122,7 +122,7 @@ class EventManager {
 				self?.addEventToCalendar(title: calendarEventName, description: description, startDate: startDate, endDate: startDate + TimeInterval(event.duration * 60)) { (success, error) in
 					if success {
 						if let vc = controller as? ViewController {
-							vc.show(message: "event.addedToCalender.success".localized)
+							vc.showInfo(message: "event.addedToCalender.success".localized)
 						}
 					}
 					callback(error)
@@ -168,7 +168,7 @@ class EventManager {
 					completion?(false, error)
 					return
 				}
-				// self?.show(message: "event.addedToCalender.success".localized)
+				// self?.showInfo(message: "event.addedToCalender.success".localized)
 				completion?(true, nil)
 			} else {
 				//self?.showWithSettings(message: "global.enableAccessToCalendar".localized)

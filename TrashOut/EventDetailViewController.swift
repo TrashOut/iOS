@@ -160,7 +160,7 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
         Networking.instance.event(id) { [weak self] (event, error) in
             guard error == nil else {
                 print(error?.localizedDescription as Any)
-                self?.show(message: "Can not load event data, please try it again later")
+                self?.showInfo(message: "Can not load event data, please try it again later")
                 return
             }
             guard let newEvent = event else { return }
@@ -266,7 +266,7 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
                     if nsError.code == 300 {
                         self?.showWithSettings(message: nsError.localizedDescription)
                     } else {
-                        self?.show(message: nsError.localizedDescription)
+                        self?.showInfo(message: nsError.localizedDescription)
                     }
                     event?.showJoinButton = true
                 } else {
@@ -357,11 +357,11 @@ class EventDetailViewController: ViewController, UITableViewDataSource, UITableV
                 do {
                     try eventStore.save(event, span: .thisEvent)
                 } catch let e as NSError {
-                    self?.show(message: "event.validation.cannotBeAddedToCalendar".localized)
+                    self?.showInfo(message: "event.validation.cannotBeAddedToCalendar".localized)
                     completion?(false, e)
                     return
                 }
-                self?.show(message: "event.addedToCalender.success".localized)
+                self?.showInfo(message: "event.addedToCalender.success".localized)
                 completion?(true, nil)
             } else {
                 self?.showWithSettings(message: "global.enableAccessToCalendar".localized)

@@ -32,102 +32,76 @@
 
 import Foundation
 import Alamofire
+import FirebaseAuth
 
 extension Networking {
 
-	/**
-	Get user using id
+    /**
+     Get user using id
 
-	```
-	GET /user/:id
-	```
-	*/
-	func user(_ id: Int, callback: @escaping (User?, Error?) -> ()) {
+     ```
+     GET /user/:id
+     ```
+     */
+    func user(_ id: Int, callback: @escaping (User?, Error?) -> ()) {
         guard Networking.isConnectedToInternet else {
             callback(nil, NetworkingError.noInternetConnection)
             return
         }
         
-		UserManager.instance.tokenHeader { tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/user/\(id)", headers: tokenHeader).responseJSON { [weak self] (response) in
-				self?.callbackHandler(response: response, callback: callback)
-			}
-		}
-	}
-
-	func userMe(callback: @escaping (User?, Error?) -> ()) {
-        guard Networking.isConnectedToInternet else {
-            callback(nil, NetworkingError.noInternetConnection)
-            return
-        }
-        
-		UserManager.instance.tokenHeader { tokenHeader in            
-			Alamofire.request("\(self.apiBaseUrl)/user/me", headers: tokenHeader).responseJSON { [weak self] (response) in
-				if let code = response.response?.statusCode, (400..<405).contains(code) {
-					let error = NSError.init(domain: "cz.trashout.auth", code: 404, userInfo: [
-						NSLocalizedDescriptionKey: "User not found"
-						])
-					callback(nil, error)
-				} else {
-					self?.callbackHandler(response: response, callback: callback)
-				}
-			}
-		}
-	}
-
-	/**
-	```
-	{
-	  "firstName": "Jim",
-	  "lastName": "Raynor",
-	  "email": "jim.raynor@sonsofkorhal.com",
-	  "info": "Jim Raynor's description goes here.",
-	  "birthdate": "2012-04-20T22:00:00.000Z",
-	  "created": "2016-11-22T12:57:55.259Z",
-	  "active": true,
-	  "newsletter": true,
-	  "imageKey": "images.key2345",
-	  "firebaseId": "JNgNzUH3XdNnmi0IlMbNzR3SMm93",
-	  "tokenFCM": "asdfxcvb9876",
-	  "facebookUrl": "",
-	  "twitterUrl": "",
-	  "googlePlusUrl": "",
-	  "phoneNumber": "+420123456789",
-	  "points": 9000,
-	  "reviewed": false,
-	  "userRoleId": 1,
-	  "areaId": null
-	}
-	```
-	*/
-	func createUser(user: User, uid: String, callback: @escaping (User?, Error?) -> ()) {
-        guard Networking.isConnectedToInternet else {
-            callback(nil, NetworkingError.noInternetConnection)
-            return
-        }
-        
-        var params: Parameters = [:]
-		if let fn = user.firstName {
-			params["firstName"] = fn
-		}
-		if let ln = user.lastName {
-			params["lastName"] = ln
-		}
-		if let email = user.email {
-			params["email"] = email
-		}
-		params["uid"] = uid
-		params["userRoleId"] = 1
-
-		UserManager.instance.tokenHeader { tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/user", method: .post, parameters: params, headers: tokenHeader).responseJSON { [weak self] (response) in
-
+        UserManager.instance.tokenHeader { tokenHeader in
+            Alamofire.request("\(self.apiBaseUrl)/user/\(id)", headers: tokenHeader).responseJSON { [weak self] (response) in
                 self?.callbackHandler(response: response, callback: callback)
-			}
-		}
-	}
+            }
+        }
+    }
 
-	func updateUser(user: User, id: Int, uid: String, organizations: [Organization] = [], areas: [Area] = [], image: ProfileImage?, callback: @escaping (User?, Error?) -> ()) {
+    func userMe(callback: @escaping (User?, Error?) -> ()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
+        UserManager.instance.tokenHeader { tokenHeader in
+            Alamofire.request("\(self.apiBaseUrl)/user/me", headers: tokenHeader).responseJSON { [weak self] (response) in
+                if let code = response.response?.statusCode, (400..<405).contains(code) {
+                    let error = NSError.init(domain: "cz.trashout.auth", code: 404, userInfo: [
+                        NSLocalizedDescriptionKey: "User not found"
+                    ])
+                    callback(nil, error)
+                } else {
+                    self?.callbackHandler(response: response, callback: callback)
+                }
+            }
+        }
+    }
+
+    /**
+     ```
+     {
+     "firstName": "Jim",
+     "lastName": "Raynor",
+     "email": "jim.raynor@sonsofkorhal.com",
+     "info": "Jim Raynor's description goes here.",
+     "birthdate": "2012-04-20T22:00:00.000Z",
+     "created": "2016-11-22T12:57:55.259Z",
+     "active": true,
+     "newsletter": true,
+     "imageKey": "images.key2345",
+     "firebaseId": "JNgNzUH3XdNnmi0IlMbNzR3SMm93",
+     "tokenFCM": "asdfxcvb9876",
+     "facebookUrl": "",
+     "twitterUrl": "",
+     "googlePlusUrl": "",
+     "phoneNumber": "+420123456789",
+     "points": 9000,
+     "reviewed": false,
+     "userRoleId": 1,
+     "areaId": null
+     }
+     ```
+     */
+    func createUser(user: User, uid: String, callback: @escaping (User?, Error?) -> ()) {
         guard Networking.isConnectedToInternet else {
             callback(nil, NetworkingError.noInternetConnection)
             return
@@ -143,86 +117,113 @@ extension Networking {
         if let email = user.email {
             params["email"] = email
         }
-		if let phone = user.phone {
-			params["phoneNumber"] = phone
-		}
-
-        if let image = image {
-            params["image"] = ["fullDownloadUrl": image.fullDownloadUrl, "fullStorageLocation": image.storageLocation]
-        }
         params["uid"] = uid
-		// TODO: FIXME: check how it works at api ( should be maybe 3)
         params["userRoleId"] = 1
 
+        UserManager.instance.tokenHeader { tokenHeader in
+            Alamofire.request("\(self.apiBaseUrl)/user", method: .post, parameters: params, headers: tokenHeader).responseJSON { [weak self] (response) in
 
-		// TODO: FIXME: check how it works at api
-//		let orgs = organizations.map { (o) -> Parameters in
-//			var p: Parameters = [:]
-//			p["organizationId"] = o.id
-//			p["organizationRoleId"] = 1
-//			return p
-//		}
-//		params["organizations"] = orgs
-
-		params["eventOrganizer"] = user.eventOrganizer
-        params["volunteerCleanup"] = user.volunteerCleanup
-        //params["newsletter"] = user.newsletter
-
-		// TODO: FIXME: check how it works at api
-//		params["areas"] = areas.map({ area -> Parameters in
-//			var p: Parameters = [:]
-//			p["id"] = area.id
-//			p["userAreaRoleId"] = 1
-//			return p
-//		})
-
-		Async.waterfall([
-			{	[weak self] (completion: @escaping ()->(), failure: @escaping (Error)->()) in
-				let orgs = organizations.map { return (id: $0.id, role: 1) }
-				self?.setUserOrganizations(user: user, organizations: orgs, callback: { (error) in
-					if let error = error {
-						failure(error)
-					} else {
-						completion()
-					}
-				})
-			},
-			{ [weak self] (completion: @escaping ()->(), failure: @escaping (Error)->()) in
-
-				UserManager.instance.tokenHeader { tokenHeader in
-					guard let base = self?.apiBaseUrl else { return }
-					let req = Alamofire.request("\(base)/user/\(id)", method: .put, parameters: params, headers: tokenHeader)
-					print(req.debugDescription)
-					req.responseJSON { [weak self] (response) in
-						self?.callbackHandler(response: response, callback: callback)
-					}
-				}
-			}], failure: { (error) in
-				callback(nil, error)
+                self?.callbackHandler(response: response, callback: callback)
             }
-        )
-
+        }
     }
 
-	func organizations(page: Int, limit: Int, callback: @escaping ([Organization]?, Error?)->()) {
+    func updateUser(user: User, id: Int, uid: String, organizations: [Organization] = [], areas: [Area] = [], image: ProfileImage?, callback: @escaping (User?, Error?) -> ()) {
         guard Networking.isConnectedToInternet else {
             callback(nil, NetworkingError.noInternetConnection)
             return
         }
         
-		UserManager.instance.tokenHeader { tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/organization/", headers: tokenHeader).responseJSON { [weak self] (response) in
-				self?.callbackHandler(response: response, callback: callback)
-			}
-		}
-	}
+        var params: Parameters = [:]
+        if let fn = user.firstName {
+            params["firstName"] = fn
+        }
+        if let ln = user.lastName {
+            params["lastName"] = ln
+        }
+        if let email = user.email {
+            params["email"] = email
+        }
+        if let phone = user.phone {
+            params["phoneNumber"] = phone
+        }
 
-	/**
-	Set organizations to user
-	
-	cycle remove/join organization
-	*/
-	func setUserOrganizations(user: User, organizations: [(id: Int, role: Int)], callback: @escaping (Error?) -> ()) {
+        if let image = image {
+            params["image"] = ["fullDownloadUrl": image.fullDownloadUrl, "fullStorageLocation": image.storageLocation]
+        }
+        params["uid"] = uid
+        // TODO: FIXME: check how it works at api ( should be maybe 3)
+        params["userRoleId"] = 1
+
+
+        // TODO: FIXME: check how it works at api
+        //		let orgs = organizations.map { (o) -> Parameters in
+        //			var p: Parameters = [:]
+        //			p["organizationId"] = o.id
+        //			p["organizationRoleId"] = 1
+        //			return p
+        //		}
+        //		params["organizations"] = orgs
+
+        params["eventOrganizer"] = user.eventOrganizer
+        params["volunteerCleanup"] = user.volunteerCleanup
+        //params["newsletter"] = user.newsletter
+
+        // TODO: FIXME: check how it works at api
+        //		params["areas"] = areas.map({ area -> Parameters in
+        //			var p: Parameters = [:]
+        //			p["id"] = area.id
+        //			p["userAreaRoleId"] = 1
+        //			return p
+        //		})
+
+        Async.waterfall([
+            {	[weak self] (completion: @escaping ()->(), failure: @escaping (Error)->()) in
+                let orgs = organizations.map { return (id: $0.id, role: 1) }
+                self?.setUserOrganizations(user: user, organizations: orgs, callback: { (error) in
+                    if let error = error {
+                        failure(error)
+                    } else {
+                        completion()
+                    }
+                })
+            },
+            { [weak self] (completion: @escaping ()->(), failure: @escaping (Error)->()) in
+
+                UserManager.instance.tokenHeader { tokenHeader in
+                    guard let base = self?.apiBaseUrl else { return }
+                    let req = Alamofire.request("\(base)/user/\(id)", method: .put, parameters: params, headers: tokenHeader)
+                    print(req.debugDescription)
+                    req.responseJSON { [weak self] (response) in
+                        self?.callbackHandler(response: response, callback: callback)
+                    }
+                }
+            }], failure: { (error) in
+                callback(nil, error)
+            }
+        )
+
+    }
+
+    func organizations(page: Int, limit: Int, callback: @escaping ([Organization]?, Error?)->()) {
+        guard Networking.isConnectedToInternet else {
+            callback(nil, NetworkingError.noInternetConnection)
+            return
+        }
+        
+        UserManager.instance.tokenHeader { tokenHeader in
+            Alamofire.request("\(self.apiBaseUrl)/organization/", headers: tokenHeader).responseJSON { [weak self] (response) in
+                self?.callbackHandler(response: response, callback: callback)
+            }
+        }
+    }
+
+    /**
+     Set organizations to user
+
+     cycle remove/join organization
+     */
+    func setUserOrganizations(user: User, organizations: [(id: Int, role: Int)], callback: @escaping (Error?) -> ()) {
         guard Networking.isConnectedToInternet else {
             callback(NetworkingError.noInternetConnection)
             return
@@ -270,79 +271,79 @@ extension Networking {
         Async.waterfall(blocks, failure: { (error) in
             callback(error)
         })
-	}
+    }
 
-	/**
-	```
-	POST /organization/:organizationId/user/:userId
-	```
-	*/
-	func joinOrganization(userId: Int, organizationId: Int, callback: @escaping (Error?) -> ()) {
+    /**
+     ```
+     POST /organization/:organizationId/user/:userId
+     ```
+     */
+    func joinOrganization(userId: Int, organizationId: Int, callback: @escaping (Error?) -> ()) {
         guard Networking.isConnectedToInternet else {
             callback(NetworkingError.noInternetConnection)
             return
         }
         
-		UserManager.instance.tokenHeader { tokenHeader in
-			/*var params: Parameters = [:]
-			params["organizationRoleId"] = 1
-			Alamofire.request("\(self.apiBaseUrl)/organization/\(organizationId)/user/\(userId)", method: .post, parameters: params, headers: tokenHeader).responseJSON { (response) in
-				callback(response.result.error)
-			}
-            */
+        UserManager.instance.tokenHeader { tokenHeader in
+            /*var params: Parameters = [:]
+             params["organizationRoleId"] = 1
+             Alamofire.request("\(self.apiBaseUrl)/organization/\(organizationId)/user/\(userId)", method: .post, parameters: params, headers: tokenHeader).responseJSON { (response) in
+             callback(response.result.error)
+             }
+             */
             Alamofire.request("\(self.apiBaseUrl)/user/joinOrganization/\(organizationId)", method: .post, parameters: nil, headers: tokenHeader).responseJSON { (response) in
                 callback(response.result.error)
             }
-		}
-	}
+        }
+    }
 
-	/**
-	```
-	DELETE /organization/:organizationId/user/:userId
-	```
-	*/
-	func removeOrganization(userId: Int, organizationId: Int, callback: @escaping (Error?) -> ()) {
+    /**
+     ```
+     DELETE /organization/:organizationId/user/:userId
+     ```
+     */
+    func removeOrganization(userId: Int, organizationId: Int, callback: @escaping (Error?) -> ()) {
         guard Networking.isConnectedToInternet else {
             callback(NetworkingError.noInternetConnection)
             return
         }
         
-		UserManager.instance.tokenHeader { tokenHeader in
+        UserManager.instance.tokenHeader { tokenHeader in
             /*
-			Alamofire.request("\(self.apiBaseUrl)/organization/\(organizationId)/user/\(userId)", method: .delete, headers: tokenHeader).responseJSON { (response) in
-				callback(response.result.error)
-			}
-            */
+             Alamofire.request("\(self.apiBaseUrl)/organization/\(organizationId)/user/\(userId)", method: .delete, headers: tokenHeader).responseJSON { (response) in
+             callback(response.result.error)
+             }
+             */
             Alamofire.request("\(self.apiBaseUrl)/user/leaveOrganization/\(organizationId)", method: .delete, parameters: nil, headers: tokenHeader).responseJSON { (response) in
                 callback(response.result.error)
             }
-		}
-	}
+        }
+    }
 
-	/**
-	List activity for user
-	
-	```
-	GET /user/:user/activity
-	```
-	*/
-	func recentActivity(user: Int, page: Int, limit: Int, callback: @escaping ([Activity]?, Error?)->()) {
+    /**
+     List activity for user
+
+     ```
+     GET /user/:user/activity
+     ```
+     */
+    func recentActivity(user: Int, page: Int, limit: Int, callback: @escaping ([Activity]?, Error?)->()) {
         guard Networking.isConnectedToInternet else {
             callback(nil, NetworkingError.noInternetConnection)
             return
         }
         
-		var params: Parameters = [:]
-		// FIXME: not working
-		params["type"] = "trashPoint"
-		params["page"] = page
-		params["limit"] = limit
-		UserManager.instance.tokenHeader { tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/user/\(user)/activity", parameters: params, headers: tokenHeader).responseJSON { [weak self] (response) in
-				self?.callbackHandler(response: response, callback: callback)
-			}
-		}
-	}
+        var params: Parameters = [:]
+        // FIXME: not working
+        params["type"] = "trashPoint"
+        params["page"] = page
+        params["limit"] = limit
+        UserManager.instance.tokenHeader { tokenHeader in
+            Alamofire.request("\(self.apiBaseUrl)/user/\(user)/activity", parameters: params, headers: tokenHeader).responseJSON { [weak self] (response) in
+                self?.callbackHandler(response: response, callback: callback)
+            }
+        }
+    }
     
     func userActivity(user: Int, page: Int, limit: Int, callback: @escaping ([Activity]?, Error?)->()) {
         guard Networking.isConnectedToInternet else {
@@ -362,24 +363,41 @@ extension Networking {
         }
     }
 
-	func addArea(user: Int, area: Area, callback: @escaping (Error?)->()) {
+    func addArea(user: Int, area: Area, callback: @escaping (Error?)->()) {
         guard Networking.isConnectedToInternet else {
             callback(NetworkingError.noInternetConnection)
             return
         }
         
-		var params: Parameters = [:]
-		params["areaId"] = area.id
-		UserManager.instance.tokenHeader { tokenHeader in
-			Alamofire.request("\(self.apiBaseUrl)/user/\(user)/userHasArea", method: .post, parameters: params, headers: tokenHeader).responseJSON {  (response) in
-				callback(response.result.error)
-			}
-		}
-	}
+        var params: Parameters = [:]
+        params["areaId"] = area.id
+        UserManager.instance.tokenHeader { tokenHeader in
+            Alamofire.request("\(self.apiBaseUrl)/user/\(user)/userHasArea", method: .post, parameters: params, headers: tokenHeader).responseJSON {  (response) in
+                callback(response.result.error)
+            }
+        }
+    }
 
-	func removeArea(user: Int, area: Area, callback: @escaping (Error?)->()) {
-		// TODO: -
-		callback(nil)
-	}
-	
+    func removeArea(user: Int, area: Area, callback: @escaping (Error?)->()) {
+        // TODO: -
+        callback(nil)
+    }
+
+    func removeUser(userId: String, callback: @escaping (Error?)->()) {
+        guard Networking.isConnectedToInternet else {
+            callback(NetworkingError.noInternetConnection)
+            return
+        }
+
+        UserManager.instance.tokenHeader { [weak self] tokenHeader in
+            guard let `self` = self else { return }
+
+            Alamofire.request("\(self.apiBaseUrl)/user/d\(userId)", method: .delete, parameters: nil, headers: tokenHeader).responseJSON { response in
+
+                Auth.auth().currentUser?.delete { error in
+                    callback(error)
+                }
+            }
+        }
+    }
 }

@@ -218,5 +218,3 @@ extension UserManager {
     }
     
 }
-
-

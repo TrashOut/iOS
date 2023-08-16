@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AuthenticationServices
+import GoogleSignIn
 
 class TutorialLastPageViewController: ViewController {
 
@@ -16,7 +17,8 @@ class TutorialLastPageViewController: ViewController {
 	@IBOutlet var lblTitle: UILabel!
 	@IBOutlet var lblText: UILabel!
 
-	@IBOutlet var btnSignin: UIButton!
+    @IBOutlet weak var btnGoogleSignIn: GIDSignInButton!
+    @IBOutlet var btnSignin: UIButton!
 	@IBOutlet var btnFacebook: UIButton!
 	@IBOutlet var lblProcess: UILabel!
     @IBOutlet weak var buttonStackView: UIStackView!
@@ -56,25 +58,36 @@ class TutorialLastPageViewController: ViewController {
 		}
 	}
 
+
+    @IBAction func googleSignIn(_ sender: Any) {
+        UserManager.instance.loginWithGoogle(self) { [weak self] (error) in
+            self?.handleLogin(error: error)
+        }
+    }
+
 	@IBAction func facebookSignIn() {
 		UserManager.instance.loginWithFacebook(self) { [weak self] (error) in
-			guard error == nil else {
-				print(error?.localizedDescription as Any)
-				self?.show(error: error!)
-				return
-			}
-			guard let user = UserManager.instance.user else { return }
-			print("Successful logged as \(user.email ?? "no email")")
-
-			self?.askPermissions { [weak self] in
-				guard let main = self?.main() else { return }
-				self?.changeRoot(viewController: main)
-			}
-            
-            // Register notifications.
-            NotificationsManager.registerNotifications()
+            self?.handleLogin(error: error)
 		}
 	}
+
+    private func handleLogin(error: Error?) {
+        guard error == nil else {
+            print(error?.localizedDescription as Any)
+            show(error: error!)
+            return
+        }
+        guard let user = UserManager.instance.user else { return }
+        print("Successful logged as \(user.email ?? "no email")")
+
+        askPermissions { [weak self] in
+            guard let main = self?.main() else { return }
+            self?.changeRoot(viewController: main)
+        }
+
+        // Register notifications.
+        NotificationsManager.registerNotifications()
+    }
 
 
 	var trashHunter: TrashHunter? {

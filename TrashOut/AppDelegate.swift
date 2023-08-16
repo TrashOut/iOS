@@ -35,22 +35,23 @@ import Firebase
 import FBSDKLoginKit
 import Alamofire
 import UserNotifications
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private let offlineDumpManager: OfflineDumpManagerType = OfflineDumpManager()
     
-	var window: UIWindow?
+    var window: UIWindow?
     
-	// MARK: - App Delegate
+    // MARK: - App Delegate
 
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-		FirebaseLocalization().update()
+        FirebaseLocalization().update()
         TrashFilter.clearCachedFilter()
-		acceptInvalidSSLCerts()
+        acceptInvalidSSLCerts()
         
         generateUniqueId()
         
@@ -67,40 +68,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Theme.current.setupAppearance()
 
-		return true
-	}
+        return true
+    }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return ApplicationDelegate.shared.application(app, open: url, options: options)
+        ApplicationDelegate.shared.application(app, open: url, options: options) ||
+        GIDSignIn.sharedInstance.handle(url)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-		TrashHunter.hunter?.appWillResignActive(application)
+        TrashHunter.hunter?.appWillResignActive(application)
     }
 
-	func applicationDidEnterBackground(_ application: UIApplication) {
-		// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-		// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-	}
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
 
-	func applicationWillEnterForeground(_ application: UIApplication) {
-		// Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-	}
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    }
 
-	func applicationDidBecomeActive(_ application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         handleOfflineDumps()
-	}
+    }
 
-	func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-		TrashHunter.hunter?.application(application, didReceive: notification)
-	}
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        TrashHunter.hunter?.application(application, didReceive: notification)
+    }
 
-	func applicationWillTerminate(_ application: UIApplication) {
-		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-	}
-	func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-		TrashHunter.hunter?.application(application, didRegister: notificationSettings)
-	}
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        TrashHunter.hunter?.application(application, didRegister: notificationSettings)
+    }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         print("USER INFO: \(userInfo)")
@@ -141,47 +143,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     /*
-	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-		// print out token to device console
-		NSLog("Registered for notifications with token: '\(deviceToken)'")
-	}
-    */
+     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+     // print out token to device console
+     NSLog("Registered for notifications with token: '\(deviceToken)'")
+     }
+     */
 
     /*
-	func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-		// print out error to device console
-		NSLog("Failed to register for notifications due to error \(error.localizedDescription)")
-	}
-    */
- 
-	func acceptInvalidSSLCerts() {
-		let manager = Alamofire.SessionManager.default
-		print("trying to accept invalid certs")
-		
-		manager.delegate.sessionDidReceiveChallenge = { session, challenge in
-			var disposition: URLSession.AuthChallengeDisposition = .performDefaultHandling
-			var credential: URLCredential?
-			
-			print("received challenge")
-			
-			if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-				disposition = URLSession.AuthChallengeDisposition.useCredential
-				credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
-			} else {
-				if challenge.previousFailureCount > 0 {
-					disposition = .cancelAuthenticationChallenge
-				} else {
-					credential = manager.session.configuration.urlCredentialStorage?.defaultCredential(for: challenge.protectionSpace)
-					
-					if credential != nil {
-						disposition = .useCredential
-					}
-				}
-			}
-			 
-			return (disposition, credential)
-		}
-	}
+     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+     // print out error to device console
+     NSLog("Failed to register for notifications due to error \(error.localizedDescription)")
+     }
+     */
+
+    func acceptInvalidSSLCerts() {
+        let manager = Alamofire.SessionManager.default
+        print("trying to accept invalid certs")
+
+        manager.delegate.sessionDidReceiveChallenge = { session, challenge in
+            var disposition: URLSession.AuthChallengeDisposition = .performDefaultHandling
+            var credential: URLCredential?
+
+            print("received challenge")
+
+            if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+                disposition = URLSession.AuthChallengeDisposition.useCredential
+                credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
+            } else {
+                if challenge.previousFailureCount > 0 {
+                    disposition = .cancelAuthenticationChallenge
+                } else {
+                    credential = manager.session.configuration.urlCredentialStorage?.defaultCredential(for: challenge.protectionSpace)
+
+                    if credential != nil {
+                        disposition = .useCredential
+                    }
+                }
+            }
+
+            return (disposition, credential)
+        }
+    }
 }
 
 // MARK: - Unique ID
@@ -192,7 +194,7 @@ extension AppDelegate {
         print(uuid)
         
         if UniqueIdentifier.identifier == nil {
-           UniqueIdentifier.identifier = uuid
+            UniqueIdentifier.identifier = uuid
         }
     }
 
@@ -215,7 +217,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
                 completionHandler: {_, _ in })
         } else {
             let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
+            UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
         

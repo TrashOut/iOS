@@ -288,6 +288,8 @@
 		8EC88AC71FD6CFAE00498FCA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		98B4CE6F81A409760A2F0E31 /* Pods-TrashOutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutTests.release.xcconfig"; path = "Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests.release.xcconfig"; sourceTree = "<group>"; };
 		9D1F83842917C600007F2819 /* ka */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ka; path = ka.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9D2D8846297461DD009D901A /* sr-RS */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sr-RS"; path = "sr-RS.lproj/Main.strings"; sourceTree = "<group>"; };
+		9D2D8847297461DD009D901A /* sr-RS */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sr-RS"; path = "sr-RS.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A214DB9B268E0E6358EC2B0F /* Pods-TrashOutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOutTests.debug.xcconfig"; path = "Target Support Files/Pods-TrashOutTests/Pods-TrashOutTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BE13463E5E2A5D870DF3CF4C /* Pods-TrashOut-Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashOut-Prod.release.xcconfig"; path = "Target Support Files/Pods-TrashOut-Prod/Pods-TrashOut-Prod.release.xcconfig"; sourceTree = "<group>"; };
 		C30044321DAF84E400709DDC /* TrashUpdateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashUpdateModel.swift; sourceTree = "<group>"; };
@@ -1211,6 +1213,7 @@
 				ro,
 				uk,
 				ka,
+				"sr-RS",
 			);
 			mainGroup = C3A3B2331DA7A6E00099D1C2;
 			packageReferences = (
@@ -1768,6 +1771,7 @@
 				16B9B3232656B6D0002978C4 /* ro */,
 				16B9B3242656B83B002978C4 /* uk */,
 				9D1F83842917C600007F2819 /* ka */,
+				9D2D8847297461DD009D901A /* sr-RS */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1776,6 +1780,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C3014DCF1DAE5EF000FD7CFE /* Base */,
+				9D2D8846297461DD009D901A /* sr-RS */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1859,7 +1864,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 145;
+				CURRENT_PROJECT_VERSION = 147;
 				DEVELOPMENT_TEAM = 86URP76MUB;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1888,7 +1893,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.6.6;
+				MARKETING_VERSION = 4.6.7;
 				PRODUCT_BUNDLE_IDENTIFIER = PSP4M9F8L7.me.trashout.mobile.titanium;
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "";
@@ -2091,7 +2096,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 145;
+				CURRENT_PROJECT_VERSION = 147;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 86URP76MUB;
 				ENABLE_BITCODE = NO;
@@ -2121,7 +2126,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.6.6;
+				MARKETING_VERSION = 4.6.7;
 				PRODUCT_BUNDLE_IDENTIFIER = PSP4M9F8L7.me.trashout.mobile.titanium;
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "";
@@ -2144,7 +2149,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 145;
+				CURRENT_PROJECT_VERSION = 147;
 				DEVELOPMENT_TEAM = 86URP76MUB;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -2173,7 +2178,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.6.6;
+				MARKETING_VERSION = 4.6.7;
 				PRODUCT_BUNDLE_IDENTIFIER = PSP4M9F8L7.me.trashout.mobile.titanium;
 				PRODUCT_NAME = TrashOut;
 				PROVISIONING_PROFILE = "";

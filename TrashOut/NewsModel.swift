@@ -32,6 +32,7 @@
 
 import Foundation
 import Cache
+import UIKit
 
 
 class Article: JsonDecodable, Cachable {

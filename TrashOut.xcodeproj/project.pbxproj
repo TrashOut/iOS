@@ -59,6 +59,7 @@
 		9D867AE92A8D34C900EA169D /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9D867AE82A8D34C900EA169D /* AlamofireImage */; };
 		9D867AF32A8D35E400EA169D /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = 9D867AF22A8D35E400EA169D /* Cache */; };
 		9D9E7A122964842600AFAAE9 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 9D9E7A112964842600AFAAE9 /* FacebookLogin */; };
+		9DF276462A8E24B500FD5580 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276452A8E24B500FD5580 /* UserRepository.swift */; };
 		9DF872F52A8D36E10015DDDE /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF872F42A8D36E10015DDDE /* SwiftDate */; };
 		9DF872F82A8D3DA30015DDDE /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF872F72A8D3DA30015DDDE /* Charts */; };
 		9DF872FB2A8D3FD90015DDDE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF872FA2A8D3FD90015DDDE /* FirebaseAnalytics */; };
@@ -291,6 +292,7 @@
 		9D1F83842917C600007F2819 /* ka */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ka; path = ka.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D2D8846297461DD009D901A /* sr-RS */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sr-RS"; path = "sr-RS.lproj/Main.strings"; sourceTree = "<group>"; };
 		9D2D8847297461DD009D901A /* sr-RS */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sr-RS"; path = "sr-RS.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9DF276452A8E24B500FD5580 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		9DF873072A8D5FC40015DDDE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9DF873092A8D62D20015DDDE /* UserManager+GoogleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserManager+GoogleLogin.swift"; sourceTree = "<group>"; };
 		C30044321DAF84E400709DDC /* TrashUpdateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashUpdateModel.swift; sourceTree = "<group>"; };
@@ -660,6 +662,7 @@
 		16F650DE2635512F0044A64D /* UserManager */ = {
 			isa = PBXGroup;
 			children = (
+				9DF276452A8E24B500FD5580 /* UserRepository.swift */,
 				C32F8D5A1DED8E9B0009A5C4 /* UserManager.swift */,
 				C37519FA1E38C482001F61AB /* UserManager+Facebook.swift */,
 				161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */,
@@ -734,6 +737,14 @@
 				8E3F25D11FA0BED100F42E5C /* ApiKey.swift */,
 			);
 			name = Config;
+			sourceTree = "<group>";
+		};
+		9DF276412A8E246A00FD5580 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				C30044361DAFC94C00709DDC /* Manager */,
+			);
+			name = Generic;
 			sourceTree = "<group>";
 		};
 		C30044361DAFC94C00709DDC /* Manager */ = {
@@ -824,7 +835,7 @@
 		C3A3B2331DA7A6E00099D1C2 = {
 			isa = PBXGroup;
 			children = (
-				C3A3B23E1DA7A6E00099D1C2 /* TrashOut */,
+				C3A3B23E1DA7A6E00099D1C2 /* Sources */,
 				C3A3B2531DA7A6E10099D1C2 /* TrashOutTests */,
 				C3A3B25E1DA7A6E10099D1C2 /* TrashOutUITests */,
 				C3A3B23D1DA7A6E00099D1C2 /* Products */,
@@ -842,19 +853,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C3A3B23E1DA7A6E00099D1C2 /* TrashOut */ = {
+		C3A3B23E1DA7A6E00099D1C2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				16271C0827AFE3B400492C65 /* DemoLocation.gpx */,
-				FCAB5E021E2FE82C004C7249 /* TrashOut.entitlements */,
 				16F650D62635500E0044A64D /* Application */,
-				C30044361DAFC94C00709DDC /* Manager */,
-				C3A3B2751DA7AEC10099D1C2 /* Model */,
 				C3A3B26D1DA7ABF30099D1C2 /* Controllers */,
-				C3B428751DAE7E8B0027DDFA /* Views */,
+				16271C0827AFE3B400492C65 /* DemoLocation.gpx */,
+				9DF276412A8E246A00FD5580 /* Generic */,
+				C3A3B2751DA7AEC10099D1C2 /* Model */,
 				16F650D72635501C0044A64D /* Resources */,
+				FCAB5E021E2FE82C004C7249 /* TrashOut.entitlements */,
+				C3B428751DAE7E8B0027DDFA /* Views */,
 			);
-			path = TrashOut;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		C3A3B2531DA7A6E10099D1C2 /* TrashOutTests */ = {
@@ -1389,6 +1400,7 @@
 				C3FF4FAA1E533F35005D5530 /* HorizontalSeparator.swift in Sources */,
 				FC3E0E711DDE73A0006F1D31 /* EventNewViewController.swift in Sources */,
 				C3E90C2E1E436A24002FDC2D /* TrashHunterModel.swift in Sources */,
+				9DF276462A8E24B500FD5580 /* UserRepository.swift in Sources */,
 				C374778E1DBA094B005AC532 /* ClusteringManager.swift in Sources */,
 				0F77D26B24594B3A006141E6 /* EventThankYouViewController.swift in Sources */,
 				C32F8D571DEC80120009A5C4 /* ProfileEditViewController.swift in Sources */,
@@ -1631,7 +1643,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_OPTIMIZATION = space;
-				CODE_SIGN_ENTITLEMENTS = TrashOut/TrashOut.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Sources/TrashOut.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1658,7 +1670,7 @@
 					"\"${PODS_ROOT}/GoogleUtilities/Frameworks\"",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = "Trashout/Info-Prod.plist";
+				INFOPLIST_FILE = "Sources/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1860,7 +1872,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_OPTIMIZATION = space;
-				CODE_SIGN_ENTITLEMENTS = TrashOut/TrashOut.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Sources/TrashOut.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1888,7 +1900,7 @@
 					"\"${PODS_ROOT}/GoogleUtilities/Frameworks\"",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = "Trashout/Info-Prod.plist";
+				INFOPLIST_FILE = "Sources/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1912,7 +1924,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_OPTIMIZATION = space;
-				CODE_SIGN_ENTITLEMENTS = TrashOut/TrashOut.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Sources/TrashOut.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1939,7 +1951,7 @@
 					"\"${PODS_ROOT}/GoogleUtilities/Frameworks\"",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = "Trashout/Info-Prod.plist";
+				INFOPLIST_FILE = "Sources/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

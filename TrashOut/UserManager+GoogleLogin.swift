@@ -11,10 +11,6 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-fileprivate func fbLog(_ message: String) {
-    NSLog("FB INFO: \(message)")
-}
-
 extension UserManager {
 
     func loginWithGoogle(_ controller: UIViewController, callback: @escaping (Error?) -> ()) {
@@ -44,8 +40,20 @@ extension UserManager {
                 accessToken: user.accessToken.tokenString
             )
 
-            firAuth.loginWithGoogle(credentials: credential) { [weak self] _, error in
+            firAuth.loginWithGoogle(credentials: credential) { [weak self] result, error in
                 self?.loadDBMe() { (user, error) in
+                    guard let user else {
+                        let user = User()
+                        user.firstName = result?.user.displayName
+                        user.email = result?.user.email
+
+                        self?.createDBUser(user: user, callback: { newUser, error in
+                            self?.user = newUser
+                            self?.isLoggedIn = self?.isAnonymous == false
+                            callback(error)
+                        })
+                        return
+                    }
                     self?.user = user
                     self?.isLoggedIn = self?.isAnonymous == false
                     callback(error)

@@ -98,9 +98,9 @@ class FirebaseAuthentificator {
         }
     }
 
-    func loginWithGoogle(credentials: AuthCredential, callback: @escaping (String?, Error?) -> ()) {
+    func loginWithGoogle(credentials: AuthCredential, callback: @escaping (AuthDataResult?, Error?) -> ()) {
         Auth.auth().signIn(with: credentials) { (firUser, error) in
-            callback(firUser?.user.uid, error)
+            callback(firUser, error)
         }
     }
 

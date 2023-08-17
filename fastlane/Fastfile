@@ -21,18 +21,38 @@ app_ipa_destination   = "../TrashOut.app.dSYM.zip"
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    #sync_code_signing
     changelog = prompt(text: "Changelog: ")
-    increment_build_number(
-      build_number: latest_testflight_build_number + 1,
-      xcodeproj: "TrashOut.xcodeproj"
-    ) 
-    build_app(workspace: "TrashOut.xcworkspace", scheme: "TrashOut-Prod", xcargs: "-allowProvisioningUpdates")
+    build_number = incremented_build_number
+    set_build_number(build_number)
+    build_app(project: "TrashOut.xcodeproj", scheme: "TrashOut-Prod", xcargs: "-allowProvisioningUpdates")
     upload_to_testflight(changelog: changelog)
+
+    add_git_tag(tag: "i#{build_number}")
+    push_git_tags
   end
 
   after_all do |lane|
     File.delete(app_dsym_destination)
     File.delete(app_ipa_destination)
+  end
+
+  def latest_build_number_from_tag
+    sh "git tag -l | xargs git tag -d && git fetch --tags"
+      last_tag = last_git_tag(pattern: "i[0-9]*").to_s
+      build_number = last_tag.gsub("i", "").to_i
+      puts(build_number)
+      build_number.to_s
+  end
+
+  def set_build_number(buildNumber)
+    set_info_plist_value(path: "./TrashOut/Info-Prod.plist", key: "CFBundleVersion", value: buildNumber)
+  end
+
+  def incremented_build_number
+    sh "git tag -l | xargs git tag -d && git fetch --tags"
+      last_tag = last_git_tag(pattern: "i[0-9]*").to_s
+      build_number = last_tag.gsub("i", "").to_i + 1
+      puts(build_number)
+      build_number.to_s
   end
 end

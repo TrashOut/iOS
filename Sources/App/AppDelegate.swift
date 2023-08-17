@@ -36,6 +36,7 @@ import FBSDKLoginKit
 import Alamofire
 import UserNotifications
 import GoogleSignIn
+import Swinject
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -47,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - App Delegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        registerModules()
         FirebaseApp.configure()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseLocalization().update()
@@ -260,6 +262,10 @@ extension AppDelegate {
 
 extension AppDelegate {
 
+    private func registerModules() {
+        _ = Assembler.shared
+    }
+
     /// Check offline dumps cache and upload when user is online
     private func handleOfflineDumps() {
         offlineDumpManager.uploadCachedOfflineDumps { [weak self] didUploadOfflineDumps in
@@ -268,5 +274,4 @@ extension AppDelegate {
             }
         }
     }
-
 }

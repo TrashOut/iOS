@@ -59,6 +59,16 @@
 		9D867AE92A8D34C900EA169D /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9D867AE82A8D34C900EA169D /* AlamofireImage */; };
 		9D867AF32A8D35E400EA169D /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = 9D867AF22A8D35E400EA169D /* Cache */; };
 		9D9E7A122964842600AFAAE9 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 9D9E7A112964842600AFAAE9 /* FacebookLogin */; };
+		9DF276C22A8E59C300FD5580 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF276C12A8E59C300FD5580 /* Swinject */; };
+		9DF276C52A8E59EA00FD5580 /* SwinjectAutoregistration in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF276C42A8E59EA00FD5580 /* SwinjectAutoregistration */; };
+		9DF276CF2A8E5A8200FD5580 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276CA2A8E5A8200FD5580 /* Resolver.swift */; };
+		9DF276D02A8E5A8200FD5580 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276CB2A8E5A8200FD5580 /* Inject.swift */; };
+		9DF276D12A8E5A8200FD5580 /* InjectSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276CC2A8E5A8200FD5580 /* InjectSettings.swift */; };
+		9DF276D22A8E5A8200FD5580 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276CD2A8E5A8200FD5580 /* Assembler.swift */; };
+		9DF276D42A8E5B2000FD5580 /* AssemblyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276D32A8E5B2000FD5580 /* AssemblyList.swift */; };
+		9DF276D72A8E5B5C00FD5580 /* UserAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276D62A8E5B5C00FD5580 /* UserAssembly.swift */; };
+		9DF276DA2A8E5B9900FD5580 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276D92A8E5B9900FD5580 /* UserRepository.swift */; };
+		9DF276DC2A8E5BA500FD5580 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276DB2A8E5BA500FD5580 /* UserRepositoryImpl.swift */; };
 		9DF872F52A8D36E10015DDDE /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF872F42A8D36E10015DDDE /* SwiftDate */; };
 		9DF872F82A8D3DA30015DDDE /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF872F72A8D3DA30015DDDE /* Charts */; };
 		9DF872FB2A8D3FD90015DDDE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF872FA2A8D3FD90015DDDE /* FirebaseAnalytics */; };
@@ -290,6 +300,14 @@
 		9D1F83842917C600007F2819 /* ka */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ka; path = ka.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D2D8846297461DD009D901A /* sr-RS */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sr-RS"; path = "sr-RS.lproj/Main.strings"; sourceTree = "<group>"; };
 		9D2D8847297461DD009D901A /* sr-RS */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sr-RS"; path = "sr-RS.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9DF276CA2A8E5A8200FD5580 /* Resolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		9DF276CB2A8E5A8200FD5580 /* Inject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
+		9DF276CC2A8E5A8200FD5580 /* InjectSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InjectSettings.swift; sourceTree = "<group>"; };
+		9DF276CD2A8E5A8200FD5580 /* Assembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		9DF276D32A8E5B2000FD5580 /* AssemblyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyList.swift; sourceTree = "<group>"; };
+		9DF276D62A8E5B5C00FD5580 /* UserAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAssembly.swift; sourceTree = "<group>"; };
+		9DF276D92A8E5B9900FD5580 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		9DF276DB2A8E5BA500FD5580 /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
 		9DF873072A8D5FC40015DDDE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9DF873092A8D62D20015DDDE /* UserManager+GoogleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserManager+GoogleLogin.swift"; sourceTree = "<group>"; };
 		C30044321DAF84E400709DDC /* TrashUpdateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashUpdateModel.swift; sourceTree = "<group>"; };
@@ -454,6 +472,7 @@
 			files = (
 				9DF873012A8D3FD90015DDDE /* FirebaseMessaging in Frameworks */,
 				9D867AF32A8D35E400EA169D /* Cache in Frameworks */,
+				9DF276C52A8E59EA00FD5580 /* SwinjectAutoregistration in Frameworks */,
 				9DF872FD2A8D3FD90015DDDE /* FirebaseAuth in Frameworks */,
 				9DF873062A8D5F7C0015DDDE /* GoogleSignIn in Frameworks */,
 				16BC7E4F26B04BDE0082A764 /* PromiseKit in Frameworks */,
@@ -461,6 +480,7 @@
 				9DF872FF2A8D3FD90015DDDE /* FirebaseCrashlytics in Frameworks */,
 				9D867AE62A8D344400EA169D /* Alamofire in Frameworks */,
 				9DF873032A8D3FD90015DDDE /* FirebaseStorage in Frameworks */,
+				9DF276C22A8E59C300FD5580 /* Swinject in Frameworks */,
 				9DF872F52A8D36E10015DDDE /* SwiftDate in Frameworks */,
 				9D9E7A122964842600AFAAE9 /* FacebookLogin in Frameworks */,
 				9D867AE92A8D34C900EA169D /* AlamofireImage in Frameworks */,
@@ -496,6 +516,7 @@
 		9DF276492A8E3C7A00FD5580 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				9DF276C62A8E5A6500FD5580 /* DI */,
 				16271C0827AFE3B400492C65 /* DemoLocation.gpx */,
 				C3014DCE1DAE5EF000FD7CFE /* Main.storyboard */,
 				C351E5AC1DBF53EF004BF32F /* trashlist.json */,
@@ -524,23 +545,23 @@
 		9DF276502A8E3E3E00FD5580 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
-				9DF276BE2A8E591900FD5580 /* Activity */,
-				9DF276BC2A8E590400FD5580 /* Organization */,
 				9DF276BA2A8E58ED00FD5580 /* Accessiblity */,
-				9DF276AC2A8E545600FD5580 /* Event */,
-				9DF276AA2A8E544100FD5580 /* Statistics */,
-				9DF276A82A8E541400FD5580 /* Articles */,
-				9DF276A62A8E53FC00FD5580 /* Photo */,
-				9DF276A32A8E539B00FD5580 /* Notifications */,
-				9DF276A12A8E537D00FD5580 /* Network */,
-				9DF2769D2A8E535100FD5580 /* Offline */,
-				9DF2769B2A8E533100FD5580 /* Dump */,
-				9DF276962A8E529000FD5580 /* Storage */,
+				9DF276BE2A8E591900FD5580 /* Activity */,
 				9DF276832A8E50DE00FD5580 /* Architecture */,
+				9DF276A82A8E541400FD5580 /* Articles */,
 				9DF276892A8E515400FD5580 /* Component */,
 				9DF2765C2A8E3FD100FD5580 /* Design */,
+				9DF2769B2A8E533100FD5580 /* Dump */,
+				9DF276AC2A8E545600FD5580 /* Event */,
 				9DF276582A8E3F9000FD5580 /* Firebase */,
 				9DF276872A8E513000FD5580 /* Map */,
+				9DF276A12A8E537D00FD5580 /* Network */,
+				9DF276A32A8E539B00FD5580 /* Notifications */,
+				9DF2769D2A8E535100FD5580 /* Offline */,
+				9DF276BC2A8E590400FD5580 /* Organization */,
+				9DF276A62A8E53FC00FD5580 /* Photo */,
+				9DF276AA2A8E544100FD5580 /* Statistics */,
+				9DF276962A8E529000FD5580 /* Storage */,
 				9DF276512A8E3E4800FD5580 /* Swift */,
 				9DF276852A8E50F600FD5580 /* TabBar */,
 				9DF276942A8E521E00FD5580 /* User */,
@@ -1171,6 +1192,8 @@
 		9DF276942A8E521E00FD5580 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				9DF276D82A8E5B8E00FD5580 /* Domain */,
+				9DF276D52A8E5B5200FD5580 /* DI */,
 				9DF276AE2A8E547100FD5580 /* Model */,
 				9DF276952A8E522600FD5580 /* Data */,
 			);
@@ -1185,6 +1208,7 @@
 				C37519FA1E38C482001F61AB /* UserManager+Facebook.swift */,
 				161F4C652646C5B000ED8AB8 /* UserManager+AppleLogin.swift */,
 				9DF873092A8D62D20015DDDE /* UserManager+GoogleLogin.swift */,
+				9DF276DB2A8E5BA500FD5580 /* UserRepositoryImpl.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1535,6 +1559,42 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9DF276C62A8E5A6500FD5580 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				9DF276CD2A8E5A8200FD5580 /* Assembler.swift */,
+				9DF276C92A8E5A8200FD5580 /* InjectPropertyWrapper */,
+				9DF276D32A8E5B2000FD5580 /* AssemblyList.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		9DF276C92A8E5A8200FD5580 /* InjectPropertyWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				9DF276CA2A8E5A8200FD5580 /* Resolver.swift */,
+				9DF276CB2A8E5A8200FD5580 /* Inject.swift */,
+				9DF276CC2A8E5A8200FD5580 /* InjectSettings.swift */,
+			);
+			path = InjectPropertyWrapper;
+			sourceTree = "<group>";
+		};
+		9DF276D52A8E5B5200FD5580 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				9DF276D62A8E5B5C00FD5580 /* UserAssembly.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		9DF276D82A8E5B8E00FD5580 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				9DF276D92A8E5B9900FD5580 /* UserRepository.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		C3A3B2331DA7A6E00099D1C2 = {
 			isa = PBXGroup;
 			children = (
@@ -1622,6 +1682,8 @@
 				9DF873002A8D3FD90015DDDE /* FirebaseMessaging */,
 				9DF873022A8D3FD90015DDDE /* FirebaseStorage */,
 				9DF873052A8D5F7C0015DDDE /* GoogleSignIn */,
+				9DF276C12A8E59C300FD5580 /* Swinject */,
+				9DF276C42A8E59EA00FD5580 /* SwinjectAutoregistration */,
 			);
 			productName = Trashout;
 			productReference = C3A3B23C1DA7A6E00099D1C2 /* TrashOut.app */;
@@ -1736,6 +1798,8 @@
 				9DF872F62A8D3DA30015DDDE /* XCRemoteSwiftPackageReference "Charts" */,
 				9DF872F92A8D3FD90015DDDE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				9DF873042A8D5F7C0015DDDE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				9DF276C02A8E59C300FD5580 /* XCRemoteSwiftPackageReference "Swinject" */,
+				9DF276C32A8E59EA00FD5580 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */,
 			);
 			productRefGroup = C3A3B23D1DA7A6E00099D1C2 /* Products */;
 			projectDirPath = "";
@@ -1851,6 +1915,7 @@
 				16E1605F265D673C00CDCBE2 /* UpdateLocationViewController.swift in Sources */,
 				C3C07E401E4C939900B102D1 /* ClockCountdownView.swift in Sources */,
 				CF110A3E212C2933008D2643 /* BackgroundTimer.swift in Sources */,
+				9DF276CF2A8E5A8200FD5580 /* Resolver.swift in Sources */,
 				C3751A011E38E13C001F61AB /* TrashTypeButton.swift in Sources */,
 				FC5FA3081DE9D1610000C711 /* AccessibilityModel.swift in Sources */,
 				161EE7B926AEAD6600B9808B /* OfflineDump.swift in Sources */,
@@ -1875,6 +1940,7 @@
 				C3A3B27C1DA7B7440099D1C2 /* UserNetworking.swift in Sources */,
 				C3315BA01E51FE0B004C652A /* AreaPickerViewController.swift in Sources */,
 				C3DDE0181DAB82B700CB088E /* DumpsListViewController.swift in Sources */,
+				9DF276DA2A8E5B9900FD5580 /* UserRepository.swift in Sources */,
 				8CD79D831F962A1600C937AB /* RoundedShadowButton.swift in Sources */,
 				C3A3B27A1DA7B5250099D1C2 /* String.swift in Sources */,
 				C3B428771DAE7E9C0027DDFA /* Card.swift in Sources */,
@@ -1904,6 +1970,7 @@
 				C3D5FB651DABAB2900DBD573 /* GpsModel.swift in Sources */,
 				16899F9F26AFDD7900C25B03 /* OfflineDumpManagerType.swift in Sources */,
 				C3A617701DB8F1BF0092BF32 /* ClusterMapAnnotation.swift in Sources */,
+				9DF276D12A8E5A8200FD5580 /* InjectSettings.swift in Sources */,
 				C3FF4FAA1E533F35005D5530 /* HorizontalSeparator.swift in Sources */,
 				FC3E0E711DDE73A0006F1D31 /* EventNewViewController.swift in Sources */,
 				C3E90C2E1E436A24002FDC2D /* TrashHunterModel.swift in Sources */,
@@ -1928,12 +1995,14 @@
 				C37519FB1E38C482001F61AB /* UserManager+Facebook.swift in Sources */,
 				C3A3B2771DA7B1F80099D1C2 /* UserModel.swift in Sources */,
 				C360EF9C1E390AF80022F023 /* TrashFilterModel.swift in Sources */,
+				9DF276D22A8E5A8200FD5580 /* Assembler.swift in Sources */,
 				C373F43C1E57524900050F7B /* Parsing.swift in Sources */,
 				C3E90C2A1E4363BA002FDC2D /* TrashHunterContainerViewController.swift in Sources */,
 				C373F4381E57301A00050F7B /* CountryPickerViewController.swift in Sources */,
 				9DF8730A2A8D62D20015DDDE /* UserManager+GoogleLogin.swift in Sources */,
 				FC48ED481DCB7F60008E7EB1 /* JunkyardNetworking.swift in Sources */,
 				C3E90C2C1E4366A7002FDC2D /* TrashHunterConfigViewController.swift in Sources */,
+				9DF276D02A8E5A8200FD5580 /* Inject.swift in Sources */,
 				16271C1027AFE5B900492C65 /* HistoryPhotoCollectionViewCell.swift in Sources */,
 				C3DDE0211DAB925C00CB088E /* TrashNetworking.swift in Sources */,
 				FC747CA91DCBE02D001B9EE9 /* DistanceRounding.swift in Sources */,
@@ -1970,6 +2039,7 @@
 				C320387C1DEF25FC00B6F967 /* ReportCameraViewController.swift in Sources */,
 				C30CEB6D1E54A3000045E7F9 /* ArticlesManager.swift in Sources */,
 				C32F8D651DED94370009A5C4 /* SignupViewController.swift in Sources */,
+				9DF276D72A8E5B5C00FD5580 /* UserAssembly.swift in Sources */,
 				FC747CAB1DCBEEF6001B9EE9 /* JunkyardFiltViewController.swift in Sources */,
 				C3E052301E8C137200181914 /* TutorialPageViewController.swift in Sources */,
 				C3014DB71DAE2CFD00FD7CFE /* DumpsDetailViewController.swift in Sources */,
@@ -1997,6 +2067,8 @@
 				C3A3B2741DA7AC8F0099D1C2 /* Networking.swift in Sources */,
 				C373F43A1E57313100050F7B /* AreaNetworking.swift in Sources */,
 				C3014DB91DAE2DC200FD7CFE /* Theme.swift in Sources */,
+				9DF276D42A8E5B2000FD5580 /* AssemblyList.swift in Sources */,
+				9DF276DC2A8E5BA500FD5580 /* UserRepositoryImpl.swift in Sources */,
 				C32F8D511DEC42DD0009A5C4 /* NewsModel.swift in Sources */,
 				C38960CD1E5C8FD600EA6D87 /* PhotoManager.swift in Sources */,
 				C3014DC11DAE35F000FD7CFE /* ReportViewController.swift in Sources */,
@@ -2667,6 +2739,22 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		9DF276C02A8E59C300FD5580 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		9DF276C32A8E59EA00FD5580 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/SwinjectAutoregistration";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		9DF872F32A8D36E10015DDDE /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/malcommac/SwiftDate";
@@ -2728,6 +2816,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9D9E7A102964842600AFAAE9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
+		};
+		9DF276C12A8E59C300FD5580 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9DF276C02A8E59C300FD5580 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+		9DF276C42A8E59EA00FD5580 /* SwinjectAutoregistration */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9DF276C32A8E59EA00FD5580 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */;
+			productName = SwinjectAutoregistration;
 		};
 		9DF872F42A8D36E10015DDDE /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -34,6 +34,7 @@ import Foundation
 import UIKit
 import Firebase
 import AuthenticationServices
+import GoogleSignIn
 
 class SignupViewController: ViewController, UITextFieldDelegate {
 
@@ -45,7 +46,8 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 	@IBOutlet var frPassword: FormRow!
 	@IBOutlet var frPasswordCheck: FormRow!
 
-	@IBOutlet var btnLogin: UIButton!
+    @IBOutlet weak var btnGoogle: GIDSignInButton!
+    @IBOutlet var btnLogin: UIButton!
 	@IBOutlet var btnFacebook: UIButton!
 
     @IBOutlet weak var policyLinkButton: UIButton!
@@ -165,28 +167,38 @@ class SignupViewController: ViewController, UITextFieldDelegate {
 		}
 	}
 
-	@IBAction func facebook() {
+    @IBAction func loginWithGoogle(_ sender: Any) {
+        UserManager.instance.loginWithGoogle(self) { [weak self] (error) in
+            self?.handleLogin(error: error)
+        }
+    }
+
+    @IBAction func facebook() {
 		UserManager.instance.loginWithFacebook(self) { [weak self] (error) in
-			guard error == nil else {
-				print(error?.localizedDescription as Any)
-                
-                if case NetworkingError.noInternetConnection = error! {
-                    self?.show(error: NetworkingError.custom("global.internet.offline".localized))
-                } else {
-                    self?.show(error: error!)
-                }
-                
-				return
-			}
-			guard let user = UserManager.instance.user else { return }
-			print("Successful logged as \(user.email ?? "no email")")
-			self?.postSignUp()
-            
-            // Register notifications.
-            NotificationsManager.unregisterUser { error in
-                NotificationsManager.registerNotifications()
-            }
+            self?.handleLogin(error: error)
 		}
+    }
+
+    private func handleLogin(error: Error?) {
+        guard error == nil else {
+            print(error?.localizedDescription as Any)
+
+            if case NetworkingError.noInternetConnection = error! {
+                show(error: NetworkingError.custom("global.internet.offline".localized))
+            } else {
+                show(error: error!)
+            }
+
+            return
+        }
+        guard let user = UserManager.instance.user else { return }
+        print("Successful logged as \(user.email ?? "no email")")
+        postSignUp()
+
+        // Register notifications.
+        NotificationsManager.unregisterUser { error in
+            NotificationsManager.registerNotifications()
+        }
     }
 
     @IBAction func termsButtonPressed(_ sender: Any) {

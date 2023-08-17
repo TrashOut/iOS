@@ -29,14 +29,6 @@ class CacheManager {
 
 }
 
-// MARK: - Public
-
-extension CacheManager {
-
-
-
-}
-
 // MARK: - Privates
 
 extension CacheManager {

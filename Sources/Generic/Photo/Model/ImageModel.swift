@@ -81,7 +81,7 @@ class LocalImage {
     }
 }
 
-class Image: JsonDecodable {
+class Image: JsonDecodable, Codable {
 
     // MARK: - Properties
 

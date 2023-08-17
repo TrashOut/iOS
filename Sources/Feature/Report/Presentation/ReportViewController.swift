@@ -37,6 +37,8 @@ import CoreLocation
 
 class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextViewDelegate {
 
+    @Inject private var userRepository: UserRepository
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -543,7 +545,8 @@ extension ReportViewController {
 extension ReportViewController {
 
     private func setupReportAsContentPickerView() {
-        guard let user = UserManager.instance.user else {
+        guard let user = userRepository.activeUser else {
+            // TODO: Only anonymous possiblity if no user active
             reportAsContentPickerView.isHidden = true
             return
         }

@@ -35,7 +35,7 @@ import Foundation
 import Cache
 
 
-class Organization: JsonDecodable, Cachable {
+class Organization: JsonDecodable, Cachable, Codable {
 
 	var id: Int = 0
 	var name: String = ""

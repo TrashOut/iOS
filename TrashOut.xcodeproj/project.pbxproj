@@ -69,6 +69,11 @@
 		9DF276D72A8E5B5C00FD5580 /* UserAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276D62A8E5B5C00FD5580 /* UserAssembly.swift */; };
 		9DF276DA2A8E5B9900FD5580 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276D92A8E5B9900FD5580 /* UserRepository.swift */; };
 		9DF276DC2A8E5BA500FD5580 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276DB2A8E5BA500FD5580 /* UserRepositoryImpl.swift */; };
+		9DF276DE2A8E5DE400FD5580 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276DD2A8E5DE400FD5580 /* UserDefaultsStorage.swift */; };
+		9DF276E12A8E5DED00FD5580 /* StorageValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276DF2A8E5DEC00FD5580 /* StorageValue.swift */; };
+		9DF276E22A8E5DED00FD5580 /* UserDefaultsPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276E02A8E5DED00FD5580 /* UserDefaultsPropertyWrapper.swift */; };
+		9DF276E72A8E5E4700FD5580 /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF276E62A8E5E4700FD5580 /* CombineExt */; };
+		9DF276E92A8E5F4C00FD5580 /* UserLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276E82A8E5F4C00FD5580 /* UserLocalStorage.swift */; };
 		9DF872F52A8D36E10015DDDE /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF872F42A8D36E10015DDDE /* SwiftDate */; };
 		9DF872F82A8D3DA30015DDDE /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF872F72A8D3DA30015DDDE /* Charts */; };
 		9DF872FB2A8D3FD90015DDDE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF872FA2A8D3FD90015DDDE /* FirebaseAnalytics */; };
@@ -308,6 +313,10 @@
 		9DF276D62A8E5B5C00FD5580 /* UserAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAssembly.swift; sourceTree = "<group>"; };
 		9DF276D92A8E5B9900FD5580 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		9DF276DB2A8E5BA500FD5580 /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
+		9DF276DD2A8E5DE400FD5580 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
+		9DF276DF2A8E5DEC00FD5580 /* StorageValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageValue.swift; sourceTree = "<group>"; };
+		9DF276E02A8E5DED00FD5580 /* UserDefaultsPropertyWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsPropertyWrapper.swift; sourceTree = "<group>"; };
+		9DF276E82A8E5F4C00FD5580 /* UserLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalStorage.swift; sourceTree = "<group>"; };
 		9DF873072A8D5FC40015DDDE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9DF873092A8D62D20015DDDE /* UserManager+GoogleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserManager+GoogleLogin.swift"; sourceTree = "<group>"; };
 		C30044321DAF84E400709DDC /* TrashUpdateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashUpdateModel.swift; sourceTree = "<group>"; };
@@ -478,6 +487,7 @@
 				16BC7E4F26B04BDE0082A764 /* PromiseKit in Frameworks */,
 				9DF872F82A8D3DA30015DDDE /* Charts in Frameworks */,
 				9DF872FF2A8D3FD90015DDDE /* FirebaseCrashlytics in Frameworks */,
+				9DF276E72A8E5E4700FD5580 /* CombineExt in Frameworks */,
 				9D867AE62A8D344400EA169D /* Alamofire in Frameworks */,
 				9DF873032A8D3FD90015DDDE /* FirebaseStorage in Frameworks */,
 				9DF276C22A8E59C300FD5580 /* Swinject in Frameworks */,
@@ -752,8 +762,8 @@
 		9DF276622A8E40AD00FD5580 /* Report */ = {
 			isa = PBXGroup;
 			children = (
-				9DF276642A8E40BF00FD5580 /* View */,
 				9DF276632A8E40B200FD5580 /* Presentation */,
+				9DF276642A8E40BF00FD5580 /* View */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -1192,10 +1202,10 @@
 		9DF276942A8E521E00FD5580 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				9DF276D82A8E5B8E00FD5580 /* Domain */,
-				9DF276D52A8E5B5200FD5580 /* DI */,
-				9DF276AE2A8E547100FD5580 /* Model */,
 				9DF276952A8E522600FD5580 /* Data */,
+				9DF276D52A8E5B5200FD5580 /* DI */,
+				9DF276D82A8E5B8E00FD5580 /* Domain */,
+				9DF276AE2A8E547100FD5580 /* Model */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1203,6 +1213,7 @@
 		9DF276952A8E522600FD5580 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				9DF276E82A8E5F4C00FD5580 /* UserLocalStorage.swift */,
 				16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */,
 				C32F8D5A1DED8E9B0009A5C4 /* UserManager.swift */,
 				C37519FA1E38C482001F61AB /* UserManager+Facebook.swift */,
@@ -1216,8 +1227,10 @@
 		9DF276962A8E529000FD5580 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				9DF276B72A8E58A700FD5580 /* Model */,
 				9DF276982A8E52A600FD5580 /* Data */,
+				9DF276E32A8E5DEF00FD5580 /* Domain */,
+				9DF276E42A8E5DFA00FD5580 /* Infrastructure */,
+				9DF276B72A8E58A700FD5580 /* Model */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -1595,6 +1608,23 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
+		9DF276E32A8E5DEF00FD5580 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				9DF276DD2A8E5DE400FD5580 /* UserDefaultsStorage.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		9DF276E42A8E5DFA00FD5580 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				9DF276DF2A8E5DEC00FD5580 /* StorageValue.swift */,
+				9DF276E02A8E5DED00FD5580 /* UserDefaultsPropertyWrapper.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
 		C3A3B2331DA7A6E00099D1C2 = {
 			isa = PBXGroup;
 			children = (
@@ -1684,6 +1714,7 @@
 				9DF873052A8D5F7C0015DDDE /* GoogleSignIn */,
 				9DF276C12A8E59C300FD5580 /* Swinject */,
 				9DF276C42A8E59EA00FD5580 /* SwinjectAutoregistration */,
+				9DF276E62A8E5E4700FD5580 /* CombineExt */,
 			);
 			productName = Trashout;
 			productReference = C3A3B23C1DA7A6E00099D1C2 /* TrashOut.app */;
@@ -1800,6 +1831,7 @@
 				9DF873042A8D5F7C0015DDDE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				9DF276C02A8E59C300FD5580 /* XCRemoteSwiftPackageReference "Swinject" */,
 				9DF276C32A8E59EA00FD5580 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */,
+				9DF276E52A8E5E4700FD5580 /* XCRemoteSwiftPackageReference "CombineExt" */,
 			);
 			productRefGroup = C3A3B23D1DA7A6E00099D1C2 /* Products */;
 			projectDirPath = "";
@@ -1953,6 +1985,7 @@
 				C3A3B26F1DA7AC1E0099D1C2 /* ViewController.swift in Sources */,
 				8E2747B720036FA900934D62 /* NotificationName.swift in Sources */,
 				C37579291E423F66002EA629 /* GpsFormatter.swift in Sources */,
+				9DF276E22A8E5DED00FD5580 /* UserDefaultsPropertyWrapper.swift in Sources */,
 				16908C1E26DBCFD600F5FA28 /* ContentPickerView.swift in Sources */,
 				16ED5475263B2AAA000E848A /* KeychainItemFactory.swift in Sources */,
 				C37994A51DACFFD600CE5E3F /* CachableModel.swift in Sources */,
@@ -1973,6 +2006,7 @@
 				9DF276D12A8E5A8200FD5580 /* InjectSettings.swift in Sources */,
 				C3FF4FAA1E533F35005D5530 /* HorizontalSeparator.swift in Sources */,
 				FC3E0E711DDE73A0006F1D31 /* EventNewViewController.swift in Sources */,
+				9DF276DE2A8E5DE400FD5580 /* UserDefaultsStorage.swift in Sources */,
 				C3E90C2E1E436A24002FDC2D /* TrashHunterModel.swift in Sources */,
 				C374778E1DBA094B005AC532 /* ClusteringManager.swift in Sources */,
 				0F77D26B24594B3A006141E6 /* EventThankYouViewController.swift in Sources */,
@@ -2008,6 +2042,7 @@
 				FC747CA91DCBE02D001B9EE9 /* DistanceRounding.swift in Sources */,
 				C32F8D5B1DED8E9B0009A5C4 /* UserManager.swift in Sources */,
 				FC5FA3061DE849A90000C711 /* ImageModel.swift in Sources */,
+				9DF276E12A8E5DED00FD5580 /* StorageValue.swift in Sources */,
 				C37579231E422C95002EA629 /* OrganizationModel.swift in Sources */,
 				8E2747B92003B58200934D62 /* Device.swift in Sources */,
 				C38960CA1E5C647700EA6D87 /* Error.swift in Sources */,
@@ -2073,6 +2108,7 @@
 				C38960CD1E5C8FD600EA6D87 /* PhotoManager.swift in Sources */,
 				C3014DC11DAE35F000FD7CFE /* ReportViewController.swift in Sources */,
 				C3F0F90F1E5B3C5E0024DCDD /* EventManager.swift in Sources */,
+				9DF276E92A8E5F4C00FD5580 /* UserLocalStorage.swift in Sources */,
 				FC48ED461DCB7C98008E7EB1 /* JunkyardModel.swift in Sources */,
 				FC3E0E6D1DDE01BE006F1D31 /* JunkyardDetViewController.swift in Sources */,
 				161A9D9226DCFC4B00BBD478 /* UIView+.swift in Sources */,
@@ -2203,7 +2239,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-D BETA -Xfrontend -debug-time-function-bodies";
@@ -2249,7 +2285,7 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Config/Prod/Info-Prod.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2371,7 +2407,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-D DEBUG -Xfrontend -debug-time-function-bodies";
@@ -2432,7 +2468,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
@@ -2479,7 +2515,7 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Config/Prod/Info-Prod.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2530,7 +2566,7 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Config/Prod/Info-Prod.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2755,6 +2791,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		9DF276E52A8E5E4700FD5580 /* XCRemoteSwiftPackageReference "CombineExt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineExt";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		9DF872F32A8D36E10015DDDE /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/malcommac/SwiftDate";
@@ -2826,6 +2870,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9DF276C32A8E59EA00FD5580 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */;
 			productName = SwinjectAutoregistration;
+		};
+		9DF276E62A8E5E4700FD5580 /* CombineExt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9DF276E52A8E5E4700FD5580 /* XCRemoteSwiftPackageReference "CombineExt" */;
+			productName = CombineExt;
 		};
 		9DF872F42A8D36E10015DDDE /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;

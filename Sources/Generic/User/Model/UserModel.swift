@@ -33,9 +33,9 @@
 import Foundation
 import Cache
 
-class User: JsonDecodable, Cachable {
+class User: JsonDecodable, Cachable, Codable {
 
-    struct Stats {
+    struct Stats: Codable {
         var reported: Int = 0
         var updated: Int = 0
         var cleaned: Int = 0
@@ -252,7 +252,7 @@ extension User {
 
 }
 
-class Badge: JsonDecodable, Cachable {
+class Badge: JsonDecodable, Cachable, Codable {
 
     func dictionary() -> [String: AnyObject] {
         return [:]

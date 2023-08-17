@@ -17,5 +17,11 @@ class UserAssembly: Assembly {
             initializer: UserRepositoryImpl.init
         )
         .inObjectScope(.container)
+
+        container.autoregister(
+            UserLocalStorage.self,
+            initializer: UserLocalStorage.init
+        )
+        .inObjectScope(.container)
     }
 }

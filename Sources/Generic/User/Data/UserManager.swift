@@ -34,6 +34,7 @@ import Foundation
 import Alamofire
 import Firebase
 import FBSDKLoginKit
+import Combine
 
 fileprivate func apiLog(_ message: String) {
     NSLog("API INFO: \(message)")
@@ -48,6 +49,10 @@ protocol UserManagerDelegate: AnyObject {
 }
 
 class UserManager {
+
+    @Inject private var repository: UserRepository
+
+    private var cancellables = Set<AnyCancellable>()
 
 	static let instance = UserManager()
 	let firAuth = FirebaseAuthentificator.init()
@@ -80,7 +85,6 @@ class UserManager {
 	Loads or creates anonymous user on firebase and DB if not exists
 	*/
 	func createAnonymousUser(callback: @escaping (User?, Error?) -> ()) {
-        //firAuth.logout()
         let uid = firAuth.uid()
 		if uid == nil || firAuth.isAnonymous {
 			firAuth.createAnonymousUser { [unowned self] in
@@ -147,17 +151,19 @@ class UserManager {
      Load me via db (api)
      */
     func loadDBMe(callback: @escaping (User?, Error?) -> ()) {
-        Networking.instance.userMe(callback: { (user, error) in
-            if let e = error as NSError?, e.code == 404 {
-                callback(nil, error)
-            } else {
-                guard let user = user, error == nil else {
+        repository
+            .userPublisher()
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
                     callback(nil, error)
-                    return
+
+                default: break
                 }
-                callback(user, error)
+            } receiveValue: { user in
+                callback(user, nil)
             }
-        })
+            .store(in: &cancellables)
     }
     
     /**

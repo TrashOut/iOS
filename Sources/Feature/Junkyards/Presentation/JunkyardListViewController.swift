@@ -86,7 +86,6 @@ class JunkyardListViewController: ViewController, UITableViewDelegate, UITableVi
         LocationManager.manager.refreshCurrentLocationIfNeeded { [weak self] (location) in
             self?.loadData(page: 1)
         }
-        
 
         let filter = UIBarButtonItem(image: UIImage(named: "Filter"), style: .plain, target: self, action: #selector(goToFilter))
         navigationItem.rightBarButtonItem = filter

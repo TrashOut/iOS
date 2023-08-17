@@ -59,6 +59,7 @@ fastlane/report.xml
 fastlane/screenshots
 fastlane/Appfile
 fastlane/README.md
+fastlane/Matchfile
 
 #Code Injection
 #

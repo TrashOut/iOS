@@ -45,7 +45,7 @@ platform :ios do
   end
 
   def set_build_number(buildNumber)
-    set_info_plist_value(path: "./TrashOut/Info-Prod.plist", key: "CFBundleVersion", value: buildNumber)
+    set_info_plist_value(path: "./Config/Prod/Info-Prod.plist", key: "CFBundleVersion", value: buildNumber)
   end
 
   def incremented_build_number

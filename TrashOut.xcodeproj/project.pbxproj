@@ -33,7 +33,6 @@
 		16908C2726DBD25300F5FA28 /* ContentPickerInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16908C2426DBD25300F5FA28 /* ContentPickerInputView.xib */; };
 		16BC7E4F26B04BDE0082A764 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16BC7E4E26B04BDE0082A764 /* PromiseKit */; };
 		16D4B0E826AF34B1001CDFC2 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D4B0E726AF34B1001CDFC2 /* UIViewController+.swift */; };
-		16D810FC269F5A8A00B84508 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D810FB269F5A8A00B84508 /* CacheManager.swift */; };
 		16E0EDAC2648628800B9AF2F /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */; };
 		16E1605F265D673C00CDCBE2 /* UpdateLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E1605E265D673C00CDCBE2 /* UpdateLocationViewController.swift */; };
 		16ECD05727AEF24300B1F009 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECD05627AEF24300B1F009 /* AppEnvironment.swift */; };
@@ -59,6 +58,8 @@
 		9D867AE92A8D34C900EA169D /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9D867AE82A8D34C900EA169D /* AlamofireImage */; };
 		9D867AF32A8D35E400EA169D /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = 9D867AF22A8D35E400EA169D /* Cache */; };
 		9D9E7A122964842600AFAAE9 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 9D9E7A112964842600AFAAE9 /* FacebookLogin */; };
+		9DA629112A8EA21D004CA969 /* OfflineDumpStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA629102A8EA21D004CA969 /* OfflineDumpStorage.swift */; };
+		9DA629132A8EA354004CA969 /* OfflineAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA629122A8EA354004CA969 /* OfflineAssembly.swift */; };
 		9DF276C22A8E59C300FD5580 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF276C12A8E59C300FD5580 /* Swinject */; };
 		9DF276C52A8E59EA00FD5580 /* SwinjectAutoregistration in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF276C42A8E59EA00FD5580 /* SwinjectAutoregistration */; };
 		9DF276CF2A8E5A8200FD5580 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF276CA2A8E5A8200FD5580 /* Resolver.swift */; };
@@ -275,7 +276,6 @@
 		16B9B3232656B6D0002978C4 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		16B9B3242656B83B002978C4 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		16D4B0E726AF34B1001CDFC2 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
-		16D810FB269F5A8A00B84508 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		16E0EDAB2648628800B9AF2F /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		16E1605E265D673C00CDCBE2 /* UpdateLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationViewController.swift; sourceTree = "<group>"; };
 		16ECD05627AEF24300B1F009 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
@@ -305,6 +305,8 @@
 		9D1F83842917C600007F2819 /* ka */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ka; path = ka.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D2D8846297461DD009D901A /* sr-RS */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sr-RS"; path = "sr-RS.lproj/Main.strings"; sourceTree = "<group>"; };
 		9D2D8847297461DD009D901A /* sr-RS */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sr-RS"; path = "sr-RS.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9DA629102A8EA21D004CA969 /* OfflineDumpStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDumpStorage.swift; sourceTree = "<group>"; };
+		9DA629122A8EA354004CA969 /* OfflineAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineAssembly.swift; sourceTree = "<group>"; };
 		9DF276CA2A8E5A8200FD5580 /* Resolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		9DF276CB2A8E5A8200FD5580 /* Inject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
 		9DF276CC2A8E5A8200FD5580 /* InjectSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InjectSettings.swift; sourceTree = "<group>"; };
@@ -521,6 +523,14 @@
 				16FC881526C25AC600B4C394 /* CryptoKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9DA6290F2A8EA1F9004CA969 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				9DA629122A8EA354004CA969 /* OfflineAssembly.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		9DF276492A8E3C7A00FD5580 /* App */ = {
@@ -1227,20 +1237,11 @@
 		9DF276962A8E529000FD5580 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				9DF276982A8E52A600FD5580 /* Data */,
 				9DF276E32A8E5DEF00FD5580 /* Domain */,
 				9DF276E42A8E5DFA00FD5580 /* Infrastructure */,
 				9DF276B72A8E58A700FD5580 /* Model */,
 			);
 			path = Storage;
-			sourceTree = "<group>";
-		};
-		9DF276982A8E52A600FD5580 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				16D810FB269F5A8A00B84508 /* CacheManager.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		9DF2769A2A8E52F200FD5580 /* Data */ = {
@@ -1274,9 +1275,10 @@
 		9DF2769D2A8E535100FD5580 /* Offline */ = {
 			isa = PBXGroup;
 			children = (
+				9DF2769E2A8E535800FD5580 /* Data */,
+				9DA6290F2A8EA1F9004CA969 /* DI */,
 				9DF276A02A8E536900FD5580 /* Domain */,
 				9DF2769F2A8E535E00FD5580 /* Model */,
-				9DF2769E2A8E535800FD5580 /* Data */,
 			);
 			path = Offline;
 			sourceTree = "<group>";
@@ -1284,6 +1286,7 @@
 		9DF2769E2A8E535800FD5580 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				9DA629102A8EA21D004CA969 /* OfflineDumpStorage.swift */,
 				16899F9C26AFDD6900C25B03 /* OfflineDumpManager.swift */,
 			);
 			path = Data;
@@ -1959,6 +1962,7 @@
 				C37994A31DACDE7300CE5E3F /* FirebaseAuthentificator.swift in Sources */,
 				C3014DBF1DAE33F100FD7CFE /* ProfileViewController.swift in Sources */,
 				FC8EC06E1DF8AA66005556C0 /* CircleImageView.swift in Sources */,
+				9DA629112A8EA21D004CA969 /* OfflineDumpStorage.swift in Sources */,
 				C30044351DAF872400709DDC /* DateFormatter.swift in Sources */,
 				C37883231E5B2902007888B8 /* NoDataView.swift in Sources */,
 				1674991F26C1796C00488B37 /* FirebaseCrashlytics.swift in Sources */,
@@ -1999,7 +2003,6 @@
 				C3E90C301E4376A3002FDC2D /* TrashHunter.swift in Sources */,
 				C3DCAE921E4360B600A6AF0F /* TrashHunterStartViewController.swift in Sources */,
 				FC63DFB91E01BFC400B7FCB2 /* CoordinatesModel.swift in Sources */,
-				16D810FC269F5A8A00B84508 /* CacheManager.swift in Sources */,
 				C3D5FB651DABAB2900DBD573 /* GpsModel.swift in Sources */,
 				16899F9F26AFDD7900C25B03 /* OfflineDumpManagerType.swift in Sources */,
 				C3A617701DB8F1BF0092BF32 /* ClusterMapAnnotation.swift in Sources */,
@@ -2068,6 +2071,7 @@
 				16908C1226DBCFA300F5FA28 /* Instantiable+.swift in Sources */,
 				C3874BE21E55BD1700C94719 /* StatisticsManager.swift in Sources */,
 				FCED66B51DF182E40009D4ED /* EventNetworking.swift in Sources */,
+				9DA629132A8EA354004CA969 /* OfflineAssembly.swift in Sources */,
 				C3DDE01F1DAB91B000CB088E /* TrashModel.swift in Sources */,
 				C348802F1DF59C5E00C2E83E /* NewsNetworking.swift in Sources */,
 				FCD956971DD552FA003AB1C5 /* DumpsImageViewController.swift in Sources */,

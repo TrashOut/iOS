@@ -9,5 +9,6 @@
 import Swinject
 
 let appAssemblyList: [Assembly] = {[
+    OfflineAssembly(),
     UserAssembly()
 ]}()

@@ -9,11 +9,13 @@
 import Foundation
 import PromiseKit
 
+private enum C {
+    static let offlineUploadErrorMessage = "Error with uploading offline dump"
+}
+
 class OfflineDumpManager {
 
-    enum C {
-        static let offlineUploadErrorMessage = "Error with uploading offline dump"
-    }
+    @Inject private var offlineDumpStorage: OfflineDumpStorage
 
     private var successfullUploadedDumps = [OfflineDump]()
 
@@ -23,14 +25,23 @@ class OfflineDumpManager {
 
 extension OfflineDumpManager: OfflineDumpManagerType {
 
+    func cacheDump(_ dump: OfflineDump) {
+        var dumps = offlineDumpStorage.offlineDumps ?? []
+        dumps.append(dump)
+
+        offlineDumpStorage.set(dumps)
+    }
+
     /// Send offline reports from cache into servers
     ///
     /// Upload process will start immediately after internet connection is esthablished and cache contains dump at least with one item.
     ///
     /// - Parameter completion: Result completion handler
     func uploadCachedOfflineDumps(completion: BoolClosure? = nil) {
-        self.successfullUploadedDumps.removeAll()
-        let dumps = CacheManager.shared.offlineDumps
+        successfullUploadedDumps.removeAll()
+
+        let dumps = offlineDumpStorage.offlineDumps ?? []
+
         guard Reachability.isConnectedToNetwork(), dumps.count > 0 else {
             completion?(false)
             return
@@ -61,11 +72,11 @@ extension OfflineDumpManager: OfflineDumpManagerType {
 extension OfflineDumpManager {
 
     private func updateCache() {
-        let offlineDumps = CacheManager.shared.offlineDumps.filter { [weak self] in
+        if let offlineDumps = offlineDumpStorage.offlineDumps?.filter({ [weak self] in
             self?.successfullUploadedDumps.contains($0) ?? false
+        }) {
+            offlineDumpStorage.set(offlineDumps)
         }
-
-        CacheManager.shared.offlineDumps = offlineDumps
     }
 
     private func upload(dump: OfflineDump, images: [DumpsImages]) -> Promise<Void> {

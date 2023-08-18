@@ -38,6 +38,7 @@ import CoreLocation
 class ReportViewController: ViewController, MKMapViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextViewDelegate {
 
     @Inject private var userRepository: UserRepository
+    @Inject private var offlineDumpManager: OfflineDumpManager
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -1004,7 +1005,7 @@ extension ReportViewController {
 
         let offlineDump = OfflineDump(imagesData: uploadedImages, gps: gps, size: trashSize, type: trashTypes, note: note, anonymous: selectedType.isAnonymous, userId: UserManager.instance.user?.id ?? -1, accessibility: accessibility, organizationId: selectedType.organization?.id)
 
-        CacheManager.shared.offlineDumps.append(offlineDump)
+        offlineDumpManager.cacheDump(offlineDump)
 
         // TODO: OFFLINE - Change text
         presentSimpleAlert(title: "global.validation.warning".localized, message: "trash.create.thankYou.offline".localized, completion: { [weak self] in

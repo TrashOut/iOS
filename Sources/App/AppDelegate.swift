@@ -41,7 +41,7 @@ import Swinject
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    private let offlineDumpManager: OfflineDumpManagerType = OfflineDumpManager()
+    private var offlineDumpManager: OfflineDumpManagerType?
     
     var window: UIWindow?
     
@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         Theme.current.setupAppearance()
-
+        offlineDumpManager = OfflineDumpManager()
         return true
     }
     
@@ -268,7 +268,7 @@ extension AppDelegate {
 
     /// Check offline dumps cache and upload when user is online
     private func handleOfflineDumps() {
-        offlineDumpManager.uploadCachedOfflineDumps { [weak self] didUploadOfflineDumps in
+        offlineDumpManager?.uploadCachedOfflineDumps { [weak self] didUploadOfflineDumps in
             if didUploadOfflineDumps { // Called in case offline dumps was cached and successfuly uploaded
                 self?.window?.rootViewController?.presentSimpleAlert(title: "trash.create.notification.title".localized, message: "trash.create.notification.text".localized)
             }
